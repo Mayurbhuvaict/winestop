@@ -1,0 +1,16 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Mirasvit\Core\Block\Adminhtml\Menu">
+        <arguments>
+            <argument name="menu" xsi:type="array">
+                <item name="seo_content" xsi:type="object">Mirasvit\SeoContent\Block\Adminhtml\Menu</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Mirasvit\SeoContent\Controller\Adminhtml\Template\ImageUpload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Magento\Catalog\CategoryImageUpload</argument>
+        </arguments>
+    </type>
+</config>

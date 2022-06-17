@@ -1,0 +1,57 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var $block \Magento\Framework\View\Element\Template */
+?>
+
+<!-- ko scope: 'giftcard' -->
+    <!-- ko if: enableGiftCredit() || enableGiftCard() -->
+    <div class="block discount" id="block-gift-card-discount"
+         data-bind="mageInit: {'collapsible':{'openedState': 'active', 'saveState': false}}">
+        <div class="title" data-role="title">
+            <strong role="heading" aria-level="2"><?= $block->escapeHtml(__('Apply Gift Cards')) ?></strong>
+        </div>
+        <div data-bind="blockLoader: isLoading" class="content" data-role="content"
+             aria-labelledby="block-gift-card-discount-heading">
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        </div>
+    </div>
+    <!-- /ko -->
+<!-- /ko -->
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "giftcard": {
+                    "component": "Mageplaza_GiftCard/js/view/checkout",
+                    "children": {
+                        "messages": {
+                            "component": "Mageplaza_GiftCard/js/view/messages",
+                            "displayArea": "messages"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+</script>

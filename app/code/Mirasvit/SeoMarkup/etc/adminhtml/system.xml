@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="seo">
+            <group id="seo_markup" showInDefault="1" showInWebsite="1" showInStore="1" translate="label" sortOrder="200">
+                <label>SEO Rich Snippets and Opengraph</label>
+
+                <group id="product" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="100">
+                    <label>Product Page</label>
+
+                    <field id="is_rs_enabled" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable Rich Snippet</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+
+                    <field id="is_remove_native_rs" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Delete wrong snippets automatically</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <tooltip><![CDATA[Current configuration will automatically cut incorrect snippets added in html]]></tooltip>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+
+                    <field id="description_type" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Item Description</label>
+                        <source_model>Mirasvit\SeoMarkup\Model\Config\Source\Product\DescriptionType</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_image_enabled" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Item Image</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_availability_enabled" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Item Availability</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_accepted_payment_method_enabled" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Payment Methods</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_available_delivery_method_enabled" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Delivery Methods</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_category_enabled" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Product Category</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_mpn_enabled" translate="label" type="select" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Manufacture Part Number</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="mpn_attribute" translate="label" type="text" sortOrder="66" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Manufacture Part Number Attribute</label>
+                        <depends>
+                            <field id="is_mpn_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="brand_attribute" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Brand Attribute</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="model_attribute" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Model Attribute</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="color_attribute" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Color Attribute</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="weight_unit_type" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Weight Unit</label>
+                        <source_model>Mirasvit\SeoMarkup\Model\Config\Source\Product\WeightUnitType</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_dimensions_enabled" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Dimensions</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="dimension_unit" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Unit</label>
+                        <depends>
+                            <field id="is_dimensions_enabled">1</field>
+
+                        </depends>
+                    </field>
+                    <field id="dimension_height_attribute" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Height Attribute</label>
+                        <depends>
+                            <field id="is_dimensions_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="dimension_width_attribute" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Width Attribute</label>
+                        <depends>
+                            <field id="is_dimensions_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="dimension_depth_attribute" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Depth Attribute</label>
+                        <depends>
+                            <field id="is_dimensions_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="item_condition_type" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Product Condition</label>
+                        <source_model>Mirasvit\SeoMarkup\Model\Config\Source\Product\ItemConditionType</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="item_condition_attribute" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Condition Attribute</label>
+                        <depends>
+                            <field id="item_condition_type">1</field>
+                        </depends>
+                    </field>
+                    <field id="item_condition_attribute_value_new" translate="label" type="text" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>New Attribute Value</label>
+                        <depends>
+                            <field id="item_condition_type">1</field>
+                        </depends>
+                    </field>
+                    <field id="item_condition_attribute_value_used" translate="label" type="text" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Used Attribute Value</label>
+                        <depends>
+                            <field id="item_condition_type">1</field>
+                        </depends>
+                    </field>
+                    <field id="item_condition_attribute_value_refurbished" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Refurbished Attribute Value</label>
+                        <depends>
+                            <field id="item_condition_type">1</field>
+                        </depends>
+                    </field>
+                    <field id="item_condition_attribute_value_damaged" translate="label" type="text" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Damaged Attribute Value</label>
+                        <depends>
+                            <field id="item_condition_type">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_individual_reviews_enabled" translate="label" type="select" sortOrder="220" showInDefault="1">
+                        <label>Add Rich Snippets for Individual Reviews</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="gtin" translate="label" type="label" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label><![CDATA[<strong><u>Gtin configuration:</u></strong>]]></label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="gtin8_attribute" translate="label" type="text" sortOrder="240" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Gtin8 Attribute</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="gtin12_attribute" translate="label" type="text" sortOrder="250" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Gtin12 Attribute</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="gtin13_attribute" translate="label" type="text" sortOrder="260" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Gtin13 Attribute</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="gtin14_attribute" translate="label" type="text" sortOrder="270" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Gtin14 Attribute</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                </group>
+
+                <group id="category" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="200">
+                    <label>Category Page</label>
+
+                    <field id="is_remove_native_rs" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Delete wrong snippets automatically</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <tooltip><![CDATA[Current configuration will automatically cut incorrect snippets added in html]]></tooltip>
+                    </field>
+
+                    <field id="is_rs_enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable Rich Snippet</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+
+                    <field id="product_offers_type" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Product Offers</label>
+                        <source_model>Mirasvit\SeoMarkup\Model\Config\Source\Category\ProductOffersType</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_og_enabled" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable Opengraph</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                </group>
+
+                <group id="page" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="250">
+                    <label>CMS Page</label>
+
+                    <field id="is_remove_native_rs" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Delete wrong snippets automatically</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <tooltip><![CDATA[Current configuration will automatically cut incorrect snippets from template]]></tooltip>
+                    </field>
+
+                    <field id="is_og_enabled" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable Opengraph</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                </group>
+
+                <group id="organization" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="300">
+                    <label>Organization</label>
+
+                    <field id="is_rs_enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Is Enabled</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+
+                    <field id="is_custom_name" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Name</label>
+                        <source_model>Mirasvit\SeoMarkup\Model\Config\Source\Organization\TypeSource</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="custom_name" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Name Value</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                            <field id="is_custom_name">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_custom_address_country" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Country</label>
+                        <source_model>Mirasvit\SeoMarkup\Model\Config\Source\Organization\TypeSource</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="custom_address_country" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Country Value</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                            <field id="is_custom_address_country">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_custom_address_locality" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Locality Address</label>
+                        <source_model>Mirasvit\SeoMarkup\Model\Config\Source\Organization\TypeSource</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="custom_address_locality" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Locality Address Value</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                            <field id="is_custom_address_locality">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_custom_address_region" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Address Region</label>
+                        <source_model>Mirasvit\SeoMarkup\Model\Config\Source\Organization\TypeSource</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="custom_address_region" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Region Value</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                            <field id="is_custom_address_region">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_custom_postal_code" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Postal Code</label>
+                        <source_model>Mirasvit\SeoMarkup\Model\Config\Source\Organization\TypeSource</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="custom_postal_code" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Postal Code Value</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                            <field id="is_custom_postal_code">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_custom_street_address" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Street Address</label>
+                        <source_model>Mirasvit\SeoMarkup\Model\Config\Source\Organization\TypeSource</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="custom_street_address" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Street Address Value</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                            <field id="is_custom_street_address">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_custom_telephone" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Telephone Number</label>
+                        <source_model>Mirasvit\SeoMarkup\Model\Config\Source\Organization\TypeSource</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="custom_telephone" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Telephone Number Value</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                            <field id="is_custom_telephone">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="custom_fax_number" translate="label" type="text" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Fax Number</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+
+                    <field id="is_custom_email" translate="label" type="select" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Email</label>
+                        <source_model>Mirasvit\SeoMarkup\Model\Config\Source\Organization\TypeSource</source_model>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="custom_email" translate="label" type="text" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Email Value</label>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                            <field id="is_custom_email">1</field>
+                        </depends>
+                    </field>
+                    <field id="youtube_link" translate="label" type="text" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>YouTube Channel</label>
+                        <validate>validate-url</validate>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+
+                    </field>
+                    <field id="facebook_link" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Facebook Account</label>
+                        <validate>validate-url</validate>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="linkedin_link" translate="label" type="text" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Linkedin Profile</label>
+                        <validate>validate-url</validate>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="instagram_link" translate="label" type="text" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Instagram Account</label>
+                        <validate>validate-url</validate>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="pinterest_link" translate="label" type="text" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Pinterest Account</label>
+                        <validate>validate-url</validate>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="tumblr_link" translate="label" type="text" sortOrder="240" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Tumblr Account</label>
+                        <validate>validate-url</validate>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                    <field id="twitter_link" translate="label" type="text" sortOrder="250" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Twitter Account</label>
+                        <validate>validate-url</validate>
+                        <depends>
+                            <field id="is_rs_enabled">1</field>
+                        </depends>
+                    </field>
+                </group>
+
+                <group id="breadcrumb_list" translate="label" type="text" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="500">
+                    <label>Breadcrumbs</label>
+
+                    <field id="is_rs_enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Is Enabled</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                </group>
+
+                <group id="twitter" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="700">
+                    <label>Twitter Card</label>
+
+                    <field id="card_type" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Add Twitter Summary Card</label>
+                        <source_model>Mirasvit\SeoMarkup\Model\Config\Source\Twitter\CardType</source_model>
+                    </field>
+
+                    <field id="username" translate="label" type="text" sortOrder="20" showInDefault="1"  showInWebsite="1" showInStore="1">
+                        <label>Twitter Username</label>
+
+                        <depends>
+                            <field id="card_type" separator=",">1,2</field>
+                        </depends>
+                    </field>
+                </group>
+
+                <group id="searchbox" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="800">
+                    <label>Search Box</label>
+
+                    <field id="searchbox_type" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Search Box type</label>
+                        <source_model>Mirasvit\SeoMarkup\Model\Config\Source\Searchbox\SearchboxType</source_model>
+                    </field>
+
+                    <field id="blog_search_url" translate="label" type="text" sortOrder="20" showInDefault="1">
+                        <label>Path to the blog search</label>
+                        <validate>required-entry</validate>
+
+                        <depends>
+                            <field id="searchbox_type">2</field>
+                        </depends>
+                    </field>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

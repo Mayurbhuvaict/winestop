@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Theme\Block\Html\Pager">
+        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Frontend\Theme\Block\Html\Pager\RemoveFirstPageParamPlugin" sortOrder="1000"/>
+    </type>
+
+    <type name="Magento\Framework\Controller\ResultInterface">
+        <plugin name="mstSeoAddPaginationLink" type="Mirasvit\Seo\Plugin\Frontend\Framework\Controller\Result\AddPaginationLinkPlugin" sortOrder="-1"/>
+    </type>
+
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="mstSeoRememberCollection" type="Mirasvit\Seo\Plugin\Frontend\Catalog\Block\Product\ListProduct\RememberCollectionPlugin" sortOrder="1000"/>
+    </type>
+
+
+    <!-- change image url and path -->
+    <!--<type name="Magento\Catalog\Model\View\Asset\Image">-->
+    <!--<plugin name="mstSeoCatalogModelViewAssetImage" type="Mirasvit\Seo\Plugin\Frontend\Catalog\Model\View\Asset\Image\FriendlyUrlPlugin" sortOrder="1000"/>-->
+    <!--</type>-->
+
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="mstSeoCatalogModelProduct" type="Mirasvit\Seo\Plugin\Frontend\Catalog\Model\Product\FriendlyImageUrlPlugin" sortOrder="1000"/>
+    </type>
+
+    <type name="Magento\Catalog\Block\Product\View\Gallery">
+        <plugin name="mstSeoProductViewGallery" type="Mirasvit\Seo\Plugin\Frontend\Catalog\Block\Product\View\Gallery\SetMainImagePlugin" sortOrder="1000"/>
+    </type>
+
+    <type name="Magento\Framework\App\Action\Action">
+        <plugin name="Mirasvit_Seo::correctUrlPlugin" type="Mirasvit\Seo\Plugin\Frontend\CorrectUrlPlugin"/>
+    </type>
+
+    <type name="Magento\UrlRewrite\Controller\Router">
+        <plugin name="mstSeoUrlRewriteRouterApplyTrailingSlashPlugin" type="Mirasvit\Seo\Plugin\Frontend\UrlRewriteRouterApplyTrailingSlashPlugin"/>
+    </type>
+
+    <type name="Magento\Framework\View\Page\Config">
+        <plugin name="mstSeoRobotsPlugin" type="Mirasvit\Seo\Plugin\Frontend\Framework\View\Page\ModifyRobotsPlugin"/>
+    </type>
+</config>

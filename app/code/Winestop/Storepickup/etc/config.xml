@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <storepickup>
+                <active>1</active>
+                <sallowspecific>0</sallowspecific>
+                <model>Winestop\Storepickup\Model\Carrier\Shipping</model>
+                <name>STORE PICKUP (337 Primrose Road,Burlingame, CA 94010)</name>                
+                <title>Store Pickup</title>
+                <specificerrmsg>This shipping method is currently unavailable.If you would like to ship using this shipping method, please contact us.</specificerrmsg>                
+                <handling_type>F</handling_type>
+            </storepickup>
+        </carriers>
+    </default>
+</config>

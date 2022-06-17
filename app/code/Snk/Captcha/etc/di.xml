@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Oleh Kravets <oleh.kravets@snk.de>
+ * @copyright   Copyright (c) 2021 schoene neue kinder GmbH  (https://www.snk.de)
+ * @license     MIT
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Captcha\Model\MathCaptcha" type="Snk\Captcha\Model\MathCaptcha"/>
+</config>

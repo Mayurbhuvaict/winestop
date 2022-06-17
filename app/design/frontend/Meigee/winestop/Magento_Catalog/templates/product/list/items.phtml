@@ -1,0 +1,625 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
+// phpcs:disable Generic.WhiteSpace.ScopeIndent.Incorrect
+
+/* @var $block \Magento\Catalog\Block\Product\AbstractProduct */
+?>
+<?php 
+$viewModel = $block->getData('view_model');
+?>
+<?php
+switch ($type = $block->getType()) {
+
+    case 'related-rule':
+        if ($exist = $block->hasItems()) {
+            $type = 'related';
+            $class = $type;
+
+            $image = 'related_products_list';
+            $title = __('Related Products');
+            $items = $block->getAllItems();
+            $limit = $block->getPositionLimit();
+            $shuffle = (int) $block->isShuffled();
+            $canItemsAddToCart = $block->canItemsAddToCart();
+
+            $showAddTo = false;
+            $showCart = false;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+            $description = false;
+			$price = false;
+        }
+    break;
+
+    case 'related':
+        /** @var \Magento\Catalog\Block\Product\ProductList\Related $block */
+        if ($exist = $block->getItems()->getSize()) {
+            $type = 'related';
+            $class = $type;
+
+            $image = 'related_products_list';
+            $title = __('We Also Recommend');
+            $items = $block->getItems();
+            $limit = 0;
+            $shuffle = 0;
+            $canItemsAddToCart = $block->canItemsAddToCart();
+
+            $showAddTo = false;
+            $showCart = false;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+            $description = false;
+			$price = false;
+        }
+    break;
+
+    case 'upsell-rule':
+        if ($exist = $block->hasItems()) {
+            $type = 'upsell';
+            $class = $type;
+
+            $image = 'upsell_products_list';
+            $title = __('We found other products you might like!');
+            $items = $block->getAllItems();
+            $limit = $block->getPositionLimit();
+            $shuffle = (int) $block->isShuffled();
+
+            $showAddTo = false;
+            $showCart = false;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+            $description = false;
+            $canItemsAddToCart = false;
+			$price = false;
+        }
+    break;
+
+    case 'upsell':
+        /** @var \Magento\Catalog\Block\Product\ProductList\Upsell $block */
+        if ($exist = count($block->getItemCollection()->getItems())) {
+            $type = 'upsell';
+            $class = $type;
+
+            $image = 'upsell_products_list';
+            $title = __('We found other products you might like!');
+            $items = $block->getItemCollection()->getItems();
+            $limit = $block->getItemLimit('upsell');
+            $shuffle = 0;
+
+            $showAddTo = false;
+            $showCart = false;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+            $description = false;
+            $canItemsAddToCart = false;
+			$price = false;
+        }
+    break;
+
+    case 'crosssell-rule':
+        /** @var \Magento\Catalog\Block\Product\ProductList\Crosssell $block */
+        if ($exist = $block->hasItems()) {
+            $type = 'crosssell';
+            $class = $type;
+
+            $image = 'cart_cross_sell_products';
+            $title = __('More Choices:');
+            $items = $block->getItemCollection();
+
+            $showAddTo = false;
+            $showCart = true;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+            $description = false;
+            $canItemsAddToCart = false;
+			$price = false;
+        }
+    break;
+
+    case 'crosssell':
+        /** @var \Magento\Catalog\Block\Product\ProductList\Crosssell $block */
+        if ($exist = count($block->getItems())) {
+            $type = 'crosssell';
+            $class = $type;
+
+            $image = 'cart_cross_sell_products';
+            $title = __('More Choices:');
+            $items = $block->getItems();
+
+            $showAddTo = false;
+            $showCart = true;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+            $description = false;
+            $canItemsAddToCart = false;
+			$price = true;
+        }
+    break;
+
+    case 'new':
+        if ($exist = $block->getProductCollection()) {
+            $type = 'new';
+            $mode = 'grid';
+            $type = $type . ' ' . $mode;
+
+            $class = 'widget' . ' ' . $type;
+
+            $image = 'new_products_content_widget_grid';
+            $title = __('New Products');
+            $items = $exist;
+
+            $showAddTo = true;
+            $showCart = true;
+            $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+            $description = ($mode == 'list') ? true : false;
+            $canItemsAddToCart = false;
+			$price = false;
+        }
+    break;
+
+    default:
+        $exist = null;
+}
+$meigee_helper = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral');
+$name_align = $meigee_helper->getCustomThemeOptionCnf('barbour_product_listing', 'product_name_aligment');
+$rand = rand(100, 100000);
+?>
+
+<?php if ($exist) :?>
+
+        <?php if ($type == 'crosssell' || $type == 'crosssell-rule') : ?>
+            <div class="crosssell-wrapper">
+        <?php endif; ?>
+            <?php if ($type == 'related' || $type == 'upsell') : ?>
+                <?php if ($type == 'related') : ?>
+                    <div class="block accordion-item <?php echo $block->escapeHtmlAttr($class); ?>" data-mage-init='{"relatedProducts":{"relatedCheckbox":".related.checkbox"}}' data-limit="<?php /* @escapeNotVerified */ echo $limit; ?>" data-shuffle="<?php /* @noEscape */ echo $shuffle; ?>">
+                <?php else: ?>
+                    <div class="block accordion-item <?php echo $block->escapeHtmlAttr($class); ?>" data-mage-init='{"upsellProducts":{}}' data-limit="<?php /* @escapeNotVerified */ echo $limit; ?>" data-shuffle="<?php /* @noEscape */ echo $shuffle; ?>">
+                <?php endif; ?>
+            <?php else: ?>
+                <div class="block accordion-item <?php echo $block->escapeHtmlAttr($class); ?>">
+            <?php endif; ?>
+            <div class="block-title title accordion-title">
+                <strong id="block-<?php /* @escapeNotVerified */ echo $class?>-heading" role="heading" aria-level="2"><?php /* @escapeNotVerified */ echo $title; ?></strong>
+                <span class="icon-more"><i class="icon-plus meigee-plus"></i><i class="icon-minus meigee-minus"></i></span>
+            </div>
+            <div class="block-content content accordion-content" aria-labelledby="block-<?php /* @escapeNotVerified */ echo $class?>-heading">
+               <!--  <?php if ($type == 'related' && $canItemsAddToCart) : ?>
+                <div class="block-actions">
+                    <?php echo $block->escapeHtml(__('Check items to add to the cart or')) ?>
+                    <span class="action select" role="button"><span><?php echo $block->escapeHtml(__('select all')) ?></span></span>
+                </div>
+                <?php endif; ?> -->
+                <?php
+                    $type_cr = $block->escapeHtmlAttr($type);
+                    if ($type_cr == 'crosssell') {
+                        $temp_owl_class = 'products list items row product-items clearfix owl-carousel owl-theme owl-loaded owl-drag product_crosssell';
+                    }
+                    else
+                    {
+                        $temp_owl_class = 'products list items row product-items clearfix owl-carousel owl-theme owl-loaded owl-drag product_other';
+                    }
+                ?>
+                <div class="products wrapper grid products-grid clearfix products-<?php echo $block->escapeHtmlAttr($type); ?>">
+                    <div class="<?php echo $temp_owl_class ?>">
+                        <?php foreach ($items as $_item): ?>
+                            <?php if ($_item->getTypeID() != 'mpgiftcard' && $_item->isAvailable()) { ?>
+                                <?php 
+                                    $blockObj= $block->getLayout()->createBlock('Winestop\Custom\Block\Homepage');
+                                ?>                          
+                                    <?php $available = ''; ?>
+                                    <?php if (!$_item->isComposite() && $_item->isSaleable() && $type == 'related') : ?>
+                                        <?php if (!$_item->getRequiredOptions()): ?>
+                                            <?php $available = 'related-available'; ?>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    <?php if ($type == 'related' || $type == 'upsell') : ?>
+                                        <div class="item product product-item owl-item" style="display: none;">
+                                    <?php else: ?>
+                                        <div class="item product product-item owl-item">
+                                    <?php endif; ?>
+            							<div class="product-item-info <?php /* @noEscape */ echo $available; ?><?php echo !$_item->isAvailable() ? ' sold-out' : ''; ?>">
+            								<div class="image-wrapper">
+            									<?php /* @noEscape */ echo '<!-- ' . $image . '-->' ?>
+            									<a href="<?php echo $block->escapeUrl($block->getProductUrl($_item)) ?>" class="product photo product-item-photo">
+            										<?php echo $block->getImage($_item, $image)->toHtml(); ?>
+            									</a>
+            									<?php if (!$_item->isAvailable()) : ?>
+            										<div class="sold-out-label">
+            											<span><?php /* @escapeNotVerified */ echo __('Sold out') ?></span>
+            										</div>
+            									<?php endif; ?>
+            								</div>
+            								<div class="product details product-item-details">
+            									<strong class="product name product-item-name <?php echo $name_align; ?>"><a class="product-item-link" title="<?php echo $block->escapeHtml($_item->getName()) ?>" href="<?php echo $block->escapeUrl($block->getProductUrl($_item)) ?>">
+            										<?php echo $block->escapeHtml($_item->getName()) ?></a>
+            									</strong>
+
+            									<?php if($price) {
+            											/* @noEscape */echo $block->getProductPrice($_item);
+                                                        ?>
+                                                    <div class="product_member_price">
+                                                    <?php if ($_item->getData('member_price')) { ?>
+                                                        <?php 
+                                                        $member_price = $_item->getData('member_price');
+                                                        $member_price = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($member_price,true,false);
+                                                        $block_obj_custom = $this->getLayout()->createBlock('Winestop\Custom\Block\Customdata');
+                                                        $is_login = $block_obj_custom->isCustomerLoggedIn();
+                                                        ?>
+                                                        <?php if ($is_login) { ?>
+                                                            <!-- <div class="product_member_price"> -->                                        
+                                                                <div class="price_label">
+                                                                    <span>Member Price: </span>
+                                                                    <span><?php echo $member_price; ?></span>
+                                                                </div>
+                                                            <!-- </div> -->
+                                                        <?php }else{ ?>
+                                                            <!-- <div class="product_member_price">  -->
+                                                                <div class="price_label not_login">
+                                                                   <a href="/customer/account/login/"><span>Member Price</span></a>
+                                                                </div>
+                                                            <!-- </div> -->
+                                                        <?php } ?>                                        
+                                                    <?php } ?>
+                                                    </div>
+                                                    <div class="availableqty">
+                                                            <?php
+                                                            $productId = $_item->getId();
+                                                            $qty = $viewModel->getStockItem($productId);
+                                                            ?>
+                                                            <?php if ($qty>0): ?>
+                                                            <label for="availableqty">Inventory : </label>
+                                                            <?php if ($qty > 24) : ?>
+                                                                <span><?php echo "24+"; ?></span>
+                                                            <?php else: ?>
+                                                                <span><?= $qty ?></span>
+                                                            <?php endif; ?>
+                                                            <?php else: ?>
+                                                            <label for="outofstock" class="outofstock">Inventory : </label>
+                                                            <span class="outofstock"><?php echo "Out of Stock"; ?></span>
+                                                            <?php endif;?>
+                                                    </div>
+                                                    <?php
+                                                    //labels start
+                                                    $specialArr = [];
+                                                    $newProduct = $viewModel->isNewArrival($_item);
+                                                        if($newProduct){
+                                                            $specialArr['New Arrival']=$newProduct;
+                                                        }
+                                                    ?>
+                                                    <?php
+                                                    $specialAssignment = $viewModel->getSpecialAttribute($_item);
+
+                                                    if ($specialAssignment) {
+                                                        foreach ($specialAssignment as $key => $assignValue) {
+                                                            if($newProduct) {
+                                                                if ($assignValue) {
+                                                                    $className = $viewModel->getClassName($assignValue); 
+                                                                    $specialArr[$className]=$assignValue;
+                                                                    break;
+                                                                }
+                                                            }else{
+                                                                if($key>1){
+                                                                    break;
+                                                                }
+                                                                if ($assignValue) {
+                                                                    $className = $viewModel->getClassName($assignValue); 
+                                                                    $specialArr[$className]=$assignValue;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    //if(count($specialArr)):?>
+                                                        <div class="labels">
+                                                            <?php foreach ($specialArr as $className => $_assignValue) :?>
+                                                                <label for="<?=($className=='New Arrival')?'newarrival':'specialattribute'?>">
+                                                                    <span class="<?=($className=='New Arrival')?'newarrival':$className ?>">
+                                                                        <img class="white-icon" src="<?php echo $this->getViewFileUrl('images/'.$className.'.png'); ?>" alt="<?php $_assignValue ?>" height="auto">
+                                                                    </span>
+                                                                </label>
+                                                            <?php endforeach;?>
+                                                        </div>
+                                                    <?php //endif;?>
+                                                    <?php //labels end ?>
+                                                    <?php
+                                                        $all_wine_rating = array("ag_rating", "bh_rating", "cg_rating","gr_rating","jd_rating",
+                                                          "jh_rating","js_rating","pr_rating","rp_rating","st_rating",
+                                                          "wa_rating","we_rating","wns_rating","wn_rating","ws_rating","d_rating","sk_rating","jg_rating");
+                                                        $cnt = 0;
+                                                    ?>
+                                                    <div class="wine_rating_block">
+                                                        <?php foreach($all_wine_rating as $Wine_rating) { ?>
+                                                            <?php if (null !== $_item->getCustomAttribute($Wine_rating) && null !== $_item->getCustomAttribute($Wine_rating."_low")) {
+                                                                $rating_label = substr($Wine_rating, 0, strpos($Wine_rating, '_'));
+                                                                if ($rating_label == 'wns') {
+                                                                    $rating_label = 'w&s';
+                                                                }
+                                                                if ($rating_label == 'ag') {
+                                                                    $rating_label = 'V';
+                                                                }
+                                                             ?>
+                                                                    <?php if ($cnt == 0) { ?>
+                                                                        <div class="rating_label">
+                                                                            <span>Rating(s)</span>
+                                                                        </div>
+                                                                        <?php $cnt++; ?>
+                                                                    <?php } ?>
+                                                                    <div class="wine_rate_box_combo wine_rate_box">
+                                                                        <a href="/rating-guide">
+                                                                        <span><?php echo strtoupper($rating_label); ?></span>
+                                                                        <span><?php echo $_item->getAttributeText($Wine_rating."_low") . " - "; ?></span>
+                                                                        <span><?php echo $_item->getAttributeText($Wine_rating); ?></span>
+                                                                        </a>
+                                                                    </div>
+                                                            <?php } else { ?>
+                                                                <?php if (null !== $_item->getCustomAttribute($Wine_rating)) { ?>
+                                                                    <?php $rating_label = substr($Wine_rating, 0, strpos($Wine_rating, '_'));
+                                                                    if ($rating_label == 'wns') {
+                                                                        $rating_label = 'w&s';
+                                                                    }
+                                                                    if ($rating_label == 'ag') {
+                                                                        $rating_label = 'V';
+                                                                    }
+                                                                     ?>
+                                                                    <?php if ($cnt == 0) { ?>
+                                                                        <div class="rating_label">
+                                                                            <span>Rating(s)</span>
+                                                                        </div>
+                                                                        <?php $cnt++; ?>
+                                                                    <?php } ?>
+                                                                        <div class="wine_rate_box">
+                                                                            <a href="/rating-guide">
+                                                                            <span><?php echo $_item->getAttributeText($Wine_rating); ?></span>
+                                                                            <span><?php echo strtoupper($rating_label); ?></span>
+                                                                            </a>
+                                                                        </div>
+                                                                <?php } ?>
+                                                                    <?php if (null !== $_item->getCustomAttribute($Wine_rating."_low")) { ?>
+                                                                        <?php $rating_label = substr($Wine_rating."_low", 0, strpos($Wine_rating."_low", '_'));
+                                                                            if ($rating_label == 'wns') {
+                                                                                $rating_label = 'w&s';
+                                                                            }
+                                                                            if ($rating_label == 'ag') {
+                                                                                $rating_label = 'V';
+                                                                            }
+                                                                         ?>
+                                                                        <?php if ($cnt == 0) { ?>
+                                                                            <div class="rating_label">
+                                                                                <span>Rating(s)</span>
+                                                                            </div>
+                                                                            <?php $cnt++; ?>
+                                                                        <?php } ?>
+                                                                        <div class="wine_rate_box">
+                                                                            <a href="/rating-guide">
+                                                                            <span><?php echo $_item->getAttributeText($Wine_rating."_low"); ?></span>
+                                                                            <span><?php echo strtoupper($rating_label); ?></span>
+                                                                            </a>
+                                                                        </div>
+                                                                    <?php } ?>
+                                                            <?php } ?>
+                                                        <?php } ?>
+                                                    </div>                                    
+                                                <?php } ?>
+            										<!-- <?php if ($templateType) { ?>
+            											<?php echo $block->getReviewsSummaryHtml($_item, $templateType, true) ?>
+            										<?php } ?> -->
+            										<?php echo str_replace('grid', 'grid-'.$rand.'-product-'.$_item->getId().'', $_item->getProductPriceHtml($_item, $type)); ?>
+            										<?php if (!$_item->isComposite() && $_item->isSaleable() && $type == 'related') { ?>
+            											<?php /* @escapeNotVerified */ echo $block->getProductPrice($_item); ?>
+                                                        <?php if ($_item->getData('member_price')) { ?>
+                                                            <?php 
+                                                            $member_price = $_item->getData('member_price');
+                                                            $member_price = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($member_price,true,false);
+                                                            $block_obj_custom = $this->getLayout()->createBlock('Winestop\Custom\Block\Customdata');
+                                                            $is_login = $block_obj_custom->isCustomerLoggedIn();
+                                                            ?>
+                                                            <?php if ($is_login) { ?>
+                                                                <div class="product_member_price">          
+                                                                    <div class="price_label">
+                                                                        <span>Member Price: </span>
+                                                                        <span><?php echo $member_price; ?></span>
+                                                                    </div>
+                                                                </div>
+                                                            <?php }else{ ?>
+                                                                <div class="product_member_price"> 
+                                                                    <div class="price_label not_login">
+                                                                        <a href="/customer/account/login/"><span>Member Price</span></a>
+                                                                    </div>
+                                                                </div>
+                                                            <?php } ?>                                        
+                                                        <?php } ?>
+                                                        <?php
+                                                            $all_wine_rating = array("ag_rating", "bh_rating", "cg_rating","gr_rating","jd_rating",
+                                                          "jh_rating","js_rating","pr_rating","rp_rating","st_rating",
+                                                          "wa_rating","we_rating","wns_rating","wn_rating","ws_rating","d_rating","sk_rating","jg_rating");
+                                                            $cnt = 0;
+                                                        ?>
+                                                        <div class="wine_rating_block">
+                                                            <?php foreach($all_wine_rating as $Wine_rating) { ?>
+                                                                <?php if (null !== $_item->getCustomAttribute($Wine_rating) && null !== $_item->getCustomAttribute($Wine_rating."_low")) {
+                                                                    $rating_label = substr($Wine_rating, 0, strpos($Wine_rating, '_'));
+                                                                    if ($rating_label == 'wns') {
+                                                                        $rating_label = 'w&s';
+                                                                    }
+                                                                    if ($rating_label == 'ag') {
+                                                                        $rating_label = 'V';
+                                                                    }
+                                                                 ?>
+                                                                        <?php if ($cnt == 0) { ?>
+                                                                            <div class="rating_label">
+                                                                                <span>Rating(s)</span>
+                                                                            </div>
+                                                                            <?php $cnt++; ?>
+                                                                        <?php } ?>
+                                                                        <div class="wine_rate_box_combo wine_rate_box">
+                                                                            <a href="/rating-guide">
+                                                                            <span><?php echo strtoupper($rating_label); ?></span>
+                                                                            <span><?php echo $_item->getAttributeText($Wine_rating."_low") . " - "; ?></span>
+                                                                            <span><?php echo $_item->getAttributeText($Wine_rating); ?></span>
+                                                                            </a>
+                                                                        </div>
+                                                                <?php } else { ?>
+                                                                    <?php if (null !== $_item->getCustomAttribute($Wine_rating)) { ?>
+                                                                        <?php $rating_label = substr($Wine_rating, 0, strpos($Wine_rating, '_'));
+                                                                        if ($rating_label == 'wns') {
+                                                                            $rating_label = 'w&s';
+                                                                        }
+                                                                        if ($rating_label == 'ag') {
+                                                                            $rating_label = 'V';
+                                                                        }
+                                                                         ?>
+                                                                        <?php if ($cnt == 0) { ?>
+                                                                            <div class="rating_label">
+                                                                                <span>Rating(s)</span>
+                                                                            </div>
+                                                                            <?php $cnt++; ?>
+                                                                        <?php } ?>
+                                                                            <div class="wine_rate_box">
+                                                                                <a href="/rating-guide">
+                                                                                <span><?php echo $_item->getAttributeText($Wine_rating); ?></span>
+                                                                                <span><?php echo strtoupper($rating_label); ?></span>
+                                                                                </a>
+                                                                            </div>
+                                                                    <?php } ?>
+                                                                        <?php if (null !== $_item->getCustomAttribute($Wine_rating."_low")) { ?>
+                                                                            <?php $rating_label = substr($Wine_rating."_low", 0, strpos($Wine_rating."_low", '_')); ?>
+                                                                            <?php if ($cnt == 0) { ?>
+                                                                                <div class="rating_label">
+                                                                                    <span>Rating(s)</span>
+                                                                                </div>
+                                                                                <?php $cnt++; ?>
+                                                                            <?php } ?>
+                                                                            <div class="wine_rate_box">
+                                                                                <a href="/rating-guide">
+                                                                                <span><?php echo $_item->getAttributeText($Wine_rating."_low"); ?></span>
+                                                                                <span><?php echo strtoupper($rating_label); ?></span>
+                                                                                </a>
+                                                                            </div>
+                                                                        <?php } ?>
+                                                                <?php } ?>
+                                                            <?php } ?>
+                                                        </div>
+            											<?php if (!$_item->getRequiredOptions()) { ?>
+            												<div class="field choice related">
+            													<input type="checkbox" class="checkbox related" id="related-checkbox<?php echo $block->escapeHtmlAttr($_item->getId()) ?>" name="related_products[]" value="<?php echo $block->escapeHtmlAttr($_item->getId()) ?>" />
+            													<label class="label" for="related-checkbox<?php echo $block->escapeHtmlAttr($_item->getId()) ?>"><span><?php echo $block->escapeHtml(__('Add to Cart')) ?></span></label>
+            												</div>
+            											<?php } ?>
+            										<?php } ?>
+
+            										<?php if ($showCart) { ?>
+            											<?php if ($_item->isSaleable()) { ?>
+            												<?php if ($_item->isSaleable()) { ?>
+            													<?php if ($_item->getTypeInstance()->hasRequiredOptions($_item)) { ?>
+            														<button class="btn btn-default btn-cart test" data-mage-init='{"redirectUrl": {"url": "<?php echo $block->escapeUrl($block->getAddToCartUrl($_item)) ?>"}}' type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+            															<i class="meigee-cart"></i>
+            															<span><?php echo $block->escapeHtml(__('Add to Cart')) ?></span>
+            														</button>
+            													<?php }else{ ?>
+            														<?php $postDataHelper = $this->helper(Magento\Framework\Data\Helper\PostHelper::class);
+            														$postData = $postDataHelper->getPostData($block->getAddToCartUrl($_item), ['product' => $_item->getEntityId()])
+            														?>
+            														<button class="btn btn-default btn-cart test"
+            														data-post='<?php /* @noEscape */ echo $postData; ?>'
+            														type="button" title="<?php echo $block->escapeHtmlAttr(__('Add to Cart')) ?>">
+            														<i class="meigee-cart"></i>
+            														<span><?php echo $block->escapeHtml(__('Add to Cart')) ?></span>
+            													</button>
+            													<?php } ?>
+            												<?php } ?>
+            											<?php } ?>
+            										<?php } ?>
+            										<?php if ($showAddTo) : ?>
+            											<div class="add-to-links" data-role="add-to-links">
+            												<?php if ($addToBlock = $block->getChildBlock('addto')) : ?>
+            													<?php echo $addToBlock->setProduct($_item)->getChildHtml(); ?>
+            												<?php endif; ?>
+            											</div>
+            										<?php endif; ?>
+            									</div>
+            								</div>
+                                        </div>
+                                <?php } ?>
+                        <?php endforeach ?>
+                    </div>
+                </div>
+            </div>
+        <?php if ($type == 'crosssell' || $type == 'crosssell-rule') : ?>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endif;?>
+<?php $type_cr =  $block->escapeHtmlAttr($type); ?>
+<script type="text/javascript">
+    require(["jquery"], function(jQuery)
+    {
+        require(["MeigeeCarousel"], function(owlCarousel)
+        {
+            jQuery('.product_other').owlCarousel({
+                margin: 0,
+                nav:true,
+                responsive:{
+                    0:{
+                        items:1
+                    },
+                    480:{
+                        items:2
+                    },
+                    767:{
+                        items:3
+                    },
+                    992:{
+                        items:3
+                    },
+                    1007:{
+                        items:4
+                    },
+                    1331:{
+                        items:4
+                    }
+                },
+                smartSpeed: 500,
+                dots: false,
+                loop: true,
+                nav: true
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    require(["jquery"], function(jQuery)
+    {
+        require(["MeigeeCarousel"], function(owlCarousel)
+        {
+            jQuery('.product_crosssell').owlCarousel({
+                margin: 0,
+                center: true,
+                items:2,
+                nav:true,
+                responsive:{
+                    0:{
+                        items:1
+                    },
+                    480:{
+                        items:2
+                    },
+                    767:{
+                        items:3
+                    },
+                    992:{
+                        items:3
+                    },
+                    1007:{
+                        items:3
+                    },
+                    1331:{
+                        items:3
+                    }
+                },
+                smartSpeed: 500,
+                dots: false,
+                loop: true,
+                nav: true
+            });
+        });
+    });
+</script>

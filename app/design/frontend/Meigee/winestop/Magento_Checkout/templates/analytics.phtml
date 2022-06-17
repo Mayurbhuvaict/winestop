@@ -1,0 +1,16 @@
+<!-- Event snippet for Product Purchase conversion page -->
+<?php
+$order = $this->getOrder();
+if($order):
+?>
+<script>
+  gtag('event', 'conversion', {
+      'send_to': 'AW-301701195/XQAuCKWasf0CEMuw7o8B',
+      'value': <?=$order->getGrandTotal()?>,
+      'currency': '<?=$this->getCurrentCurrencyCode()?>',
+      'transaction_id': '<?=$order->getIncrementId()?>'
+  });
+</script>
+<?php
+endif;
+?>

@@ -1,0 +1,92 @@
+<?php
+/**
+ * Copyright © 2016 Ihor Vansach (ihor@magefan.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+?>
+<?php
+/**
+ * Blog recent posts widget
+ *
+ * @var $block \Magefan\Blog\Block\Widget\Recent
+ */
+?>
+
+<?php
+    $_postCollection = $block->getPostCollection();
+?>
+<?php if ($_postCollection->count()) { ?>
+
+
+<div class="row">
+    <div class="widget-latest masonry-grid clearfix">
+        <h3 class="title"><?php echo $block->escapeHtml($block->getTitle()) ?></h3>
+        <div class="col-xs-12">
+            <div class=" row">
+                <ul class="clearfix products-grid post-list">
+                <?php foreach ($_postCollection as $_post): ?>
+                    <?php
+                        $_postUrl = $_post->getPostUrl();
+                        $_postName = $block->escapeHtml($_post->getTitle(), null, true);
+                    ?>
+                    <li class="col-sm-4 col-md-4 item post-holder-<?php echo $_post->getId() ?>">
+                        <div class="inner-wrapper">
+                            <div class="post-info">
+                                <p class="post-category">
+                                    <i class="meigeeadditional-category"></i>
+                                    <?php if ($_categoriesCount = $_post->getCategoriesCount()) { ?>
+                                        <?php $n = 0; foreach($_post->getParentCategories() as $ct) { $n++; ?>
+                                            <a title="<?php echo $block->escapeHtml($ct->getTitle()) ?>" href="<?php echo $ct->getCategoryUrl() ?>"><?php echo $block->escapeHtml($ct->getTitle()) ?></a>
+                                            <?php if ($n != $_categoriesCount) { ?>, <?php } ?>
+                                        <?php } ?>
+                                    <?php } ?>
+                                </p>
+                                <?php if ($_author = $_post->getAuthor()) { ?>
+                                    <p class="post-author">                                           
+                                            <i class="meigeeadditional-author"></i>
+                                            <?php echo $block->escapeHtml($_author->getTitle()) ?>
+                                    </p>
+                                <?php } ?>
+                                <p class="post-icon">
+                                    <i class="meigeeadditional-post"></i>
+                                </p>
+                            </div>
+                            <h3><a href="<?php echo $_postUrl ?>" ><?php echo $_postName; ?></a></h3>
+                            <div class="post-date"><i class="meigeeadditional-clock"></i><?php echo $_post->getPublishDate('F d, Y') ?></div>
+                            <?php if ($featuredImage = $_post->getFeaturedImage()) { ?>
+                                <div class="post-ftimg-hld">
+                                    <a href="<?php echo $_postUrl ?>" title="<?php echo $_postName ?>">
+                                        <img src="<?php echo $featuredImage ?>" alt="<?php echo $_postName ?>" />
+                                    </a>
+                                </div>
+                            <?php } ?>  
+                            <div class="postContent"><?php echo $block->getShorContent($_post) ?></div>
+                            <div class="actions">
+                                <a title="<?php echo $_postName ?>" class="btn btn-default" href="?php echo $_postUrl ?>"><span><?php echo __('Read') ?></span></a>
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+requirejs( [ 'require', 'jquery', 'Magefan_Blog/js/lib/masonry.pkgd.min' ],
+function( require, $, Masonry ) {
+    require( [ 'jquery-bridget/jquery-bridget' ],
+    function( jQueryBridget ) {
+        jQueryBridget( 'masonry', Masonry, $ );
+        $('.post-list').masonry({
+            itemSelector: '.item',
+            percentPosition: true
+        })
+    });
+});
+<?php /* more info http://masonry.desandro.com/extras.html */ ?>
+</script>
+
+<?php } ?>

@@ -1,0 +1,43 @@
+Legend
+
++ Features
+- Bugs
+
+-------------------------------- Version 3.0.0 --------------------------------------
+
+	+ Compatible with MSI
+	+ Added dropdown to select associate products in configurable products
+	+ Bugs Fixed
+
+-------------------------------- Version 2.1.0 --------------------------------------
+	
+	+ Compatible with magento version 2.3.*
+	+ Bugs fixed.
+
+-------------------------------- Version 2.0.3 --------------------------------------
+	
+	+ Compatible with magento version 2.2.*
+	+ Feature to send Low stock notification email to customers.
+	+ Admin can choose the receivers of low stock email from "subscribers" and "All customers"
+	+ Admin can enable/disable the module frontend functionality from config section
+
+-------------------------------- Version 2.0.2 --------------------------------------
+	
+	+ Admin can enable or disable the e-mail to customer and admin at the time of new request.
+	+ Admin can also select template for the emails in the configuration panel.
+
+-------------------------------- Version 2.0.1 --------------------------------------
+	
+	+ Fully Compatible with Magento version 2.1.*.
+	+ Fixed minor bugs.
+
+-------------------------------- Version 2.0.0 --------------------------------------
+
+	+ Buyer can request for notification of out of stock products.
+	+ Works with products like Simple, Downloadable, Virtual & Configurable.
+	+ Buyer will receive a notification email when the requested product will be in stock.
+	+ Admin can set the mode of Notification i.e. Auto or Manual.
+	+ In auto mode, the notification mail is sent to the user as soon as the product is in stock.
+	+ In manual mode, admin sends the notification mail to the users.
+	+ The email sender's name, email id, and the mode of notification can be set in the store configuration.
+	+ For configurable products, the out of stock notification can be used for individual associate products.

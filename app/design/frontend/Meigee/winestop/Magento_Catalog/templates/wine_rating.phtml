@@ -1,0 +1,88 @@
+<?php
+/** @var \Magento\Catalog\Pricing\Render\FinalPriceBox $block */
+
+$_item = $block->getProduct();
+?>
+<?php
+$all_wine_rating = array("ag_rating", "bh_rating", "cg_rating","gr_rating","jd_rating",
+	                   "jh_rating","js_rating","pr_rating","rp_rating","st_rating","wa_rating","we_rating",
+	                   "wns_rating","wn_rating","ws_rating","d_rating","sk_rating","jg_rating");
+$cnt = 0;
+?>
+<div class="wine_rating_block">                                        
+	<?php foreach($all_wine_rating as $Wine_rating) { ?>
+		<?php if (null !== $_item->getCustomAttribute($Wine_rating) && null !== $_item->getCustomAttribute($Wine_rating."_low")) {
+			$rating_label = substr($Wine_rating, 0, strpos($Wine_rating, '_'));
+			if ($rating_label == 'wns') {
+			    $rating_label = 'w&s';
+			}
+			if ($rating_label == 'ag') {
+                $rating_label = 'V';
+            }
+			?>
+			<?php if ($cnt == 0) { ?>
+				<div class="rating_label">
+					<span>Rating(s)</span>
+				</div>
+				<?php $cnt++; ?>
+			<?php } ?>
+			<div class="wine_rate_box_combo wine_rate_box">
+				<a href="/rating-guide">
+					<span><?php echo strtoupper($rating_label); ?></span>
+					<span><?php echo $_item->getAttributeText($Wine_rating."_low") . " - "; ?></span>
+					<span><?php echo $_item->getAttributeText($Wine_rating); ?></span>
+				</a>
+			</div>
+		<?php } else { ?>
+			<?php if (null !== $_item->getCustomAttribute($Wine_rating)) { ?>
+				<?php $rating_label = substr($Wine_rating, 0, strpos($Wine_rating, '_')); ?>
+				<?php 
+					if ($rating_label == 'wns') {
+			            $rating_label = 'w&s';
+			        }
+			        if ($rating_label == 'ag') {
+                        $rating_label = 'V';
+                    }
+				?>
+				<?php if ($cnt == 0) { ?>
+					<div class="rating_label">
+						<span>Rating(s)</span>
+					</div>
+					<?php $cnt++; ?>
+				<?php } ?>
+				<div class="wine-rating-child">
+				<div class="wine_rate_box">
+					<a href="/rating-guide">
+						<span><?php echo $_item->getAttributeText($Wine_rating); ?></span>
+						<span><?php echo strtoupper($rating_label); ?></span>
+					</a>
+				</div>
+			</div>
+			<?php } ?>
+			<?php if (null !== $_item->getCustomAttribute($Wine_rating."_low")) { ?>
+				<?php $rating_label = substr($Wine_rating."_low", 0, strpos($Wine_rating."_low", '_')); 
+				if ($rating_label == 'wns') {
+			        $rating_label = 'w&s';
+			    }
+			    if ($rating_label == 'ag') {
+                    $rating_label = 'V';
+                }
+				?>
+				<?php if ($cnt == 0) { ?>
+					<div class="rating_label">
+						<span>Rating(s)</span>
+					</div>
+					<?php $cnt++; ?>
+				<?php } ?>
+				<div class="wine-rating-child">
+				<div class="wine_rate_box">
+					<a href="/rating-guide">
+						<span><?php echo $_item->getAttributeText($Wine_rating."_low"); ?></span>
+						<span><?php echo strtoupper($rating_label); ?></span>
+					</a>
+				</div>
+			</div>
+			<?php } ?>
+		<?php } ?>
+	<?php } ?>       
+</div>

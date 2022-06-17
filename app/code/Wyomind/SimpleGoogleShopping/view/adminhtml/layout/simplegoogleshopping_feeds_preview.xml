@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+  Copyright © 2019 Wyomind. All rights reserved.
+  See LICENSE.txt for license details.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<!-- Layout of the preview popup (from the grid) -->
+    <head>
+        <!-- add css and js files -->
+        <css src="Wyomind_Framework::js/codemirror/codemirror.css"/>
+        <css src="Wyomind_SimpleGoogleShopping::css/preview.css"/>
+        <link src="Wyomind_Framework::js/codemirror/codemirror.js"/>
+        <link src="Wyomind_Framework::js/codemirror/active-line.js"/>
+        <link src="Wyomind_Framework::js/codemirror/matchbrackets.js"/>
+        <link src="Wyomind_Framework::js/codemirror/htmlmixed/htmlmixed.js"/>
+        <link src="Wyomind_Framework::js/codemirror/xml/xml.js"/>
+        <link src="Wyomind_Framework::js/codemirror/javascript/javascript.js"/>
+        <link src="Wyomind_Framework::js/codemirror/css/css.js"/>
+        <link src="Wyomind_Framework::js/codemirror/clike/clike.js"/>
+        <link src="Wyomind_Framework::js/codemirror/php/php.js"/>
+    </head>
+    <body>
+        <!-- remove the default output -->
+        <referenceContainer name="backend.page" remove="true"/>
+        <referenceContainer name="page.menu" remove="true"/>
+        <referenceContainer name="global.notices" remove="true"/>
+        <referenceContainer name="logo" remove="true"/>
+        <referenceContainer name="page.breadcrumbs" remove="true"/>
+        <referenceContainer name="page.formkey" remove="true"/>
+        <referenceContainer name="main.top" remove="true"/>
+        <referenceContainer name="page.messages" remove="true"/>
+        <referenceContainer name="page.main.actions" remove="true"/>
+        <referenceContainer name="require.js" remove="true"/>
+        <referenceContainer name="root">
+            <block template="Wyomind_SimpleGoogleShopping::preview.phtml"
+                   class="Wyomind\SimpleGoogleShopping\Block\Adminhtml\Feeds\Preview"
+                   name="simplegoogleshopping_feeds_preview"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,35 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+?>
+
+
+
+<?php
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
+    $product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');
+	$siteLayout = $this->getConfig('barbour_general/barbour_layout/site_layout');
+	$headerType = $this->getConfig('barbour_general/barbour_header/header_wrapper_type');
+	$headerHomepageBgImage = $this->getConfig('barbour_general/barbour_header/header_homepage_bg_image');
+	$img = $this->getConfig('barbour_general/barbour_header/header_wrapper_bg_image');
+	$headerHeight = $this->getConfig('barbour_general/barbour_header/header_height');
+    $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');
+    $currentStore = $storeManager->getStore();
+    $base_url = $url = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+    $img_url = $base_url .'/header/'. $img;
+?>
+<?php if (($block->isHomePage() && $headerHomepageBgImage) || !$block->isHomePage()): ?>	
+	<?php if ($img && $headerType != '0'): ?>
+		<div class="<?php echo $siteLayout === 'boxed-layout' ? 'container ' : ''; ?>header-bg-image-container" style="background-image: url('<?php echo "$img_url"; ?>');" data-header-height="<?php echo $headerHeight.'px'; ?>"></div> 
+	<?php endif ?>
+<?php endif ?>

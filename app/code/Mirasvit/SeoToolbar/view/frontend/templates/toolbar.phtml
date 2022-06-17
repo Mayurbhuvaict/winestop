@@ -1,0 +1,65 @@
+<?php
+/** @var \Mirasvit\SeoToolbar\Block\Toolbar $block */
+?>
+<div class="mst-seo-toolbar__toolbar">
+    <div class="mst-seo-toolbar__toolbar-header" data-role="header">
+        <i class="fa fa-tachometer"></i> <?= __('SEO Toolbar') ?>
+
+        <div class="close" data-role="close">
+            <div class="icon-close">×</div>
+        </div>
+    </div>
+
+    <div class="mst-seo-toolbar__toolbar-content">
+        <?php foreach ($block->getSections() as $section => $items): ?>
+            <section>
+                <label><?= $section ?></label>
+
+                <ul>
+                    <?php /** @var \Mirasvit\SeoToolbar\Api\Data\DataProviderItemInterface $item */ ?>
+                    <?php foreach ($items as $item): ?>
+                        <li>
+                            <div class="title"><?= $item->getTitle() ?></div>
+                            <div class="status _<?= $item->getStatus() ?>"></div>
+                            <div class="description">
+                                <?= nl2br($block->escapeHtml($item->getDescription())) ?>
+                                <div class="note"><?= nl2br($block->escapeHtml($item->getNote())) ?></div>
+                            </div>
+                            <?= $item->getAction() ?>
+                        </li>
+                    <?php endforeach ?>
+                </ul>
+            </section>
+        <?php endforeach ?>
+    </div>
+</div>
+
+<script>
+    require([
+        'jquery',
+        'jquery/jquery.cookie'
+    ], function ($) {
+        var $toolbar = $('.mst-seo-toolbar__toolbar');
+        var cookieName = "mst-seo-toolbar";
+
+        if ($.cookie(cookieName) === 'off') {
+            $toolbar.removeClass('_hidden').addClass('_hidden');
+        } else {
+            $toolbar.removeClass('_hidden');
+        }
+
+        $('[data-role=close]', $toolbar).on('click', function (e) {
+            e.preventDefault();
+            $toolbar.removeClass('_hidden').addClass('_hidden');
+            $.cookie(cookieName, 'off', {expires: 1, path: '/'});
+        });
+
+        $('[data-role=header]', $toolbar).on('click', function (e) {
+            if (!$(e.target).hasClass('icon-close')) {
+                e.preventDefault();
+                $toolbar.removeClass('_hidden');
+                $.cookie(cookieName, 'on', {expires: 1, path: '/'});
+            }
+        });
+    });
+</script>

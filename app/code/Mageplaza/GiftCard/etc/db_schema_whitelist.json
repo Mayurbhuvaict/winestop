@@ -1,0 +1,142 @@
+{
+    "mageplaza_giftcard_pool": {
+        "column": {
+            "pool_id": true,
+            "name": true,
+            "status": true,
+            "can_inherit": true,
+            "pattern": true,
+            "balance": true,
+            "can_redeem": true,
+            "store_id": true,
+            "template_id": true,
+            "image": true,
+            "template_fields": true,
+            "conditions_serialized": true,
+            "expired_at": true,
+            "created_at": true
+        },
+        "index": {
+            "MAGEPLAZA_GIFTCARD_POOL_POOL_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MAGEPLAZA_GIFTCARD_POOL_STORE_ID_STORE_STORE_ID": true
+        }
+    },
+    "mageplaza_giftcard_template": {
+        "column": {
+            "template_id": true,
+            "name": true,
+            "status": true,
+            "can_upload": true,
+            "title": true,
+            "font_family": true,
+            "background_image": true,
+            "design": true,
+            "note": true,
+            "images": true,
+            "created_at": true
+        },
+        "index": {
+            "MAGEPLAZA_GIFTCARD_TEMPLATE_TEMPLATE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "mageplaza_giftcard": {
+        "column": {
+            "giftcard_id": true,
+            "code": true,
+            "init_balance": true,
+            "balance": true,
+            "status": true,
+            "can_redeem": true,
+            "store_id": true,
+            "pool_id": true,
+            "template_id": true,
+            "image": true,
+            "template_fields": true,
+            "conditions_serialized": true,
+            "customer_ids": true,
+            "order_item_id": true,
+            "order_increment_id": true,
+            "delivery_method": true,
+            "delivery_address": true,
+            "is_sent": true,
+            "delivery_date": true,
+            "timezone": true,
+            "extra_content": true,
+            "expired_at": true,
+            "created_at": true
+        },
+        "index": {
+            "MAGEPLAZA_GIFTCARD_GIFTCARD_ID": true,
+            "MAGEPLAZA_GIFTCARD_POOL_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MAGEPLAZA_GIFTCARD_GIFTCARD_ID_CODE_STORE_ID": true,
+            "MAGEPLAZA_GIFTCARD_STORE_ID_STORE_STORE_ID": true,
+            "MAGEPLAZA_GIFTCARD_POOL_ID_MAGEPLAZA_GIFTCARD_POOL_POOL_ID": true
+        }
+    },
+    "mageplaza_giftcard_history": {
+        "column": {
+            "history_id": true,
+            "giftcard_id": true,
+            "code": true,
+            "action": true,
+            "balance": true,
+            "amount": true,
+            "status": true,
+            "store_id": true,
+            "extra_content": true,
+            "created_at": true
+        },
+        "index": {
+            "MAGEPLAZA_GIFTCARD_HISTORY_HISTORY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_A2954A90951E4E7E4AFA29E94ADD3640": true
+        }
+    },
+    "mageplaza_giftcard_credit": {
+        "column": {
+            "credit_id": true,
+            "customer_id": true,
+            "balance": true,
+            "credit_notification": true,
+            "giftcard_notification": true
+        },
+        "index": {
+            "MAGEPLAZA_GIFTCARD_CREDIT_CREDIT_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MAGEPLAZA_GIFTCARD_CREDIT_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true
+        }
+    },
+    "mageplaza_giftcard_transaction": {
+        "column": {
+            "transaction_id": true,
+            "credit_id": true,
+            "action": true,
+            "balance": true,
+            "amount": true,
+            "website_id": true,
+            "extra_content": true,
+            "created_at": true
+        },
+        "index": {
+            "MAGEPLAZA_GIFTCARD_TRANSACTION_TRANSACTION_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_D48CF33EC93C169D929A11AE7A992488": true,
+            "MAGEPLAZA_GIFTCARD_TRANSACTION_WS_ID_STORE_WS_WS_ID": true
+        }
+    }
+}

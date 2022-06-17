@@ -1,0 +1,304 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="mpgiftcard" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Gift Card</label>
+            <tab>mageplaza</tab>
+            <resource>Mageplaza_GiftCard::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Module Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="pattern" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Gift Code Pattern</label>
+                    <comment><![CDATA[Default gift code pattern. Follow by this rule: </br>
+                    <strong>[4A]</strong> - 4 alpha, <strong>[4N]</strong> - 4 numeric, <strong>[4AN]</strong> - 4 alphanumeric. </br>
+                    For example: GIFT-[4AN]-[3A]-[5N] => <strong>GIFT-J34T-OEC-54354</strong>]]></comment>
+                </field>
+                <field id="enable_credit" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enable Gift Card Credit</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="can_redeem" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Gift Card Can Be Redeemed</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_credit">1</field>
+                    </depends>
+                </field>
+                <group id="hidden" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Gift Code Hidden Configuration</label>
+                    <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Fieldset\Expanded</frontend_model>
+                    <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enabled</label>
+                        <comment>Show hidden code in the frontend</comment>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="prefix" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Prefix Chars</label>
+                        <comment>The number of prefix characters will not be hidden</comment>
+                        <validate>validate-greater-than-zero</validate>
+                    </field>
+                    <field id="suffix" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Suffix Chars</label>
+                        <comment>The number of suffix characters will note be hidden</comment>
+                        <validate>validate-greater-than-zero</validate>
+                    </field>
+                    <field id="character" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Hidden Character</label>
+                        <comment>The character will replace the hidden code.</comment>
+                    </field>
+                </group>
+            </group>
+            <group id="product" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Gift Card Product Configuration</label>
+                <field id="expire_after_day" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Gift Card Lifetime</label>
+                </field>
+                <field id="enable_delivery_date" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Delivery Date</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="enable_timezone" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Customer Can Select Timezone</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_delivery_date">1</field>
+                    </depends>
+                </field>
+                <group id="checkout" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Buy Gift Card Product Process</label>
+                    <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Fieldset\Expanded</frontend_model>
+                    <field id="item_renderer" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Gift Card Fields Show On Item</label>
+                        <source_model>Mageplaza\GiftCard\Model\Source\FieldRenderer</source_model>
+                    </field>
+                    <field id="generate" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Create Gift Code(s) When</label>
+                        <source_model>Mageplaza\GiftCard\Model\Source\GenerateGiftCodeEvent</source_model>
+                    </field>
+                </group>
+            </group>
+            <group id="checkout" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Gift Card/Credit Checkout Configuration</label>
+                <field id="show_giftcard_image_product" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show As Product Image</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If Yes, the uploaded image for Gift Card Product will be shown as the default product image on the View Cart Page and the Checkout Page.</comment>
+                </field>
+                <field id="used_coupon_box" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Use Coupon Box To Apply Gift Card</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If not, another Gift Card box will be used.</comment>
+                </field>
+                <field id="used_multiple" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Can Use Multiple Gift Cards</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="used_coupon_box">0</field>
+                    </depends>
+                </field>
+                <field id="show_detail" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Gift Card Summary On Total Block</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="used_credit" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Can Use Gift Credit</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <group id="process" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Checkout Process</label>
+                    <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Fieldset\Expanded</frontend_model>
+                    <field id="used_for_shipping" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Can Use For Shipping Amount</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="allow_refund" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Allow Refund Gift Card</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>If yes, Gift Card amount will be add back to its balance after order refund.</comment>
+                    </field>
+                </group>
+            </group>
+            <group id="template" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Gift Card Template Configuration</label>
+                <field id="logo" translate="label comment" type="image" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Logo</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">mageplaza/giftcard</upload_dir>
+                    <base_url type="media" scope_info="1">mageplaza/giftcard</base_url>
+                    <comment><![CDATA[Your default logo will be used on Gift Card (jpeg, gif, png)]]></comment>
+                </field>
+                <field id="message_max_char" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Maximum Message Character</label>
+                    <comment>If zero or empty, default '120' characters will be used.</comment>
+                </field>
+                <field id="note" translate="label" type="textarea" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Default Note</label>
+                </field>
+            </group>
+            <group id="email" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Email Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Email Notification</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="sender" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="template" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Gift Card Email Template</label>
+                    <comment>Email sent to recipient.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <group id="update" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Gift Card Update Notification</label>
+                    <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enabled</label>
+                        <comment>Send email to recipient when gift card is updated.</comment>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="template" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Gift Card Update Email Template</label>
+                        <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    </field>
+                </group>
+                <group id="before_expire" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Before Expired Notification</label>
+                    <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enabled</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="template" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Before Expired Email Template</label>
+                        <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    </field>
+                    <field id="days" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Before Expired Day(s)</label>
+                        <comment>The number of day(s) before the gift card is expired.</comment>
+                    </field>
+                </group>
+                <group id="notify_sender" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Notify Sender After Gift Card is Sent</label>
+                    <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enabled</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="template" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Sender Confirmation Email Template</label>
+                        <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    </field>
+                </group>
+                <group id="after_unused" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Gift Card Unused Notification</label>
+                    <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enabled</label>
+                        <comment>Inform the sender after x day(s) if the gift card is unused.</comment>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="template" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Unused Notification Email Template</label>
+                        <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    </field>
+                    <field id="days" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>After Unused Day(s)</label>
+                        <comment>The number of day(s) after the gift card is sent to recipient.</comment>
+                    </field>
+                </group>
+                <group id="credit" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Balance Update Notification</label>
+                    <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enabled</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="template" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Update Balance Email Template</label>
+                        <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    </field>
+                </group>
+            </group>
+            <group id="sms" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>SMS Configuration</label>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable SMS Delivery</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If Yes, the purchaser can use this method to send gift card.</comment>
+                </field>
+                <field id="twilio_account_sid" translate="label comment" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Twilio Account SID</label>
+                    <comment><![CDATA[Sign up an account <a href="https://www.twilio.com/console" target="_blank">here</a>]]></comment>
+                </field>
+                <field id="twilio_account_token" translate="label" type="password" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Twilio Account Token</label>
+                </field>
+                <field id="address_sender" translate="label comment" type="text" sortOrder="500" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sender Phone Number</label>
+                    <comment><![CDATA[You can buy and get the phone number <a href="https://www.twilio.com/console/phone-numbers/search" target="_blank">here</a>. <i>Example: +12172671060</i>]]></comment>
+                </field>
+                <field id="content" translate="label" type="textarea" sortOrder="600" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>SMS Message</label>
+                    <comment><![CDATA[
+                        <b>Variables:</b><br>
+                        <p style="margin-left: 20px; font-size: 12px">
+                            <b>{{sender_name}}:</b> Sender name<br>
+                            <b>{{code}}:</b> Gift Card Code<br>
+                            <b>{{message}}:</b> Gift Card Message<br>
+                            <b>{{balance}}:</b> Gift Card balance<br>
+                            <b>{{status}}:</b> Gift Card status<br>
+                            <b>{{expired_date}}:</b> Gift Card expired date<br>
+                            <b>{{store_url}}:</b> Store Url<br>
+                        </p>
+                        ]]>
+                    </comment>
+                </field>
+                <group id="update" translate="label" type="text" sortOrder="900" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Gift Card Update Notification</label>
+                    <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enabled</label>
+                        <comment>Send sms to recipient when gift card is updated.</comment>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="content" translate="label comment" type="textarea" sortOrder="600" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>SMS Message</label>
+                    </field>
+                </group>
+                <group id="before_expire" translate="label" type="text" sortOrder="1000" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Before Expired Notification</label>
+                    <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enabled</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>The before expired day(s) will be get from Email Before Expired Day(s) configuration.</comment>
+                    </field>
+                    <field id="content" translate="label comment" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Message Message</label>
+                    </field>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

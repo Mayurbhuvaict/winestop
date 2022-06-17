@@ -1,0 +1,53 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var \Mageplaza\GiftCard\Pricing\Render\FinalPriceBox $block */
+
+$minimalPrice = $block->getMinimalPrice();
+$maximalPrice = $block->getMaximalPrice();
+?>
+<?php if ($block->getShowStatic() || $block->isFixedPrice()) : ?>
+    <?= /** @noEscape */ $block->renderAmount($minimalPrice, [
+        'price_id'          => $block->getPriceId('product-price-'),
+        'include_container' => true
+    ]) ?>
+<?php else : ?>
+    <?php if ($minimalPrice->getValue()) : ?>
+        <p class="price-from">
+            <?= /** @noEscape */ $block->renderAmount($minimalPrice, [
+                'display_label'     => __('From'),
+                'price_id'          => $block->getPriceId('from-'),
+                'price_type'        => 'minPrice',
+                'include_container' => true
+            ]) ?>
+        </p>
+    <?php endif; ?>
+    <?php if ($maximalPrice->getValue()) : ?>
+        <p class="price-to">
+            <?= /** @noEscape */ $block->renderAmount($maximalPrice, [
+                'display_label'     => __('To'),
+                'price_id'          => $block->getPriceId('to-'),
+                'price_type'        => 'maxPrice',
+                'include_container' => true
+            ]) ?>
+        </p>
+    <?php endif; ?>
+<?php endif; ?>

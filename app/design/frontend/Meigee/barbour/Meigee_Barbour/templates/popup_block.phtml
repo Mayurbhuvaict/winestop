@@ -1,0 +1,35 @@
+<?php
+
+$popupCookie = $this->helper('\Meigee\Barbour\Helper\FrontHelper')->getCookie('barbourPopup');
+$popupCookie2 = $this->helper('\Meigee\Barbour\Helper\FrontHelper')->getCookie('barbourPopupFlag2');
+if(!$popupCookie && !$popupCookie2):
+	$meigee_helper = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral');
+	$popupStatus   = $meigee_helper->getCustomThemeOptionCnf('barbour_popup_content', 'status');
+	$expires       = $meigee_helper->getCustomThemeOptionCnf('barbour_popup_content', 'expires');
+	$popupWidth    = $meigee_helper->getCustomThemeOptionCnf('barbour_popup_content', 'width');
+	$popupHeight   = $meigee_helper->getCustomThemeOptionCnf('barbour_popup_content', 'height');
+	$popupStatic   = $meigee_helper->getCustomThemeOptionCnf('barbour_popup_content', 'static');
+	$popupOnlyHome = $meigee_helper->getCustomThemeOptionCnf('barbour_popup_content', 'onlyhome');
+	$popupMobile   = $meigee_helper->getCustomThemeOptionCnf('barbour_popup_content', 'mobile');
+	$popupTablet   = $meigee_helper->getCustomThemeOptionCnf('barbour_popup_content', 'tablet');
+	$isHome        = $this->helper('\Meigee\Barbour\Helper\FrontHelper')->getCurrentPage() == 'cms_index_index';
+	if(($popupOnlyHome && $isHome) || !$popupOnlyHome) {
+
+?>
+
+<div class="modal fade popup-block<?php echo(!$popupMobile ? ' mobile-hide' : '').''.(!$popupTablet ? ' tablet-hide' : ''); ?>" id="popup-block" tabindex="-1" role="dialog" aria-hidden="true" data-expires="<?php echo $expires; ?>">
+  <div class="modal-dialog" style="width:<?php echo $popupWidth; ?>px;">
+	<div class="modal-content" style="height: <?php echo $popupHeight; ?>px; width: <?php echo $popupWidth; ?>px; margin-top: -<?php echo ($popupHeight/2); ?>px;">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="meigee-close-thin"></i></span></button>
+	  </div>
+	  <div class="modal-body clearfix">
+		<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($popupStatic)->toHtml(); ?>
+		
+	  </div>
+	</div>
+  </div>
+</div>
+<?php
+	}
+endif; ?>

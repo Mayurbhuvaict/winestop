@@ -1,0 +1,59 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<?php /* @var \Mageplaza\GiftCard\Block\Product\View $block */ ?>
+
+<div class="giftcard-information-container" id="giftcard-information-container" data-bind="scope:'information'">
+    <div id="giftcard-information-container-loader" data-role="checkout-loader" class="loading-mask" style="position: relative;">
+        <div class="loader">
+            <img src="<?= /** @noEscape */ $block->getViewFileUrl('images/loader-1.gif') ?>"
+                 alt="<?= /** @noEscape */ __('Loading...') ?>" style="position: absolute;">
+        </div>
+    </div>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "template": {
+                        "component": "Mageplaza_GiftCard/js/view/template"
+                    },
+                    "information": {
+                        "component": "Mageplaza_GiftCard/js/view/information",
+                        "config": {
+                            "deps": {
+                                "name": "template"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    window.giftCardInformation = <?= /** @noEscape */ \Mageplaza\GiftCard\Helper\Data::jsonEncode($block->getProductConfig()) ?>;
+    window.configureData = <?= /** @noEscape */ \Mageplaza\GiftCard\Helper\Data::jsonEncode($block->getConfigureData()) ?>;
+</script>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" layout="1column">
+    <body>
+        <referenceContainer name="page.top">
+            <block class="Magento\Theme\Block\Html\Breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block name="map" class="Mirasvit\SeoSitemap\Block\Map" template="Mirasvit_SeoSitemap::map.phtml">
+                <block name="map.category" class="Mirasvit\SeoSitemap\Block\Map\Category"/>
+                <block name="map.product" class="Mirasvit\SeoSitemap\Block\Map\Product"/>
+                <block name="map.store" class="Mirasvit\SeoSitemap\Block\Map\Store"/>
+                <block name="map.cms_page" class="Mirasvit\SeoSitemap\Block\Map\CmsPage"/>
+                <block name="map.pager" class="Mirasvit\SeoSitemap\Block\Map\Pager"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

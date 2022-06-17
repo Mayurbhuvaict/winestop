@@ -1,0 +1,30 @@
+<?php
+
+namespace Mirasvit\Seo\Model\Config\Source;
+
+use Mirasvit\Seo\Model\Config as Config;
+use Magento\Framework\Option\ArrayInterface;
+
+class CategoryRichSnippets implements ArrayInterface
+{
+    /**
+     * @return array
+     */
+    public function toOptionArray()
+    {
+        return [
+            [
+                'value' => 0,
+                'label' => __('Disabled')
+            ],
+            [
+                'value' => Config::CATEGYRY_RICH_SNIPPETS_PAGE,
+                'label' => __('Category Rich Snippets for current page')
+            ],
+            [
+                'value' => Config::CATEGYRY_RICH_SNIPPETS_CATEGORY,
+                'label' => __('Category Rich Snippets for current category')
+            ],
+        ];
+    }
+}

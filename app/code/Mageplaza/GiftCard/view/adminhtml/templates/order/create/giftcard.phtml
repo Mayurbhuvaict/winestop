@@ -1,0 +1,67 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var \Mageplaza\GiftCard\Block\Adminhtml\Order\Create\Giftcard $block */
+?>
+
+<?php if ($block->enableGiftCard()) : ?>
+    <div class="admin__field field-apply-coupon-code">
+        <label class="admin__field-label">
+            <span><?= /** @noEscape */ __('Gift Cards') ?></span>
+        </label>
+        <div class="admin__field-control">
+            <input type="text" class="input-text admin__control-text" id="gift_card_code" value=""/>
+            <?= /** @noEscape */ $block->getButtonHtml(__('Apply'), 'order.applyGiftCode($F(\'gift_card_code\'))') ?>
+            <?php if ($codes = $block->getGiftCodesUsed()) : ?>
+                <div class="gift-card-applied-code-text" id="gift_card_applied_code_text">
+                    <ul class="gift-card_code">
+                        <?php foreach ($codes as $code => $amount) : ?>
+                            <li>
+                                <div class="gc-item">
+                                    <span class="gc-code-applied"><?= /** @noEscape */ $code ?></span>
+                                    <span class="gc-remove" data-code="<?= /** @noEscape */ $code ?>">X</span>
+                                </div>
+                                <span class="gc-amount"><?= /** @noEscape */ $block->formatPrice($amount) ?></span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>
+<?php if ($block->enableCredit()) : ?>
+    <div class="admin__field field-apply-coupon-code">
+        <label class="admin__field-label">
+            <span><?= /** @noEscape */ __('Gift Credit (%1)', $block->getBalanceFormatted()) ?></span>
+        </label>
+        <div class="admin__field-control gift-card-discount-credit">
+            <input type="text" id="gift-card-credit-slider" name="credit_slider_value"
+                   data-credit="<?= /** @noEscape */ $block->getCreditData() ?>" value=""/>
+        </div>
+    </div>
+<?php endif; ?>
+
+<script type="text/javascript">
+    require(['Mageplaza_GiftCard/js/view/order/create'], function (init) {
+        init();
+    });
+</script>

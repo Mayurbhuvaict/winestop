@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+?>
+<?php
+/**
+ * Template for filter items block
+ *
+ * @var $block \Magento\LayeredNavigation\Block\Navigation\FilterRenderer
+ */
+?>
+
+<ol class="items">
+    <?php foreach ($filterItems as $filterItem) : ?>
+        <li class="item">
+            <?php if ($filterItem->getCount() > 0) : ?>
+                <a href="<?php echo $block->escapeUrl($filterItem->getUrl()) ?>">
+                    <span class="filter-label"><?php /* @noEscape */ echo $filterItem->getLabel() ?></span>
+                    <?php if ($this->helper(\Magento\Catalog\Helper\Data::class)->shouldDisplayProductCountOnLayer()) : ?>
+                        <span class="count"><?php /* @noEscape */ echo (int)$filterItem->getCount()?><span class="filter-count-label">
+                            <?php if ($filterItem->getCount() == 1) : ?> <?php echo $block->escapeHtml(__('item')) ?><?php else :?> <?php echo $block->escapeHtml(__('items')) ?><?php endif;?></span></span>
+                    <?php endif; ?>
+                </a>
+            <?php else:?>
+                <?php /* @noEscape */ echo $filterItem->getLabel() ?>
+                <?php if ($this->helper(\Magento\Catalog\Helper\Data::class)->shouldDisplayProductCountOnLayer()) : ?>
+                    <span class="count"><?php /* @noEscape */ echo (int)$filterItem->getCount()?><span class="filter-count-label">
+                        <?php if ($filterItem->getCount() == 1) : ?><?php echo $block->escapeHtml(__('item')) ?><?php else : ?><?php echo $block->escapeHtml(__('items')) ?><?php endif;?></span></span>
+                <?php endif; ?>
+            <?php endif; ?>
+        </li>
+    <?php endforeach ?>
+</ol>

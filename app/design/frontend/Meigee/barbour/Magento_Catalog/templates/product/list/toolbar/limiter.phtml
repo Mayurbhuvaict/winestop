@@ -1,0 +1,27 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+?>
+<div class="field limiter">
+    <label class="label" for="limiter">
+        <span><?php echo $block->escapeHtml(__('Items per page:')) ?></span>
+    </label>
+	<select id="limiter" data-role="limiter" class="limiter-options form-control selectpicker">
+		<?php foreach ($block->getAvailableLimit() as $_key => $_limit): ?>
+			<option value="<?php echo $block->escapeHtmlAttr($_key) ?>"<?php if ($block->isLimitCurrent($_key)): ?>
+				selected="selected"<?php endif ?>>
+				<?php echo $block->escapeHtml($_limit) ?>
+			</option>
+		<?php endforeach; ?>
+	</select>
+</div>

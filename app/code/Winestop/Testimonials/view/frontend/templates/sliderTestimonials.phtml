@@ -1,0 +1,43 @@
+<?php
+    $helper = \Magento\Framework\App\ObjectManager::getInstance()->get('Winestop\Testimonials\Helper\Data');
+    $slidercontent= $block->getCollection();
+   ?>
+<div class="testimonials-slider">
+    <div class="container">
+        <div class="co-md-12">
+            <div class="testimonials-slider-section">
+                <div class=" testimonials-content-slider owl-carousel owl-theme slider-2" data-navigation="1" data-pagination="1" data-speed="300">
+                    <?php foreach ($slidercontent as $sliderdata) { ?>
+                     <?php $NoOfView= explode(',',$sliderdata->getStoreView()); ?>
+                     <?php if ($sliderdata->getStatus() == 1){ ?>
+                        <?php foreach ($NoOfView as $key => $value) {  ?>
+                            <?php if ($value == $block->getStoreId() OR $value==0){ ?>
+                                <div class="item testimonails" style="width: 100%;">
+                                    <h1><?php echo $sliderdata->getName() ?></h1>
+                                        <p><?php echo $sliderdata->getContent() ?></p>
+                                    </div>
+
+                                <?php }
+                            }
+                        }
+                    } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ <script type="text/javascript">
+    require(["jquery","domReady!"], function ($) {
+        $('.testimonials-content-slider').owlCarousel({
+            autoplay: false,
+            nav:true,
+            navText: ["<",">"],
+            loop:true,
+            margin:10,
+            items:1
+        })
+    });
+</script>
+
+
+

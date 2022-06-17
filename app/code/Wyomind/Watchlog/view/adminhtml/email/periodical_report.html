@@ -1,0 +1,11 @@
+<!--
+  ~ Copyright © 2019 Wyomind. All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<!--@subject {{var subject}} @-->
+<!--@vars { "var days":"X" } @-->
+
+<div>
+    <h1>Here are the connection attempts for the last {{var days}} day(s).</h1>
+    {{block class='Magento\\Framework\\View\\Element\\Template' area='adminhtml' template='Wyomind_Watchlog::email/periodical_report.phtml' log=$log}}
+</div>

@@ -1,0 +1,107 @@
+<?php
+/**
+ * Copyright © Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php $status = $_product->getQuantityAndStockStatus(); ?>
+<?php if ($status['is_in_stock'] == 1): ?>
+<div class="box-tocart">
+	<div class="availableqty">
+		<?php
+		$productId = $_product->getId();
+		$qty = $_product->getExtensionAttributes()->getStockItem()->getQty();
+		// $qty = $viewModel->getStockItem($productId);
+		
+		?>
+		<?php if ($qty>0): ?>
+		<label for="availableqty">Inventory : </label>
+		<?php if ($qty > 24) : ?>
+			<span><?php echo "24+"; ?></span>
+		<?php else: ?>
+			<span><?= $qty ?></span>
+		<?php endif; ?>
+		<?php else: ?>
+			<span><?php echo "Out of Stock"; ?></span>
+		<?php endif;?>
+	</div>
+    <div class="fieldset clearfix">
+        <?php if ($block->shouldRenderQuantity()) : ?>
+        <div class="quantity-wrapper clearfix">
+            <div class="field qty">
+                <label class="label" for="qty"><span><?php echo $block->escapeHtml(__('Qty')) ?></span></label>
+                <div class="control clearfix">
+                    <div class="quantity-decrease" onclick="qtyDown()"><i class="meigee-minus"></i></div>
+                    <input type="text"
+                           name="qty"
+                           id="qty"
+                           min="0"
+                           value="<?php echo $block->getProductDefaultQty() * 1 ?>"
+                           class="input-text qty"
+                           title="<?php echo $block->escapeHtmlAttr(__('Qty')) ?>" class="input-text qty"
+                           data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                           />
+                    <div class="quantity-increase" onclick="qtyUp()"><i class="meigee-plus"></i></div>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+        <div class="actions">
+            <button type="submit"
+                    title="<?php echo $block->escapeHtmlAttr($buttonTitle) ?>"
+                    class="action btn btn-primary btn-cart type-2 tocart"
+                    id="product-addtocart-button" disabled>
+                <span><?php echo $block->escapeHtml($buttonTitle) ?></span>
+            </button>
+            <?php echo $block->getChildHtml('', true) ?>
+        </div>
+    </div>
+</div>
+	<?php if ($block->shouldRenderQuantity()): ?>
+		<script type="text/javascript">
+			var qty_el = document.getElementById('qty');
+			var qty = qty_el.value;
+			// if(qty < 2){
+				// jQuery('.quantity_box_button_down').css({
+				// 'visibility' : 'hidden'
+				// });
+			// }
+			function qtyDown(){
+				var qty_el = document.getElementById('qty');
+				var qty = qty_el.value;
+				// if( qty == 2) {
+				// jQuery('.quantity_box_button_down').css({
+					// 'visibility' : 'hidden'
+				// });
+				// }
+				if( !isNaN( qty ) && qty > 0 ){
+				qty_el.value--;
+				}
+				return false;
+			}
+
+			function qtyUp(){
+				var qty_el = document.getElementById('qty');
+				var qty = qty_el.value;
+				if( !isNaN( qty )) {
+				qty_el.value++;
+				}
+				// jQuery('.quantity_box_button_down').css({
+				// 'visibility' : 'visible'
+				// });
+				return false;
+			}
+		</script>
+	<?php endif; ?>
+<?php endif; ?>
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/js/validate-product": {}
+        }
+    }
+</script>

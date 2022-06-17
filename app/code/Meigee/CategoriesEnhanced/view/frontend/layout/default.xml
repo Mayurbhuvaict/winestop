@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<link src="Meigee_CategoriesEnhanced::css/megamenu.css"/>
+		<link src="Meigee_CategoriesEnhanced::css/megamenu-theme.css"/>
+		<link src="Meigee_CategoriesEnhanced::js/megamenu.js"/>
+	</head>
+    <body>
+        <referenceBlock name="catalog.topnav">
+			<action method="setTemplate">
+				<argument name="template" xsi:type="string">Meigee_CategoriesEnhanced::html/megamenu.phtml</argument>
+			</action>
+        </referenceBlock>
+		<referenceBlock name="sticky.catalog.topnav">
+			<action method="setTemplate">
+				<argument name="template" xsi:type="string">Meigee_CategoriesEnhanced::html/megamenu_sticky.phtml</argument>
+			</action>
+        </referenceBlock>
+    </body>
+</page>

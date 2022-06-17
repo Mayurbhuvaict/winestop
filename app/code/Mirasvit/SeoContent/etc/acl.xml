@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::marketing">
+                    <resource id="Mirasvit_SeoContent::seo_content" title="Mirasvit SEO: Templates and Rewrites" sortOrder="71">
+                        <resource id="Mirasvit_SeoContent::seo_content_template" title="Template Manager" sortOrder="100"/>
+                        <resource id="Mirasvit_SeoContent::seo_content_rewrite" title="Rewrite Manager" sortOrder="200"/>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

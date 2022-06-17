@@ -1,0 +1,130 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Magento\Framework\View\Element\Template;
+
+/** @var $block \Magento\Shipping\Block\Tracking\Popup */
+//phpcs:disable Magento2.Files.LineLength.MaxExceeded
+
+$results = $block->getTrackingInfo();
+
+?>
+<div class="page tracking">
+    <?php if (!empty($results)) : ?>
+        <?php foreach ($results as $shipId => $result) : ?>
+            <?php if ($shipId) : ?>
+                <div class="order subtitle caption"><?= /* @noEscape */ $block->escapeHtml(__('Shipment #')) . $shipId ?></div>
+            <?php endif; ?>
+            <?php if (!empty($result)) : ?>
+                <?php foreach ($result as $counter => $track) : ?>
+                    <div class="table-wrapper">
+                        <?php
+                            $shipmentBlockIdentifier = $shipId . '.' . $counter;
+                            $block->addChild('shipping.tracking.details.' . $shipmentBlockIdentifier, Template::class, [
+                                'track' => $track,
+                                'template' => 'Magento_Shipping::tracking/details.phtml',
+                                'storeSupportEmail' => $block->getStoreSupportEmail()
+                            ]);
+                        ?>
+                        <?= /* @noEscape */ $block->getChildHtml('shipping.tracking.details.' . $shipmentBlockIdentifier) ?>
+                    </div>
+                    <?php
+                        if ($track['title'] == 'Golden State Overnight') {
+                            $trackingNumber = $track['number'];
+                            $helper = $this->helper('Winestop\Gso\Helper\Data');
+                            //$trackingNumber = '875783000013871'; //0910202012
+                            $response = $helper->getGsoTrackShipment($trackingNumber);
+                            $response = (array) json_decode($response);
+                            ?>
+                            <?php if ($response['StatusCode'] == 200) { ?>
+                                <div class="table-wrapper">
+                                    <table class="data table order tracking" id="track-history-table-<?= $block->escapeHtml($trackingNumber) ?>">
+                                        <caption class="table-caption"><?= $block->escapeHtml(__('Track history')) ?></caption>
+                                        <thead>
+                                        <tr>
+                                            <th class="col location" scope="col"><?= $block->escapeHtml(__('Location')) ?></th>
+                                            <th class="col date" scope="col"><?= $block->escapeHtml(__('Date')) ?></th>
+                                            <th class="col time" scope="col"><?= $block->escapeHtml(__('Local Time')) ?></th>
+                                            <th class="col description" scope="col"><?= $block->escapeHtml(__('Description')) ?></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                            $shipmentinfo = $response['ShipmentInfo'];
+                                        ?>
+                                        <?php foreach ($shipmentinfo as $detail) : ?>
+                                            <?php $detail = (array) $detail ?>
+                                            <?php 
+                                             $transitNotes =  array_reverse($detail['TransitNotes']); 
+                                            ?>
+                                            <?php foreach ($transitNotes as $data) : ?>
+                                                <?php $data = (array) $data ?>
+                                                <?php 
+                                                    $date = strtotime($data['EventDate']);
+                                                    $detailDate = date('d-M-Y', $date);
+                                                    $detailTime = date('h:i:s', $date);
+                                                ?>
+                                                <tr>
+                                                    <td data-th="<?= $block->escapeHtmlAttr(__('Location')) ?>" class="col location">
+                                                        <?= (!empty($data['Location']) ? $block->escapeHtml($data['Location']) : '') ?>
+                                                    </td>
+                                                    <td data-th="<?= $block->escapeHtmlAttr(__('Date')) ?>" class="col date">
+                                                        <?= /* @noEscape */ $detailDate ?>
+                                                    </td>
+                                                    <td data-th="<?= $block->escapeHtmlAttr(__('Local Time')) ?>" class="col time">
+                                                        <?= /* @noEscape */ $detailTime ?></td>
+                                                    <td data-th="<?= $block->escapeHtmlAttr(__('Description')) ?>" class="col description">
+                                                        <?= (!empty($data['Comments']) ? $block->escapeHtml($data['Comments']) : '') ?>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <?php if (is_object($track) && !empty($track->getProgressdetail())) : ?>
+                                <?php
+                                    $block->addChild('shipping.tracking.progress.' . $shipmentBlockIdentifier, Template::class, [
+                                        'track' => $track,
+                                        'template' => 'Magento_Shipping::tracking/progress.phtml'
+                                    ]);
+                                ?>
+                                <?= /* @noEscape */ $block->getChildHtml('shipping.tracking.progress.' . $shipmentBlockIdentifier) ?>
+                            <?php endif; ?>
+                        <?php } ?>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <div class="message info empty">
+                    <div><?= $block->escapeHtml(__('There is no tracking available for this shipment.')) ?></div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php else : ?>
+        <div class="message info empty">
+            <div><?= $block->escapeHtml(__('There is no tracking available.')) ?></div>
+        </div>
+    <?php endif; ?>
+    <div class="actions">
+        <button type="button"
+                title="<?= $block->escapeHtmlAttr(__('Close Window')) ?>"
+                class="action close"
+                onclick="window.close(); window.opener.focus();">
+            <span><?= $block->escapeHtml(__('Close Window')) ?></span>
+        </button>
+    </div>
+</div>
+<script>
+    require([
+        'jquery'
+    ], function (jQuery) {
+        /* hide the close button when the content doesn't open in a modal window */
+        if (window.opener === null || typeof window.opener === "undefined") {
+            jQuery('.actions button.close').hide();
+        }
+    });
+</script>

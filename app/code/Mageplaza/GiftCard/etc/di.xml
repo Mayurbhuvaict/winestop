@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Mageplaza\GiftCard\Api\Data\RedeemDetailInterface" type="Mageplaza\GiftCard\Model\Api\Data\RedeemDetail"/>
+    <preference for="Mageplaza\GiftCard\Api\Data\TemplateFieldsInterface" type="Mageplaza\GiftCard\Model\Api\Data\TemplateFields"/>
+    <preference for="Mageplaza\GiftCard\Api\Data\GiftCodeInterface" type="Mageplaza\GiftCard\Model\GiftCard"/>
+    <preference for="Mageplaza\GiftCard\Api\Data\GiftCodeSearchResultInterface" type="Mageplaza\GiftCard\Model\ResourceModel\GiftCard\Collection"/>
+
+    <preference for="Mageplaza\GiftCard\Api\Data\GiftHistoryInterface" type="Mageplaza\GiftCard\Model\History"/>
+    <preference for="Mageplaza\GiftCard\Api\GiftHistoryManagementInterface" type="Mageplaza\GiftCard\Model\Api\GiftHistoryManagement"/>
+
+    <preference for="Mageplaza\GiftCard\Api\Data\GiftPoolInterface" type="Mageplaza\GiftCard\Model\Pool"/>
+    <preference for="Mageplaza\GiftCard\Api\Data\GiftPoolSearchResultInterface" type="Mageplaza\GiftCard\Model\ResourceModel\Pool\Collection"/>
+
+    <preference for="Mageplaza\GiftCard\Api\Data\GiftTemplateInterface" type="Mageplaza\GiftCard\Model\Template"/>
+    <preference for="Mageplaza\GiftCard\Api\Data\GiftTemplateSearchResultInterface" type="Mageplaza\GiftCard\Model\ResourceModel\Template\Collection"/>
+
+    <preference for="Mageplaza\GiftCard\Api\GiftCodeManagementInterface" type="Mageplaza\GiftCard\Model\Api\GiftCodeManagement"/>
+    <preference for="Mageplaza\GiftCard\Api\GiftPoolManagementInterface" type="Mageplaza\GiftCard\Model\Api\GiftPoolManagement"/>
+    <preference for="Mageplaza\GiftCard\Api\GiftTemplateManagementInterface" type="Mageplaza\GiftCard\Model\Api\GiftTemplateManagement"/>
+
+    <!--Override Quote coupon management to apply gift card from coupon block on checkout onepage-->
+    <preference for="Magento\Quote\Api\CouponManagementInterface" type="Mageplaza\GiftCard\Model\Api\CouponManagement"/>
+
+    <!--Use api to apply gift card/credit on checkout onepage-->
+    <preference for="Mageplaza\GiftCard\Api\GiftCardManagementInterface" type="Mageplaza\GiftCard\Model\Api\GiftCardManagement"/>
+    <preference for="Mageplaza\GiftCard\Api\GuestGiftCardManagementInterface" type="Mageplaza\GiftCard\Model\Api\GuestGiftCardManagement"/>
+
+    <!--Parse float to fix zero price product in wishlist  -->
+    <preference for="Magento\Catalog\Pricing\Price\ConfiguredRegularPrice" type="Mageplaza\GiftCard\Pricing\Price\ConfiguredRegularPrice"/>
+
+    <!--Plugin cart total repository to add gift card used to totalsData-->
+    <type name="Magento\Quote\Api\CartTotalRepositoryInterface">
+        <plugin name="mp_gift_card_cart_total_repository_plugin" type="Mageplaza\GiftCard\Plugin\Quote\CartTotalRepository"/>
+    </type>
+
+    <!--Move item option from quote_item to order_item-->
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="mp_gift_card_move_product_option_to_order_item" type="Mageplaza\GiftCard\Plugin\Quote\ToOrderItem"/>
+    </type>
+
+    <!--Check refundable gift card-->
+    <type name="Magento\Sales\Model\Order\Item">
+        <plugin name="mp_gift_card_check_refundable_gift_card" type="Mageplaza\GiftCard\Plugin\Quote\Item"/>
+    </type>
+
+    <!-- Run this command before remove module -->
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="mageplaza_giftcard_uninstall" xsi:type="object">Mageplaza\GiftCard\Console\Command\Uninstall</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--Grid collection-->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="giftcard_code_listing_data_source" xsi:type="string">Mageplaza\GiftCard\Model\ResourceModel\GiftCard\Grid\Collection</item>
+                <item name="giftcard_template_listing_data_source" xsi:type="string">Mageplaza\GiftCard\Model\ResourceModel\Template\Grid\Collection</item>
+                <item name="giftcard_pool_listing_data_source" xsi:type="string">Mageplaza\GiftCard\Model\ResourceModel\Pool\Grid\Collection</item>
+                <item name="giftcard_history_listing_data_source" xsi:type="string">Mageplaza\GiftCard\Model\ResourceModel\History\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Mageplaza\GiftCard\Model\ResourceModel\GiftCard\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mageplaza_giftcard</argument>
+            <argument name="resourceModel" xsi:type="string">Mageplaza\GiftCard\Model\ResourceModel\GiftCard</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Mageplaza\GiftCard\Model\ResourceModel\Template\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mageplaza_giftcard_template</argument>
+            <argument name="resourceModel" xsi:type="string">Mageplaza\GiftCard\Model\ResourceModel\Template</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Mageplaza\GiftCard\Model\ResourceModel\Pool\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mageplaza_giftcard_pool</argument>
+            <argument name="resourceModel" xsi:type="string">Mageplaza\GiftCard\Model\ResourceModel\Pool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Mageplaza\GiftCard\Model\ResourceModel\History\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mageplaza_giftcard_history</argument>
+            <argument name="resourceModel" xsi:type="string">Mageplaza\GiftCard\Model\ResourceModel\History</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Checkout\CustomerData\AbstractItem">
+        <plugin name="mpgiftcard_change_item_image" type="Mageplaza\GiftCard\Plugin\CustomerData\Checkout\Image"/>
+    </type>
+    <type name="Mageplaza\Osc\Helper\Item">
+        <plugin name="mpgiftcard_change_item_image" type="Mageplaza\GiftCard\Plugin\Helper\Osc\Image"/>
+    </type>
+</config>

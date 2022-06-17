@@ -1,0 +1,17 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+  $footer_status = $this->getConfig('barbour_general/barbour_footer/custom_footer');
+  $footer_block = $this->getConfig('barbour_general/barbour_footer/custom_footer_block');
+  $footer_block = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($footer_block)->toHtml();
+  $footer_default = $this->getChildHtml('footer');
+?>
+<div class="footer-container">
+  <div class="footer accordion-list">
+      <?php echo ($footer_status ? $footer_block : $footer_default); ?>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<form class="form contact"
+      action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+      id="contact-form-mini"
+      method="post"
+      data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+      data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+		<div class="row">
+			<div class="field name required col-sm-6">
+				<label class="label" for="name-mini"><span><?php /* @escapeNotVerified */ echo __('Name') ?></span></label>
+				<div class="control">
+					<input name="name" id="name-mini" title="<?php /* @escapeNotVerified */ echo __('Name') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="form-control" type="text" data-validate="{required:true}"/>
+				</div>
+			</div>
+			<div class="field telephone col-sm-6">
+				<label class="label" for="telephone-mini"><span><?php /* @escapeNotVerified */ echo __('Phone Number') ?></span></label>
+				<div class="control">
+					<input name="telephone" id="telephone-mini" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" value="" class="form-control" type="text" />
+				</div>
+			</div>
+        </div>
+		<div class="field email required">
+			<label class="label" for="email-mini"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+			<div class="control">
+				<input name="email" id="email-mini" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="form-control" type="email" data-validate="{required:true, 'validate-email':true}"/>
+			</div>
+		</div>
+		<div class="field comment required">
+			<label class="label" for="comment-mini"><span><?php /* @escapeNotVerified */ echo __('What’s on your mind?') ?></span></label>
+			<div class="control">
+				<textarea name="comment" id="comment-mini" title="<?php /* @escapeNotVerified */ echo __('What’s on your mind?') ?>" class="form-control" cols="5" rows="3" data-validate="{required:true}"></textarea>
+			</div>
+		</div>
+    </fieldset>
+    <div class="actions-toolbar">
+		<input type="hidden" name="hideit" id="hideit" value="" />
+		<button type="submit" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" class="action btn btn-default submit">
+			<span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
+		</button>
+    </div>
+</form>

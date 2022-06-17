@@ -1,0 +1,11 @@
+<?php
+/** @var \Mirasvit\SeoContent\Block\Description $block */
+$description = $block->getDescription();
+
+if (!$description) {
+    return;
+}
+?>
+<div class="mst-seo-content__description">
+    <?= $description ?>
+</div>

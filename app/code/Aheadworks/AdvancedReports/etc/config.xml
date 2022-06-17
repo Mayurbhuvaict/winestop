@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <aw_advancedreports>
+            <general>
+                <order_status>complete</order_status>
+                <manufacturer_attribute>manufacturer</manufacturer_attribute>
+            </general>
+            <email>
+                <sender>general</sender>
+                <scheduled_email_template>aw_advancedreports_email_scheduled_email_template</scheduled_email_template>
+            </email>
+        </aw_advancedreports>
+        <dev>
+            <js>
+                <minify_exclude>https://www.gstatic.com/charts/loader.js</minify_exclude>
+            </js>
+            <css>
+                <minify_exclude>
+                    <viewCss>calendar/view.css</viewCss>
+                    <timeframeCss>calendar/timeframe.css</timeframeCss>
+                </minify_exclude>
+            </css>
+        </dev>
+    </default>
+</config>

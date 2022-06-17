@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="mage/gallery/gallery.css"/>
+    </head>
+    <body>
+        <move element="product.info.stock.sku" destination="page.main.title.wrapper" after="page.main.title"/>
+        <move element="review.timer.block" destination="product.info.main" after="-"/>
+        <referenceContainer name="price.availability.block">
+			<container name="member-price-content" as="member-price" label="Member Price" htmlTag="div" htmlClass="member-price-section">
+				<block class="Magento\Catalog\Block\Product\View" name="member-price" template="Magento_Catalog::member_price.phtml" />
+
+				<container name="custom.post.list" htmlTag="div" htmlClass="product-sku-class" >  
+				 	<block class="Magento\Catalog\Block\Product\View" name="assignment2" template="Magento_Catalog::product/view/productSku.phtml" /> 
+		        </container>
+
+				<block class="Magento\Catalog\Block\Product\View" name="special-assignment" template="Magento_Catalog::special_assignment.phtml" >
+					<arguments>
+                   		<argument name="view_model" xsi:type="object">Winestop\Custom\ViewModel\ProductLabel</argument>
+                	</arguments>
+				</block>
+			</container>
+		</referenceContainer>
+		<referenceContainer name="price.availability.inner">
+			<block class="Magento\Framework\View\Element\Template" name="price_label-content" template="Magento_Catalog::price_label.phtml" before="-" />
+		</referenceContainer>
+		<referenceContainer name="product.info.social">
+			<block class="Magento\Cms\Block\Block" name="barbour_product_custom">
+		        <arguments>
+		            <argument name="block_id" xsi:type="string">barbour_product_custom</argument>
+			    </arguments>
+		    </block>
+		</referenceContainer>
+		<referenceContainer name="product.info.main">
+			<block class="Magento\Catalog\Block\Product\View" name="wine_rating" template="Magento_Catalog::wine_rating.phtml" />
+		</referenceContainer>
+		<referenceBlock name="product.info.details">
+			<referenceBlock name="product.info.description">
+            <arguments>
+            	<argument name="title" translate="true" xsi:type="string">Description</argument>
+                <argument name="sort_order" xsi:type="string">0</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="product.attributes">
+            <arguments>
+            	<argument name="title" translate="true" xsi:type="string">Product Specifications</argument>
+            </arguments>
+        </referenceBlock>
+	      <block class="Magento\Catalog\Block\Product\View" name="winerating.tab" as="winerating" template="Magento_Catalog::wine_rating_tab.phtml" group="detailed_info" >
+	        <arguments>
+	          <argument translate="true" name="title" xsi:type="string">Rating Details</argument>
+	          <argument name="sort_order" xsi:type="string">-1</argument>
+	        </arguments>
+	      </block>
+	    </referenceBlock>
+	    <referenceContainer name="product.info.wrapper">
+			<!-- <block class="Magento\Catalog\Block\Product\View" name="notify_me-content" template="Magento_Catalog::notify_me.phtml" after="-" /> -->
+			<block class="Magento\Framework\View\Element\Template" name="outofstock.section.custom" template="Webkul_OutOfStockNotification::emailid.phtml" ifconfig="notificationsettings/enable/oosn" />
+		</referenceContainer>
+		<referenceBlock name="product.under.add.to.cart.wrapper" remove="true" />
+		<referenceBlock name="outofstock.section" remove="true" />
+		<move element="product.info.social" destination="price.availability.block" after="member-price"/>
+		<referenceBlock name="product.info.review" remove="true"/>
+		<referenceContainer name="price.availability.block">
+			<block class="Magento\Catalog\Block\Product\View" as="availability_custom" template="Meigee_Barbour::availability_custom.phtml" before="-" />
+		</referenceContainer>
+		<referenceBlock name="product.info.sku" remove="true" />
+		<referenceContainer name="content.aside">
+			<block class="Magento\Catalog\Block\Product\ProductList\Related" name="we_also_recommend" template="Winestop_Custom::we_also_recommend.phtml" before="-" />
+		</referenceContainer>
+		<referenceBlock name="we_also_recommend">
+			<arguments>
+        		<argument name="view_model" xsi:type="object">Winestop\Custom\ViewModel\ProductLabel
+        		</argument>
+    		</arguments>
+		</referenceBlock>
+		<move element="wine_rating" destination="price.availability.block" after="member-price-content" />
+		<referenceBlock name="view.addto.compare" remove="true"/>	
+		<move element="custom.post.list" destination="page.main.title" after="-" />
+		<referenceContainer name="page.wrapper">
+    		<container name="shipment.notallowed" htmlTag="div" htmlClass="shipment-notallowed">
+    			<block class="Magento\Catalog\Block\Product\View"
+				name="shipment.not.allowed" template="Magento_Catalog::product/view/shipment_notallowed.phtml" />
+			</container>
+		</referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="winestop_shopby::type" title="Shopby" module="Winestop_Shopby" sortOrder="10" action="shopby/type/index" resource="Winestop_Shopby::Type"/>
+    </menu>
+</config>

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Oleh Kravets <oleh.kravets@snk.de>
+ * @copyright   Copyright (c) 2021 schoene neue kinder GmbH  (https://www.snk.de)
+ * @license     MIT
+ */
+ TODO: add translations
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="customer">
+            <group id="captcha" showInStore="1">
+                <field id="type" translate="label" type="select" sortOrder="2" showInDefault="2" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Type</label>
+                    <source_model>Snk\Captcha\Model\Config\Type</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="allowed_math_signs" translate="label" type="multiselect" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Allowed Math Signs</label>
+                    <source_model>Snk\Captcha\Model\Config\MathSigns</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="type">mathCaptcha</field>
+                    </depends>
+                </field>
+                <field id="expression_type" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Expression form</label>
+                    <source_model>Snk\Captcha\Model\Config\ExpressionType</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="type">mathCaptcha</field>
+                    </depends>
+                </field>
+                <field id="label_text" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Label text</label>
+                    <comment>Text shown to users</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="type">mathCaptcha</field>
+                    </depends>
+                </field>
+                <field id="length">
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="type">default</field>
+                    </depends>
+                </field>
+                <field id="symbols">
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="type">default</field>
+                    </depends>
+                </field>
+                <field id="case_sensitive">
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="type">default</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

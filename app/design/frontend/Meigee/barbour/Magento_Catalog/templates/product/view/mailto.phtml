@@ -1,0 +1,17 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
+
+?>
+<?php $_product = $block->getProduct() ?>
+<?php if ($block->canEmailToFriend()) : ?>
+    <a href="<?php echo $block->escapeUrl($this->helper(Magento\Catalog\Helper\Product::class)->getEmailToFriendUrl($_product)) ?>"
+       class="action mailto friend" title="<?php /* @escapeNotVerified */ echo __('Email to a Friend') ?>">
+	   <i class="meigee-fa-envelope-o"></i>
+	   <span><?php echo $block->escapeHtml(__('Email to a Friend')) ?></span>
+	</a>
+<?php endif; ?>

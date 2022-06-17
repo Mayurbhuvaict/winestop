@@ -1,0 +1,210 @@
+<?php
+/**
+ * Copyright © Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Magento\Review\Block\Product\View\ListView $block */
+
+$_items = $block->getReviewsCollection()->getItems();
+$format = $block->getDateFormat() ?: \IntlDateFormatter::MEDIUM;
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$timezone = $objectManager->create('Magento\Framework\Stdlib\DateTime\TimezoneInterface');
+?>
+<?php if (!count($_items)) : ?>
+<div class="block review-list accordion-item" id="customer-reviews">
+    <div class="block-title accordion-title">
+        <strong><?= $block->escapeHtml(__('Customer Reviews')) ?></strong>
+        <span class="icon-more"><i class="icon-plus meigee-plus"></i><i class="icon-minus meigee-minus"></i></span>
+    </div>
+    <div class="no-review-count">
+    	<span>
+    		No reviews yet!
+    	</span>
+    </div>
+</div>
+<?php endif;?>
+<?php if (count($_items)) : ?>
+<div class="block review-list accordion-item" id="customer-reviews">
+    <div class="block-title accordion-title">
+        <strong><?= $block->escapeHtml(__('Customer Reviews')) ?></strong>
+        <span class="icon-more"><i class="icon-plus meigee-plus"></i><i class="icon-minus meigee-minus"></i></span>
+    </div>
+    <div class="block-content accordion-content">
+        <div class="items review-items customer-reviews-wrapper">
+        <?php
+		 $_itemsCount = count($_items);
+		 $i = 0;
+         foreach ($_items as $_review) :
+         	if ($i < 3) {
+                 $class_label = 'item review-item review-box-wrapper clearfix col-sm-12';
+                 $i++;
+             }
+             else
+             {
+                $class_label = 'item review-item review-box-wrapper clearfix col-sm-12 sho_hide_content';
+                $i++;
+             } 			
+			?>
+            <div class="<?php echo $class_label; ?>" itemscope itemprop="review" itemtype="http://schema.org/Review">
+				<div class="review-box-inner clearfix">
+					<div class="top-block clearfix">
+						<div class="top-block-inner clearfix">
+							<div class="customer-rating clearfix">
+								<?php if (count($_review->getRatingVotes())): ?>
+									<div class="review-ratings">
+									<?php foreach ($_review->getRatingVotes() as $_vote) : ?>
+										<div class="rating-summary item" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+											<div class="rating-result" title="<?= $block->escapeHtmlAttr($_vote->getPercent()) ?>%">
+												<meta content = "1"/>
+												<meta content = "100"/>
+												<i class="star">&#9733;</i>
+												<i class="star">&#9733;</i>
+												<i class="star">&#9733;</i>
+												<i class="star">&#9733;</i>
+												<i class="star">&#9733;</i>
+												<span style="width:<?= $block->escapeHtmlAttr($_vote->getPercent()) ?>%">
+													<i class="star">&#9733;</i>
+													<i class="star">&#9733;</i>
+													<i class="star">&#9733;</i>
+													<i class="star">&#9733;</i>
+													<i class="star">&#9733;</i>
+													<span itemprop="ratingValue" class="no-visible"><?= $block->escapeHtml($_vote->getPercent()) ?>%</span>
+												</span>
+											</div>
+											<?php if (count($_review->getRatingVotes()) > 1): ?>
+		                                   		<span class="label rating-label"><span><?php echo $block->escapeHtml($_vote->getRatingCode()) ?></span></span>
+											<?php endif ?>
+										</div>
+									<?php endforeach; ?>
+									</div>
+								<?php endif; ?>
+							</div>
+                        	<div class="review-title" itemprop="name"><?php echo $block->escapeHtml($_review->getTitle()) ?></div>
+						</div>
+					</div>
+
+					<div class="review-box clearfix">
+						<div class="bottom-block-inner clearfix">
+							<div class="review-content review v-ellipsis" itemprop="description" data-expandlink="<?= $block->escapeHtml(__('Read More')) ?>" data-collapselink="<?= $block->escapeHtml(__('Less')) ?>">
+								<?php /* @noEscape */ echo nl2br($block->escapeHtml($_review->getDetail())) ?>
+							</div>
+
+		                    <div class="customer-info">
+		                        <div class="info">
+		                            <p class="review-author customer">
+		                                <span class="review-details-label"><?= $block->escapeHtml(__('By')) ?></span>
+		                                <strong class="review-details-value" itemprop="author"><?php echo $block->escapeHtml($_review->getNickname()) ?></strong>
+		                            </p>
+		                            <div class="date">
+		                            	<?php 
+		                            	$originalDate = $_review->getCreatedAt();
+										$formated_date = date("j F Y", strtotime($originalDate));		                            	
+		                            	?>
+		                                <p class="review-date">
+		                                    <time class="review-details-value" itemprop="datePublished" datetime="<?= $block->escapeHtmlAttr($block->formatDate($_review->getCreatedAt(), $format)) ?>"><?= $formated_date; ?></time>
+		                                </p>
+		                            </div>
+		                        </div>
+		                    </div>
+						</div>
+					</div>
+				</div>
+            </div>
+        <?php	 
+         endforeach; ?>
+        </div>
+        <a href="#" class="show_all" data-content="toggle-text">See all <?php echo count($_items) ?> Customer reviews</a>
+        <a href="#" class="show_less" data-content="toggle-text">View Less</a>
+        <div class="toolbar review-toolbar">
+            <?php echo $block->getChildHtml('toolbar') ?>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	require(['jquery', 'jquery/ui'], function($){
+		$(document).ready(function () {
+			$(".sho_hide_content").hide();
+			$(".show_less").hide();			
+			$(".show_all").on("click", function () {				
+				$('.sho_hide_content').show();
+				$('.show_all').hide();
+				$('.show_less').show();
+			});
+			$(".show_less").on("click", function () {				
+				$('.sho_hide_content').hide();
+				$('.show_all').show();
+				$('.show_less').hide();
+			});
+		});
+	});
+</script>
+	<script type="text/javascript">
+		require(['jquery', 'vEllipsis'], function ($)
+		{
+			function reviewsEllipsis(){
+				if (jQuery('.customer-reviews-wrapper .v-ellipsis').length) {
+					jQuery('.customer-reviews-wrapper .v-ellipsis').each(function(){
+						jQuery(this).vEllipsis({
+							'lines':2,
+							'char': '',
+							'linesClass' : 'custom-class',
+							'responsive': true,
+							'expandLink': true,
+							'collapseLink': true,
+							'animationTime': '500'
+						});
+						var ellipsis = jQuery(this).closest('.review-box-inner');
+						setTimeout(function(){
+							var height = jQuery(ellipsis).outerHeight();
+							jQuery(ellipsis).css('height', height);
+						}, 400);
+					});
+				}
+			}
+			reviewsEllipsis();
+			function delayReviewsBox(milliseconds) {
+				return function(result) {
+					return new Promise(function(resolve, reject) {
+						setTimeout(function() {
+							reviewsEllipsis();
+						}, milliseconds);
+					});
+				};
+			}
+			function reviewsAccordionInit() {
+				setTimeout(function() {
+					reviewsEllipsis();
+				}, 500);
+			}
+
+			jQuery(window).resize(function(){
+				reviewsEllipsis();
+				reviewsAccordionInit();
+			});
+			jQuery(window).load(function(){
+				reviewsAccordionInit();
+			});
+			
+			function getReviews(){
+				jQuery('#customer-reviews .toolbar.review-toolbar .pages .item:not(.active) a').on('click', function(event){
+					event.preventDefault();
+					if(!jQuery('.review-loader').length){
+						jQuery('#customer-reviews .toolbar.review-toolbar').before('<div class="review-loader" />');
+						var url = jQuery(this).attr('href');
+						
+						jQuery.ajax({
+							method: "POST",
+							url: url
+						}).done(function(result){
+							jQuery('#customer-reviews .accordion-content').html(jQuery(result).filter('#customer-reviews').find('.accordion-content').html());
+							jQuery(document).scrollTop(jQuery('#customer-reviews').offset().top - 200);
+							getReviews();
+						});
+					}
+				});
+			}
+			getReviews();
+		});
+	</script>
+<?php endif;?>

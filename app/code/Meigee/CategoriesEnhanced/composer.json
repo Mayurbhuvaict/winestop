@@ -1,0 +1,20 @@
+{
+  "name": "meigee/module-categoriesenhanced",
+  "description": "[Magento 2] Meigee Mega Menu Extension",
+  "require": {
+    "php": "~5.5.0|~5.6.0|7.0.2|~7.0.6"
+  },
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "Proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Meigee\\CategoriesEnhanced\\": ""
+    }
+  }
+}

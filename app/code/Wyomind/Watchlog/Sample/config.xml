@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © 2019 Wyomind. All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<!-- configuration file used for the Wyomind's demo store: https://demo2.wyomind.com -->
+<config>
+    <login>Watchlog</login>
+    <password>Watchlog123</password>
+    <acl>
+        Wyomind_Watchlog::menu
+        Wyomind_Watchlog::attempts
+        Wyomind_Watchlog::config
+        {{system/config}}
+    </acl>
+    <scenarii>
+        <scenario type="backend" id="attemps_basic" default="1">
+            <label>Connection attempts (basic)</label>
+            <comment><![CDATA[List of all connection attempts in the backend]]></comment>
+            <actions>
+                <action type="landing_page">
+                    <param name="url">watchlog/attempts/basic</param>
+                </action>
+            </actions>
+        </scenario>
+        <scenario type="backend" id="attempts_advanced">
+            <label>Connection attemps (advanced)</label>
+            <comment><![CDATA[Aggregated list of all connection attempts in the backend]]></comment>
+            <actions>
+                <action type="landing_page">
+                    <param name="url">watchlog/attempts/advanced</param>
+                </action>
+            </actions>
+        </scenario>
+    </scenarii>
+</config>

@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © 2019 Wyomind. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+/** @var \Wyomind\SimpleGoogleShopping\Block\Adminhtml\Feeds\Preview $block */
+?>
+<!-- Preview popup template -->
+<?php $content = $block->getContent(); ?>
+<textarea id="preview"><?php /* @noEscape */ echo $content; ?></textarea>
+<style>
+    .CodeMirror {
+        height: 100%;
+    }
+</style>
+<script>
+    window.onload = function () {
+        CodeMirror.fromTextArea(document.getElementById("preview"), {
+            matchBrackets: true,
+            mode: "application/x-httpd-php",
+            indentUnit: 2,
+            indentWithTabs: false,
+            lineWrapping: false,
+            lineNumbers: true,
+            styleActiveLine: true,
+            readOnly: true,
+            autoRefresh: true
+        });
+    };
+</script>

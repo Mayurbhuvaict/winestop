@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+
+
+
+    <!-- preference for='Magento\Framework\View\Layout\Reader\Block' type='\Meigee\Barbour\Preference\View\Block' / -->
+    <!--<preference for='Magento\Framework\View\Layout\Reader\Container' type='Meigee\Barbour\Preference\View\Container' />-->
+    <!--<preference for='Magento\Framework\View\Layout\Reader\Move' type='Meigee\Barbour\Preference\View\Move' />-->
+    <!--<preference for='Magento\Framework\View\Layout\Reader\UiComponent' type='Meigee\Barbour\Preference\View\UiComponent' />-->
+    <!--<preference for='Magento\Framework\View\Page\Config\Reader\Body' type='Meigee\Barbour\Preference\View\Body' />-->
+    <!--<preference for='Magento\Framework\View\Page\Config\Reader\Head' type='Meigee\Barbour\Preference\View\Head' />-->
+    <!--<preference for='Magento\Framework\View\Page\Config\Reader\Html' type='Meigee\Barbour\Preference\View\Html' />-->
+
+
+  
+<!--<preference for='Magento\Framework\View\Layout\Reader\Block' type='\Meigee\Barbour\Preference\View\Block' />-->
+
+
+
+
+
+<preference for='Magento\Framework\View\Layout\Reader\Block' type='Meigee\Barbour\Preference\View\Block' />
+<preference for='Magento\Framework\View\Layout\Reader\Container' type='Meigee\Barbour\Preference\View\Container' />
+<preference for='Magento\Framework\View\Layout\Reader\Move' type='Meigee\Barbour\Preference\View\Move' />
+<preference for='Magento\Framework\View\Layout\Reader\UiComponent' type='Meigee\Barbour\Preference\View\UiComponent' />
+
+<preference for='Magento\Framework\View\Page\Config\Reader\Body' type='Meigee\Barbour\Preference\View\Body' />
+<preference for='Magento\Framework\View\Page\Config\Reader\Head' type='Meigee\Barbour\Preference\View\Head' />
+<preference for='Magento\Framework\View\Page\Config\Reader\Html' type='Meigee\Barbour\Preference\View\Html' />
+
+<type name="Magento\Framework\View\Result\Page">
+	<plugin name="meigeeBarbourResultPage" type="Meigee\Barbour\Plugin\Result\Page"/>
+</type>
+</config>

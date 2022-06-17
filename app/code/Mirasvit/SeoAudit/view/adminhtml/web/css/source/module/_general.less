@@ -1,0 +1,37 @@
+.mst-seo-audit__status-wrapper {
+    .status {
+        background: #dcdcdc;
+        border-radius: 2px;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 2px 5px;
+        font-size: 10px;
+        font-weight: 600;
+
+        &.processing {
+            background: #f44336;
+            color: #fff;
+        }
+
+        &.finished {
+            background: #4caf50;
+            color: #fff;
+        }
+    }
+}
+
+body.seoaudit-job-details, body.seoaudit-job-index, body.seoaudit-job-url {
+    td {
+        &.text-right {
+            text-align: right;
+        }
+
+        &.text-center {
+            text-align: center;
+        }
+
+        &.data-grid-actions-cell {
+            white-space: nowrap;
+        }
+    }
+}

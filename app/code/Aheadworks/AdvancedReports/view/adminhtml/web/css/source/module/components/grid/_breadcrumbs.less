@@ -1,0 +1,48 @@
+.aw-arep-breadcrumbs {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 0 2rem;
+
+    .items {
+        font-size: 1.4rem;
+        color: @color-active-text;
+        margin: 0;
+        padding: 0;
+        list-style: none none;
+
+        > li {
+            display: inline-block;
+            vertical-align: top;
+        }
+    }
+
+    .item {
+        &:not(:last-child) {
+            display: inline-block;
+            text-decoration: none;
+
+            &:after {
+                content: '>';
+                font-size: 1.4rem;
+                line-height: 20px;
+                overflow: hidden;
+                speak: none;
+                font-weight: normal;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                vertical-align: top;
+                text-align: center;
+                margin: 0 1px;
+            }
+        }
+
+        a {
+            color: @color-blue;
+            text-decoration: underline;
+
+            &:hover {
+              text-decoration: underline;
+            }
+        }
+    }
+}

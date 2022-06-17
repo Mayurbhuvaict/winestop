@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="meigee_instagram" class="Meigee\Instagram\Block\Widget\Instagram">
+        <label translate="true">Meigee - Instagram widget</label>
+        <description></description>
+        <parameters>
+            <parameter name="widget_title" xsi:type="text" visible="true" required="false" sort_order="0" >
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="instagram_user_id" xsi:type="text" visible="true" sort_order="2">
+                <label translate="true">Instagram User Id</label>
+                <description></description>
+            </parameter>
+			<parameter name="instagram_access_token" xsi:type="text" visible="true" sort_order="3">
+                <label translate="true">Instagram Access Token</label>
+                <description></description>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

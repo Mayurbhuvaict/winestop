@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Winestop_Banner::elements" title="Banners" module="Winestop_Banner" resource="Winestop_Banner::elements" sortOrder="20"/>
+        <add id="Winestop_Banner::banner" title="Manage Banners" module="Winestop_Banner" resource="Winestop_Banner::banner" parent="Winestop_Banner::elements" sortOrder="1" action="banner/banner/" />
+    </menu>
+</config>

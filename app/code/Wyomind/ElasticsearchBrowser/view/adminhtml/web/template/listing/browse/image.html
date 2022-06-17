@@ -1,0 +1,6 @@
+<!-- ko if: ($row().image == "") -->
+<!-- ko i18n: $row().name --><!-- /ko -->
+<!--/ko-->
+<!-- ko ifnot: ($row().image == "") -->
+<img data-bind="attr: {src: $row().image}"/>
+<!--/ko-->

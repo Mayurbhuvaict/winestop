@@ -1,0 +1,34 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ -->
+
+<div data-role="giftcard-messages" class="messages giftcard-messages" data-bind="visible: isVisible()">
+    <!-- ko foreach: messageContainer.getErrorMessages() -->
+    <div class="message message-error error">
+        <div data-ui-id="checkout-cart-validationmessages-message-error" data-bind="html: $data"></div>
+    </div>
+    <!--/ko-->
+    <!-- ko foreach: messageContainer.getSuccessMessages() -->
+    <div class="message message-success success">
+        <div data-ui-id="checkout-cart-validationmessages-message-success" data-bind="html: $data"></div>
+    </div>
+    <!--/ko-->
+</div>

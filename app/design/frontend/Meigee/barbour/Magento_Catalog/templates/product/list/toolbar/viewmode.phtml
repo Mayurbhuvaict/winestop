@@ -1,0 +1,99 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+
+function check_grid($grid_mode){
+	switch ($grid_mode) {
+		case 'grid':
+			return '<i class="meigee-meigee-grid"></i>';
+		break;
+		case 'list':
+			return '<i class="meigee-navicon"></i>';
+		break;
+	}
+}
+$meigee_helper = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral');
+$front_helper = $this->helper('\Meigee\Barbour\Helper\FrontHelper');
+$listingCustomGrid = $meigee_helper->getCustomThemeOptionCnf('barbour_product_listing', 'listing_custom_grid');
+$listingColumnsGridString = preg_replace('/\s+/','',$meigee_helper->getCustomThemeOptionCnf('barbour_product_listing', 'listing_grid_switcher'));
+$listingColumnsGrids = explode(',', $listingColumnsGridString);
+$_columns = array(
+    '1' => 'one-column',
+    '2' => 'two-columns',
+    '3' => 'three-columns',
+    '4' => 'four-columns',
+    '5' => 'five-columns',
+    '6' => 'six-columns',
+    '7' => 'seven-columns',
+    '8' => 'eight-columns'
+);
+$_columnsSet = array();
+foreach ($listingColumnsGrids as $_key => $_listingColumnsGrid) {
+  array_push($_columnsSet, $_columns[$_listingColumnsGrid]);
+}
+array_push($_columnsSet, 'one-column');
+array_push($_columnsSet, 'two-columns');
+$listingCustomGridCookie = $front_helper->getFrontCookie('barbourListingGridSwitcher');
+?>
+<?php if ($block->isEnabledViewSwitcher()): ?>
+<div class="modes clearfix <?php if ($listingCustomGrid == 1): echo 'custom'; endif;?>">
+    <?php $_modes = $block->getModes(); ?>
+    <?php if ($_modes && count($_modes) > 1 && $listingCustomGrid != 1): ?>
+    <strong class="modes-label" id="modes-label"><?php echo $block->escapeHtml(__('View as')) ?></strong>
+    <?php foreach ($block->getModes() as $_code => $_label): ?>
+        <?php if ($block->isModeActive($_code)): ?>
+            <strong title="<?php echo $block->escapeHtmlAttr($_label) ?>"
+                class="modes-mode active mode-<?php echo $block->escapeHtmlAttr(strtolower($_code)); ?>"
+                data-value="<?php echo $block->escapeHtmlAttr(strtolower($_code)); ?>">
+                <span><?php /* @escapeNotVerified */ echo check_grid(strtolower($_code)); ?></span>
+            </strong>
+        <?php else: ?>
+            <a class="modes-mode mode-<?php echo $block->escapeHtmlAttr(strtolower($_code)); ?>"
+               title="<?php echo $block->escapeHtmlAttr($_label) ?>"
+               href="#"
+               data-role="mode-switcher"
+               data-value="<?php echo $block->escapeHtmlAttr(strtolower($_code)); ?>"
+               id="mode-<?php echo $block->escapeHtmlAttr(strtolower($_code)); ?>"
+               aria-labelledby="modes-label mode-<?php echo $block->escapeHtmlAttr(strtolower($_code)); ?>">
+                <span><?php /* @escapeNotVerified */ echo check_grid(strtolower($_code)); ?></span>
+            </a>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    <?php if ($listingCustomGrid == 1): ?>    
+      <span title="two-columns" data-grid-swither="two-columns" class="grid-two-columns mobile item<?php echo ('two-columns' == $listingCustomGridCookie || $listingCustomGridCookie != 'one-column') ? ' current' : ''; ?>"><i class="meigeeadditional-grid-2"></i></span>
+      <span title="grid-one-column" data-grid-swither="one-column" class="grid-one-column mobile item<?php echo 'one-column' == $listingCustomGridCookie ? ' current' : ''; ?>"><i class="meigeeadditional-grid-1"></i></span>
+      <?php if($listingColumnsGrids && count($listingColumnsGrids) > 0): ?>
+        <?php
+          $i = 1;
+          foreach ($listingColumnsGrids as $_key => $_listingColumnsGrid):
+        ?>
+          <?php if($i <= 3): ?>
+            <?php if($_key == 0 && !$listingCustomGridCookie || count($listingColumnsGrids) == 1): ?>
+              <span title="<?php echo 'grid-'.$_columns[$_listingColumnsGrid] ?>" data-grid-swither="<?php echo $_columns[$_listingColumnsGrid] ?>" class="<?php echo 'grid-'.$_columns[$_listingColumnsGrid] ?> item current"><i class="meigeeadditional-grid-<?php echo $_listingColumnsGrid ?>"></i></span>
+            <?php elseif($_key == 0 && $listingCustomGridCookie && $listingCustomGridCookie == $_columns[$_listingColumnsGrid] || !in_array($listingCustomGridCookie,$_columnsSet) && $_key == 0): ?>
+              <span title="<?php echo 'grid-'.$_columns[$_listingColumnsGrid] ?>" data-grid-swither="<?php echo $_columns[$_listingColumnsGrid] ?>" class="<?php echo 'grid-'.$_columns[$_listingColumnsGrid] ?> item current"><i class="meigeeadditional-grid-<?php echo $_listingColumnsGrid ?>"></i></span>
+            <?php else: ?>
+              <span title="<?php echo 'grid-'.$_columns[$_listingColumnsGrid] ?>" data-grid-swither="<?php echo $_columns[$_listingColumnsGrid] ?>" class="<?php echo 'grid-'.$_columns[$_listingColumnsGrid] ?> item<?php echo $_columns[$_listingColumnsGrid] == $listingCustomGridCookie ? ' current' : ''; ?>"><i class="meigeeadditional-grid-<?php echo $_listingColumnsGrid ?>"></i></span>
+            <?php endif; ?>
+          <?php endif; ?>
+        <?php
+          $i++;
+          endforeach;
+        ?>
+      <?php else: ?>
+
+      <?php endif; ?>
+    <?php endif; ?>
+</div>
+<?php endif; ?>

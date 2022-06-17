@@ -1,0 +1,53 @@
+<?php
+	$meigee_helper = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral');
+	
+	if($meigee_helper->getCustomThemeOptionCnf('barbour_skins', 'skinheader_default')){
+		$sticky_logo = $this->getChildHtml("sticky.logo");
+	}
+	if($meigee_helper->getCustomThemeOptionCnf('barbour_skins', 'skinheader_cloth')){
+		$sticky_logo = $this->getChildHtml("header2.sticky.logo");
+	}
+	if($meigee_helper->getCustomThemeOptionCnf('barbour_skins', 'skinheader_electronics_1')){
+		$sticky_logo = $this->getChildHtml("header3.sticky.logo");
+	}
+	if($meigee_helper->getCustomThemeOptionCnf('barbour_skins', 'skinheader_perfumes')){
+		$sticky_logo = $this->getChildHtml("header4.sticky.logo");
+	}
+	if($meigee_helper->getCustomThemeOptionCnf('barbour_skins', 'skinheader_electronics_2')){
+		$sticky_logo = $this->getChildHtml("header5.sticky.logo");
+	}
+	if($meigee_helper->getCustomThemeOptionCnf('barbour_skins', 'skinheader_jewelry')){
+		$sticky_logo = $this->getChildHtml("header6.sticky.logo");
+	}
+	if($meigee_helper->getCustomThemeOptionCnf('barbour_skins', 'skinheader_handmade')){
+		$sticky_logo = $this->getChildHtml("header7.sticky.logo");
+	}
+	if($meigee_helper->getCustomThemeOptionCnf('barbour_skins', 'skinheader_cloth_2')){
+		$sticky_logo = $this->getChildHtml("header8.sticky.logo");
+	}
+	if($meigee_helper->getCustomThemeOptionCnf('barbour_skins', 'skinheader_cloth_3')){
+		$sticky_logo = $this->getChildHtml("header9.sticky.logo");
+	}
+	
+	$sticky_logo_status = $this->getConfig('barbour_general/barbour_header/sticky_header_logo');
+	$sticky_nav = $this->getChildHtml("sticky.catalog.topnav");
+	$sticky_nav_status = $this->getConfig('barbour_general/barbour_header/sticky_header_nav');
+	$sticky_search = $this->getChildHtml("stickySearch");
+	$sticky_search_status = $this->getConfig('barbour_general/barbour_header/sticky_header_search');
+?>
+
+<div id="sticky-header" class="header">
+  <div class="container">
+    <div class="left-wrapper">
+		<span data-action="toggle-nav" class="action nav-toggle">
+			<i class="meigee-nav"></i>
+			<span>Menu</span>
+		</span>
+      <?php echo ($sticky_logo_status ? $sticky_logo : ''); ?> 
+    </div>
+    <div class="right-wrapper clearfix">
+      <?php echo ($sticky_nav_status ? $sticky_nav : ''); ?> 
+      <?php echo ($sticky_search_status ? $sticky_search : ''); ?> 
+    </div>
+  </div>
+</div>

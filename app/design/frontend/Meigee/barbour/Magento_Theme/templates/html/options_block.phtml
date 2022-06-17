@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright © Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<?php
+/**
+ * Currency switcher
+ *
+ * @see \Magento\Directory\Block\Currency
+ */
+?>
+<div class="options-wrapper">
+	<div class="options-block">
+		<span class="title"><i class="meigee-account"></i><span><?php /* @escapeNotVerified */ echo __('Account'); ?></span></span>
+	</div>
+	<div class="options-dropdown">
+		<?php echo $this->getChildHtml("store_language"); ?>
+		<?php echo $this->getChildHtml("currency"); ?>
+		<?php echo $this->getChildHtml('top.links'); ?>
+	</div>
+</div>
+

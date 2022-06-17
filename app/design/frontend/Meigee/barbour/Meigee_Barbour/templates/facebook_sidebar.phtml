@@ -1,0 +1,24 @@
+<?php
+$fb_url = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_facebook_block', 'url');
+$fb_status = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_facebook_block', 'status');
+ ?>
+
+
+<?php if ($fb_status == 1) : ?>
+	<div class="block block-fblikebox">
+		<div class="block-title">
+			 <strong><span><?php echo __('Facebook Like Box') ?></span></strong>
+		</div>
+		<div class="block-content">
+			<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_EN/sdk.js#xfbml=1&version=v2.3";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
+			<div class="fb-page" <?php echo $this->helper('\Meigee\Barbour\Helper\FrontHelper')->getFbSidebar(); ?>><div class="fb-xfbml-parse-ignore"><blockquote cite="<?php echo $fb_url; ?>"><a href="<?php echo $fb_url; ?>">&nbsp;</a></blockquote></div></div>
+		</div>
+	</div>
+<?php endif ?>

@@ -1,0 +1,29 @@
+{
+    "name": "wyomind/cronscheduler",
+    "version": "1.12.2",
+    "version_normalized": "1.12.2.0",
+    "dist": {
+        "type": "zip",
+        "url": "https://www.wyomind.com/wyomind-cronscheduler-1.12.2.zip",
+        "reference": ""
+    },
+    "require": {
+        "magento/framework": ">=100.0.0",
+        "php": "~5.5.0|~5.6.0|>=7.0.0",
+        "wyomind/framework": ">=5.0.0"
+    },
+    "type": "magento2-module",
+    "extra": [],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Wyomind\\CronScheduler\\": ""
+        }
+    },
+    "license": [
+        "Commercial License - Copyright 2022  - WYOMIND  - Purchasing any product (Software) from the  wyomind.com web-site means buyer agree to the following statements (see LICENSE.TXT)"
+    ],
+    "description": false
+}

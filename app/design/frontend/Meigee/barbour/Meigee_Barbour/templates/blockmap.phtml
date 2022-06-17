@@ -1,0 +1,82 @@
+<?php
+	$map_status = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_contactmap', 'contactmap_status');
+	$contactMapApi = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_contactmap', 'contactmap_api');
+	$map_latitude = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_contactmap', 'contactmap_latitude');
+	$map_longitude = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_contactmap', 'contactmap_longitude');
+	$map_zoom = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_contactmap', 'contactmap_zoom');
+	$map_type = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_contactmap', 'contactmap_type');
+	$map_marker = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_contactmap', 'contactmap_marker');
+	$map_marker_title = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_contactmap', 'contactmap_marker_title');
+	$map_block_status = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_contactmap', 'contactmap_block_status');
+	$map_block_static = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_contactmap', 'contactmap_block_static');
+	$map_block_width = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_contactmap', 'contactmap_block_width');
+	$map_block_height = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_contactmap', 'contactmap_block_height');
+	$map_block_position = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_contactmap', 'contactmap_block_position');
+	$random = rand(5, 1500);
+	if($map_status) {
+?>
+	<div class="map-body">
+		<div class="map-container">
+			<?php if($map_block_status): ?>
+			<div class="map-block<?php echo ' '.$map_block_position; ?>" style="width:<?php echo $map_block_width; ?>px; height:<?php echo $map_block_height; ?>px;">
+				<div class="indent">
+					<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($map_block_static)->toHtml();?>
+				</div>
+			</div>
+			<?php endif; ?>
+			<div id="map_canvas_<?php echo $random; ?>" class="map-wrapper"></div>
+		</div>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js<?php if($contactMapApi){ ?>?key=<?php echo $contactMapApi; } ?>"></script>
+		<script type="text/javascript">
+		require(["jquery"], function(jQuery) {
+			//require(["googleMap"], function(backstretch) {
+
+				function initialize_<?php echo $random; ?>(){
+					myLatlng = new google.maps.LatLng(<?php echo $map_latitude;?>, <?php echo $map_longitude;?>);
+					map_canvas = document.getElementById('map_canvas_<?php echo $random; ?>');
+					map_options = {
+						center: myLatlng,
+						zoom: <?php echo $map_zoom;?>,
+						mapTypeId: google.maps.MapTypeId.<?php echo $map_type;?>
+					}
+					map_<?php echo $random; ?> = new google.maps.Map(map_canvas, map_options)
+					<?php if($map_marker): ?>
+					marker = new google.maps.Marker({
+						position: myLatlng,
+						map: map_<?php echo $random; ?>,
+						title: '<?php echo $map_marker_title; ?>'
+					});
+					<?php endif; ?>
+				}
+				google.maps.event.addDomListener(window, 'load', initialize_<?php echo $random; ?>);
+				parentBody = window.parent.document.getElementsByTagName('body');
+				sizeMarker = 0;
+				currentSize = jQuery(parentBody).width();
+				if(currentSize < 480){currentSize = 1;}
+				if(currentSize > 479 && currentSize < 768){currentSize = 2;}
+				if(currentSize > 767 && currentSize < 977){currentSize = 3;}
+				if(currentSize > 1279){currentSize = 4;}
+				jQuery(window).resize(function(){
+					if (jQuery(parentBody).width() < 480) {
+						sizeMarker = 1;
+					}
+					if (jQuery(parentBody).width() > 479 && jQuery(parentBody).width() < 768) {
+						sizeMarker = 2;
+					}
+					if (jQuery(parentBody).width() > 767 && jQuery(parentBody).width() < 977){
+						sizeMarker = 3;
+					}
+					if (jQuery(parentBody).width() > 1279){
+						sizeMarker = 4;
+					}
+					if(currentSize != sizeMarker){
+						initialize_<?php echo $random; ?>();
+						currentSize = sizeMarker;
+					}
+				});
+
+			 //});
+        });
+		</script>
+	</div>
+<?php } ?>

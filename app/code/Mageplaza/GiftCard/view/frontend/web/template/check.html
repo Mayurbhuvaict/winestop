@@ -1,0 +1,57 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ -->
+
+<div class="block block-gift-card-check block-content" aria-labelledby="block-gift-card-heading"
+     data-bind="blockLoader: isLoading">
+    <div class="box box-information">
+        <strong class="box-title">
+            <span data-bind="i18n: 'Please enter the gift card code'"></span>
+        </strong>
+        <div class="box-content">
+            <form class="form check-code" action="" method="post" id="check-code-form">
+                <div class="field check-code-field">
+                    <div class="control">
+                        <input name="code" type="text" id="giftcode" placeholder="Enter your gift code"
+                               data-validate="{required:true, 'no-whitespace':true}"
+                               data-bind="value: giftcode, valueUpdate: 'keyup'">
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="action action-check primary" title="Check" type="button"
+                            data-bind="click: checkCode">
+                        <span>Check</span>
+                    </button>
+                </div>
+            </form>
+            <!-- ko foreach: getRegion('messages') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+    </div>
+    <div class="mp-clear"></div>
+</div>
+<style type="text/css">
+    .block-gift-card-check .box-content {
+        margin-top: 15px;
+        max-width: 60%
+    }
+</style>

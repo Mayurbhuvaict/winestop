@@ -1,0 +1,32 @@
+<?php
+	$welcomeMessage = $block->getWelcome();
+	// echo $welcomeMessage;
+?>
+<?php if (strlen(trim($welcomeMessage)) > 0):  ?>
+    <?php // switch ($block->getShowPart()):
+       //  case 'welcome': ?>
+            <p class="welcome" data-bind="scope: 'customer'">
+                 <!-- ko if: customer().fullname  -->
+                <span data-bind="html:'<?=$block->escapeHtml($welcomeMessage) ?>'">
+                </span>
+                <!-- /ko -->
+                <!-- ko ifnot: customer().fullname  -->
+                <span data-bind="html:'<?=$block->escapeHtml($welcomeMessage) ?>'"></span>
+                <!-- /ko -->
+            </p>
+            <script type="text/x-magento-init">
+            {
+                "*": {
+                    "Magento_Ui/js/core/app": {
+                        "components": {
+                            "customer": {
+                                "component": "Magento_Customer/js/view/customer"
+                            }
+                        }
+                    }
+                }
+            }
+            </script>
+        <?php // break; ?>
+    <?php // endswitch; ?>
+<?php endif ?>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+		<tab id="meigee_modules" translate="label" sortOrder="200">
+            <label>Meigee</label>
+        </tab>
+        <section id="meigee_categoriesenhanced_config" translate="label" type="text" sortOrder="42" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Categories Enhanced</label>
+            <tab>meigee_modules</tab>
+            <resource>Meigee_CategoriesEnhanced::meigee_categoriesenhanced_config</resource>  
+            <group id="general" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <comment></comment>
+                <field id="status" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment></comment>
+                </field>
+				
+				<field id="vertical_status" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<depends>
+						<field id="status">1</field>
+					</depends>
+                    <label>Vertical Menu Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment></comment>
+                </field>
+				<field id="vertical_id" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+					<depends>
+						<field id="vertical_status">1</field>
+					</depends>
+                    <label>Vertical Menu Parent Id</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment></comment>
+                </field>
+				<field id="vertical_type" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+					<depends>
+						<field id="vertical_status">1</field>
+					</depends>
+                    <label>Vertical Menu type</label>
+                    <source_model>Meigee\CategoriesEnhanced\Model\Category\Attribute\Source\Verticaltype</source_model>
+                    <comment></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+        <css src="Webkul_OutOfStockNotification::css/outofstocknotification.css"/>
+    </head>
+    <body>
+        <referenceBlock name="category.image" remove="true"/>
+        <referenceBlock name="page.main.title" remove="true" />
+        <referenceBlock name="div.sidebar.additional" remove="true" />
+        <!-- <referenceBlock name="catalog.compare.sidebar" remove="true" />
+		<referenceBlock name="wishlist_sidebar" remove="true" /> -->
+        <referenceBlock name="category.products.list">
+            <arguments>
+                <argument name="view_model" xsi:type="object">Winestop\Custom\ViewModel\ProductLabel</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

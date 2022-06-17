@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © 2019 Wyomind. All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Wyomind_Watchlog::menu" title="Watchlog" sortOrder="10">
+                    <resource id="Wyomind_Watchlog::attempts" title="Login Attempts" sortOrder="10"/>
+                    <resource id="Wyomind_Watchlog::config" title="Manage module configuration" sortOrder="20"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,54 @@
+/* Own styles for meigee themes */
+@media only screen and (min-width: 1332px){
+	body:not(.cms-index-index) .megamenu > .topmenu > li[data-vertical-parent="1"][data-vertical-type="default-open"] {
+		min-width: 388px;
+		margin-left: -80px;
+		padding-left: 0px;
+	}
+	
+	.catalog-category-view .sidebar:not(.sidebar-wrapper)[style] > .sidebar{position: relative;}
+	.catalog-category-view .sidebar:not(.sidebar-wrapper)[style] > .sidebar:before{
+		content:'';
+		position:absolute;
+		left:-1px;
+		top:-100px;
+		width:101%;
+		height:100px;
+		background:#fff;
+	}
+}
+@media only screen and (max-width: 1007px) {
+	.navigation .level0 .submenu li.parent > a:after {display: none;}
+	.megamenu-wrapper {
+		padding: 0;
+		background-repeat: no-repeat;
+	}
+	#mobile-nav .megamenu-wrapper {background-color: #fff; padding: 0;}
+	#mobile-nav .megamenu-wrapper .right-column .menu-banner {display: none;}
+	#mobile-nav .megamenu-wrapper ul.level0 li.level1 {display: block; width: 100%; padding: 0;}
+	#mobile-nav .megamenu-wrapper ul.level0 li.level1 a {display: block; width: 100%; margin: 0;}
+	#mobile-nav .megamenu-wrapper .megamenu-center-block > div {display: block; padding-right: 0; padding-left: 0; width: 100% !important; max-width: 100%;}
+	.header-wrapper .navbar-collapse.collapse #mobile-nav li.parent .submenu a {padding-left: 18px;}
+	.nav-open .nav-sections {box-shadow: none;}
+	.header-wrapper .navbar-collapse.collapse #mobile-nav li.parent .submenu > li.all-category {display: none;}
+	#mobile-nav .megamenu-wrapper ul.level1 a span::before {display: none;}
+	#mobile-nav .megamenu-wrapper ul.level1 a {color: #777;}
+	.nav-open .nav-toggle:after {
+	    background: rgba(0,0,0,.1);
+	    content: '';
+	    display: block;
+	    height: 100%;
+	    position: fixed;
+	    right: 0;
+	    top: 0;
+	    width: 100%;
+	    z-index: 9998;
+	}
+	.nav-open .nav-sections {
+	    z-index: 9999;
+	}
+	.navigation .level0 .submenu li.parent > a::after,
+	.header-wrapper .navbar-collapse.collapse a.level-top .ui-menu-icon {display: none;}
+	.navigation .level0 .submenu {background-color: transparent;}
+}
+

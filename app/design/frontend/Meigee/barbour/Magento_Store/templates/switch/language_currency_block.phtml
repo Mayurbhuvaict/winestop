@@ -1,0 +1,27 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<?php
+/**
+ * Currency switcher
+ *
+ * @see \Magento\Directory\Block\Currency
+ */
+$_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface');
+$availableCurrency = $storeManager->getStore()->getAvailableCurrencyCodes();
+
+if(count($storeManager->getStores())>1 || count($availableCurrency) > 1) :
+?>
+	<div class="language-currency-block">
+		<i class="meigee-fa-cog"></i>
+		<i class="caret"></i>
+	</div>
+<?php endif; ?>

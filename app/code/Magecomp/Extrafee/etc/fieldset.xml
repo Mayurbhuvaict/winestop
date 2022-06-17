@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <scope id="global">
+        <fieldset id="sales_convert_quote_address">
+            <field name="type">
+                <aspect name="to_order_address" />
+                <aspect name="to_customer_address" />
+            </field>
+        </fieldset>
+    </scope>
+</config>
