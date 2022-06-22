@@ -25,13 +25,13 @@
             <th class="mark" scope="row">
                 <span class="label" data-bind="i18n: title"></span>
                 <span class="value"><!-- ko if: getShippingMethodTitle() -->(<!-- ko text: getShippingMethodTitle() --><!-- /ko -->)<!-- /ko --></span>
-            </th>
+            </th>   
             <td class="amount">
-                <span class="price" data-bind="text: getIncludingValue(), attr: {'data-th': title}"></span>
+                <span class="price" data-bind="text: getValue(), attr: {'data-th': title}"></span>
             </td>
         </tr>
         <!-- /ko -->
-        <!-- ko if: isExcludingDisplayed() -->
+        <!-- ko if: isExcludingDisplayed() -->s
         <tr class="totals shipping excl">
             <th class="mark" scope="row">
                 <span class="label"><!-- ko i18n: 'Shipping & Handling'--><!-- /ko --></span>

@@ -1761,12 +1761,14 @@
     line-height: 1.42857143;
     margin: 0;
     padding: 0;
+    color: #007dbd;
     text-decoration: none;
     background: none;
     border: 0;
     display: inline;
     box-shadow: none;
     font-weight: 400;
+    cursor: pointer;
     display: inline-block;
     font-size: 14px
 }
@@ -1776,15 +1778,15 @@
     text-decoration: none
 }
 
-/*.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-onestep-sidebar-block.payment-option .payment-option-title .action-toggle:hover {
+.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-onestep-sidebar-block.payment-option .payment-option-title .action-toggle:hover {
     color: #007dbd;
     text-decoration: underline
-}*/
+}
 
-/*.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-onestep-sidebar-block.payment-option .payment-option-title .action-toggle:active {
+.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-onestep-sidebar-block.payment-option .payment-option-title .action-toggle:active {
     color: #A5001F;
     text-decoration: underline
-}*/
+}
 
 .onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-onestep-sidebar-block.payment-option .payment-option-title .action-toggle:hover,.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-onestep-sidebar-block.payment-option .payment-option-title .action-toggle:active,.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-onestep-sidebar-block.payment-option .payment-option-title .action-toggle:focus {
     background: none;
@@ -1988,12 +1990,14 @@
     line-height: 1.42857143;
     margin: 0;
     padding: 0;
+    color: #007dbd;
     text-decoration: none;
     background: none;
     border: 0;
     display: inline;
     box-shadow: none;
     font-weight: 400;
+    cursor: pointer;
     display: inline-block
 }
 
@@ -2002,15 +2006,15 @@
     text-decoration: none
 }
 
-/*.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-sidebar_order-note span:hover {
+.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-sidebar_order-note span:hover {
     color: #007dbd;
     text-decoration: underline
-}*/
+}
 
-/*.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-sidebar_order-note span:active {
+.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-sidebar_order-note span:active {
     color: #A5001F;
     text-decoration: underline
-}*/
+}
 
 .onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-sidebar_order-note span:hover,.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-sidebar_order-note span:active,.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-sidebar_order-note span:focus {
     background: none;

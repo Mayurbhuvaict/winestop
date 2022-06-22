@@ -12,13 +12,13 @@ class AddressType extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSou
         $options = array();
         $options =[
             [
-                'value' => self::ADDRESS_BUSSINESS_TEXT,
-                'label' => __(ucwords(self::ADDRESS_BUSSINESS_TEXT))
-            ],
-            [
                 'value' => self::ADDRESS_RESIDENTIAL_TEXT,
                 'label' => __(ucwords(self::ADDRESS_RESIDENTIAL_TEXT))
             ],
+            [
+                'value' => self::ADDRESS_BUSSINESS_TEXT,
+                'label' => __(ucwords(self::ADDRESS_BUSSINESS_TEXT))
+            ]
         ];
 
         return $options;

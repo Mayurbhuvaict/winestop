@@ -1,4 +1,8 @@
-﻿@font-face {
+﻿.actions-toolbar.squareup_payment {
+    display: block!important;
+}
+
+@font-face {
     font-family: 'montserrat-regular';
     src: url('../fonts/montserrat/Montserrat-Regular.eot');
     src: url('../fonts/montserrat/Montserrat-Regular.ttf') format('truetype'),
@@ -43,7 +47,8 @@
     font-weight: normal;
     font-style: normal;
 }
-@import url('https://fonts.googleapis.com/css2?family=Montserrat');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
 
 @media screen and (min-color-index:0) 
 and(-webkit-min-device-pixel-ratio:0) { @media
@@ -59,6 +64,7 @@ and(-webkit-min-device-pixel-ratio:0) { @media
     transform: translate(0,-100%);
   }
 }
+
 /*menu*/
 @media (min-width: 1008px) {
   body .header-wrapper .toggle-nav {
@@ -73,81 +79,15 @@ and(-webkit-min-device-pixel-ratio:0) { @media
     padding: 0 10px;
   }
 }
-.aw-onestep-sidebar-block.payment-option .payment-option-content,.aw-onestep-gift-message.aw-onestep-sidebar-block .gift-message-content,.aw-sidebar_order-note .content {
-    display: block !important;
-}
-body.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-sidebar_order-note span:after,body.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-onestep-sidebar-block.payment-option .payment-option-title[aria-expanded=false] .action-toggle:after, .onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-onestep-sidebar-block.payment-option .payment-option-title .action-toggle:after {
-    display:none;
-}
-body.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-sidebar_order-note span {
-    margin-bottom: 5px;
-}
-body.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-sidebar_order-note.active span:after,body.onestepcheckout-index-index .page-main .checkout-container .aw-onestep-sidebar-content .aw-onestep-sidebar-block.payment-option .payment-option-title[aria-expanded=true] .action-toggle:after {
-    display: none;
-}
 /*menu end*/
-.gift_card_prod .product-info-main .product-options-bottom .availableqty{
-	display:none;
-}
-/* checkout lock css*/
-.authentication-dropdown .modal-inner-wrap button.action-close {
-    z-index: 9;
-}
-span.placeorder-disallow {
-    position: relative;
-    color: #d1ab5a;
-    font-weight: 700;
-    text-align: left;
-    width: 100%;
-    margin-bottom: 10px;
-    display: block;
-    font-size: 17px;
-    font-family: montserrat-medium;
-}
-span.placeorder-disallow:before {
-    content: '\f023';
-    font-family: fontawesome;
-    left: -8px;
-    position: relative;
-}
-span.placeorder-disallow:empty:before {
-    display: none;
-}
-/* checkout lock css*/
-/*address*/
-.customer-address-form .form-address-edit .field.type input[type="radio"] {
-    display:none;
-}
-.customer-address-form .form-address-edit .field.type input[type='radio']:checked+label:before {
-    content: '\e909';
-    font-family: 'aw-osc_icons-font';
-    font-size: 17px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #A5001F;
-}
-.customer-address-form .form-address-edit .field.type .radio-label:before {
-    content: '\e90a';
-    font-family: 'aw-osc_icons-font';
-    font-size: 17px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #A5001F;
-    padding-right:7px;
-    font-weight: normal;
-    vertical-align: middle;
-}
-.customer-address-form .form-address-edit .field.type .radio-label {
-    margin-right:31px;
-    font-weight: normal;
-    text-transform: uppercase;
-}
-/*address*/
 /*pdp page chnages*/
-
 .catalog-product-view .page-main .product-info-main .product-social-links .action:before {
     content: '';
     font-size: 0;
+}
+.product-sku-class {
+  font-size: 16px;
+  font-family: 'montserrat-medium';
 }
 .catalog-product-view .page-main .product-info-main .product-social-links .towishlist {
     background-image: url(../images/like-product-pg-light.png);
@@ -248,30 +188,6 @@ body .label {
 .node-master .shipping ~ .shipping {
     display: none;
 }
-
-.onestepcheckout-index-index .page-main .checkout-container .field._required[name="shippingAddress.custom_attributes.type"] {
-    margin-top: 34px;
-}
-.field._required[name="shippingAddress.custom_attributes.type"] .admin__field-control {
-    display: flex;
-    align-items: center;
-}
-.field._required[name="shippingAddress.custom_attributes.type"] label.label {
-    display: none;
-}
-.field._required[name="shippingAddress.custom_attributes.type"] .admin__field-control label {
-    font-weight: normal;
-    text-transform: uppercase;
-    font-size: 16px;
-}
-.field._required[name="shippingAddress.custom_attributes.type"] legend.admin__field-label {
-    font-size: 2rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    border: 0;
-    margin-bottom: 10px;
-}
-
 .fieldset ~ .fieldset {margin-top: 1.5em;}
 
 input[type="radio"],
@@ -13652,101 +13568,11 @@ input:focus ~ .tooltip .tooltip-content,select:focus ~ .tooltip .tooltip-content
 .loading-mask .loader > p {display: none;}
 body > .loading-mask {z-index: 9999;}
 ._block-content-loading {position: relative;}
-.catalog-product-view .outofstock {
-    color: #FF0000;
-    font-weight: bold;
-    font-size: 16px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    margin-top:17px;
-    line-height: 16px;
-}
-.catalog-product-view .availableqty {
-    font-weight: bold;
-    font-size: 16px;
-    position: relative;
-    color: #4CAF50;
-    display: flex;
-    justify-content: center;
-    margin-top:17px;
-    line-height: 16px;
-}
-.products-grid.products-related .field.choice.related {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-.products-grid.products-related .product-item-info {
-  min-height:580px;
-}
-.page-products .products-grid .availableqty,.checkout-cart-index .products-grid .availableqty,.cms-index-index .products-grid .availableqty,.products-grid.products-related .availableqty {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%,0);
-}
-.cms-index-index .products-grid .availableqty {
-    bottom: 57px;
-    width: 100%;
-}
-.products-grid.products-related .availableqty {
-    bottom: 42px;
-    width: 100%;
-}
-.page-products .products-grid .availableqty,.checkout-cart-index .products-grid .availableqty {
-    bottom: 52px;
-    width: 100%;
-}
-.page-products .availableqty .outofstock {
-    color: #FF0000;
-}
-.catalog-product-view .availableqty label ,.page-products .availableqty label ,.catalog-product-view .outofstock label, .cms-index-index .availableqty label ,.checkout-cart-index .availableqty label{
-    /*border-bottom: 1px solid;*/
-    margin-bottom: 0px;
-    padding-right: 5px;
-}
-/*.catalog-product-view .availableqty span ,.catalog-category-view .availableqty span, .catalog-product-view .outofstock span ,.cms-index-index .availableqty span,.checkout-cart-index .availableqty span {
-    border-bottom: 1px solid;
-}*/
-.page-products .products-grid .availableqty{
-    margin-top: 5px;
-    margin-bottom: 8px;
-}
-.page-products .products-list .availableqty{
-    margin-top: 18px;
-    margin-bottom: 9px;
-}
-.page-products .availableqty ,.cms-index-index .availableqty,.checkout-cart-index .availableqty {
-    font-weight: bold;
-    font-size: 14px;
-    position: relative;
-    color: #4CAF50;
-    display: flex;
-    justify-content: center;
-    line-height: 14px;
-}
-.cms-index-index .availableqty { 
-    margin-top: 5px;
-}
-@media(max-width: 1007px) {
-    .products-grid.products-related .product-item-info {
-        min-height: 590px;
-    }
-    .products-grid.products-related .availableqty {
-        bottom: 30px;
-    }
-    .products-grid.products-related .field.choice.related {
-        bottom: -4px;
-    }
-}
+
 @media(max-width:  767px) {
   #popup-block .block.newsletter ~ .popup-bottom {
     padding-left: 20px;
     margin-left: 0 !important;
-  }
-  .page-products .products-list .availableqty {
-    justify-content: flex-start;
   }
   .account .block.block-reorder .actions-toolbar {
     display: flex;

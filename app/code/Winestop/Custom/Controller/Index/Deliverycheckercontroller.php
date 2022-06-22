@@ -89,18 +89,8 @@ class Deliverycheckercontroller extends \Magento\Framework\App\Action\Action
                     ->keepFrame(false)
                     ->resize(150, 150)->getUrl();
                     $price = $this->priceHelper->currency($product->getData('price'), true, false);                    
-                //if($_SERVER['REMOTE_ADDR']=='103.254.244.46'){
-                    $_categorys = $categorys->getAllIds();
-                    foreach($_categorys as $_catId){
-                        $_cat = $this->categoryRepository->get($_catId, $this->_storeManager->getStore()->getId());
-                        if($_cat && $_cat->getId()){
-                            $_categorys = array_merge($_categorys, $_cat->getParentIds());
-                        }
-                    }
-                    $_categorys = array_unique($_categorys);
-                //}
-                foreach ($_categorys as $categoryId) {
-                    //$categoryId = $category->getData('entity_id');
+                foreach ($categorys as $category) {
+                    $categoryId = $category->getData('entity_id');
                     $category = $this->categoryRepository->get($categoryId, $this->_storeManager->getStore()->getId());
                     if ($category->getName() == 'Spirits' || $category->getName() == 'Beer') {
                         if (!in_array($code, $wsb_array)) {

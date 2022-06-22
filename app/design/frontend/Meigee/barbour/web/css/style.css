@@ -19,9 +19,23 @@
  */
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-.authentication-dropdown .modal-inner-wrap button.action-close {
-    z-index: 9;
+/*font-family*/
+#popup-block .newsletter-label {
+    font-family: 'montserrat-regular';
 }
+#popup-block .newsletter-label .title strong {
+    font-family: 'montserrat-regular';
+}
+#popup-block .block.newsletter input {
+    font-family: 'montserrat-regular';
+}
+#popup-block .block.newsletter button {
+    font-family: 'montserrat-regular';
+}
+#popup-block .block.newsletter ~ .popup-bottom {
+    font-family: 'montserrat-regular';
+}
+
 .white-popup {
     position: relative;
     background: #FFF;
