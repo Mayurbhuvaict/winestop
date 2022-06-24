@@ -1,7 +1,0 @@
-<div class="data-grid-cell-label data-grid-compare-cell-content">
-    <a if="getRowUrl($row())" href="#" data-bind="attr: {href: getRowUrl($row())}, text: getRowLabel($row())"></a>
-    <text ifnot="getRowUrl($row())" args="getRowLabel($row())"/>
-    <div if="isDisplayCompareValue($row())" class="compare-label">
-        <span text="$col.getLabel($row(), $col.getCompareIndex())"/>
-    </div>
-</div>

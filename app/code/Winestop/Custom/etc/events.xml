@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-	<event name="magetrend_pdf_templates_add_additional_data">
-		<observer name="additional_vars" instance="Winestop\Custom\Observer\Vars"/>
-	</event>
-	<event name="controller_action_catalog_product_save_entity_after">
-        <observer name="reindex_after_product_save" instance="Winestop\Custom\Observer\ReindexAfterProductSave" />
-    </event>
-</config>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
-    <menu>
-        <add id="Magento_Sales::shipping_category_table" module="Magecomp_Extrafee" resource="Magento_Sales::shipping_table" sortOrder="110" title="Shipping Category" parent="Magento_Sales::sales_operation" action="shippingcategory/category/index"/>
-	</menu>
-</config>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Mview/etc/mview.xsd">
-    <view id="aw_arep_statistics" class="Aheadworks\AdvancedReports\Model\Indexer\Statistics" group="indexer">
-        <subscriptions>
-            <table name="sales_order" entity_column="entity_id" />
-        </subscriptions>
-    </view>
-</config>
