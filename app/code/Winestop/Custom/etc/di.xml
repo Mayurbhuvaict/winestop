@@ -62,7 +62,7 @@
 
     <type name="Aheadworks\OneStepCheckout\Model\Layout\Processor\DefaultProcessor">
         <plugin name="add_custom_field_checkout_form"
-                type="Winestop\Custom\Model\Plugin\Checkout\LayoutProcessorPlugin"/>
+                type="Winestop\Custom\Model\Plugin\Checkout\LayoutProcessor"/>
     </type>
     <!-- <type name="Magento\Payment\Block\Info">
         <plugin name="module_paympent_view_override_template" type="Winestop\Custom\Plugin\Payment\Block\Info" />
