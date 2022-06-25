@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Winestop_Testimonials::parent" title="Testimonials" module="Winestop_Testimonials" sortOrder="100" resource="Winestop_Testimonials::parent"/>
+        <add id="Winestop_Testimonials::testimonials" title="Testimonials Testimonials" module="Winestop_Testimonials" sortOrder="20" parent="Winestop_Testimonials::parent" action="testimonials/testimonials" resource="Winestop_Testimonials::testimonials"/>
+    </menu>
+</config>

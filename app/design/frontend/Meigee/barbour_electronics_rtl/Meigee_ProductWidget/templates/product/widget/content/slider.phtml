@@ -1,0 +1,305 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Template for displaying products list widget
+ *
+ * @var $block \Magento\CatalogWidget\Block\Product\ProductsList
+ */
+?>
+<?php if ($exist = ($block->getProductCollection() && $block->getProductCollection()->getSize())):?>
+<?php
+	$type = 'widget-product-grid';
+    $mode = 'grid';
+
+    $image = 'new_products_content_widget_grid';
+    $title = $block->getTitle() ? __($block->getTitle()) : '';
+
+	$widget_type = $this->getData('widget_type');
+	if($widget_type == 'bestsellers') {
+		$items = $block->getBestSellersCollection()->getItems();
+	} elseif($widget_type == 'newproducts') {
+		$items = $block->getNewProductsCollection()->getItems();
+	} elseif($widget_type == 'featuredcategory') {
+		$items = $block->getFeaturedCategoryProductsCollection()->getItems();
+	} elseif($widget_type == 'saleproducts') {
+		$items = $block->getSaleProductsCollection()->getItems();
+	} else {
+		$items = $block->getProductCollection()->getItems();
+	}
+
+    $showWishlist = true;
+    $showCompare = true;
+    $showCart = true;
+    // $templateType =  \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
+    $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+    $description = false;
+
+	$meigee_helper = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral');
+	$lightbox_status = $meigee_helper->getCustomThemeOptionCnf('barbour_lightbox', 'lightbox_status');
+	$lightbox_widget_status = $meigee_helper->getCustomThemeOptionCnf('barbour_lightbox', 'lightbox_home');
+
+	$name_align = $meigee_helper->getCustomThemeOptionCnf('barbour_product_listing', 'product_name_aligment');
+	$stock_status = $meigee_helper->getCustomThemeOptionCnf('barbour_product_listing', 'stock_status');
+	$widget_id = $block->getData('widget_id');
+
+	// $visibleProducts       = $block->getVisibleProducts();
+    // $visibleProductsTablet = $block->getVisibleProductsTablet();
+    // $visibleProductsMobile = $block->getVisibleProductsMobile();
+    // $pagination            = $block->getPagination();
+	$visibleProducts       = $block->getData('visible_products');
+    $visibleProductsTablet = $block->getData('visible_products_tablet');
+    $visibleProductsMobile = $block->getData('visible_products_mobile');
+    $pagination            = $block->getData('pagination');
+
+	$type_price = 'widget-product-grid-'.$widget_id;
+	$quickview_status = $this->helper('WeltPixel\Quickview\Helper\Data')->getConfig('weltpixel_quickview/general/enable_product_listing');
+    $quickview_btn = $meigee_helper->getCustomThemeOptionCnf('barbour_product_listing', 'quickview_btn');
+
+    $labels_type = $meigee_helper->getCustomThemeOptionCnf('barbour_labels', 'label_type');
+    $label_new = $meigee_helper->getCustomThemeOptionCnf('barbour_labels', 'label_new');
+    $label_sale = $meigee_helper->getCustomThemeOptionCnf('barbour_labels', 'label_sale');
+    $label_sale_percentage = $meigee_helper->getCustomThemeOptionCnf('barbour_labels', 'label_sale_percentage');
+
+    $image_hover_status = $meigee_helper->getCustomThemeOptionCnf('barbour_image_hover', 'image_hover_status');
+    $image_hover_effect = $meigee_helper->getCustomThemeOptionCnf('barbour_image_hover', 'image_hover_type');
+
+
+    switch($visibleProducts){
+        case 1:
+            $productsPerRow = 'one-column';
+        break;
+        case 2:
+            $productsPerRow = 'two-columns';
+        break;
+        case 3:
+            $productsPerRow = 'three-columns';
+        break;
+        case 4:
+            $productsPerRow = 'four-columns';
+        break;
+        case 5:
+            $productsPerRow = 'five-columns';
+        break;
+        case 6:
+            $productsPerRow = 'six-columns';
+        break;
+    }
+
+    $front_helper = $this->helper('\Meigee\Barbour\Helper\FrontHelper');
+?>
+    <div class="block widget block-products-list widget-slider <?php /* @escapeNotVerified */ echo $mode; ?>" id="widget-products-<?php echo $widget_id; ?>">
+        <?php if ($title):?>
+        <div class="block-title">
+            <strong><?php /* @escapeNotVerified */ echo $title; ?></strong>
+        </div>
+        <?php endif ?>
+        <div class="block-content">
+            <?php /* @escapeNotVerified */ echo '<!-- ' . $image . '-->' ?>
+            <div class="products-<?php /* @escapeNotVerified */ echo $mode; ?> products-widget-slider <?php /* @escapeNotVerified */ echo $mode .' '. $type; echo ' '.$productsPerRow; if($image_hover_status){echo $image_hover_effect ? ' hover-scale' : ' hover-simple';} ?>">
+                <div class="product-items owl-carousel owl-theme clearfix">
+                    <?php $iterator = 1; ?>
+                    <?php foreach ($items as $_item): ?>
+                        <div class="product-item-info clearfix<?php echo !$_item->getIsSalable() ? ' sold-out' : ''; ?>">
+                            <div class="indent product-hover-1">
+                                <div class="image-wrapper">
+                                    <a href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>" class="product-item-photo">
+                                    <?php
+                                        $hoverImage = $image_hover_status ? $_item->getHoverImage() : false;
+                                            if ($hoverImage)
+                                            {
+                                                $hoverImageUrl = $this->helper('Magento\Catalog\Helper\Image')
+                                                                  ->init($_item, 'hover_image')
+                                                                  ->setImageFile($hoverImage)
+                                                                  ->getUrl();
+                                                $productImage = $block->getImage($_item, $image, array('data-hover-image'=>$hoverImageUrl));
+                                            }
+                                            else
+                                            {
+                                                $productImage = $block->getImage($_item, $image, array('data-hover-image'=>null));
+                                            }
+                                            echo $productImage->toHtml();
+                                        ?>
+                                    </a>
+                                    <?php
+                                        if($front_helper->isProductNew($_item) || $front_helper->isProductSale($_item) || $front_helper->isProductOnlyLeft($_item)){
+                                            echo '<div class="product-labels clearfix '.$labels_type.' '.(($front_helper->isProductNew($_item) && $front_helper->isProductSale($_item)) || ($front_helper->isProductNew($_item) && $front_helper->isProductOnlyLeft($_item)) ? ' two-items' : '').'">';
+                                                if($front_helper->isProductNew($_item) && $label_new) {
+                                                    echo '<span class="label-new">'.__('new').'</span>';
+                                                }
+                                                if ($front_helper->isProductOnlyLeft($_item) && $label_sale) {
+                                                    echo $front_helper->isProductOnlyLeft($_item);
+                                                }
+                                                elseif($front_helper->getProductSalePercent($_item) && $label_sale) {
+                                                    echo $front_helper->getProductSalePercent($_item);
+                                                } elseif ($front_helper->isProductSale($_item) && $label_sale) {
+                                                    echo '<span class="label-sale">'.__('sale').'</span>';
+                                                }
+                                            echo '</div>';
+                                        }
+                                    ?>
+                                    <div class="hover-buttons">
+                                        <?php if($lightbox_status && $lightbox_widget_status){ ?>
+                                            <a href="<?php echo $block->getImage($_item, $image)->getImageUrl();  ?>" class="lightbox-button" data-toggle="lightbox" data-footer="<?php echo $block->escapeHtml($_item->getName()); ?>" title="<?php echo __('Lightbox'); ?>">
+                                                <i class="meigee-zoom"></i>
+                                            </a>
+                                        <?php } ?>
+                                        <?php if ($showWishlist || $showCompare): ?>
+                                            <div class="add-to-links" data-role="add-to-links">
+                                                <?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && $showWishlist): ?>
+                                                    <a href="#"
+                                                       data-post='<?php /* @escapeNotVerified */ echo $block->getAddToWishlistParams($_item); ?>'
+                                                       class="action towishlist" data-action="add-to-wishlist"
+                                                       title="<?php /* @escapeNotVerified */ echo __('Add to Wish List') ?>">
+                                                    </a>
+                                                <?php endif; ?>
+                                                <?php if ($block->getAddToCompareUrl() && $showCompare): ?>
+                                                    <?php $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare');?>
+                                                    <a href="#" class="action tocompare"
+                                                       data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($_item);?>'
+                                                       title="<?php /* @escapeNotVerified */ echo __('Add to Compare') ?>">
+                                                        <i class="meigee-chart"></i>
+                                                    </a>
+                                                <?php endif; ?>
+                                            </div>
+                                        <?php endif; ?>
+                                        <?php if($quickview_btn && $quickview_status) { ?>
+                                        <a href="javascript: void(0);" data-quickview-url="<?php echo $block->getBaseUrl(); ?>weltpixel_quickview/catalog_product/view/id/<?php echo $block->escapeHtml($_item->getEntityId()); ?>" class="weltpixel-quickview"><i class="meigee-fa-eye"></i><span><?php /* @escapeNotVerified */ echo __('Quick view') ?></span></a>
+                                        <?php } ?>
+                                        <?php if($showCart){ ?>
+                                            <div class="product-action-wrapper">
+                                                <?php if ($showCart): ?>
+                                                    <?php if ($_item->isSaleable()): ?>
+                                                        <?php if ($_item->getTypeInstance()->hasRequiredOptions($_item)): ?>
+                                                            <button class="btn btn-default btn-cart action tocart"
+                                                                    data-mage-init='{"redirectUrl":{"url":"<?php /* @escapeNotVerified */ echo $block->getAddToCartUrl($_item) ?>"}}'
+                                                                    type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+                                                                <i class="meigee-cart"></i>
+                                                                <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+                                                            </button>
+                                                        <?php else: ?>
+                                                            <?php
+                                                                $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
+                                                                $postData = $postDataHelper->getPostData($block->getAddToCartUrl($_item), ['product' => $_item->getEntityId()])
+                                                            ?>
+                                                            <button class="btn btn-default btn-cart"
+                                                                    data-post='<?php /* @escapeNotVerified */ echo $postData; ?>'
+                                                                    type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+                                                                <i class="meigee-cart"></i>
+                                                                <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+                                                            </button>
+                                                        <?php endif; ?>
+                                                    <?php else: ?>
+                                                        <a href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>" title="<?php echo __('Read more') ?>" class="btn btn-default"><i class="meigee-eye"></i><span><?php echo __('Read more') ?></span></a>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            </div>
+                                        <?php }?>                                        
+                                    </div>
+                                    <?php if (!$_item->getIsSalable()): ?>
+                                        <div class="sold-out-label">
+                                            <span><?php /* @escapeNotVerified */ echo __('Sold out') ?></span>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="product-item-details">
+                                    <h4 class="product-item-name <?php echo $name_align; ?>">
+                                        <a title="<?php echo $block->escapeHtml($_item->getName()) ?>"
+                                           href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>"
+                                           class="product-item-link">
+                                            <?php echo $block->escapeHtml($_item->getName()) ?>
+                                        </a>
+                                    </h4>
+
+                                    <?php if($stock_status != 4 && $stock_status != 2) {
+                                        if ($_item->getIsSalable()): ?>
+                                            <div class="stock available"><span><?php /* @escapeNotVerified */ echo __('In stock') ?></span></div>
+                                        <?php else: ?>
+                                            <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
+                                        <?php endif;
+                                    } ?>
+                                    <?php if ($templateType): ?>
+                                        <?php echo $block->getReviewsSummaryHtml($_item, $templateType, true) ?>
+                                    <?php endif; ?>
+                                    <?php if($block->getProductPriceHtml($_item, $type)){ ?>
+                                            <?php echo $block->getProductPriceHtml($_item, $type_price); ?>
+                                    <?php } ?>
+                                    <?php echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Magento_Catalog::product/product_timer.phtml")->setProduct($_item)->toHtml(); ?>
+                                    <?php // echo $block->getProductPriceHtml($_item, $type); ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+			<?php
+			if(count($items) > 4){ ?>
+				<script type="text/javascript">
+					require(["jquery"], function(jQuery)
+					{
+						require(["MeigeeCarousel"], function(owlCarousel)
+                        {
+                            homeSlider<?php echo $widget_id; ?> = jQuery('#widget-products-<?php echo $widget_id; ?> .product-items');
+                            homeSlider<?php echo $widget_id; ?>.owlCarousel({
+                                margin: 0,
+                                nav:true,
+                                responsive:{
+                                    0:{
+                                        items:1
+                                    },
+                                    375:{
+                                        items:2
+                                    },
+                                    767:{
+                                        items:<?php echo $visibleProductsTablet; ?>
+                                    },
+                                    1007:{
+                                        items:<?php echo $visibleProducts; ?>
+                                    },
+                                    1331:{
+                                        items:<?php echo $visibleProducts; ?>
+                                    }
+                                },
+                                rtl: true,
+                                smartSpeed: 500,
+                                dots: <?php echo $pagination; ?>,
+                                loop: true,
+                                navigation: true,
+                                navText: ['<i class="meigee-left-arrow-key"></i>','<i class="meigee-right-arrow-key"></i>']
+							});
+                            jQuery(document).ready(function(){
+                                homeSlider<?php echo $widget_id; ?> = jQuery('#widget-products-<?php echo $widget_id; ?> .product-items');
+                                if(!jQuery('#widget-products-<?php echo $widget_id; ?>').closest('.text-banner').find('.owl-nav').length && !jQuery('#widget-products-<?php echo $widget_id; ?>').prev('.widget-title').find('.owl-nav-wrapper').length) {
+                                    navContainer = jQuery('<div class="owl-nav-wrapper clearfix" />');
+                                    navButtons = jQuery('#widget-products-<?php echo $widget_id; ?>').find('.owl-nav');
+                                    navContainer.appendTo(jQuery('#widget-products-<?php echo $widget_id; ?>').prev('.widget-title'));
+                                    navButtons.appendTo(jQuery('#widget-products-<?php echo $widget_id; ?>').prev('.widget-title').addClass('with-owl-nav').find('.owl-nav-wrapper'));
+                                } else if (jQuery('#widget-products-<?php echo $widget_id; ?>').closest('.text-banner')) {
+                                    navContainer = jQuery('#widget-products-<?php echo $widget_id; ?>').find('.owl-nav');
+                                    navContainer.appendTo(jQuery('#widget-products-<?php echo $widget_id; ?>').closest('.text-banner'));
+                                    jQuery('#widget-products-<?php echo $widget_id; ?>').closest('.text-banner').addClass('with-owl-buttons');
+                                }
+                               /*jQuery('#widget-products-<?php echo $widget_id; ?>').prev('.widget-title').find('.owl-buttons .owl-next').click(function(){
+                                 homeSlider<?php echo $widget_id; ?>.trigger('owl.next');
+                               });
+                               jQuery('#widget-products-<?php echo $widget_id; ?>').prev('.widget-title').find('.owl-buttons .owl-prev').click(function(){
+                                 homeSlider<?php echo $widget_id; ?>.trigger('owl.prev');
+                               });*/
+                            });
+                        });
+					  });
+				</script>
+			<?php } else {
+				  echo $block->getPagerHtml();
+				}
+			?>
+        </div>
+    </div>
+<?php endif;?>

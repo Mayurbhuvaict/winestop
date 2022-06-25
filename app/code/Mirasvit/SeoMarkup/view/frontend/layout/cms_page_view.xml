@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="Mirasvit\SeoMarkup\Block\Og\Page" name="mst.seo-markup.og.page" before="-"/>
+            <block class="Mirasvit\SeoMarkup\Block\Twitter\Card" name="mst.seo-markup.twitter.card" before="-"/>
+        </referenceBlock>
+    </body>
+</page>

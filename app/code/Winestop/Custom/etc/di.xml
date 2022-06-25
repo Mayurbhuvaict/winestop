@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Catalog\Model\Config">
+        <plugin name="catalog_config_plugin" type="Winestop\Custom\Plugin\Config" />
+    </type>
+    <type name="Magento\Catalog\Block\Product\ProductList\Toolbar">
+        <plugin name="catalog_productlist_toolbar_plugin" type="Winestop\Custom\Plugin\Product\ProductList\Toolbar" />
+    </type>   
+    <preference for="Magento\UrlRewrite\Model\Storage\DbStorage" type="Winestop\Custom\Model\Storage\DbStorage" />
+    <type name="Magento\Catalog\Model\Layer\Filter\Category">
+        <plugin name="catalog_layernavigation_plugin" type="Winestop\Custom\Plugin\Layer\Filter\Category" />
+    </type>
+    <type name="Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\BatchSizeCalculator">
+        <arguments>
+            <argument name="batchRowsCount" xsi:type="array">
+                <item name="configurable" xsi:type="number">1000</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\CatalogInventory\Model\Indexer\Stock\Action\Full">
+        <arguments>
+            <argument name="batchRowsCount" xsi:type="array">
+                <item name="configurable" xsi:type="number">200</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\Indexer\Category\Product\Action\Full">
+        <arguments>
+            <argument name="batchRowsCount" xsi:type="number">10000</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\ResourceModel\Product\Indexer\Eav\BatchSizeCalculator">
+        <arguments>
+            <argument name="batchSizes" xsi:type="array">
+                <item name="decimal" xsi:type="number">500</item>
+                <item name="source" xsi:type="number">500</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Directory\Model\ResourceModel\Region\Collection">
+        <plugin name="Aktiv_CheckoutAddress::LimitStateFilterPlugin" type="Winestop\Custom\Plugin\StateFilter"/>
+    </type>
+
+    <type name="Aheadworks\OneStepCheckout\Model\Layout\Processor\DefaultProcessor">
+        <plugin name="custom-firstname-lastname-validation"
+                type="Winestop\Custom\Block\LayoutProcessor"/>
+    </type>
+    <preference for="Magetrend\PdfTemplates\Model\Pdf\Filter" type="Winestop\Custom\Model\Pdf\Filter" />
+    <type name="Magento\CatalogInventory\Model\StockStateProvider">
+        <plugin name="qty_in_errormessage" type="Winestop\Custom\Plugin\ShowQtyInError"/>
+    </type>
+    <preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking" type="Winestop\Custom\Block\Adminhtml\Order\Tracking" />
+    <preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\View" type="Winestop\Custom\Block\Adminhtml\Order\Tracking\View" />
+    <preference for="Snk\Captcha\Model\MathCaptcha" type="Winestop\Custom\Model\MathCaptcha" />
+    <type name="Magetrend\PdfTemplates\Model\Pdf\Filter">
+        <plugin name="capitalize_address_type_pdf" type="Winestop\Custom\Plugin\Filter"/>
+    </type>
+</config>

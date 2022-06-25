@@ -1,0 +1,28 @@
+<?php 
+	$_item = $block->getProduct();
+?>
+<?php if ($_item->getData('member_price')) { ?>
+	<div class="member_price_container">
+		<div class="Price_label">
+			<spn>Member Price :</spn>
+		</div>
+		<div class="price_container">			
+					<?php 
+					$member_price = $_item->getData('member_price');
+					$member_price = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($member_price,true,false);
+					$block_obj_custom = $this->getLayout()->createBlock('Winestop\Custom\Block\Customdata');
+					$is_login = $block_obj_custom->isCustomerLoggedIn();
+					?>
+					<?php if ($is_login) { ?>
+						<span>
+						<?php echo $member_price; ?>
+					<?php }else{ ?>
+							<span class="member_price">
+							<a href="/customer/account/login/">
+						Members Only Can See The Price
+						</a>                                                
+					<?php } ?>                                        
+			</span>
+		</div>
+	</div>
+<?php } ?>

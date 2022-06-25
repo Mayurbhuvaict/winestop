@@ -1,0 +1,74 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+$home_block = $block->getLayout()->createBlock('\Magento\Theme\Block\Html\Header\Logo');
+
+if($this->getRequest()->getModuleName()=='catalog' && $this->getRequest()->getControllerName()=='product') {
+	$is_product = true;
+} else {
+	$is_product = false;
+}
+
+?>
+<?php // if ($crumbs && is_array($crumbs)) : ?>
+<?php if(!$home_block->isHomePage()) { ?>
+	<div class="breadcrumbs-wrapper type-2">
+		<div class="container">
+			<div class="breadcrumbs">
+				<?php if(!$is_product) { ?>
+				<header class="page-title">
+					<?php
+						if(isset($crumbs)) {
+							foreach($crumbs as $crumbName => $crumbInfo): ?>
+								<?php if($crumbInfo['last']){ ?>
+									<h1><?php echo $this->escapeHtml($crumbInfo['label']) ?></h1>
+								<?php }
+							endforeach;
+						} else {
+							$title = $block->getLayout()->getBlock('page.main.title')->getPageTitle();
+							echo '<h1>'.$title.'</h1>';
+						}
+					?>
+				</header>
+				<?php }
+				if(isset($crumbs) && is_array($crumbs)) { ?>
+					<ul class="breadcrumb">
+						<?php foreach ($crumbs as $crumbName => $crumbInfo) : ?>
+							<li class="item <?php echo $block->escapeHtmlAttr($crumbName) ?>">
+							<?php if ($crumbInfo['link']) : ?>
+								<a href="<?php echo $block->escapeUrl($crumbInfo['link']) ?>" title="<?php echo $block->escapeHtml($block->escapeHtml($crumbInfo['title'])) ?>">
+									<?php echo $block->escapeHtml($crumbInfo['label']) ?>
+								</a>
+							<?php elseif ($crumbInfo['last']) : ?>
+								<strong><?php echo $block->escapeHtml($crumbInfo['label']) ?></strong>
+							<?php else: ?>
+								<?php echo $block->escapeHtml($crumbInfo['label']) ?>
+							<?php endif; ?>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				<?php } ?>
+				<?php if(!$is_product) { ?>
+				<header class="page-title">
+					<?php
+						if(isset($crumbs)) {
+							foreach($crumbs as $crumbName => $crumbInfo): ?>
+								<?php if($crumbInfo['last']){ ?>
+									<h1><?php echo $this->escapeHtml($crumbInfo['label']) ?></h1>
+								<?php }
+							endforeach;
+						} else {
+							$title = $block->getLayout()->getBlock('page.main.title')->getPageTitle();
+							echo '<h1>'.$title.'</h1>';
+						}
+					?>
+				</header>
+				<?php } ?>
+			</div>
+		</div>
+	</div>
+	<?php // endif; ?>
+<?php } ?>

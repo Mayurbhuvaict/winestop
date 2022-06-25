@@ -1,0 +1,110 @@
+.mst-checklist {
+    .mst-checklist__totals {
+        display:         flex;
+        flex-direction:  row;
+        align-items:     center;
+        justify-content: center;
+        padding:         20px 12px;
+        background:      #ffffff;
+
+        strong {
+            font-size:     18px;
+            font-weight:   500;
+            margin:        0 10px;
+            background:    #fff9e3;
+            border: 1px solid #fff1d5;
+            padding:       5px 15px;
+            display:       block;
+            border-radius: 2px;
+        }
+    }
+
+    .mst-checklist__list {
+        display:               grid;
+        grid-template-columns: 1fr;
+        grid-row-gap:          10px;
+        grid-column-gap:       10px;
+        margin-bottom:         15px;
+
+        .mst-checklist__test {
+            display:        flex;
+            flex-direction: column;
+            align-items:    center;
+            padding:        20px;
+            background:     #ffffff;
+            box-shadow:     0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
+            border-radius:  1px;
+
+            &:hover {
+                background-image: linear-gradient(rgba(223, 227, 232, 0.3), rgba(223, 227, 232, 0.3));
+            }
+
+            .mst-checklist__test-title {
+                display:       flex;
+                margin-bottom: 10px;
+                width:         100%;
+                align-items:   center;
+
+                .mst-checklist__test-status {
+                    width:           20px;
+                    height:          20px;
+                    flex-shrink:     0;
+                    border-radius:   50%;
+                    background:      rgba(46, 188, 94, 0.2);
+                    margin-right:    15px;
+                    display:         flex;
+                    align-items:     center;
+                    justify-content: center;
+
+                    &:before {
+                        display:       block;
+                        content:       "";
+                        background:    #2ebc5e;
+                        width:         8px;
+                        height:        8px;
+                        border-radius: 50%;
+                    }
+
+                    &._invalid {
+                        background: rgba(235, 82, 2, 0.2);
+
+                        &:before {
+                            background: #eb5202;
+                        }
+                    }
+                }
+
+                strong {
+                    font-size:   18px;
+                    font-weight: 600;
+                }
+            }
+
+            .mst-checklist__test-content {
+                display:               grid;
+                grid-template-columns: 1fr 1fr;
+                grid-column-gap:       5px;
+                margin:                15px 0px;
+                width:                 100%;
+
+                .mst-checklist__test-hint,
+                .mst-checklist__test-solution {
+                    strong {
+                        display:       block;
+                        background:    #f8f8f8;
+                        margin-bottom: 15px;
+                        padding:       5px 35px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//.mst-test-textbox.mst-textbox-wrapper {
+//    display:               grid;
+//    grid-template-columns: 1fr 1fr;
+//    grid-column-gap:       5px;
+//    margin:                15px 0px;
+//    width:                 100%;
+//}

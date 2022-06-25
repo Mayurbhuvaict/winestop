@@ -1,0 +1,3 @@
+Country,State,City,Zip From,Zip To,Price From,Price To,Weight From,Wieght To,Qty From,Qty TO,Shipping Type,Rate,Price Per Product,Fixed Rate,FRPUW,Estimate Delivery
+All,All,,,,0,99999999,0,99999999,0,99999999,All,15,0,0,0,0
+United States,United States/Alaska,Alaska,,,0,99999999,0,99999999,0,99999999,All,5,0,0,0,0

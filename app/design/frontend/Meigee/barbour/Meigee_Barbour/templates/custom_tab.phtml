@@ -1,0 +1,8 @@
+<?php 
+	$meigee_helper = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral');
+	$product_custom_tab = $meigee_helper->getCustomThemeOptionCnf('barbour_product_view', 'product_custom_tab');
+	$product_custom_tab_block = $meigee_helper->getCustomThemeOptionCnf('barbour_product_view', 'product_custom_tab_block');
+?>
+<?php if ($product_custom_tab && $product_custom_tab_block != ''): ?>
+	<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($product_custom_tab_block)->toHtml();?>
+<?php endif ?>

@@ -1,0 +1,22 @@
+<div class="widget-metric">
+    <scope args="metric" render=""/>
+</div>
+<div class="widget-content">
+    <div class="widget-current-info">
+        <div class="widget-total">
+            <span text="getTotal()"/>
+        </div>
+        <div class="aw-arep__widget-difference-value" css="getAdditionalDifferenceClasses()">
+            <div class="difference-value-percent"><span text="getDifferenceValueInPercent()"/></div>
+            <div class="difference-value"><span text="getFormattedDifferenceValue()"/></div>
+        </div>
+    </div>
+    <div class="widget-compare-info">
+        <div class="widget-compare-total">
+            <span text="getCompareTotal()"/>
+        </div>
+    </div>
+    <div class="widget-link-to-report">
+        <a attr="href: getReportUrl()"><span translate="'View Report'"/></a>
+    </div>
+</div>

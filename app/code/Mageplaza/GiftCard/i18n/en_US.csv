@@ -1,0 +1,495 @@
+"Gift Card","Gift Card"
+#,#
+Date,Date
+Action,Action
+Balance,Balance
+"Amount Change","Amount Change"
+Detail,Detail
+Print,Print
+"Save and Send","Save and Send"
+"Save and Continue Edit","Save and Continue Edit"
+"Edit Gift Card '%1'","Edit Gift Card '%1'"
+"New Gift Card","New Gift Card"
+"Created At","Created At"
+Status,Status
+History,History
+"Gift Card Information","Gift Card Information"
+"Gift Code","Gift Code"
+"Code Pattern","Code Pattern"
+"Is Redeemable","Is Redeemable"
+Store,Store
+"Expires At","Expires At"
+"Order: %1","Order: %1"
+"Product: %1","Product: %1"
+"Pool: %1","Pool: %1"
+"Admin: %1","Admin: %1"
+"Created From","Created From"
+"Gift Code Information","Gift Code Information"
+"Sending Information","Sending Information"
+Delivery,Delivery
+"Delivery Method","Delivery Method"
+"Recipient Email","Recipient Email"
+"Phone Number","Phone Number"
+"Customer Email","Customer Email"
+Address,Address
+"Delivery Date","Delivery Date"
+Timezone,Timezone
+"Delivery Information","Delivery Information"
+" (Cancelled)"," (Cancelled)"
+" (Used)"," (Used)"
+N/A,N/A
+"Gift Codes","Gift Codes"
+"Edit Gift Code Pool '%1'","Edit Gift Code Pool '%1'"
+"New Gift Code Pool","New Gift Code Pool"
+"Apply the rule only if the following conditions are met (leave blank for all products).","Apply the rule only if the following conditions are met (leave blank for all products)."
+Conditions,Conditions
+"Gift Code Condition","Gift Code Condition"
+"Generate Gift Cards","Generate Gift Cards"
+"Pool Information","Pool Information"
+"Generate Type","Generate Type"
+"Download Sample File","Download Sample File"
+"Select File","Select File"
+"Only support file .csv","Only support file .csv"
+Import,Import
+"Gift Code(s)","Gift Code(s)"
+"Separated by line breaks","Separated by line breaks"
+Add,Add
+"Gift Card Qty","Gift Card Qty"
+Generate,Generate
+Code,Code
+"Created Date","Created Date"
+CSV,CSV
+"Excel XML","Excel XML"
+Delete,Delete
+"Are you sure you want to delete the selected code(s)?","Are you sure you want to delete the selected code(s)?"
+Name,Name
+"The gift cards of this pool cannot be used if the pool status is inactive.","The gift cards of this pool cannot be used if the pool status is inactive."
+"Can Inherit","Can Inherit"
+"If yes, when you change this pool information, the gift card information will be changed. Except status attribute","If yes, when you change this pool information, the gift card information will be changed. Except status attribute"
+"Can Redeem","Can Redeem"
+"Gift Code Pool Information","Gift Code Pool Information"
+"Edit Template '%1'","Edit Template '%1'"
+"New Template","New Template"
+Design,Design
+Images,Images
+"Template Information","Template Information"
+"Template Name","Template Name"
+"Allow Upload Image","Allow Upload Image"
+"Gift Card Title","Gift Card Title"
+"Font Family","Font Family"
+"Background Image","Background Image"
+"Gift Card Note","Gift Card Note"
+"Images (.gif, .jpg, .png)","Images (.gif, .jpg, .png)"
+"Add New Images","Add New Images"
+"Acceptable formats are jpg, png and gif.","Acceptable formats are jpg, png and gif."
+"Gift Cards","Gift Cards"
+"Gift Credit","Gift Credit"
+Codes,Codes
+"This gift code no longer exists.","This gift code no longer exists."
+"The gift card was deleted successfully.","The gift card was deleted successfully."
+"This code is disabled by Pool ""%1""","This code is disabled by Pool ""%1"""
+"Edit Gift Code","Edit Gift Code"
+"Create Gift Code","Create Gift Code"
+"Manage Gift Codes","Manage Gift Codes"
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+"Gift cards can't print.","Gift cards can't print."
+"A total of %1 record(s) have been sent.","A total of %1 record(s) have been sent."
+"Something went wrong while updating status for %1.","Something went wrong while updating status for %1."
+"A total of %1 record(s) have been updated.","A total of %1 record(s) have been updated."
+"Gift card is not sent. Please correct the delivery information.","Gift card is not sent. Please correct the delivery information."
+"The Gift Card Code has been saved successfully.","The Gift Card Code has been saved successfully."
+"Something went wrong while saving gift code.","Something went wrong while saving gift code."
+"An error occur. Please try again later.","An error occur. Please try again later."
+"Gift Card History","Gift Card History"
+Pools,Pools
+"This gift card pool no longer exists.","This gift card pool no longer exists."
+"There is no file: %file","There is no file: %file"
+"Edit Code Pool '#' . . ''","Edit Code Pool '#' . . ''"
+"Create New Code Pool","Create New Code Pool"
+"%1 code(s) have been created.","%1 code(s) have been created."
+"Something went wrong while creating gift cards. Please review the log and try again.","Something went wrong while creating gift cards. Please review the log and try again."
+"Pool is not defined","Pool is not defined"
+"Invalid date provided","Invalid date provided"
+"Duplicated gift code(s) ""%1""","Duplicated gift code(s) ""%1"""
+"Manage Gift Code Pools","Manage Gift Code Pools"
+"Something went wrong while updating status for pool '%1'.","Something went wrong while updating status for pool '%1'."
+"The Gift Code Pool has been saved successfully.","The Gift Code Pool has been saved successfully."
+"'Something went wrong while saving gift code pool.' .","'Something went wrong while saving gift code pool.' ."
+Templates,Templates
+"This template no longer exists.","This template no longer exists."
+"The template was deleted successfully.","The template was deleted successfully."
+"Create New Template","Create New Template"
+"Edit Template ""%1""","Edit Template ""%1"""
+"Manage Templates","Manage Templates"
+"This template does not exist.","This template does not exist."
+"The Template has been saved successfully.","The Template has been saved successfully."
+"Something went wrong while saving template.","Something went wrong while saving template."
+"We couldn't move this file: %1.","We couldn't move this file: %1."
+"Invalid Data.","Invalid Data."
+"Invalid gift card code 223.","Invalid gift card code 223."
+"Gift Card ""%1"" removed successfully.","Gift Card ""%1"" removed successfully."
+"Gift Card ""%1"" added successfully.","Gift Card ""%1"" added successfully."
+"Invalid gift card code.","Invalid gift card code."
+"Invalid gift card code. %1","Invalid gift card code. %1"
+"Gift Card ""%1"" is available.","Gift Card ""%1"" is available."
+"My Gift Cards","My Gift Cards"
+"Redeeming Gift Card ""%1"" successfully.","Redeeming Gift Card ""%1"" successfully."
+"Gift Card ""%1"" cannot be redeemed.","Gift Card ""%1"" cannot be redeemed."
+"'Invalid gift card code.' .","'Invalid gift card code.' ."
+"Notification Save Successfully.","Notification Save Successfully."
+"Customer does not exist.","Customer does not exist."
+"Invalid data.","Invalid data."
+"The gift card code ""%1"" is not valid.","The gift card code ""%1"" is not valid."
+"Invalid credit amount.","Invalid credit amount."
+"Cannot create gift card from gift product. Item id #%1. Invalid amount.","Cannot create gift card from gift product. Item id #%1. Invalid amount."
+"Gift card is not available for refund. Item id #%1","Gift card is not available for refund. Item id #%1"
+"Gift Card Image","Gift Card Image"
+"From: %1","From: %1"
+"To: %1","To: %1"
+"Expired Date: %1","Expired Date: %1"
+Image,Image
+Logo,Logo
+Title,Title
+From,From
+To,To
+Message,Message
+Value,Value
+Barcode,Barcode
+Note,Note
+"Expired Date","Expired Date"
+Template,Template
+"Sender Name","Sender Name"
+"Recipient Name","Recipient Name"
+"-- Please Select --","-- Please Select --"
+"The entity that was requested doesn't exist. Verify the entity and try again.","The entity that was requested doesn't exist. Verify the entity and try again."
+"Cart %1 doesn't contain products","Cart %1 doesn't contain products"
+"Could not apply coupon code","Could not apply coupon code"
+"Coupon code is not valid","Coupon code is not valid"
+"Could not delete coupon code","Could not delete coupon code"
+"Could not apply gift card %1","Could not apply gift card %1"
+"Gift Card is not valid","Gift Card is not valid"
+"Could not cancel gift card","Could not cancel gift card"
+"Could not apply gift credit","Could not apply gift credit"
+"Module is disabled.","Module is disabled."
+"Please setup Gift Card amount.","Please setup Gift Card amount."
+"Group amount must be number greater than 0","Group amount must be number greater than 0"
+"The value of attribute ""%1"" must be number greater than 0","The value of attribute ""%1"" must be number greater than 0"
+"Balance must be greater than or equal zero.","Balance must be greater than or equal zero."
+"Gift Card balance is not enough","Gift Card balance is not enough"
+"Can only update status to ""Active"" or ""Inactive""","Can only update status to ""Active"" or ""Inactive"""
+"Cannot update status for gift code ""%1""","Cannot update status for gift code ""%1"""
+Undefined,Undefined
+"Unable to generate gift code. Please check the setting and try again.","Unable to generate gift code. Please check the setting and try again."
+Permanent,Permanent
+Created,Created
+Updated,Updated
+Sent,Sent
+Spent,Spent
+Expired,Expired
+Redeemed,Redeemed
+Refunded,Refunded
+Reverted,Reverted
+"Created by: %1. Order: #%2","Created by: %1. Order: #%2"
+"Created by admin: %1","Created by admin: %1"
+"Created from Pool: %1","Created from Pool: %1"
+"Updated by: %1.","Updated by: %1."
+"Sent to customer by %1","Sent to customer by %1"
+"Sent to customer","Sent to customer"
+"Redeemed by: %1","Redeemed by: %1"
+"Order Refunded #%1","Order Refunded #%1"
+"Order #%1","Order #%1"
+"Spend for order #%1 by %2","Spend for order #%1 by %2"
+Active,Active
+Inactive,Inactive
+Pending,Pending
+Used,Used
+Cancelled,Cancelled
+"-- No Template --","-- No Template --"
+"Column <b>%1</b> not found","Column <b>%1</b> not found"
+"Invalid entity","Invalid entity"
+eGift,eGift
+Print-at-home,Print-at-home
+Mail,Mail
+Email,Email
+"Recipient email","Recipient email"
+"Phone Num.","Phone Num."
+"Recipient phone number","Recipient phone number"
+"Enter with country code prefix. Example: +1 for US phone number.","Enter with country code prefix. Example: +1 for US phone number."
+"You can print gift card on the confirmation email or the Gift Card in your account.","You can print gift card on the confirmation email or the Gift Card in your account."
+"Please input shipping address when checking out.","Please input shipping address when checking out."
+"Text Message","Text Message"
+"Print At Home","Print At Home"
+"Post Office","Post Office"
+"Delivery method is invalid.","Delivery method is invalid."
+"Please correct the recipient email.","Please correct the recipient email."
+"Please correct the delivery date.","Please correct the delivery date."
+"Please correct the timezone.","Please correct the timezone."
+"Something went wrong.","Something went wrong."
+"Range amount is incorrect, please choose your range amount again","Range amount is incorrect, please choose your range amount again"
+"Range amount is not allowed","Range amount is not allowed"
+"Please choose your amount again","Please choose your amount again"
+"%1 value must not be empty","%1 value must not be empty"
+Yes,Yes
+No,No
+"Only Unused","Only Unused"
+"Gift Card Amount","Gift Card Amount"
+Sender,Sender
+Recipient,Recipient
+"Delivery To","Delivery To"
+"Template Image","Template Image"
+Roboto,Roboto
+Open+Sans,Open+Sans
+Lato,Lato
+Montserrat,Montserrat
+Roboto+Condensed,Roboto+Condensed
+Source+Sans+Pro,Source+Sans+Pro
+Oswald,Oswald
+Raleway,Raleway
+Slabo+27px,Slabo+27px
+PT+Sans,PT+Sans
+Merriweather,Merriweather
+Roboto+Slab,Roboto+Slab
+Open+Sans+Condensed:300,Open+Sans+Condensed:300
+Ubuntu,Ubuntu
+Noto+Sans,Noto+Sans
+Poppins,Poppins
+Roboto+Mono,Roboto+Mono
+Playfair+Display,Playfair+Display
+Lora,Lora
+PT+Serif,PT+Serif
+Titillium+Web,Titillium+Web
+Muli,Muli
+Arimo,Arimo
+Fira+Sans,Fira+Sans
+PT+Sans+Narrow,PT+Sans+Narrow
+Nunito,Nunito
+Noto+Serif,Noto+Serif
+Inconsolata,Inconsolata
+Nanum+Gothic,Nanum+Gothic
+Crimson+Text,Crimson+Text
+"Invoice Created","Invoice Created"
+"Order Completed","Order Completed"
+"Auto Generate","Auto Generate"
+Manual,Manual
+Credit,Credit
+"Cannot redeem gift card. Gift Card ""%1"" does not available.","Cannot redeem gift card. Gift Card ""%1"" does not available."
+"Customer does not exists.","Customer does not exists."
+"Cannot save customer balance.","Cannot save customer balance."
+"Customer balance is not enough.","Customer balance is not enough."
+Admin,Admin
+"Changed By: %1","Changed By: %1"
+"Changed By Admin","Changed By Admin"
+"Redeemed From: %1","Redeemed From: %1"
+"Spend for order #%1","Spend for order #%1"
+"Refund on order #%1","Refund on order #%1"
+Refund,Refund
+"Revert on order #%1","Revert on order #%1"
+Revert,Revert
+"You canceled the gift card code.","You canceled the gift card code."
+"You used gift card code ""%1"".","You used gift card code ""%1""."
+"The gift code has been accepted.","The gift code has been accepted."
+"The gift code ""%1"" is not valid.","The gift code ""%1"" is not valid."
+"You canceled the gift code ""%1"".","You canceled the gift code ""%1""."
+"Cancel gift code fail.","Cancel gift code fail."
+"Your amount was successfully credited.","Your amount was successfully credited."
+"Credit amount for order fail.","Credit amount for order fail."
+"There is no sample file for this entity.","There is no sample file for this entity."
+"We found an invalid quantity to refund item ""%1"".","We found an invalid quantity to refund item ""%1""."
+"Range From","Range From"
+[WEBSITE],[WEBSITE]
+Amount,Amount
+Price,Price
+"Use Config Settings","Use Config Settings"
+"Associated Options","Associated Options"
+"Gift card design","Gift card design"
+"Gift card Information","Gift card Information"
+"Credit Balance","Credit Balance"
+"Add/Subtract Balance","Add/Subtract Balance"
+"Use negative number to subtract credit.","Use negative number to subtract credit."
+Change,Change
+Transactions,Transactions
+Apply,Apply
+"Gift Credit (%1)","Gift Credit (%1)"
+"Load From Exist Template","Load From Exist Template"
+"Load Template","Load Template"
+"Design Template","Design Template"
+"Upload Images","Upload Images"
+"Browse to find or drag image here","Browse to find or drag image here"
+"Delete image","Delete image"
+Hidden,Hidden
+"Alt Text","Alt Text"
+"Image Size","Image Size"
+"Image Resolution","Image Resolution"
+"Apply Gift Cards","Apply Gift Cards"
+Loading...,Loading...
+"Your Gift Card Will Be Expired In %day Day(s)","Your Gift Card Will Be Expired In %day Day(s)"
+"%name,","%name,"
+"Your gift card %code will be expired in %day day(s).","Your gift card %code will be expired in %day day(s)."
+"Your gift card information: ","Your gift card information: "
+%code,%code
+%balance,%balance
+%status,%status
+"Expires on","Expires on"
+%expired_date,%expired_date
+"Visit <a href=""%store_url"">%store_name</a> for using your gift card.","Visit <a href=""%store_url"">%store_name</a> for using your gift card."
+"Your credit balance update","Your credit balance update"
+"Your credit balance has been updated.","Your credit balance has been updated."
+"To view more details, please click <a href=""%giftcard_url"">here</a>","To view more details, please click <a href=""%giftcard_url"">here</a>"
+"The transaction detail:","The transaction detail:"
+"Transaction title","Transaction title"
+"Transaction amount","Transaction amount"
+"Current balance","Current balance"
+"Your Gift Card at %store_name","Your Gift Card at %store_name"
+"You have bought a gift card from %store_name.","You have bought a gift card from %store_name."
+"You have received a gift card from %sender for %store_name.","You have received a gift card from %sender for %store_name."
+"Please find the message from %sender below:","Please find the message from %sender below:"
+"Visit <a href=""%store_url"">%store_name</a> for checking gift card detail.","Visit <a href=""%store_url"">%store_name</a> for checking gift card detail."
+"Look forward to seeing you at our store","Look forward to seeing you at our store"
+"Your Gift Card has been updated","Your Gift Card has been updated"
+"Your gift card %code has been updated.","Your gift card %code has been updated."
+"Your Gift Card has been sent","Your Gift Card has been sent"
+"Your gift card has been sent to %recipient.","Your gift card has been sent to %recipient."
+"Your Gift Card Is Unused After %day Day(s)","Your Gift Card Is Unused After %day Day(s)"
+"The gift card which you sent to %recipient had not been used after %day day(s).","The gift card which you sent to %recipient had not been used after %day day(s)."
+"Please contact us or visit <a href=""%store_url"">%store_name</a> for sending gift card again.","Please contact us or visit <a href=""%store_url"">%store_name</a> for sending gift card again."
+"Please enter the gift card code","Please enter the gift card code"
+Cancel,Cancel
+"Choose from saved list","Choose from saved list"
+"Use Gift Credit","Use Gift Credit"
+"You are using ","You are using "
+"My current balance","My current balance"
+"Check/Redeem Gift Card","Check/Redeem Gift Card"
+"My Saved Gift Card","My Saved Gift Card"
+View,View
+Redeem,Redeem
+Remove,Remove
+"You have no saved gift card.","You have no saved gift card."
+"You have no transaction.","You have no transaction."
+"Notification Settings","Notification Settings"
+"Gift Card Update Notification","Gift Card Update Notification"
+"Update Balance Notification","Update Balance Notification"
+"Select Templates","Select Templates"
+"Or upload your photo","Or upload your photo"
+"Or upload your photo (.gif, .jpg, .png).","Or upload your photo (.gif, .jpg, .png)."
+"We don't recognize or support this file extension type.","We don't recognize or support this file extension type."
+"Enter sender name","Enter sender name"
+"Enter recipient name","Enter recipient name"
+"characters remaining","characters remaining"
+"Gift Card Size","Gift Card Size"
+"Field Size","Field Size"
+Width,Width
+Height,Height
+"Field Position","Field Position"
+Top,Top
+Left,Left
+"Custom Css","Custom Css"
+"Edit Field ""","Edit Field """
+Update,Update
+"Your credit was successfully applied.","Your credit was successfully applied."
+"Your gift card was successfully applied.","Your gift card was successfully applied."
+"Remove gift card successfully.","Remove gift card successfully."
+"Active Balance","Active Balance"
+"Expired At","Expired At"
+"Are you sure?","Are you sure?"
+"Sent From","Sent From"
+"Sender name","Sender name"
+"Sent To","Sent To"
+"Recipient name","Recipient name"
+"From: ","From: "
+"To: ","To: "
+"Mageplaza Gift Card","Mageplaza Gift Card"
+"Manage Gift Code","Manage Gift Code"
+"Manage Template","Manage Template"
+"Manage Gift Code Pool","Manage Gift Code Pool"
+"Customer Gift Card Tab","Customer Gift Card Tab"
+"General Configuration","General Configuration"
+"Module Enable","Module Enable"
+"Gift Code Pattern","Gift Code Pattern"
+"Enable Gift Card Credit","Enable Gift Card Credit"
+"Gift Card Can Be Redeemed","Gift Card Can Be Redeemed"
+"Gift Code Hidden Configuration","Gift Code Hidden Configuration"
+Enabled,Enabled
+"Show hidden code in the frontend","Show hidden code in the frontend"
+"Prefix Chars","Prefix Chars"
+"The number of prefix characters will not be hidden","The number of prefix characters will not be hidden"
+"Suffix Chars","Suffix Chars"
+"The number of suffix characters will note be hidden","The number of suffix characters will note be hidden"
+"Hidden Character","Hidden Character"
+"The character will replace the hidden code.","The character will replace the hidden code."
+"Gift Card Product Configuration","Gift Card Product Configuration"
+"Gift Card Lifetime","Gift Card Lifetime"
+"Enable Delivery Date","Enable Delivery Date"
+"Customer Can Select Timezone","Customer Can Select Timezone"
+"Buy Gift Card Product Process","Buy Gift Card Product Process"
+"Gift Card Fields Show On Item","Gift Card Fields Show On Item"
+"Create Gift Code(s) When","Create Gift Code(s) When"
+"Gift Card/Credit Checkout Configuration","Gift Card/Credit Checkout Configuration"
+"Show As Product Image","Show As Product Image"
+"If Yes, the uploaded image for Gift Card Product will be shown as the default product image on the View Cart Page and the Checkout Page.","If Yes, the uploaded image for Gift Card Product will be shown as the default product image on the View Cart Page and the Checkout Page."
+"Use Coupon Box To Apply Gift Card","Use Coupon Box To Apply Gift Card"
+"If not, another Gift Card box will be used.","If not, another Gift Card box will be used."
+"Can Use Multiple Gift Cards","Can Use Multiple Gift Cards"
+"Show Gift Card Summary On Total Block","Show Gift Card Summary On Total Block"
+"Can Use Gift Credit","Can Use Gift Credit"
+"Checkout Process","Checkout Process"
+"Can Use For Shipping Amount","Can Use For Shipping Amount"
+"Allow Refund Gift Card","Allow Refund Gift Card"
+"If yes, Gift Card amount will be add back to its balance after order refund.","If yes, Gift Card amount will be add back to its balance after order refund."
+"Gift Card Template Configuration","Gift Card Template Configuration"
+"Your default logo will be used on Gift Card (jpeg, gif, png)","Your default logo will be used on Gift Card (jpeg, gif, png)"
+"Maximum Message Character","Maximum Message Character"
+"If zero or empty, default '120' characters will be used.","If zero or empty, default '120' characters will be used."
+"Default Note","Default Note"
+"Email Configuration","Email Configuration"
+"Enable Email Notification","Enable Email Notification"
+"Email Sender","Email Sender"
+"Gift Card Email Template","Gift Card Email Template"
+"Email sent to recipient.","Email sent to recipient."
+"Send email to recipient when gift card is updated.","Send email to recipient when gift card is updated."
+"Gift Card Update Email Template","Gift Card Update Email Template"
+"Before Expired Notification","Before Expired Notification"
+"Before Expired Email Template","Before Expired Email Template"
+"Before Expired Day(s)","Before Expired Day(s)"
+"The number of day(s) before the gift card is expired.","The number of day(s) before the gift card is expired."
+"Notify Sender After Gift Card is Sent","Notify Sender After Gift Card is Sent"
+"Sender Confirmation Email Template","Sender Confirmation Email Template"
+"Gift Card Unused Notification","Gift Card Unused Notification"
+"Inform the sender after x day(s) if the gift card is unused.","Inform the sender after x day(s) if the gift card is unused."
+"Unused Notification Email Template","Unused Notification Email Template"
+"After Unused Day(s)","After Unused Day(s)"
+"The number of day(s) after the gift card is sent to recipient.","The number of day(s) after the gift card is sent to recipient."
+"Customer Balance Update Notification","Customer Balance Update Notification"
+"Update Balance Email Template","Update Balance Email Template"
+"SMS Configuration","SMS Configuration"
+"Enable SMS Delivery","Enable SMS Delivery"
+"If Yes, the purchaser can use this method to send gift card.","If Yes, the purchaser can use this method to send gift card."
+"Twilio Account SID","Twilio Account SID"
+"Sign up an account <a href=""https://www.twilio.com/console"" target=""_blank"">here</a>","Sign up an account <a href=""https://www.twilio.com/console"" target=""_blank"">here</a>"
+"Twilio Account Token","Twilio Account Token"
+"Sender Phone Number","Sender Phone Number"
+"You can buy and get the phone number <a href=""https://www.twilio.com/console/phone-numbers/search"" target=""_blank"">here</a>. <i>Example: +12172671060</i>","You can buy and get the phone number <a href=""https://www.twilio.com/console/phone-numbers/search"" target=""_blank"">here</a>. <i>Example: +12172671060</i>"
+"SMS Message","SMS Message"
+"Send sms to recipient when gift card is updated.","Send sms to recipient when gift card is updated."
+"The before expired day(s) will be get from Email Before Expired Day(s) configuration.","The before expired day(s) will be get from Email Before Expired Day(s) configuration."
+"Message Message","Message Message"
+"Create New Gift Code","Create New Gift Code"
+"All Store Views","All Store Views"
+"Store View","Store View"
+"Delete codes","Delete codes"
+"Delete selected codes?","Delete selected codes?"
+"Change status","Change status"
+"Send Gift Card(s)","Send Gift Card(s)"
+Send,Send
+ID,ID
+Order,Order
+Pool,Pool
+Edit,Edit
+"Create New Gift Code Pool","Create New Gift Code Pool"
+"Delete code pool","Delete code pool"
+"Delete selected code pools?","Delete selected code pools?"
+"Available Qty","Available Qty"
+"Created Time","Created Time"
+"Delete selected templates?","Delete selected templates?"
+Thumbnail,Thumbnail
+"Gift Card Condition","Gift Card Condition"
+Mageplaza_GiftCard/checkout/payment,Mageplaza_GiftCard/checkout/payment

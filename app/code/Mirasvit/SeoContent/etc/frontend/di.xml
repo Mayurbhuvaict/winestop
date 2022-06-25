@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\App\FrontControllerInterface">
+        <plugin name="mstSeoContentPutDefaultMeta" type="Mirasvit\SeoContent\Plugin\Frontend\Framework\App\Action\PutDefaultMetaPlugin" sortOrder="500"/>
+
+        <plugin name="mstSeoContentApplyMeta" type="Mirasvit\SeoContent\Plugin\Frontend\Framework\App\Action\ApplyMetaPlugin" sortOrder="1000"/>
+
+        <plugin name="mstSeoContentApplyProductContent" type="Mirasvit\SeoContent\Plugin\Frontend\Framework\App\Action\ApplyProductContentPlugin" sortOrder="1010"/>
+
+        <plugin name="mstSeoContentApplyCategoryContent" type="Mirasvit\SeoContent\Plugin\Frontend\Framework\App\Action\ApplyCategoryContentPlugin" sortOrder="1020"/>
+    </type>
+
+    <type name="Magento\Framework\View\TemplateEngineInterface">
+        <plugin name="mstSeoContentAddSeoDescription" type="Mirasvit\SeoContent\Plugin\Frontend\Framework\View\TemplateEngine\AddSeoDescriptionPlugin" sortOrder="1000"/>
+    </type>
+
+    <type name="Magento\Framework\View\Page\Title">
+        <plugin name="mstSeoContent\ApplyMetaTitle" type="Mirasvit\SeoContent\Plugin\Frontend\Framework\View\Page\Title\ApplyMetaTitlePlugin" sortOrder="1000"/>
+    </type>
+</config>

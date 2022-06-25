@@ -1,0 +1,41 @@
+.aw-arep__data-grid-conditions-wrap {
+    .admin__fieldset-wrapper-content .admin__fieldset,
+    .admin__field + .admin__field,
+    .admin__fieldset > .admin__field,
+    .admin__fieldset > .admin__field > .admin__field-control {
+        padding: 0;
+        margin: 0;
+    }
+    .admin__fieldset > .admin__field > .admin__field-control,
+    .admin__control-select,
+    ._has-datepicker.admin__control-text {
+        width: 100%;
+    }
+
+    .admin__control-table {
+        width: auto;
+
+        td {
+            background-color: #fff;
+            width: 300px;
+
+            &.width-very-small {
+                width: 30px;
+            }
+            &.width-small {
+                width: 120px;
+            }
+            &.width-medium {
+                width: 180px;
+            }
+        }
+    }
+
+    .admin__control-text {
+        padding: 0.5rem 1rem 0.5rem;
+    }
+}
+
+.admin__field:not(.admin__field-option) > .admin__field-label:before {
+    display: none;
+}

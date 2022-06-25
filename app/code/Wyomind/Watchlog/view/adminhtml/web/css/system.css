@@ -1,0 +1,42 @@
+/*
+ * Copyright © 2019 Wyomind. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+table.wl-cron {
+    width:100%;
+    border-collapse: collapse;
+}
+
+table.wl-cron th {
+    background: #524d49 none repeat scroll 0 0 !important;
+    color: white;
+    padding: 5px;
+}
+
+table.wl-cron {
+    border-right: 1px solid #f7f3eb;
+}
+
+table.wl-cron tr > td {
+    border-left:1px solid #f7f3eb;
+    border-right:none !important;
+}
+
+table.wl-cron td {
+    border-right:1px solid #f7f3eb;
+    border-bottom:1px solid #f7f3eb;
+}
+
+table.wl-cron td.hours {
+    padding:0;
+    border:none !important;
+}
+
+table.wl-cron label.data-grid-checkbox-cell-inner {
+    padding:3px;
+}
+
+table.wl-cron label.data-grid-checkbox-cell-inner label:before {
+    margin-right: 5px !important;
+}

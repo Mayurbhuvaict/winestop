@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <localshipping>
+                <active>1</active>
+                <sallowspecific>0</sallowspecific>
+                <model>Winestop\Custom\Model\Carrier\Shipping</model>
+                <name>Local delivery</name>                
+                <title>Local Delivery</title>                
+                <handling_type>F</handling_type>
+            </localshipping>            
+        </carriers>
+    </default>
+</config>

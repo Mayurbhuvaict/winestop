@@ -1,0 +1,678 @@
+/* Fonts */
+html body,
+body .btn,
+body button.action,
+.sidebar .block li a.action.tocart,
+.actions-toolbar a.primary,
+.sidebar .block.block-compare  .actions-toolbar .action,
+.sidebar .block.block-wishlist .actions-toolbar a.action.details,
+.sidebar .block.block-reorder  .actions-toolbar .secondary a.action.view,
+.sidebar .block.block-reorder  .actions-toolbar .primary button.action.tocart,
+body .cart-container .cart.actions a.action.continue,
+body .weltpixel-quickview,
+button.action-primary,
+button.action-secondary,
+body.checkout-index-index button[type="submit"],
+.weltpixel_quickview-catalog_product-view button.action,
+.weltpixel-quickview-catalog-product-view button.action,
+.product-info-main .actions button,
+.page-header .options-wrapper .options-dropdown .header-switcher .label,
+.price,
+.product-labels span,
+.page-header .header-info,
+.filter-options-title,
+.sidebar .block.filter .options dt,
+.sidebar .block.filter ol li a,
+.page-header .header-custom-block-wrapper,
+.page-header .action.nav-toggle,
+.page-header .header-switcher ul li a,
+.page-header .header-switcher ul li span,
+.page-header .header-switcher .switcher-trigger span,
+.nav-sections .switcher,
+.nav-sections .links li a ,
+.page-header .customer-name .user-icon,
+.customer-welcome .customer-name,
+.header-wrapper .navbar-collapse.collapse a.level-top,
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body .h1,
+body .h2,
+body .h3,
+body .h4,
+body .h5,
+body .h6,
+.product.data.items > .item.title > .switch,
+.block-minicart .subtotal,
+body .subscribe-block .block-title,
+.parallax-banners-wrapper .banner-content .title,
+.parallax-banners-wrapper .banner-content .subtitle,
+.parallax-banners-wrapper .banner-content .text,
+#home-slider .owl-item .title,
+.page-title,
+.page-title h1,
+#tabs .nav-tabs li a,
+.related .block-actions .action,
+.reviews-wrapper .review-title,
+#popup-block .block.newsletter .title,
+.customer-review.view .review-details .title,
+.customer-review.view .review-title,
+.block-collapsible-nav-title,
+.sidebar .block li a,
+.sidebar .block li strong,
+.block-reviews-dashboard ol li .product-name a,
+.table-caption,
+.multicheckout .block .title,
+.checkout-container .opc-progress-bar-item > span:after,
+.opc-wrapper .step-title,
+.opc-block-shipping-information .shipping-information-title,
+.opc-block-summary > .title,
+.checkout-agreements-items .checkout-agreements-item-title,
+.checkout-payment-method .payment-method-title,
+.checkout-payment-method .payment-option-title .action-toggle,
+.footer .footer-block-title,
+.subscribe-block .block-title,
+.accordion-list .accordion-item .accordion-title,
+.products-grid .product-item-name,
+.products-list .product-item-name,
+body .page-header.cart-header .page-title,
+.sidebar .block.block-compare  .actions-toolbar .action,
+.sidebar .block.block-wishlist .actions-toolbar a.action.details,
+.sidebar .block.block-reorder  .actions-toolbar .secondary a.action.view,
+.sidebar .block.block-reorder  .actions-toolbar .primary button.action.tocart,
+.cart-summary .block > .title,
+.table.totals caption.table-caption,
+.sidebar .block .block-title,
+.block-title,
+.sidebar .block .title,
+.block-collapsible-nav-title,
+.cart-summary #block-shipping .title,
+body .page-header .checkout-header .page-title,
+.minicart-items .product-item-name,
+.product-info-main .product-options-wrapper .label,
+.product-info-main .product-options-wrapper .swatch-attribute-label,
+body .swatch-attribute-selected-option,
+.cat-container .text-banner .title,
+.listing-banner-wrapper .listing-banner .subtitle,
+.listing-banner-wrapper .listing-banner .title {font-family: 'Barlow', sans-serif;}
+
+
+
+
+body[class*='blog-'] .sidebar .block,
+.catalogsearch-result-index .sidebar .block,
+.catalogsearch-advanced-result .sidebar-wrapper,
+.catalog-category-view .sidebar .block,
+.sidebar.right-sidebar .meigee-instagram-widget,
+body[class*='blog-'] .right-sidebar.sidebar .block,
+.catalogsearch-result-index .right-sidebar.sidebar .block,
+.catalogsearch-advanced-result .right-sidebar.sidebar .block,
+.catalog-category-view .right-sidebar.sidebar .block {
+  padding: 20px 0;
+}
+body[class*='blog-'] .sidebar-wrapper,
+.catalogsearch-result-index .sidebar-wrapper,
+.catalogsearch-advanced-result .sidebar-wrapper,
+.catalog-category-view .sidebar-wrapper,
+body[class*='blog-'] .right-sidebar .sidebar-wrapper,
+.catalogsearch-result-index .right-sidebar .sidebar-wrapper,
+.catalogsearch-advanced-result .right-sidebar .sidebar-wrapper,
+.catalog-category-view .right-sidebar .sidebar-wrapper {
+  margin: 0;
+}
+body[class*='blog-'] .sidebar:not(.sidebar-wrapper),
+.catalogsearch-result-index .sidebar:not(.sidebar-wrapper),
+.catalogsearch-advanced-result .sidebar:not(.sidebar-wrapper),
+.catalog-category-view .sidebar:not(.sidebar-wrapper),
+body[class*='blog-'].page-layout-3columns .sidebar-wrapper,
+.catalogsearch-result-index.page-layout-3columns .sidebar-wrapper,
+.catalogsearch-advanced-result.page-layout-3columns .sidebar-wrapper,
+.catalog-category-view.page-layout-3columns .sidebar-wrapper {
+  background-color: transparent;
+}
+.page-layout-3columns .sidebar .block {
+  margin-left: 0;
+  margin-right: 0;
+}
+body[class*='blog-'].page-layout-2columns-left .main-container .content-inner,
+.catalogsearch-result-index.page-layout-2columns-left .main-container .content-inner,
+.catalogsearch-advanced-result.page-layout-2columns-left .main-container .content-inner,
+.catalog-category-view.page-layout-2columns-left .main-container .content-inner {
+  padding-left: 20px;
+}
+body[class*='blog-'].page-layout-2columns-right .main-container .content-inner,
+.catalogsearch-result-index.page-layout-2columns-right .main-container .content-inner,
+.catalogsearch-advanced-result.page-layout-2columns-right .main-container .content-inner,
+.catalog-category-view.page-layout-2columns-right .main-container .content-inner {
+  padding-right: 20px;
+}
+
+body.boxed-layout .content-wrapper > .container,
+.boxed-layout .breadcrumbs-wrapper .container {border-color: transparent;}
+
+/* Colors: */
+/* Skin Color 1 */
+body a,
+.skincolor,
+.header.links li.authorization-link a,
+.customer-welcome .customer-name,
+ul.breadcrumb li a:hover,
+body .breadcrumbs > .items li a:hover,
+.products-list .actions-secondary a:hover,
+.related .block-actions .action:hover,
+.reviews-wrapper .review-author strong,
+.reviews-actions a:hover,
+body .swatch-attribute .swatch-option:not(.disabled):hover,
+body .swatch-attribute.size .swatch-option.selected,
+body .swatch-attribute.manufacturer .swatch-option.selected,
+.authentication-wrapper .action-auth-toggle:hover,
+.sidebar .block li a.delete:hover,
+.page-header  .header-info li i,
+.price {color: #222;}
+
+.skincolor-bg,
+.minicart-wrapper .title-cart.active .counter-number,
+#home-slider .owl-nav div:hover,
+.product-labels span.label-sale,
+.cms-no-route .page-not-found .btn:hover,
+.ekko-lightbox-nav-overlay a i:hover,
+body .subscribe-block .newsletter .btn.btn-primary:hover {background-color: #222;}
+
+
+.sidebar .block.block-reorder  .actions-toolbar .primary button.action.tocart,
+.sidebar .block.block-compare .actions-toolbar .primary a.action,
+body .btn.btn-primary,
+body .btn.btn-primary.type-2:hover,
+body .btn.btn-primary.type-2:active,
+body .btn.btn-primary.type-2:focus,
+body .btn.btn-primary.type-2.hover,
+body .btn.btn-primary.type-2.active,
+body .btn.btn-primary.type-2.focus,
+body .btn.btn-primary.type-2.disabled:hover,
+body .btn.btn-primary.type-2[disabled]:hover,
+body fieldset[disabled] .btn.btn-primary.type-2:hover,
+body .btn.btn-primary.type-2.disabled:focus,
+body .btn.btn-primary.type-2[disabled]:focus,
+body fieldset[disabled] .btn.btn-primary.type-2:focus,
+body .btn.btn-primary.type-2.disabled.focus,
+body .btn.btn-primary.type-2[disabled].focus,
+body fieldset[disabled] .btn.btn-primary.type-2.focus,
+.weltpixel_quickview-catalog_product-view button.action.primary:hover,
+.weltpixel_quickview-catalog_product-view button.action.primary:active,
+.weltpixel_quickview-catalog_product-view button.action.primary:focus,
+.weltpixel_quickview-catalog_product-view button.action.primary.hover,
+.weltpixel_quickview-catalog_product-view button.action.primary.active,
+.weltpixel_quickview-catalog_product-view button.action.primary.focus,
+.weltpixel_quickview-catalog_product-view button.action.primary.disabled:hover,
+.weltpixel_quickview-catalog_product-view button.action.primary[disabled]:hover,
+.weltpixel_quickview-catalog_product-view button.action.primary.disabled:focus,
+.weltpixel_quickview-catalog_product-view button.action.primary[disabled]:focus,
+.weltpixel_quickview-catalog_product-view button.action.primary.disabled.focus,
+.weltpixel_quickview-catalog_product-view button.action.primary[disabled].focus,
+.weltpixel-quickview-catalog-product-view button.action.primary:hover,
+.weltpixel-quickview-catalog-product-view button.action.primary:active,
+.weltpixel-quickview-catalog-product-view button.action.primary:focus,
+.weltpixel-quickview-catalog-product-view button.action.primary.hover,
+.weltpixel-quickview-catalog-product-view button.action.primary.active,
+.weltpixel-quickview-catalog-product-view button.action.primary.focus,
+.weltpixel-quickview-catalog-product-view button.action.primary.disabled:hover,
+.weltpixel-quickview-catalog-product-view button.action.primary[disabled]:hover,
+.weltpixel-quickview-catalog-product-view button.action.primary.disabled:focus,
+.weltpixel-quickview-catalog-product-view button.action.primary[disabled]:focus,
+.weltpixel-quickview-catalog-product-view button.action.primary.disabled.focus,
+.weltpixel-quickview-catalog-product-view button.action.primary[disabled].focus,
+body .btn.btn-primary.light.type-2:hover,
+body .btn.btn-primary.light.type-2:active,
+body .btn.btn-primary.light.type-2:focus,
+body .btn.btn-primary.light.type-2.hover,
+body .btn.btn-primary.light.type-2.active,
+body .btn.btn-primary.light.type-2.focus,
+body .btn.btn-primary.light.type-2.disabled:hover,
+body .btn.btn-primary.light.type-2[disabled]:hover,
+body .btn.btn-primary.light.type-2.disabled:hover,
+body .btn.btn-primary.light.type-2[disabled]:hover,
+body fieldset[disabled] .btn.btn-primary.light.type-2:hover,
+body .btn.btn-primary.light.type-2.disabled:focus,
+body .btn.btn-primary.light.type-2[disabled]:focus,
+body fieldset[disabled] .btn.btn-primary.light.type-2:focus,
+body .btn.btn-primary.light.type-2.disabled.focus,
+body .btn-primary[disabled].light.type-2.focus,
+body fieldset[disabled] .btn.btn-primary.light.type-2.focus,
+.products-list .actions-secondary a:hover i,
+#popup-block .block.newsletter button{
+	background-color: #222;
+	border-color: #222;
+}
+.label-type-4 > span.label-sale:after {
+  border-bottom-color: #222;
+}
+.label-type-4 > span.label-sale:before {
+  border-top-color: #222;
+}
+.label-type-4 > span + span.label-sale:before {
+  border-top-color: #222;
+}
+.label-type-4 > span + span.label-sale:after {
+  border-bottom-color: #222;
+}
+
+
+/* Skin Color 2 */
+body a:hover,
+body a:focus,
+.skincolor-2,
+.page-header .header-switcher .options .action.toggle:hover,
+.page-header .header-switcher .options .action.toggle.active,
+.header.links li.authorization-link a:hover,
+.page-header .customer-name-wrapper + .links li a i,
+.page-header .customer-name-wrapper + .links li a:hover,
+.customer-welcome .customer-name.active,
+.customer-welcome .customer-name:hover,
+.header-wrapper .header.links .customer-menu li a:hover,
+.header-wrapper .header.links .customer-menu li.authorization-link a:hover,
+.navigation .level0 .submenu a:hover,
+.navigation .level0 .submenu a.ui-state-focus,
+.navigation .level0 .submenu .active > a,
+.minicart-items .action.edit:hover,
+.minicart-items .action.delete:hover,
+.page-header .custom-wish-link a:hover,
+.page-header .custom-wish-link a:focus,
+.page-header .custom-wish-link a:active,
+.price-box .special-price .price,
+.product-info-main .title-wrapper .add-review:hover,
+#popup-block .modal-header .close:hover i,
+.account .content-inner .product-item-name a:hover,
+.account .content-inner a:hover,
+.block-dashboard-addresses .block-title a :hover,
+.block-dashboard-info .block-title a i:hover,
+.box .box-title a i:hover,
+#my-orders-table a:hover,
+#shopping-cart-table tbody tr td.actions a:hover,
+.checkout-methods-items li a:hover,
+.modal-open .modal.ekko-lightbox .modal-header .close:hover:before,
+.lightbox-button:hover,
+.sidebar .block.filter ol li a:hover,
+.toolbar .modes strong i,
+.page-header .options-wrapper .options-dropdown .header.links li.authorization-link a:hover,
+.page-header .options-wrapper .options-dropdown .header.links li a:hover,
+.special-price .price {color: #ea3636;}
+
+.skincolor-2-bg,
+.page-header .customer-name-wrapper + .links li a .hover-divider,
+.owl-nav div:hover,
+.toolbar .toolbar-sorter .sorter-action:hover {background-color: #ea3636;}
+
+.sidebar .block.block-compare  .actions-toolbar .action:hover,
+.sidebar .block.block-wishlist .actions-toolbar a.action.details:hover,
+.sidebar .block.block-reorder  .actions-toolbar .secondary a.action.view:hover,
+.sidebar .block.block-reorder  .actions-toolbar .primary button.action.tocart:hover,
+body button.action.primary:hover,
+body button.action.primary:focus,
+body button.action.primary:active,
+body .btn.btn-primary:hover,
+body .btn.btn-primary:active,
+body .btn.btn-primary:focus,
+body .btn.btn-primary.hover,
+body .btn.btn-primary.active,
+body .btn.btn-primary.focus,
+body .btn.btn-primary.disabled:hover,
+body .btn.btn-primary[disabled]:hover,
+body fieldset[disabled] .btn.btn-primary:hover,
+body .btn.btn-primary.disabled:focus,
+body .btn.btn-primary[disabled]:focus,
+body fieldset[disabled] .btn.btn-primary:focus,
+body .btn.btn-primary.disabled.focus,
+body .btn.btn-primary[disabled].focus,
+body fieldset[disabled] .btn.btn-primary.focus,
+body .weltpixel-quickview:hover,
+body .weltpixel-quickview:active,
+body .weltpixel-quickview:focus,
+body .weltpixel-quickview.hover,
+body .weltpixel-quickview.active,
+body .weltpixel-quickview.focus,
+body .weltpixel-quickview.disabled:hover,
+body .weltpixel-quickview[disabled]:hover,
+body .weltpixel-quickview.disabled:focus,
+body .weltpixel-quickview[disabled]:focus,
+body .weltpixel-quickview.disabled.focus,
+body .weltpixel-quickview[disabled].focus,
+body .btn.btn-primary.type-2,
+.weltpixel-quickview-catalog-product-view button.action,
+.weltpixel_quickview-catalog_product-view button.action,
+body .btn.btn-primary.light:hover,
+body .btn.btn-primary.light:active,
+body .btn.btn-primary.light:focus,
+body .btn.btn-primary.light.hover,
+body .btn.btn-primary.light.active,
+body .btn.btn-primary.light.focus,
+body .btn.btn-primary.light.disabled:hover,
+body .btn.btn-primary.light[disabled]:hover,
+body .btn.btn-primary.light.disabled:hover,
+body .btn.btn-primary.light[disabled]:hover,
+body fieldset[disabled] .btn.btn-primary.light:hover,
+body .btn.btn-primary.light.disabled:focus,
+body .btn.btn-primary.light[disabled]:focus,
+body fieldset[disabled] .btn.btn-primary.light:focus,
+body .btn.btn-primary.light.disabled.focus,
+body .btn-primary[disabled].light.focus,
+body fieldset[disabled] .btn.btn-primary.light.focus,
+#popup-block .block.newsletter button:hover,
+#popup-block .block.newsletter button:active,
+#popup-block .block.newsletter button:focus,
+#popup-block .block.newsletter button.hover,
+#popup-block .block.newsletter button.active,
+#popup-block .block.newsletter button.focus,
+#popup-block .block.newsletter button.disabled:hover,
+#popup-block .block.newsletter button[disabled]:hover,
+#popup-block .block.newsletter fieldset[disabled] .btn:hover,
+#popup-block .block.newsletter button.disabled:focus,
+#popup-block .block.newsletter button[disabled]:focus,
+#popup-block .block.newsletter fieldset[disabled] .btn:focus,
+#popup-block .block.newsletter button.disabled.focus,
+#popup-block .block.newsletter button[disabled].focus,
+#popup-block .block.newsletter fieldset[disabled] .btn.focus,
+body .banner .btn-default:hover,
+body .banner .btn-default:active,
+.opc button.action:hover,
+.opc button.action:focus,
+.opc button.action:active{
+	background-color: #ea3636;
+	border-color: #ea3636;
+}
+
+body .btn,
+body button.action,
+.sidebar .block li a.action.tocart,
+.actions-toolbar a.primary,
+.sidebar .block.block-compare .actions-toolbar .action,
+.sidebar .block.block-wishlist .actions-toolbar a.action.details,
+.sidebar .block.block-reorder .actions-toolbar .secondary a.action.view,
+.sidebar .block.block-reorder .actions-toolbar .primary button.action.tocart,
+body .cart-container .cart.actions a.action.continue,
+body .weltpixel-quickview,
+button.action-primary,
+button.action-secondary,
+body.checkout-index-index button[type="submit"],
+.weltpixel-quickview-catalog-product-view button.action,
+.weltpixel_quickview-catalog_product-view button.action,
+.product-info-main .actions button {
+	border-radius: 0;
+	text-transform: uppercase;
+	font-size: 11px;
+	font-weight: 600;
+}
+body #home-slider .btn,
+body .text-banner .banner-content .btn {
+	padding-left: 35px;
+	padding-right: 35px;
+}
+.product-labels span.label-sale {color: #fff; background-color: #ea3636;}
+.product-labels span {color: #fff; background-color: #222;}
+.sidebar .block.filter .swatch-attribute-options .swatch-option.text:hover {background-color: #ea3636; border-color: #ea3636; color: #fff;}
+.price {font-size: 14px;}
+.products-grid .product-item-name a,
+.products-list .product-item-name a {font-size: 13px; letter-spacing: 0;}
+.block-title strong,
+.sidebar .block .block-title strong,
+.block-collapsible-nav-title strong,
+.breadcrumbs-wrapper.type-2 .page-title h1, 
+.breadcrumbs-wrapper.type-2 .page-title h2,
+.product-info-main .page-title {font-weight: 600;}
+.label-type-2 span {line-height: 16px;}
+
+/*Header*/
+.wide-layout .header-wrapper .menu-wrapper,
+.boxed-layout .header-wrapper .menu-wrapper .menu-inner {border-bottom: 2px solid #ea3636; padding-top: 10px; padding-bottom: 10px; border-top: none;}
+.page-header .middle-block .middle-block-inner {padding-top: 18px;}
+.page-header.header-9  {color: rgba(0,0,0,0.3);}
+.page-header.header-9 .center-block {float: none; display: inline-block; text-align: center;}
+.page-header.header-9 .panel {float: none; display: inline-block;}
+.page-header.header-9 .right-block {float: right; text-align: right;}
+/*Search*/
+.header-wrapper .page-header.header-9 .block-search.type-2 .search-button {color: #ccc;}
+.header-wrapper .page-header.header-9 .block-search .input-group {background-color: rgba(0,0,0,0.0); border-radius: 0; border-bottom: 1px solid rgba(0,0,0,0.1); width: 100%;}
+.header-wrapper .page-header.header-9 .block-search .search-icon {display: none !important;}
+.header-wrapper .page-header.header-9 .block-search .btn i {display: inline-block; vertical-align: middle; font-size: 16px; text-transform: none;}
+.page-header.header-9 .block-search .mobile-search-btn {
+	position: absolute;
+	opacity: 1;
+	display: block !important;
+	z-index: 99;
+	overflow: visible;
+	border-radius: 0;
+	color: rgba(0,0,0,0.2);
+	padding: 0 12px; 
+}
+.page-header.header-9 .block-search .input-group input {padding-left: 50px;}
+.header-wrapper .page-header.header-9 .block-search .action-btn.visible-xs {display: table-cell !important;}
+.header-wrapper .page-header.header-9 .block-search .action-btn.visible-xs .btn {border-radius: 0;}
+.header-wrapper .page-header.header-9 .block-search .action-btn.hidden-xs {display: none !important;}
+/*Cart*/
+.minicart-wrapper .title-cart {color: rgba(0,0,0,0.3); padding-left: 15px; padding-right: 15px; text-transform: uppercase; font-size: 13px; font-weight: 600;}
+.minicart-wrapper .title-cart .counter-number {margin-left: 10px; background-color: #ea3636; color: #fff; line-height: 22px;}
+.minicart-wrapper .title-cart.active .counter-number,
+.minicart-wrapper .title-cart:hover .counter-number {background-color: #ea3636; color: #fff;}
+.minicart-wrapper {margin-left: 0;}
+.minicart-wrapper .title-cart:hover,
+.minicart-wrapper .title-cart.active {background-color: #fff; color: rgba(0,0,0,0.3);}
+/*Account*/
+.page-header .options-wrapper .options-block { margin-right: 6px; padding-left: 15px; padding-right: 15px; text-transform: uppercase; font-size: 13px; font-weight: 600;}
+.page-header .options-wrapper .options-block span {position: relative; top: -0.5px;}
+.page-header .options-wrapper .options-block:hover {background-color: #fff; color: rgba(0,0,0,0.3);}
+.page-header .options-wrapper .options-block i {top: 0;}
+@-moz-document url-prefix() {
+  .page-header .options-wrapper .options-block span {top: -1px;}
+  .page-header .options-wrapper .options-block span i {position: relative; top: 1px;}
+}
+/*Menu*/
+.header-wrapper .page-header.header-9  .toggle-nav {float: none; width: 100%; text-align: center; border-radius: 0;}
+.header-wrapper .page-header.header-9 .navbar-default {width: auto; float: none; display: inline-block; margin-bottom: -4px;}
+.header-wrapper .navbar-collapse.collapse a.level-top.ui-state-focus,
+.header-wrapper .navbar-collapse.collapse a.level-top.ui-state-active,
+.header-wrapper .navbar-collapse.collapse li.active > a.level-top,
+.header-wrapper .navbar-collapse.collapse li.active > a.level-top.ui-state-active,
+.header-wrapper .navbar-collapse.collapse li.active > a.level-top.ui-state-focus {
+	background-color: rgba(0,0,0,0.06);
+	color: #ea3636;
+	opacity: 1;
+}
+.header-wrapper .navbar-collapse.collapse a.level-top {
+	color: rgba(0,0,0,0.8);
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: 13px;
+	padding: 12px;
+}
+ul.topmenu li.level0.parent a.level-top:after {border-top-color: rgba(0,0,0,0.3);}
+#sticky-header .navbar-collapse.collapse a.level-top {font-weight: 600;	font-size: 13px;}
+/*Text blocks*/
+.barbour-cloth-3-icon {
+  display: inline-block;
+  background-image: url('../../images/barbour_cloth_3_icons.png');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  height: 16px;
+  width: 16px;
+}
+.barbour-cloth-3-icon.airplane {background-position: 0 0;}
+.barbour-cloth-3-icon.customer-service {background-position: -16px 0;}
+.barbour-cloth-3-icon.gift {background-position: -32px 0;}
+.barbour-cloth-3-icon.sale {background-position: -48px 0;}
+
+.text-blocks-wrapper {padding: 0 25px;}
+.text-blocks-wrapper .text-block {position: relative;}
+.text-blocks-wrapper .text-block .media-left {min-width: 56px; vertical-align: middle; position: relative; top: 3px; padding-left: 0; padding-right: 15px; padding-left: 25px;}
+.text-blocks-wrapper .text-block .media-body {vertical-align: middle;}
+.text-blocks-wrapper .text-block h4 {margin-bottom: 0; font-weight: 400; font-size: 12px; color: rgba(0,0,0,0.6); text-transform: uppercase; line-height: 20px;}
+/*Home slider*/
+#home-slider .owl-item .slide-container,
+#home-slider .owl-item .slide-container.slide-skin-2,
+#home-slider .owl-item .slide-container.slide-skin-3 {text-align: center; left: 88px; right: auto; bottom: auto; top: 40%; }
+#home-slider .owl-item .slide-container.slide-skin-2 {left: 165px; top: 48%;}
+#home-slider .owl-item .slide-container.slide-skin-3 {left: 118px; top: 41%;}
+#home-slider .owl-item .subtitle,
+#home-slider .owl-item .slide-container.slide-skin-2 .subtitle {color: #ea3636; font-size: 11px; font-weight: 400; letter-spacing: 2px; margin-bottom: 8px;}
+#home-slider .owl-item .title,
+#home-slider .owl-item .slide-container.slide-skin-2 .title {color: rgba(0,0,0,0.8); font-size: 48px; line-height: 50px; letter-spacing: -1px; text-transform: uppercase; font-weight: 600;}
+#home-slider .owl-item .btn {margin-top: 37px;}
+#home-slider .owl-item .btn i {font-size: 10px; margin-left: 4px;}
+#home-slider .owl-nav div.owl-prev {left: 30px; top: 30px;}
+#home-slider .owl-nav div.owl-next {left: 62px; top: 30px;}
+#home-slider .owl-nav div {line-height: 27px;}
+#home-slider .owl-nav div:hover {background-color: #ea3636; color: #fff;}
+#home-slider.owl-theme .owl-dots {top: 30px; right: 30px; bottom: auto; left: auto;}
+#home-slider.owl-theme .owl-dots .owl-dot {background-color: rgba(0,0,0,0.2);}
+#home-slider.owl-theme .owl-dots .owl-dot.active,
+#home-slider.owl-theme .owl-dots .owl-dot:hover {background-color: rgba(0,0,0,0.8);}
+/*Text-banners*/
+.text-banners-block .text-banner {background-color: #f5f5f5;}
+.text-banners-block .text-banner.item-2 {background-color: #222;}
+.text-banners-block .text-banner.item-3 {background-color: #ea3636;}
+.text-banners-block .text-banner.item-1 .title {color: #222;}
+.text-banners-block .btn.btn-primary,
+.text-banners-block .text-banner.item-3 .btn {background-color: #222; color: #fff;}
+.text-banners-block .text-banner.item-2 .btn {color: #222;}
+/*Large banners*/
+.text-banner {position: relative;}
+.text-banner .banner-content {position: absolute; color: rgba(0,0,0,0.8); text-align: center;}
+.text-banner .banner-content .subtitle {display: block; color: rgba(0,0,0,0.5); font-size: 11px; font-weight: 400; line-height: 1; text-transform: uppercase; margin-bottom: 18px;}
+.text-banner .banner-content.white .subtitle,
+.text-banner .banner-content.white {color: #fff;}
+.text-banner .banner-content .subtitle.red {color: #ea3636;}
+.text-banner .banner-content .title {display: block; color: inherit; font-size: 24px; line-height: 30px; font-weight: 600; text-transform: uppercase; margin-bottom: 25px;}
+.text-banner .banner-content .btn i {font-size: 10px; margin-left: 4px;}
+.text-banner.one .banner-content {top: 50%; transform: translateY(-50%); left: 0; right: 28%;}
+.text-banner.two .banner-content {top: 30px; left: 0; right: 0;}
+.text-banner.three .banner-content {top: 90px; left: 4%; right: 0;}
+.text-banner.four .banner-content {top: 50%; transform: translateY(-50%); left: 0; right: 0;}
+.text-banner.five .banner-content {top: 40px; left: 0; right: 0;}
+.text-banner.six .banner-content {top: auto; bottom: 60px; left: 0; right: 0;}
+.text-banner.seven .banner-content {top: auto; bottom: 15px; left: 0; right: 0;}
+/*Widgets, grids*/
+body .widget-title,
+body .widget .widget-title {text-align: center; padding-bottom: 32px;}
+body .widget-title h2,
+body .widget-title h3,
+body .widget .widget-title h2,
+body .widget .widget-title h3 {
+	font-weight: 600;
+	text-transform: uppercase;
+	color: rgba(0,0,0,0.8);
+}
+body h2, body .h2 {letter-spacing: 0;}
+
+
+/*Footer*/
+body.wide-layout .footer,
+body.boxed-layout .footer .container {background-color: #fff;}
+body.wide-layout .footer,
+body.boxed-layout .footer-top .container {border: none;}
+.footer hr.solid.red {border-bottom: 2px solid #ea3636;}
+.footer {color: rgba(0,0,0,0.6);}
+.footer .footer-top .block-list {width: 20%; padding: 0 10px; float: left;}
+.footer .footer-block-title {
+	color: rgba(0,0,0,0.8);
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 26px;
+	margin-bottom: 0;
+}
+.footer .links a {
+	font-size: 12px;
+	padding: 0;
+	line-height: 20px;
+}
+.footer a:hover {color: #ea3636;}
+.footer .links a:before,
+.footer .links a:after,
+.footer .horizontal-links li a:before {content: none;}
+.footer .horizontal-links li a:hover {background-color: rgba(0,0,0,0.04);}
+.footer .horizontal-links {padding-bottom: 0; padding-top: 45px;}
+.footer .footer-bottom {text-align: center;}
+.footer .switcher .label,
+.footer .form-language .label,
+.footer .form-currency .label,
+.footer address {font-size: 12px; color: rgba(0,0,0,0.8);}
+.page-footer .switcher .options .action.toggle {background-color: rgba(0,0,0,0.1); color: rgba(0,0,0,0.6);}
+.page-footer .switcher .options .action.toggle:after {border-top-color: rgba(0,0,0,0.3);}
+.page-footer .switcher .options strong {color: inherit;}
+body.wide-layout .footer .footer-bottom,
+body.boxed-layout .footer .footer-bottom .container {padding-top: 9px;}
+
+.fullwidth-block.brands {margin: 0 -10px;}
+.fullwidth-block.brands .fullwidth-inner {width: 100%;}
+
+@media only screen and (min-width: 1332px) {
+  .footer .footer-top .row {padding-left: 8%;}
+  .boxed-layout .fullwidth-block.brands {margin: 0 -80px;}
+  .boxed-layout .fullwidth-block.brands .fullwidth-inner {width: 100%;}
+}
+@media only screen and (min-width: 1008px) and (max-width: 1331px) {
+	#home-slider .owl-item .btn {margin-top: 30px;}
+	.footer .footer-top .row {padding-left: 8%;}
+}
+@media only screen and (min-width: 768px) and (max-width: 1007px) {
+	.page-header .action.nav-toggle {color: rgba(0,0,0,0.8); float: left;}
+	.page-header .action.nav-toggle:hover,
+	.page-header .action.nav-toggle.active {background-color: rgba(0,0,0,0.1);}
+	.page-header.header-9 .panel {max-width: calc(100% - 50px); padding-left: 10px;}
+	ul.topmenu li.level0 a.level-top {line-height: 1;}
+	.header-wrapper .page-header.header-9 .navbar-default {width: 100%; display: block; margin-bottom: 0; text-align: left;}
+	.header-wrapper .mobile-menu-wrapper .header.links {text-align: left;}
+	.wide-layout .header-wrapper .menu-wrapper,
+	.boxed-layout .header-wrapper .menu-wrapper .menu-inner {padding: 0;}
+	.page-header .middle-block .middle-block-inner {padding-bottom: 20px;}
+
+	#home-slider .owl-item .slide-container {left: 40px; right: 40%;}
+	#home-slider .owl-item .slide-container.slide-skin-3 {left: 30px; right: auto;}
+	#home-slider .owl-item .slide-container.slide-skin-2 {left: 70px; right: auto;}
+	.text-banner.two .banner-content {top: 10px;}
+	.text-banner.three .banner-content {top: 40px;}
+	.text-banner.seven .banner-content {bottom: 0;}
+	.text-banner.six .banner-content {bottom: 30px;}
+	.wide-layout .footer,
+	.boxed-layout .footer {border-top: 2px solid #ea3636;}
+	.footer .footer-top .block-list {width: 100%; float: none;}
+	.footer.accordion-list .accordion-item:first-of-type .accordion-title,
+	.footer.accordion-list .accordion-item:not(:first-of-type) .accordion-title {border-top-color: rgba(0,0,0,0.1);}
+	.footer .footer-bottom {border-top: 1px solid rgba(0,0,0,0.1);}
+	.footer.accordion-list .accordion-item .accordion-title {color: rgba(0,0,0,0.8);}
+	.footer .horizontal-links {padding-top: 10px; padding-bottom: 15px;}
+}
+@media only screen and (max-width: 767px) {
+	.page-header .action.nav-toggle {color: rgba(0,0,0,0.8); float: left;}
+	.page-header .action.nav-toggle:hover,
+	.page-header .action.nav-toggle.active {background-color: rgba(0,0,0,0.1);}
+	.page-header.header-9 .center-block {padding: 0 10px; width: 100%;}
+	.page-header.header-9 .panel {max-width: calc(100% - 50px); padding-left: 10px;}
+	.page-header.header-9 .middle-block .left-block {width: 80%;}
+	.page-header.header-9 .right-block {float: right; text-align: right; max-width: 20%;}
+	.wide-layout .header-wrapper .menu-wrapper,
+	.boxed-layout .header-wrapper .menu-wrapper .menu-inner {padding: 0;}
+	.text-blocks-wrapper {padding: 0 10px;}
+	#home-slider .owl-item .slide-container.slide-skin {left: 10px; right: 30%; bottom: 5%; top: auto;}
+	#home-slider.owl-theme .owl-dots {display: none;}
+	#home-slider .owl-item .slide-container.slide-skin-3 {left: 10px; right: auto; top: auto; bottom: 5%;}
+	#home-slider .owl-item .slide-container.slide-skin-2 {left: 5%; top: 30%;}
+	#home-slider .owl-item .title,
+	#home-slider .owl-item .slide-container.slide-skin-2 .title {font-size: 28px; line-height: 30px;}
+	.text-banners-block .title {font-size: 11px;}
+	.text-banner .banner-content .subtitle {margin-bottom: 8px;}
+	.text-banner .banner-content .title {font-size: 20px; line-height: 27px;}
+	.text-banner.two .banner-content {top: 15px;}
+	.text-banner.three .banner-content {top: 10px; left: 14%;}
+	.wide-layout .footer,
+	.boxed-layout .footer {border-top: 2px solid #ea3636;}
+	.footer .footer-top .block-list {width: 100%; float: none;}
+	.footer.accordion-list .accordion-item:first-of-type .accordion-title,
+	.footer.accordion-list .accordion-item:not(:first-of-type) .accordion-title {border-top-color: rgba(0,0,0,0.1);}
+	.footer .footer-bottom {border-top: 1px solid rgba(0,0,0,0.1);}
+	.footer.accordion-list .accordion-item .accordion-title {color: rgba(0,0,0,0.8);}
+	.footer .horizontal-links {padding-top: 10px; padding-bottom: 15px;}
+
+  .header-wrapper .page-header.header-9 .navbar-default {margin-bottom: 0; display: block; width: 100%; text-align: left;}
+  .header-wrapper .mobile-menu-wrapper .header.links {text-align: left;}
+}

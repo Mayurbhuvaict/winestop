@@ -1,0 +1,26 @@
+<div class="meigee-instagram-widget block">
+	<span class="block-title">
+		<strong><?php echo ($this->getWidgetTitle() ? $this->getWidgetTitle() : ''); ?></strong>
+	</span>
+	<div class="meigee-instagram-block">		
+		<?php
+		  $result = $block->getImages();
+		  $meta = $result->meta;
+		  if($meta->code != 200) {
+			  echo '<p>'. $meta->error_message .'</p>';
+		  } else {
+			  $i = 0;
+			  foreach ($result->data as $post) {
+				$images = $post->images;
+				$link = $post->link;
+				$thumbnail = $images->thumbnail;
+				$big_image = $images->low_resolution;
+				if($i < 6) {
+					echo '<a href="'.$link.'" class="insta-photo"><img src="'. $big_image->url .'" alt=""></a>';
+				}
+				$i ++;
+			  }
+		  }
+		?>
+	</div>
+</div>

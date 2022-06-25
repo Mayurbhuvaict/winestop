@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright © Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see \Magento\Theme\Block\Html\Topmenu
+ */
+?>
+<?php 
+$columnsLimit = $block->getColumnsLimit() ?: 0;
+$_menu = $block->getHtml('level-top', 'submenu', $columnsLimit);
+$menuStatus = $this->helper('Meigee\CategoriesEnhanced\Helper\Data')->getConfig('meigee_categoriesenhanced_config/general/status');
+
+// var_dump($menuStatus);
+?>
+<nav class="navbar navbar-default navigation"<?php if($menuStatus): ?> id="megamenu"<?php endif; ?>>
+	<span data-action="toggle-nav" class="action nav-toggle"><i class="fa fa-bars"></i><span><?= /* @escapeNotVerified */ __('Menu') ?></span></span>
+	<div class="collapse topmenu navbar-collapse megamenu">
+		<ul class="nav topmenu navbar-nav" id="nav"<?php if($menuStatus == 0): ?> data-mage-init='{"menu":{"responsive":true, "expanded":true, "delay": 0, "position":{"my":"left top","at":"left bottom"}}}'<?php endif; ?>>
+			<?= /* @escapeNotVerified */ $_menu ?>
+			<?= /* @escapeNotVerified */ $block->getChildHtml() ?>
+		</ul>
+	</div>
+</nav>

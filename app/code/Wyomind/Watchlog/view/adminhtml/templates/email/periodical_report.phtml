@@ -1,0 +1,43 @@
+<?php // @codingStandardsIgnoreFile ?>
+<style>
+    table tr td:first-child,
+    table tr th:first-child {
+        border-left:1px solid black;
+    }
+
+    table tr th {
+        text-align:center;
+    }
+    table tr td {
+        text-align:right;
+    }
+    table tr td,
+    table tr th {
+        border-top:1px solid black;
+        border-right:1px solid black;
+        border-collapse: collapse;
+        padding:10px;
+    }
+    table tr:last-child td,
+    table tr:last-child th {
+        border-bottom:1px solid black;
+    }
+</style>
+<table cellspacing="0">
+    <tr>
+        <th>IP</th>
+        <th>Last Attempts</th>
+        <th>Total Attempts</th>
+        <th>Failed Attempts</th>
+        <th>Succeeded Attempts</th>
+    </tr>
+    <?php foreach ($block->getLog() as $data): ?>
+    <tr>
+        <td><?= /* @noEscape */ $data['ip']; ?></td>
+        <td><?= /* @noEscape */ $data['date']; ?></td>
+        <td><?= /* @noEscape */ $data['attempts']; ?></td>
+        <td><?= /* @noEscape */ $data['failed']; ?></td>
+        <td><?= /* @noEscape */ $data['succeeded']; ?></td>
+    </tr>
+    <?php endforeach; ?>
+</table>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch">
+        <observer name="m_seo_observer" instance="\Mirasvit\Seo\Observer\CheckUrlObserver"/>
+    </event>
+    <event name="controller_action_layout_render_before"> <!--we need this to have links on pages of some 3rd party extensions in m2.1. like magefan blog-->
+        <!--<observer name="m_seo_observer_canonical" instance="Mirasvit\Seo\Observer\Canonical"/>-->
+        <observer name="m_seo_observer_alternate" instance="Mirasvit\Seo\Observer\Alternate"/>
+    </event>
+    <event name="controller_action_postdispatch">
+        <observer name="m_seo_observer_canonical" instance="Mirasvit\Seo\Observer\Canonical"/>
+        <observer name="m_seo_observer_alternate" instance="Mirasvit\Seo\Observer\Alternate"/>
+    </event>
+</config>

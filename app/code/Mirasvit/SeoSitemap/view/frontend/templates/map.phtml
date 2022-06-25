@@ -1,0 +1,129 @@
+<?php
+/** @var \Mirasvit\SeoSitemap\Block\Map $block */
+
+$categoryBlock = $block->getChildBlock('map.category');
+$productBlock  = $block->getChildBlock('map.product');
+$storeBlock    = $block->getChildBlock('map.store');
+$cmsPageBlock  = $block->getChildBlock('map.cms_page');
+
+$capitalLettersVisibility = $productBlock->isCapitalLettersEnabled() ? 'visible' : 'hidden';
+?>
+
+<div class="mst-seo-sitemap__map" data-element="sitemap__map">
+    <div class="search-bar">
+        <input type="search" placeholder="Search" data-element="search">
+    </div>
+
+    <?= $block->getChildHtml('map.pager') ?>
+
+    <?php if ($block->isFirstPage()): ?>
+
+        <?php if ($storeBlock->canShowStores() && count($storeBlock->getStores()) > 1): ?>
+            <div class="provider" data-element="provider">
+                <h3><?= $block->escapeHtml($storeBlock->getTitle()) ?></h3>
+
+                <ul class="cols-<?= $block->getColumnCount() ?>">
+                    <?php foreach ($storeBlock->getStores() as $store): ?>
+                        <li data-element="item">
+                            <a href="<?= $block->escapeUrl($store->getBaseUrl()) ?>"><span><?= $block->escapeHtml($store->getName()) ?></span></a>
+                        </li>
+                    <?php endforeach ?>
+                </ul>
+            </div>
+        <?php endif ?>
+
+        <?php if ($cmsPageBlock->canShowCmsPages()): ?>
+            <div class="provider" data-element="provider">
+                <h3><?= $block->escapeHtml($cmsPageBlock->getTitle()) ?></h3>
+
+                <ul class="cols-<?= $block->getColumnCount() ?>">
+                    <?php foreach ($cmsPageBlock->getCollection() as $page): ?>
+                        <li data-element="item">
+                            <a href="<?= $block->escapeUrl($page->getUrl()) ?>"><span><?= $block->escapeHtml($page->getTitle()) ?></span></a>
+                        </li>
+                    <?php endforeach ?>
+                </ul>
+            </div>
+        <?php endif ?>
+
+        <?php if (count($cmsPageBlock->getAdditionalCollection()) > 0): ?>
+            <div class="provider" data-element="provider">
+                <h3><?=  __('Additional Links') ?></h3>
+                <ul>
+                    <?php foreach ($cmsPageBlock->getAdditionalCollection() as $link): ?>
+                        <li data-element="item">
+                            <a href="<?= $block->escapeUrl($link->getUrl()) ?>"><span><?= $block->escapeHtml($link->getTitle()) ?></span></a>
+                        </li>
+                    <?php endforeach ?>
+                </ul>
+            </div>
+        <?php endif ?>
+
+        <?php foreach ($block->getFrontendProviders() as $provider): ?>
+            <div class="provider" data-element="provider">
+                <?php $items = $block->getProviderItems($provider) ?>
+                <?php if (count($items) > 0): ?>
+                    <h3><?= $block->escapeHtml($provider->getTitle()) ?></h3>
+
+                    <ul class="cols-<?= $block->getColumnCount() ?>">
+                        <?php foreach ($items as $item): ?>
+                            <li data-element="item">
+                                <a href="<?= $block->escapeUrl($item->getData('url')) ?>"><span><?= $block->escapeHtml($item->getData('title')) ?></span></a>
+                            </li>
+                        <?php endforeach ?>
+                    </ul>
+                <?php endif ?>
+            </div>
+        <?php endforeach ?>
+        <?php if ($categoryBlock->isShowCategories()): ?>
+            <div class="provider" data-element="provider">
+                <h3><?= $block->escapeHtml($categoryBlock->getTitle()) ?></h3>
+
+                <ul class="cols-<?= $block->getColumnCount() ?>">
+                    <?php foreach ($categoryBlock->getCategoriesAsPaths() as $item): ?>
+                        <li data-element="item">
+                            <a href="<?= $block->escapeUrl($item->getUrl()) ?>">
+                                <?php foreach ($item->getPath() as $cat): ?>
+                                    <span><?= $block->escapeHtml($cat) ?></span>
+                                <?php endforeach ?>
+                            </a>
+                        </li>
+                    <?php endforeach ?>
+                </ul>
+            </div>
+        <?php endif ?>
+    <?php endif ?>
+
+    <?php if ($productBlock->isShowProducts()): ?>
+        <div class="provider" data-element="provider">
+            <h3><?= $block->escapeHtml($productBlock->getTitle()) ?></h3>
+
+            <ul>
+                <?php foreach ($block->getSplitByLetterCollection() as $index => $items): ?>
+                    <li class="letter" data-element="letter">
+                        <strong class='strong_<?=$capitalLettersVisibility ?>'><?= $block->escapeHtml($index) ?></strong>
+
+                        <ul class="cols-<?= $block->getColumnCount() ?>">
+                            <?php foreach ($items as $item): ?>
+                                <li data-element="item">
+                                    <a href="<?= $block->escapeUrl($item['url']) ?>"><span><?= $block->escapeHtml($item['name']) ?></span></a>
+                                </li>
+                            <?php endforeach ?>
+                        </ul>
+                    </li>
+                <?php endforeach ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+
+    <div class="message warning" data-element="notFound" style="display: none;margin-top: 2rem;">
+        <div><?= __('Nothing to show, please change a search query') ?></div>
+    </div>
+</div>
+<?= $block->getChildHtml('map.pager') ?>
+
+<script type="text/x-magento-init"><?= \Zend_Json::encode([
+        '[data-element="sitemap__map"]' => [
+            'Mirasvit_SeoSitemap/js/sitemap' => [],
+        ],
+    ]) ?></script>

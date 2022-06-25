@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <attribute name="prefix" value="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# product: http://ogp.me/ns/product#"/>
+    </head>
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="Mirasvit\SeoMarkup\Block\Og\Product" name="opengraph.general" template="Magento_Catalog::product/view/opengraph/general.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

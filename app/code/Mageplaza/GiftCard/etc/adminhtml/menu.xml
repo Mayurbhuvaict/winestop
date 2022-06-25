@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mageplaza_GiftCard::giftcard" title="Gift Card" module="Mageplaza_GiftCard" sortOrder="80" resource="Mageplaza_GiftCard::giftcard" parent="Magento_Backend::marketing"/>
+        <add id="Mageplaza_GiftCard::code" title="Manage Gift Codes" module="Mageplaza_GiftCard" sortOrder="20" action="mpgiftcard/code" resource="Mageplaza_GiftCard::code" parent="Mageplaza_GiftCard::giftcard"/>
+        <add id="Mageplaza_GiftCard::pool" title="Manage Gift Code Pools" module="Mageplaza_GiftCard" sortOrder="30" action="mpgiftcard/pool" resource="Mageplaza_GiftCard::pool" parent="Mageplaza_GiftCard::giftcard"/>
+        <add id="Mageplaza_GiftCard::template" title="Manage Templates" module="Mageplaza_GiftCard" sortOrder="40" action="mpgiftcard/template" resource="Mageplaza_GiftCard::template" parent="Mageplaza_GiftCard::giftcard"/>
+        <add id="Mageplaza_GiftCard::history" title="Gift Card History" module="Mageplaza_GiftCard" sortOrder="50" action="mpgiftcard/history" resource="Mageplaza_GiftCard::history" parent="Mageplaza_GiftCard::giftcard"/>
+        <add id="Mageplaza_GiftCard::configuration" title="Configuration" module="Mageplaza_GiftCard" sortOrder="1000" action="adminhtml/system_config/edit/section/mpgiftcard" resource="Mageplaza_GiftCard::configuration" parent="Mageplaza_GiftCard::giftcard"/>
+    </menu>
+</config>

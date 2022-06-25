@@ -1,0 +1,114 @@
+<?php
+/**
+ * Copyright © 2015 Ihor Vansach (ihor@magefan.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+?>
+<?php
+/**
+ * Blog related posts template
+ *
+ * @var $block \Magefan\Blog\Block\Post\View\RelatedPosts
+ */
+?>
+<?php if ($block->displayPosts()) { ?>
+    <?php $_postCollection = $block->getPostCollection(); ?>
+    <?php if ($_postCollection->count()) { ?>    
+    <div class="related-posts">
+        <div class="widget-title">
+            <h2><?php echo __('Related Posts') ?></h2>
+        </div>
+        <div class="row">
+            <div class="widget-latest clearfix widget-posts">
+                <div class="col-xs-12">
+                    <div class=" row">
+                        <ul class="clearfix">
+                        <?php 
+                            $i = 1;
+                            foreach ($_postCollection as $_post):
+                            if($i < 3) {                                
+                            $_postUrl = $_post->getPostUrl();
+                            $_postName = $block->escapeHtml($_post->getTitle(), null, true);
+                        ?>
+                        <li class="item col-sm-6 post-holder-<?php echo $_post->getId() ?>">
+                            <div class="inner-wrapper">
+                                <div class="post-info">
+                                    <p class="post-category">
+                                        <i class="meigeeadditional-category"></i>
+                                        <?php if ($_categoriesCount = $_post->getCategoriesCount()) { ?>
+                                            <?php $n = 0; foreach($_post->getParentCategories() as $ct) { $n++; ?>
+                                                <a title="<?php echo $block->escapeHtml($ct->getTitle()) ?>" href="<?php echo $ct->getCategoryUrl() ?>"><?php echo $block->escapeHtml($ct->getTitle()) ?></a>
+                                                <?php if ($n != $_categoriesCount) { ?>, <?php } ?>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    </p>
+                                    <p class="post-author">                                           
+                                        <?php if ($_author = $_post->getAuthor()) { ?>
+                                            <i class="meigeeadditional-author"></i>
+                                            <?php echo $block->escapeHtml($_author->getTitle()) ?>
+                                        <?php } ?>
+                                    </p>
+                                    <p class="post-icon">
+                                        <i class="meigeeadditional-post"></i>
+                                    </p>
+                                </div>
+                                <h5><a href="<?php echo $_postUrl ?>" ><?php echo $_postName; ?></a></h5>
+                                <div class="post-date"><i class="meigeeadditional-clock"></i><?php echo $_post->getPublishDate('F d, Y') ?></div>                            
+                                <?php if ($featuredImage = $_post->getFeaturedImage()) { ?>
+                                    <div class="post-ftimg-hld">
+                                        <a href="<?php echo $_postUrl ?>" title="<?php echo $_postName ?>">
+                                            <img src="<?php echo $featuredImage ?>" alt="<?php echo $_postName ?>" />
+                                        </a>
+                                    </div>
+                                <?php } ?>
+                                <div class="postContent"><?php echo $block->getShorContent($_post) ?></div>
+                                <?php if ($_tagsCount = $_post->getTagsCount()) { ?>
+                                    <div class="tags">
+                                        <h4><?php echo __('Tags:') ?></h4>
+                                        <ul class="tags">                    
+                                            <?php $n = 0; foreach($_post->getRelatedTags() as $tag) { $n++; ?>
+                                            <li>
+                                                <a title="<?php echo $block->escapeHtml($tag->getTitle()) ?>" href="<?php echo $tag->getTagUrl() ?>">
+                                                    <?php echo $block->escapeHtml($tag->getTitle()) ?>
+                                                </a>
+                                            </li>
+                                            <?php } ?>
+                                        </ul>
+                                    </div>
+                                <?php } ?>
+                                <div class="postDetails">
+                                    <div class="comments">
+                                        <a href="<?php echo $_postUrl ?>#post-comments"><i class="meigeeadditional-comment"></i><?php echo __('Comments:') ?></a>
+                                    </div>
+                                    <div class="addthis_toolbox addthis_default_style"
+                                        addthis:url="<?php echo $_postUrl ?>"
+                                        addthis:title="<?php echo $_postName; ?>"
+                                        <?php if ($firstImage = $_post->getFirstImage()) { ?>
+                                        addthis:media="<?php echo $firstImage ?>"
+                                        <?php } ?>>
+                                        <a class="addthis_button_facebook"></a>
+                                        <a class="addthis_button_twitter"></a>
+                                        <a class="addthis_button_google_plusone"></a>
+                                    </div>
+                                </div>
+
+                                <div class="actions">
+                                    <a title="<?php echo $_postName ?>" class="btn btn-default" href="?php echo $_postUrl ?>"><span><?php echo __('Read') ?></span></a>
+                                </div>
+                            </div>
+                        </li>
+                        <?php 
+                            $i ++;
+                            }
+                            endforeach;
+                        ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+<?php } ?>

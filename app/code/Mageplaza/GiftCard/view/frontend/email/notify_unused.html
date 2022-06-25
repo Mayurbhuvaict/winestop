@@ -1,0 +1,68 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<!--@subject {{trans "Your Gift Card Is Unused After %day Day(s)" day=$unused_days}} @-->
+<!--@vars {
+"var sender":"Sender Name",
+"var recipient":"Recipient Name",
+"var message":"Message",
+"var hidden_code":"Gift Card Code",
+"var giftcard.balance":"Gift Card Balance",
+"var balanceFormated":"Gift Card Balance",
+"var status_label":"Status",
+"var unused_days":"Day(s) From Sent Date",
+"var expired_date":"Expired Date",
+"var this.getUrl($store, 'mpgiftcard/')":"Gift Card Dashboard URL"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+{{depend sender}}
+<p class="greeting">{{trans "%name," name=$sender}}</p>
+{{/depend}}
+<p>{{trans "The gift card which you sent to %recipient had not been used after %day day(s)." recipient=$recipient
+    day=$unused_days}}</p>
+<p></p>
+<p><b>{{trans "Your gift card information: "}}</b></p>
+<table class="details" style="margin: 0 0 20px 50px">
+    <tr>
+        <td class="detail-label" style="width: 130px">{{trans "Gift Code"}}</td>
+        <td>{{trans "%code" code=$hidden_code}}</td>
+    </tr>
+    <tr>
+        <td class="detail-label" style="width: 130px">{{trans "Balance"}}</td>
+        <td>{{trans "%balance" balance=$balanceFormated}}</td>
+    </tr>
+    <tr>
+        <td class="detail-label" style="width: 130px">{{trans "Status"}}</td>
+        <td>{{trans "%status" status=$status_label}}</td>
+    </tr>
+    {{depend giftcard.expired_date}}
+    <tr>
+        <td class="detail-label" style="width: 130px">{{trans "Expires on"}}</td>
+        <td>{{trans "%expired_date" expired_date=$expired_date}}</td>
+    </tr>
+    {{/depend}}
+</table>
+<p>{{trans 'Please contact us or visit <a href="%store_url">%store_name</a> for sending gift card again.'
+    store_name=$store.getName() store_url="$this.getUrl($store, 'mpgiftcard/', [_nosid:1])" |raw}}</p>
+
+{{template config_path="design/email/footer_template"}}

@@ -1,0 +1,14 @@
+<div class="mst-seo-content__component-template-syntax-wrapper" style="display: none">
+    <h4>Template variables</h4>
+    <small>Double click on a variable to insert it into the field</small>
+    <div class="close">&times;</div>
+    <ol data-bind="foreach: scopeData">
+        <li class="_entity">
+            <strong text="label"/>
+
+            <ul data-bind="foreach: vars">
+                <li class="_variable">[<span text="$data"/>]</li>
+            </ul>
+        </li>
+    </ol>
+</div>

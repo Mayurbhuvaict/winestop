@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © 2019 Wyomind. All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="watchlog_periodical_report" instance="Wyomind\Watchlog\Cron\PeriodicalReport" method="sendPeriodicalReport">
+            <schedule>*/30 * * * *</schedule>
+        </job>
+    </group>
+    <group id="default">
+        <job name="watchlog_history_purge" instance="Wyomind\Watchlog\Cron\History" method="purge">
+            <schedule>*/30 * * * *</schedule>
+        </job>
+    </group>
+</config>

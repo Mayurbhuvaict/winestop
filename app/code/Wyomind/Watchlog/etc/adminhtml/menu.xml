@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © 2019 Wyomind. All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!-- System > Tools > Cron Tools -->
+        <add id="Wyomind_Watchlog::menu"
+             parent="Magento_Backend::stores" 
+             module="Wyomind_Watchlog" 
+             title="Watchlog" 
+             sortOrder="100" 
+             resource="Wyomind_Watchlog::menu"/>
+        <add id="Wyomind_Watchlog::attempts"
+             parent="Wyomind_Watchlog::menu" 
+             module="Wyomind_Watchlog" 
+             title="Connection attempts" 
+             sortOrder="100" 
+             resource="Wyomind_Watchlog::attempts"
+             action="watchlog/attempts/basic" />
+    </menu>
+</config>

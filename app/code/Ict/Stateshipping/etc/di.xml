@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Ict Team
+ * @copyright Copyright (c) 2017 Ict (http://icreativetechnologies.com/)
+ * @package Ict_Stateshipping
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\OfflineShipping\Model\Carrier\Freeshipping">
+        <plugin name="ict_shipping_freeship" type="Ict\Stateshipping\Plugin\Carrier\Freeshipping" />
+    </type>
+	<type name="Magento\OfflineShipping\Model\Carrier\Flatrate">
+        <plugin name="ict_shipping_flatrate" type="Ict\Stateshipping\Plugin\Carrier\Flatrate" />
+    </type>
+	<type name="Magento\OfflineShipping\Model\Carrier\Tablerate">
+        <plugin name="ict_shipping_tablerate" type="Ict\Stateshipping\Plugin\Carrier\Tablerate" />
+    </type>
+	<type name="Magento\Ups\Model\Carrier">
+        <plugin name="ict_shipping_ups" type="Ict\Stateshipping\Plugin\Carrier\Ups" />
+    </type>
+	<type name="Magento\Fedex\Model\Carrier">
+        <plugin name="ict_shipping_fedex" type="Ict\Stateshipping\Plugin\Carrier\Fedex" />
+    </type>
+	<type name="Magento\Usps\Model\Carrier">
+        <plugin name="ict_shipping_usps" type="Ict\Stateshipping\Plugin\Carrier\Usps" />
+    </type>
+	
+</config>

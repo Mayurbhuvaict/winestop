@@ -1,0 +1,39 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Mirasvit\Core\Block\Adminhtml\Menu">
+        <arguments>
+            <argument name="menu" xsi:type="array">
+                <item name="seo" xsi:type="object">Mirasvit\Seo\Block\Adminhtml\Menu</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\CatalogUrlRewrite\Model\CategoryUrlPathGenerator">
+        <plugin name="dispatch" type="Mirasvit\Seo\Model\Plugin\System\CategoryUrlPathGenerator" sortOrder="1000"/>
+    </type>
+
+    <type name="Magento\CatalogUrlRewrite\Model\ProductScopeRewriteGenerator">
+        <plugin name="Mirasvit_Seo::productUrlKey" type="Mirasvit\Seo\Plugin\Adminhtml\ProductUrlKeyPlugin" sortOrder="1000"/>
+    </type>
+    <type name="Magento\Config\Model\Config">
+        <plugin name="cache-warmer-plugin" type="Mirasvit\Seo\Plugin\Adminhtml\ConfigPlugin"/>
+    </type>
+
+    <type name="Magento\Framework\View\Element\Message\MessageConfigurationsPool">
+        <arguments>
+            <argument name="configurationsMap" xsi:type="array">
+                <item name="seoNoticeWithUrl" xsi:type="array">
+                    <item name="renderer" xsi:type="const">\Magento\Framework\View\Element\Message\Renderer\BlockRenderer::CODE</item>
+                    <item name="data" xsi:type="array">
+                        <item name="template" xsi:type="string">Mirasvit_Seo::messages/noticeUrl.phtml</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Mirasvit\Seo\Controller\Adminhtml\Template\CategoryImageUpload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Mirasvit\Seo\CategoryImageUpload</argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+  Copyright © 2020 Wyomind. All rights reserved.
+  See LICENSE.txt for license details.
+-->
+<!-- configuration file used for the Wyomind's demo store: https://demo2.wyomind.com -->
+<config>
+    <login>SimpleGoogleShopping</login>
+    <password>SimpleGoogleShopping123</password>
+    <acl>
+        Magento_Catalog::catalog
+        Magento_Catalog::catalog_inventory
+        Magento_Catalog::products
+        Wyomind_SimpleGoogleShopping::global
+        Wyomind_SimpleGoogleShopping::main
+        Wyomind_SimpleGoogleShopping::create
+        Wyomind_SimpleGoogleShopping::edit
+        Wyomind_SimpleGoogleShopping::edit_scripts
+        Wyomind_SimpleGoogleShopping::history
+        Wyomind_SimpleGoogleShopping::generate
+        {{system/config}}
+        Wyomind_SimpleGoogleShopping::simplegoogleshopping_config
+    </acl>
+    <scenarii>
+        <scenario type="backend" id="feeds" default="1">
+            <label>Data Feeds Generation</label>
+            <comment><![CDATA[See data feed generation in action]]></comment>
+            <actions>
+                <action type="landing_page">
+                    <param name="url">simplegoogleshopping/feeds/index</param>
+                </action>
+                <action type="script">
+                    <param name="content">require(['sgs_index'], function (index) {
+                        index.generate('{{URL:simplegoogleshopping/feeds/generate/id/1}}'); });
+                    </param>
+                </action>
+            </actions>
+        </scenario>
+        <scenario type="backend" id="feeds_edition" default="1">
+            <label>Data Feeds Edition</label>
+            <comment><![CDATA[Check the data feed edition panel]]></comment>
+            <actions>
+                <action type="landing_page">
+                    <param name="url">simplegoogleshopping/feeds/edit/id/1</param>
+                </action>
+            </actions>
+        </scenario>
+
+    </scenarii>
+</config>
+

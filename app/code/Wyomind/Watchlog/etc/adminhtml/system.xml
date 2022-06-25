@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © 2019 Wyomind. All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <!-- master tab -->
+        <tab id="wyomind" translate="label" sortOrder="1000000" class='wyomind-logo'>
+            <label>Wyomind</label>
+        </tab>
+        <!-- module tab -->
+        <section id="watchlog" translate="label" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0">
+            <class>separator-top</class>
+            <label>Watchlog</label>
+            <tab>wyomind</tab>
+            <resource>Wyomind_Watchlog::config</resource>
+            <!-- License -->
+            <group id="license" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>License</label>
+                <field id="extension_version" translate="label" type="label" sortOrder="1" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Extension version</label>
+                </field>
+                <field id="activation_key" translate="label comment" type="label" sortOrder="110" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Activation key</label>
+                    <frontend_model>Wyomind\Framework\Block\Adminhtml\System\Config\Form\Field\ActivationKey</frontend_model>
+                </field>
+                <field id="license_status" translate="label comment" type="label" sortOrder="110" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>License Status</label>
+                    <frontend_model>Wyomind\Framework\Block\Adminhtml\System\Config\Form\Field\LicenseStatus</frontend_model>
+                </field>
+            </group>
+            <group id="settings" translate="label" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Settings</label>
+                <field id="history" translate="label comment" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>History lifetime in days</label>
+                    <comment>Enter 0 for unlimited life time</comment>
+                </field>
+            </group>
+            <group id="periodical_report" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Connection attempts history</label>
+                <field id="enable_reporting" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Send a periodical report</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="report_period" translate="label comment" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label> Period to report in days</label>
+                    <comment>Enter 0 for unlimited period</comment>
+                    <depends>
+                        <field id="enable_reporting">1</field>
+                    </depends>
+                </field>
+                <field id="sender_email" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sender Email</label>
+                    <validate>validate-email</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Email\Address</backend_model>
+                    <depends>
+                        <field id="enable_reporting">1</field>
+                    </depends>
+                </field>
+                <field id="sender_name" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sender Name</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Email\Sender</backend_model>
+                    <validate>validate-emailSender</validate>
+                    <depends>
+                        <field id="enable_reporting">1</field>
+                    </depends>
+                </field>
+                <field id="emails" translate="label comment" type="text" sortOrder="6" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Send the reports to</label>
+                    <comment>Emails must be separated with a comma (,).</comment>
+                    <depends>
+                        <field id="enable_reporting">1</field>
+                    </depends>
+                </field>
+                <field id="report_title" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Report title</label>
+                    <depends>
+                        <field id="enable_reporting">1</field>
+                    </depends>
+                </field>
+                <field id="cron" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Report Schedule</label>
+                    <frontend_model>Wyomind\Watchlog\Block\Adminhtml\System\Config\Form\Field\Cron</frontend_model>
+                    <depends>
+                        <field id="enable_reporting">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

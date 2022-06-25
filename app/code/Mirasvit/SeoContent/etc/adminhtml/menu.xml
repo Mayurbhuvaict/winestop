@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+
+        <add id="Mirasvit_SeoContent::seo_content_template" title="Templates" module="Mirasvit_SeoContent" sortOrder="10"
+             action="seo_content/template" resource="Mirasvit_SeoContent::seo_content" parent="Mirasvit_Seo::seo"/>
+
+        <add id="Mirasvit_SeoContent::seo_content_rewrite" title="SEO Rewrites" module="Mirasvit_SeoContent" sortOrder="15"
+             action="seo_content/rewrite" resource="Mirasvit_SeoContent::seo_content" parent="Mirasvit_Seo::seo"/>
+    </menu>
+</config>

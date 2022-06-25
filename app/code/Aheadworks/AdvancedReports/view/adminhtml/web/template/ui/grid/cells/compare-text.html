@@ -1,0 +1,12 @@
+<div class="data-grid-cell-content data-grid-compare-cell-content">
+    <div class="cell-content">
+        <div class="current-value" text="$col.getLabel($row())"/>
+        <div if="$col.isDisplayCompareValue($row())" class="compare-value" text="$col.getLabel($row(), $col.getCompareIndex())"/>
+    </div>
+    <div if="$col.isDisplayCompareValue($row())" class="aw-arep__widget-difference-value-wrap">
+        <div class="aw-arep__widget-difference-value" css="getAdditionalDifferenceClasses($row())">
+            <div class="difference-value-percent"><span text="getDifferenceValueInPercent($row())"/></div>
+            <div class="difference-value"><span text="getFormattedDifferenceValue($row())"/></div>
+        </div>
+    </div>
+</div>

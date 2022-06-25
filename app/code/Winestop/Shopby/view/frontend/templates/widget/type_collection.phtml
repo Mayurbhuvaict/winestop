@@ -1,0 +1,58 @@
+<?php
+$collection = $block->getCollection();
+$path =  $block->getMediaUrl();
+?>
+<div class="shop_by_container">
+  <div class="block-title"><strong>Shop By Type</strong></div>
+  <div class="shop_type_by  owl-carousel owl-theme">
+    <?php foreach($collection->getData() as $value){ ?>
+      <div class="item">
+        <?php if ($value['image']) { ?>
+            <div class="item_image">
+                <a href="<?php echo $value['shoptype_url'];  ?>">
+                    <img src="<?php echo $path.$value['image']; ?>" alt="<?php echo $value['type']; ?>" loading="lazy"/>
+                </a>
+            </div>
+        <?php } else { ?>
+            <div class="item_image">
+                <a href="<?php echo $value['shoptype_url'];  ?>">
+                    <img src='<?php echo $this->getViewFileUrl('images/default.jpg'); ?>' >
+                </a>
+            </div>
+        <?php } ?>
+        <div><a href="<?php echo $value['shoptype_url'];  ?>"><?php echo $value['type']; ?></a></div>
+      </div>
+    <?php } ?>
+  </div>
+</div>
+<script type="text/javascript">
+require(["jquery", "MeigeeCarousel"], function($, owlCarousel)
+{
+    jQuery('.shop_type_by').owlCarousel({
+        margin: 0,
+        nav:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            375:{
+                items:2
+            },
+            767:{
+                items:3
+            },
+            1007:{
+                items:4
+            },
+            1331:{
+                items:5
+            }
+        },
+        smartSpeed: 500,
+        dots: false,
+        loop: true,
+        navigation: true,
+        navText: ['<i class="meigee-left-arrow-key"></i>','<i class="meigee-right-arrow-key"></i>']
+    });
+});
+</script>

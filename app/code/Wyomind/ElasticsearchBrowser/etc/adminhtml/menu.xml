@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+  Copyright © 2018 Wyomind. All rights reserved.
+  See LICENSE.txt for license details.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Wyomind_ElasticsearchBrowser::configs"
+             parent="Magento_Backend::stores"
+             module="Wyomind_ElasticsearchBrowser"
+             title="Wyomind"
+             sortOrder="999"
+             resource="Wyomind_ElasticsearchBrowser::main"
+        />
+        <add id="Wyomind_ElasticsearchBrowser::configuration"
+             parent="Wyomind_ElasticsearchBrowser::configs"
+             module="Wyomind_ElasticsearchBrowser"
+             title="Elasticsearch Browser"
+             sortOrder="100"
+             resource="Wyomind_ElasticsearchBrowser::main"
+             action="adminhtml/system_config/edit/section/wyomind_elasticsearchbrowser"
+        />
+        <add id="Wyomind_ElasticsearchBrowser::main"
+             parent="Magento_Backend::system"
+             module="Wyomind_ElasticsearchBrowser"
+             title="Wyomind Elasticsearch Browser"
+             sortOrder="999"
+             resource="Wyomind_ElasticsearchBrowser::main"
+        />
+        <add id="Wyomind_ElasticsearchBrowser::browse"
+             parent="Wyomind_ElasticsearchBrowser::main"
+             module="Wyomind_ElasticsearchBrowser"
+             title="Browse Data"
+             sortOrder="110"
+             resource="Wyomind_ElasticsearchBrowser::browse"
+             action="elasticsearchbrowser/browse"
+        />
+    </menu>
+</config>

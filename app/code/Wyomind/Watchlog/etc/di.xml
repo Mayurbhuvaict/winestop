@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © 2019 Wyomind. All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- cron process -->
+    <type name="Wyomind\Watchlog\Logger\HandlerCron">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Wyomind\Watchlog\Logger\LoggerCron">
+        <arguments>
+            <argument name="name" xsi:type="string">WL-CRON</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="watchlogcron" xsi:type="object">Wyomind\Watchlog\Logger\HandlerCron</item>
+            </argument>
+        </arguments>
+    </type>
+
+
+    <type name="Wyomind\Watchlog\Controller\Adminhtml\History">
+        <arguments>
+            <argument name="history" xsi:type="object">Wyomind\Watchlog\Cron\History\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Wyomind\Watchlog\Controller\Adminhtml\Report">
+        <arguments>
+            <argument name="periodicalReport" xsi:type="object">Wyomind\Watchlog\Cron\PeriodicalReport\Proxy</argument>
+        </arguments>
+    </type>
+
+</config>

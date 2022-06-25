@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mpgiftcard>
+            <general>
+                <enable>1</enable>
+                <pattern>[4AN]-[4A]-[4N]</pattern>
+                <enable_credit>1</enable_credit>
+                <can_redeem>1</can_redeem>
+                <hidden>
+                    <enable>1</enable>
+                    <prefix>4</prefix>
+                    <suffix>4</suffix>
+                    <character>X</character>
+                </hidden>
+            </general>
+            <product>
+                <expire_after_day>30</expire_after_day>
+                <enable_delivery_date>0</enable_delivery_date>
+                <enable_timezone>0</enable_timezone>
+                <generate>1</generate>
+                <checkout>
+                    <generate>2</generate>
+                    <item_renderer>amount,delivery_method,delivery_address,delivery_date,sender,recipient,message,template</item_renderer>
+                </checkout>
+            </product>
+            <checkout>
+                <used_coupon_box>0</used_coupon_box>
+                <used_multiple>1</used_multiple>
+                <show_detail>1</show_detail>
+                <used_credit>1</used_credit>
+                <process>
+                    <used_for_shipping>1</used_for_shipping>
+                    <allow_refund>1</allow_refund>
+                </process>
+            </checkout>
+            <template>
+                <message_max_char>120</message_max_char>
+                <note>This gift card cannot be converted in cash. You can use the gift code in the checkout or redeem it to pay for your order</note>
+            </template>
+            <email>
+                <enable>1</enable>
+                <sender>general</sender>
+                <template>mpgiftcard_email_template</template>
+                <update>
+                    <enable>0</enable>
+                    <template>mpgiftcard_email_update_template</template>
+                </update>
+                <before_expire>
+                    <enable>1</enable>
+                    <template>mpgiftcard_email_before_expire_template</template>
+                    <days>7</days>
+                </before_expire>
+                <notify_sender>
+                    <enable>0</enable>
+                    <template>mpgiftcard_email_notify_sender_template</template>
+                </notify_sender>
+                <after_unused>
+                    <enable>0</enable>
+                    <template>mpgiftcard_email_after_unused_template</template>
+                    <days>30</days>
+                </after_unused>
+                <credit>
+                    <enable>1</enable>
+                    <template>mpgiftcard_email_credit_template</template>
+                </credit>
+            </email>
+            <sms>
+                <enable>1</enable>
+                <content><![CDATA[{{message}}. {{sender_name}} sent you a gift card {{code}}. Visit {{store_url}} to use it.]]></content>
+                <update>
+                    <enable>1</enable>
+                    <content><![CDATA[Your gift card has been updated. Visit {{store_url}} to check it.]]></content>
+                </update>
+                <before_expire>
+                    <enable>1</enable>
+                    <content><![CDATA[Your gift card will be expired on {{expired_date}}. Visit {{store_url}} to use it.]]></content>
+                </before_expire>
+            </sms>
+        </mpgiftcard>
+    </default>
+</config>

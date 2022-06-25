@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <seo_audit>
+            <general>
+                <is_enabled>1</is_enabled>
+                <server_load_threshold>80</server_load_threshold>
+            </general>
+        </seo_audit>
+    </default>
+</config>

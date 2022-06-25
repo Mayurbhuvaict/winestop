@@ -1,0 +1,45 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ -->
+
+<div data-bind="afterRender: initEvent">
+    <div class="giftcard-template-container-preview" data-bind="style: {width: previewWidth}">
+        <div class="giftcard-template-preview" data-bind="style: previewStyle">
+            <div class="preview-giftcard" data-bind="style: cardStyle">
+                <!-- ko foreach: { data: fields, as: 'field' } -->
+                <div data-bind="attr: {id: 'preview-giftcard-' + field.key}, style: field.css"
+                     style="position: absolute; box-sizing: border-box; overflow-y: hidden;">
+                    <!-- ko if: $parent.isImageField(field.key) -->
+                    <img data-bind="attr: {src: field.src}, style: {width: (field.key === 'barcode') ? '100%' : '', height: (field.key === 'barcode') ? '100%' : ''}"/>
+                    <!-- /ko -->
+                    <!-- ko ifnot: $parent.isImageField(field.key) -->
+                    <span>
+                        <span data-bind="text: field.label ? field.label : ''"></span>
+                        <span data-bind="text: field.value ? field.value : ''"
+                              style="white-space: pre-wrap; word-wrap: break-word"></span>
+                    </span>
+                    <!-- /ko -->
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</div>

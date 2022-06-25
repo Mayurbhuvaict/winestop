@@ -1,0 +1,13 @@
+<input class="input-text" type="text" data-bind="
+    value: value,
+    hasFocus: focused,
+    attr: {
+        name: inputName,
+        placeholder: placeholder,
+        'aria-required': required,
+        'aria-invalid': error() ? true : 'false',
+        'data-role': 'autocomplete',
+        'data-autocomplete-scope': customScope,
+        id: uid,
+        disabled: disabled
+    }" />

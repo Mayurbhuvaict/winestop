@@ -1,0 +1,35 @@
+<?php
+
+namespace Mirasvit\Seo\Model\Config\Source;
+
+use Mirasvit\Seo\Model\Config as Config;
+use Magento\Framework\Option\ArrayInterface;
+
+class MetaTitlePageNumber implements ArrayInterface
+{
+    /**
+     * @return array
+     */
+    public function toOptionArray()
+    {
+        return [
+            ['value' => 0, 'label' => __('Disabled')],
+            [
+                'value' => Config::META_TITLE_PAGE_NUMBER_BEGIN,
+                'label' => __('At the beginning')
+            ],
+            [
+                'value' => Config::META_TITLE_PAGE_NUMBER_END,
+                'label' => __('At the end')
+            ],
+            [
+                'value' => Config::META_TITLE_PAGE_NUMBER_BEGIN_FIRST_PAGE,
+                'label' => __('At the beginning (add to the first page)')
+            ],
+            [
+                'value' => Config::META_TITLE_PAGE_NUMBER_END_FIRST_PAGE,
+                'label' => __('At the end (add to the first page)')
+            ],
+        ];
+    }
+}

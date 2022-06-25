@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="Mirasvit\SeoMarkup\Block\Rs\Organization" name="mst.seo-markup.rs.organization"/>
+            <block class="Mirasvit\SeoMarkup\Block\Rs\Searchbox" name="mst.seo-markup.rs.searchbox"/>
+            <block class="Mirasvit\SeoMarkup\Block\Rs\BreadcrumbList" name="mst.seo-markup.rs.breadcrumbList"/>
+        </referenceContainer>
+    </body>
+</page>

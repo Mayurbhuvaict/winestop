@@ -1,0 +1,154 @@
+@margin-after-field: 1rem;
+
+.aw-arep__period-range-wrap {
+
+    .date-range {
+
+        ._active {
+            .admin__action-dropdown {
+                border-bottom: none;
+            }
+        }
+        &.report-date-range {
+            .admin__action-dropdown-menu {
+                min-width: 94rem;
+                font-size: 1.4rem;
+                padding: 1.6rem 0 1.3rem 0;
+            }
+        }
+        .dropdown {
+            width: 100%;
+        }
+        .admin__action-dropdown-menu {
+            min-width: 53rem;
+        }
+        .admin__action-dropdown {
+            background: #fff;
+            border-color: #c3c3c3;
+            border-bottom: 1px solid #c3c3c3;
+            width: 100%;
+            text-align: left;
+
+            .admin__action-dropdown-text {
+                margin-right: 0.5rem;
+            }
+
+            &:before {
+                content: '\e627';
+                font-family: 'Admin Icons';
+                font-style: normal;
+                font-weight: normal;
+                line-height: 1;
+                speak: none;
+                margin-right: 0.5rem;
+            }
+        }
+    }
+
+    .period-label, .compare-period-label {
+        font-size: 1.2rem;
+        color: @color-compare;
+        margin-top: 0.5rem;
+    }
+
+    .calendars-container {
+        table {
+            caption {
+                background: #d7d7d7;
+                height: 2.7rem;
+                padding: 0.6rem;
+                font-weight: 600;
+                font-size: 1.2rem;
+                color: #282828;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    .period-form {
+        display: inline-block;
+        width: 28rem;
+
+        .period-field {
+            margin-bottom: @margin-after-field;
+
+            &:after {
+                clear: both;
+                content: '';
+                display: table;
+            }
+        }
+
+        .period-field-label {
+            float: left;
+            line-height: 3.2rem;
+
+            &.compare-to-switcher {
+                line-height: 1.7rem;
+                padding-top: 0.6rem;
+            }
+        }
+
+        .period-field-control {
+            width:  ~"calc( (100%) * 0.5)";
+            float: left;
+            margin-left: 8px;
+        }
+
+        .period-field-input-wrap {
+
+            input {
+                width: ~"calc( (100%) * 0.5 - 17px )";
+                cursor: pointer;
+
+                &.selected {
+                    border: 3px solid;
+                    border-color: @color-blue;
+                }
+            }
+
+            &.compare {
+                input {
+                    &._notactive {
+                        color: #aaa;
+                    }
+                    &.selected {
+                        border-color: @color-orange;
+                    }
+                }
+            }
+
+            .dash {
+                margin: 0 0.8rem;
+            }
+        }
+
+        .period-date-range {
+
+            .period-field-control {
+                width: 18.6rem;
+            }
+        }
+
+        .compare-period-date-range {
+
+            .period-field-control {
+                width: 15.8rem;
+            }
+        }
+
+        .actions {
+
+            button {
+                width: 27.4rem;
+                margin-bottom: 0.5rem;
+                border: none;
+            }
+
+            .apply {
+                background-color: @color-blue;
+                color: #fff;
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="empty"/>    
+    <move element="page.main.title" destination="header.middle.inner.middle.checkout" before="-" />
+    <!-- <referenceContainer name="sticky.header" remove="true" />
+    <referenceContainer name="logo" remove="true"/>
+    <referenceContainer name="meigee_header" remove="true" /> -->
+    <move element="logo" destination="header-wrapper"/>
+        <move element="catalog.topnav" destination="content" before="-"/>
+        <move element="minicart" destination="header-wrapper"/>
+        <referenceContainer name="header.panel" remove="false" />
+        <referenceContainer name="footer-container"  remove="false"/>        
+</layout>

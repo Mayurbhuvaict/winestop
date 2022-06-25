@@ -1,0 +1,112 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ -->
+
+<div data-bind="afterRender: initEvent">
+    <input type="hidden" name="template" data-bind="value: activeTemplate().id"/>
+    <input type="hidden" name="image" data-bind="value: activeImage"/>
+    <input type="hidden" name="amount" data-bind="value: activeAmount().baseValue"/>
+    <input type="hidden" name="range_amount" data-bind="value: useRangeAmount() ? 1 : 0"/>
+    <input type="hidden" name="delivery" data-bind="value: activeDelivery().key"/>
+    <div class="giftcard-information giftcard-information-amount">
+        <div class="giftcard-field-label" data-bind="i18n: 'Amount'"></div>
+        <div class="giftcard-field-wrapper">
+            <ul class="giftcard-amount">
+                <!-- ko foreach: {data: amounts, as: 'amount'} -->
+                <li class="giftcard-design-button-container"
+                    data-bind="css: {'active': !$parent.useRangeAmount() && ($parent.activeAmount().baseValue === amount.baseValue)}">
+                    <button type="button" class="giftcard-design-button"
+                            data-bind="click: $parent.changeAmount.bind($parent)">
+                        <span data-bind="text: amount.amountFormatted"></span>
+                    </button>
+                </li>
+                <!-- /ko -->
+                <!-- ko if: allowOpenAmount -->
+                <li class="giftcard-design-input-container" data-bind="css: {'active': useRangeAmount()}">
+                    <input type="text" class="giftcard-design-open-amount"
+                           data-bind="value: openAmountValue, click: checkOpenAmount, attr: {placeHolder: $t('Enter Amount')}"/>
+                </li>
+                <!-- /ko -->
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="giftcard-information giftcard-information-delivery"> <!-- data-bind="visible: deliveries.length > 1"-->
+        <div class="giftcard-field-label" data-bind="i18n: 'Delivery'"></div>
+        <div class="giftcard-field-wrapper">
+            <ul class="giftcard-delivery" data-bind="foreach: {data: deliveries, as: 'delivery'}">
+                <li class="giftcard-design-button-container"
+                    data-bind="css: {'active': $parent.activeDelivery().key === delivery.key}">
+                    <button type="button" class="giftcard-design-button" data-bind="click: $parent.activeDelivery">
+                        <span data-bind="text: delivery.label"></span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="giftcard-information-delivery-content fieldset"
+         data-bind="foreach: {data: deliveryFields, as: 'field'}">
+        <div class="field giftcard-information giftcard-information-delivery-field"
+             data-bind="css: {'required': field.required}, attr: {id: 'delivery-' + field.name}">
+            <label class="label giftcard-field-label">
+                <span data-bind="attr: {for: field.name}, text: field.label"></span>
+            </label>
+            <div class="giftcard-field-wrapper">
+                <!-- ko if: field.type === 'input' -->
+                <input type="text" data-bind="value: field.value ? field.value : '',
+                                            valueUpdate: 'keyup',
+                                            attr: {
+                                                id: field.name,
+                                                class: field.class ? field.class : '',
+                                                name: field.name,
+                                                placeHolder: field.placeHolder ? field.placeHolder : '',
+                                                readonly: field.readonly
+                                            }" afterRender="$parent.initCalendar(field.name)"/>
+
+                <!-- /ko -->
+                <!-- ko if: field.type === 'textarea' -->
+                <textarea
+                        data-bind="value: field.value ? field.value : '', valueUpdate: 'keyup', attr: {name: field.name, maxlength: $parent.maxLength ? $parent.maxLength : '',placeHolder: field.placeHolder ? field.placeHolder : ''}"></textarea>
+                <!-- /ko -->
+                <!-- ko if: field.type === 'label' -->
+                <p class="note" data-bind="attr: {id: 'delivery-field-' + field.name}, text: field.value"></p>
+                <!-- /ko -->
+                <!-- ko if: field.type === 'select' -->
+                <select data-bind="attr: {name: field.name, id: field.name}">
+                    <!-- ko foreach: {data: field.options, as: 'option'} -->
+                    <option data-bind="value: option.value, text: option.label, attr: {selected: (option.value === $parents[1].timezone())}"></option>
+                    <!-- /ko -->
+                </select>
+                <!-- /ko -->
+                <!-- ko if: field.name === 'message' -->
+                <p class="note">
+                    <span data-bind="text: $parent.remainChar() + ' ' + field.remainingLabel"></span>
+                </p>
+                <!-- /ko -->
+                <!-- ko if: field.note -->
+                <p class="note" data-bind="text: field.note"></p>
+                <!-- /ko -->
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

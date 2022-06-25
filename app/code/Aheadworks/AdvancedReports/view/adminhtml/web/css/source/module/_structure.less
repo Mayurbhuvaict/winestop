@@ -1,0 +1,121 @@
+.aw-arep {
+    &-report_grid {
+
+        .sticky-header{
+            top: 0;
+        }
+        .admin__data-grid-header {
+            margin-top: 2rem;
+        }
+    }
+
+    &__data-grid-wrap {
+        td {
+            padding: 0.8rem 1rem;
+        }
+
+        th {
+            &._right {
+                text-align: right;
+            }
+        }
+    }
+
+    &__widget-difference-value {
+        height: 1.6rem;
+        overflow: hidden;
+        display: inline-block;
+        font-size: 1.2rem;
+        font-weight: 600;
+
+        &:hover {
+            .difference-value-percent {
+                margin-top: -1.6rem;
+            }
+        }
+
+        > div {
+            display: block;
+            text-align: center;
+            cursor: default;
+        }
+
+        .difference-value {
+            padding: 0 0.4rem;
+            border-radius: 2px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+        }
+
+        .difference-value-percent {
+            transition: 0.3s;
+            margin-top: 0;
+            text-align: left;
+
+            span {
+                &:before {
+                    border-style: solid;
+                    border-width: 0.5rem 0.4rem 0 0.4rem;
+                    content: '';
+                    position: relative;
+                    transition: all .2s linear;
+                    margin-right: 5px;
+                    margin-bottom: 2px;
+                    display: inline-block;
+                }
+            }
+        }
+
+        &.increase {
+            .difference-value {
+                background-color: @color-increase-difference-value-background;
+                color: #fff;
+            }
+            .difference-value-percent {
+                color: @color-increase-difference-value;
+
+                span {
+                    &:before {
+                        border-color: @color-increase-difference-value transparent transparent transparent;
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+        &.decrease {
+            .difference-value {
+                background-color: @color-decrease-difference-value-background;
+                color: #fff;
+            }
+            .difference-value-percent {
+                color: @color-decrease-difference-value;
+
+                span {
+                    &:before {
+                        border-color: @color-decrease-difference-value transparent transparent transparent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.awarep-chart-tooltip {
+    padding: 10px;
+    min-width: 160px;
+}
+
+.awarep-chart-tooltip-small {
+    padding: 10px;
+    min-width: 110px;
+}
+
+.awarep-chart-tooltip-wide {
+    padding: 10px;
+    min-width: 190px;
+}
+
+.admin__menu .item-report > .submenu {
+  overflow-x: auto !important;
+  width: 86vw !important;
+}

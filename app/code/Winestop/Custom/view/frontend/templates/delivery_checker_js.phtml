@@ -1,0 +1,22 @@
+<script>
+ require(['jquery'], function ($,modal)  {
+    $("#custom-delivery-checker").change(function() {
+           var code = this.value;
+           var customurl = "<?php echo $this->getUrl().'custom/index/Deliverycheckercontroller'?>";
+			$.ajax({
+                url: customurl,
+                type: "post",
+                data: {'code': code},
+                success: function(checker) {   
+                    //$( "div.custom_ship_to" ).replaceWith(checker);
+                    // var checker = jQuery.parseJSON(checker);
+                    // if (checker.status) {
+                    //     $("ol.product-items").clone().appendTo(".temp_pro_list");
+                    //     $("product-items").replaceWith(checker.result);                            	
+                    // }
+                    $('.select-shipping-container span').text(checker);
+                }
+            });
+    });
+});
+</script>

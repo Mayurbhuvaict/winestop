@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see \Magento\Theme\Block\Html\Topmenu
+ */
+?>
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+<nav class="navbar navbar-default navigation">
+	<div class="collapse topmenu navbar-collapse" data-action="navigation">
+		<ul class="nav topmenu navbar-nav" id="mobile-nav" data-mage-init='{"mobile_menu":{"responsive":true, "expanded":true, "delay": 0, "position":{"my":"left top","at":"left bottom"}}}'>
+			<?php /* @escapeNotVerified */ echo $_menu ?>
+			<?php /* @escapeNotVerified */ echo $block->getChildHtml(); ?>
+		</ul>
+	</div>
+</nav>
