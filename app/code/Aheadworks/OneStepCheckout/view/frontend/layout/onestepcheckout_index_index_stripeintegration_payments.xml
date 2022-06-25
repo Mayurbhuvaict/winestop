@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src="StripeIntegration_Payments::js/stripe_payments.js" />
+        <css src="StripeIntegration_Payments::css/stripe_payments.css"/>
+        <css src="StripeIntegration_Payments::css/stripe_payments_elements.css" />
+        <css src="StripeIntegration_Payments::css/paymentfont.min.css" />
+    </head>
+    <body>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="paymentMethod" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="beforeMethods" xsi:type="array">
+                                            <item name="component" xsi:type="string">uiComponent</item>
+                                            <item name="displayArea" xsi:type="string">beforeMethods</item>
+                                            <item name="children" xsi:type="array">
+                                                <item name="stripe_payments_apple_pay" xsi:type="array">
+                                                    <item name="component" xsi:type="string">StripeIntegration_Payments/js/view/payment/apple_pay</item>
+                                                    <item name="config" xsi:type="array">
+                                                        <item name="template" xsi:type="string">StripeIntegration_Payments/payment/apple_pay_top</item>
+                                                    </item>
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="agreements" xsi:type="array">
+                                                            <item name="componentDisabled" xsi:type="boolean">false</item>
+                                                            <item name="component" xsi:type="string">Magento_CheckoutAgreements/js/view/checkout-agreements</item>
+                                                            <item name="sortOrder" xsi:type="string">100</item>
+                                                            <item name="displayArea" xsi:type="string">beforeMethods</item>
+                                                            <item name="dataScope" xsi:type="string">checkoutAgreements</item>
+                                                            <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                                <item name="actions-toolbar" xsi:type="array">
+                                    <item name="rendererList" xsi:type="array">
+                                        <item name="stripe_payments" xsi:type="string">Aheadworks_OneStepCheckout/js/view/actions-toolbar/renderer/stripe-integration/stripe-payments</item>
+                                        <item name="stripe_payments_apple_pay" xsi:type="string">Aheadworks_OneStepCheckout/js/view/actions-toolbar/renderer/stripe-integration/stripe-payments</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

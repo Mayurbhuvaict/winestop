@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+$meigee_helper = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral');
+$account_link = $meigee_helper->getCustomThemeOptionCnf('barbour_toplinks', 'toplinks_account');
+$wishlist_link = $meigee_helper->getCustomThemeOptionCnf('barbour_toplinks', 'toplinks_wishlist');
+$compare_link = $meigee_helper->getCustomThemeOptionCnf('barbour_toplinks', 'toplinks_compare');
+$register_link = $meigee_helper->getCustomThemeOptionCnf('barbour_toplinks', 'toplinks_register');
+$login_link = $meigee_helper->getCustomThemeOptionCnf('barbour_toplinks', 'toplinks_login');
+?>
+<ul class="header links">
+	<?php if(!$compare_link){ ?>
+		<?php echo $this->getChildHtml("catalog.compare.link"); ?>
+	<?php } ?>
+	<?php if(!$account_link){ ?>
+		<?php echo $this->getChildHtml("my-account-link"); ?>
+	<?php } ?>
+	<?php if(!$wishlist_link){ ?>
+		<?php echo $this->getChildHtml("wish-list-link"); ?>
+	<?php } ?>
+	<?php if(!$register_link){ ?>
+		<?php echo $this->getChildHtml("register-link"); ?>
+	<?php } ?>
+	<?php if(!$login_link){ ?>
+		<?php echo $this->getChildHtml("authorization-link"); ?>
+	<?php } ?>
+</ul>

@@ -1,0 +1,33 @@
+@border-property: 1px solid @color-gray;
+
+.aw-arep__group-by {
+    &-wrap {
+        flex-direction: row;
+        justify-content: flex-end;
+        display: flex;
+        margin-bottom: @margin-after-ui-components;
+    }
+
+    &-item {
+        border-top: @border-property;
+        border-bottom: @border-property;
+        border-left: @border-property;
+        min-width: 80px;
+        padding: 8px;
+        text-align: center;
+        cursor: pointer;
+
+        &:last-child {
+          border-right: @border-property;
+        }
+        &:hover{
+            background-color: @color-gray;
+        }
+        &.active {
+            background-color: @color-blue;
+        }
+        &.active span {
+            color: #fff;
+        }
+    }
+}

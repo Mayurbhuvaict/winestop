@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xs">
+    <system>
+        <section id="seo" showInDefault="1" showInWebsite="1" showInStore="1" type="text" translate="label" sortOrder="400">
+            <label>SEO</label>
+            <tab>mirasvit</tab>
+            <resource>Mirasvit_Seo::config_seo</resource>
+            <group id="general" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="100">
+                <label>General Settings</label>
+                <field id="is_paging_prevnext" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Link Rel=&quot;next/prev&quot;</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <group id="canonical" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="30">
+                    <label>Canonical</label>
+                    <field id="is_add_canonical_url" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>seo/general/is_add_canonical_url</config_path>
+                        <label>Add Canonical URL Meta Header</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <backend_model>\Mirasvit\Seo\Model\Config\Backend\Canonical</backend_model>
+                    </field>
+                    <field id="is_longest_canonical_url" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>seo/general/is_longest_canonical_url</config_path>
+                        <label>Use longest product URL as canonical</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_add_canonical_url">1</field>
+                        </depends>
+                    </field>
+                    <field id="associated_canonical_configurable_product" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>seo/general/associated_canonical_configurable_product</config_path>
+                        <label>Associated Products Canonical Tag for Configurable Products</label>
+                        <source_model>\Mirasvit\Seo\Model\Config\Source\AssociatedCanonical\Product</source_model>
+                        <depends>
+                            <field id="is_add_canonical_url">1</field>
+                        </depends>
+                    </field>
+                    <field id="associated_canonical_grouped_product" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>seo/general/associated_canonical_grouped_product</config_path>
+                        <label>Associated Products Canonical Tag for Grouped Products</label>
+                        <source_model>\Mirasvit\Seo\Model\Config\Source\AssociatedCanonical\Product</source_model>
+                        <depends>
+                            <field id="is_add_canonical_url">1</field>
+                        </depends>
+                    </field>
+                    <field id="associated_canonical_bundle_product" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>seo/general/associated_canonical_bundle_product</config_path>
+                        <label>Associated Products Canonical Tag for Bundle Products</label>
+                        <source_model>\Mirasvit\Seo\Model\Config\Source\AssociatedCanonical\Product</source_model>
+                        <depends>
+                            <field id="is_add_canonical_url">1</field>
+                        </depends>
+                    </field>
+                    <field id="canonical_store_without_store_code" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <config_path>seo/general/canonical_store_without_store_code</config_path>
+                        <label>Canonical to store without store code</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>Use only if "Configuration->GENERAL->Web->Add Store Code to Urls" is enabled</comment>
+                        <depends>
+                            <field id="is_add_canonical_url">1</field>
+                        </depends>
+                    </field>
+                    <field id="crossdomain" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>seo/general/crossdomain</config_path>
+                        <label>Cross Domain Canonical URL</label>
+                        <source_model>\Mirasvit\Seo\Model\Config\Source\CrossDomain</source_model>
+                        <depends>
+                            <field id="is_add_canonical_url">1</field>
+                            <field id="canonical_store_without_store_code">0</field>
+                        </depends>
+                    </field>
+                    <field id="crossdomain_prefer_https" translate="label" type="select" sortOrder="53" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <config_path>seo/general/crossdomain_prefer_https</config_path>
+                        <label>Prefer https for Cross Domain Canonical URL</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_add_canonical_url">1</field>
+                            <field id="canonical_store_without_store_code">0</field>
+                        </depends>
+                    </field>
+                    <field id="paginated_canonical" translate="label" type="select" sortOrder="55" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <config_path>seo/general/paginated_canonical</config_path>
+                        <label>Add '?p=' to paginated content</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_add_canonical_url">1</field>
+                        </depends>
+                    </field>
+                    <field id="canonical_url_ignore_pages" translate="label" type="textarea" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>seo/general/canonical_url_ignore_pages</config_path>
+                        <label>Don't use canonical URLs on pages</label>
+                        <depends>
+                            <field id="is_add_canonical_url">1</field>
+                        </depends>
+                    </field>
+                </group>
+
+                <group id="robots" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="80">
+                    <label>Meta Robots</label>
+                    <field id="noindex_pages2" translate="label" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>seo/general/noindex_pages2</config_path>
+                        <label>Robots Meta Header</label>
+                        <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\NoindexPages</frontend_model>
+                        <backend_model>Mirasvit\Seo\Model\Config\Backend\ArraySerialized</backend_model>
+                    </field>
+                    <field id="https_noindex_pages" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>seo/general/https_noindex_pages</config_path>
+                        <label>Robots Meta Header for HTTPS</label>
+                        <source_model>\Mirasvit\Seo\Model\Config\Source\HttpsNoindexPages</source_model>
+                    </field>
+                </group>
+
+                <group id="alternate" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="100">
+                    <label>Alternate/Hreflang</label>
+                    <field id="is_alternate_hreflang" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>seo/general/is_alternate_hreflang</config_path>
+                        <label>Enable Link Rel=&quot;alternate&quot; and hreflang</label>
+                        <source_model>\Mirasvit\Seo\Model\Config\Source\Alternate\Alternate</source_model>
+                        <tooltip><![CDATA["Add for every website" - create alternate for stores inside website.
+                    "Configure manually" - ability configure alternate for any store group.
+                        ]]></tooltip>
+                    </field>
+                    <field id="alternate_configurable" translate="label" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <config_path>seo/general/alternate_configurable</config_path>
+                        <label>Configure alternate manually</label>
+                        <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\Alternate\Alternate</frontend_model>
+                        <backend_model>Mirasvit\Seo\Model\Config\Backend\ArraySerialized</backend_model>
+                        <depends>
+                            <field id="is_alternate_hreflang">2</field>
+                        </depends>
+                    </field>
+                    <field id="configurable_hreflang_x_default" translate="label" sortOrder="150" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <config_path>seo/general/configurable_hreflang_x_default</config_path>
+                        <label>Add hreflang x-default (not necessary)</label>
+                        <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\Alternate\AlternateXDefault</frontend_model>
+                        <backend_model>Mirasvit\Seo\Model\Config\Backend\ArraySerialized</backend_model>
+                        <depends>
+                            <field id="is_alternate_hreflang">2</field>
+                        </depends>
+                    </field>
+                    <field id="is_hreflang_locale_code_automatical" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <config_path>seo/general/is_hreflang_locale_code_automatical</config_path>
+                        <label>Add hreflang locale code automatically (not necessary)</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_alternate_hreflang" separator="|">1|2</field>
+                        </depends>
+                    </field>
+                    <field id="is_hreflang_cut_category_additional_data" translate="label" type="select" sortOrder="170" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <config_path>seo/general/is_hreflang_cut_category_additional_data</config_path>
+                        <label>Cut category additional data for alternate URL</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_alternate_hreflang" separator="|">1|2</field>
+                        </depends>
+                    </field>
+                    <field id="hreflang_locale_code" translate="label" type="text" sortOrder="180" showInDefault="0" showInWebsite="0" showInStore="1">
+                        <config_path>seo/general/hreflang_locale_code</config_path>
+                        <label>Hreflang locale code (not necessary)</label>
+                        <depends>
+                            <field id="is_alternate_hreflang">1</field>
+                        </depends>
+                    </field>
+                    <field id="is_hreflang_x_default" translate="label" type="select" sortOrder="190" showInDefault="0" showInWebsite="1" showInStore="0">
+                        <config_path>seo/general/is_hreflang_x_default</config_path>
+                        <label>Add hreflang x-default (not necessary)</label>
+                        <source_model>\Mirasvit\Seo\Model\Config\Source\Alternate\XDefault</source_model>
+                        <depends>
+                            <field id="is_alternate_hreflang">1</field>
+                        </depends>
+                    </field>
+                </group>
+            </group>
+
+            <group id="extended" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="600">
+                <label>Extended Settings</label>
+
+                <field id="redirect_to_lowercase" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Redirect urls to lowercase</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip><![CDATA[If enabled redirect uppercase urls to lowercase]]></tooltip>
+                </field>
+
+                <field id="to_lowercase_allowed_types" translate="label" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allowed Page Types (redirect to lowercase)</label>
+                    <frontend_model>Mirasvit\Seo\Block\Adminhtml\System\Config\LowercaseAllowedTypes</frontend_model>
+                    <backend_model>Mirasvit\Seo\Model\Config\Backend\ArraySerialized</backend_model>
+                    <depends>
+                        <field id="redirect_to_lowercase">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="url" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="800">
+                <label>SEO-friendly URLs Settings</label>
+                <field id="use_category_short_url" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Remove Parent Category Path for Category URLs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="apply_category_short_url_button" translate="button_label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Remove Parent Category Path</button_label>
+                    <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\Config\RemoveParentCategoryPath</frontend_model>
+                    <comment>Save configuration before pushing the button</comment>
+                    <depends>
+                        <field id="use_category_short_url">1</field>
+                    </depends>
+                </field>
+                <field id="product_url_key" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product URL Key Template</label>
+                    <tooltip><![CDATA[Function is disabled if current field is empty.]]></tooltip>
+                    <comment><![CDATA[
+                            Example:
+                            <br/><code>[product_name] [product_sku] [by {product_manufacturer}] [color {product_color}]</code>
+                            <br/>
+                            <br/>To apply for all products run in ssh:
+                            <br/><code>bin/magento mirasvit:seo:product-url-template --apply</code>
+                            <br/>
+                            <br/>Additional info:
+                            <br/><code>bin/magento mirasvit:seo:product-url-template</code>]]></comment>
+                </field>
+                <field id="apply_url_key_for_new_products" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Apply URL Key for new products</label>
+                    <tooltip><![CDATA[If enabled, the extension will overwrite the Magento native URL key <br/>]]></tooltip>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <!--<field id="layered_navigation_friendly_urls" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">-->
+                <!--<label>Enable Layered Navigation SEO-friendly URLs</label>-->
+                <!--<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
+                <!--<frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\Config\Warning</frontend_model>-->
+                <!--</field>-->
+                <field id="trailing_slash" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Trailing Slash</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\TrailingSlash</source_model>
+                </field>
+            </group>
+            <group id="image" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="900">
+                <label>Images Settings</label>
+
+                <field id="is_enable_image_friendly_url" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable SEO-friendly URLs for Product Images</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="image_url_template" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Template for URL key of Product Images</label>
+                    <comment><![CDATA[If empty will be used [product_name]]]></comment>
+                    <depends>
+                        <field id="is_enable_image_friendly_url">1</field>
+                    </depends>
+                </field>
+
+                <field id="is_enable_image_alt" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable generation of Product Images Alt and Title</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="image_alt_template" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Template for Product Images Alt and Title</label>
+                    <depends>
+                        <field id="is_enable_image_alt">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

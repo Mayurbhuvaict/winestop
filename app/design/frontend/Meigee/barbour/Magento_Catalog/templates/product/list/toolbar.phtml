@@ -1,0 +1,111 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Security.IncludeFile.FoundIncludeFile
+// phpcs:disable PSR2.Methods.FunctionCallSignature.SpaceBeforeOpenBracket
+
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+use Magento\Catalog\Model\Product\ProductList\Toolbar;
+?>
+<?php if ($block->getCollection()->getSize()) : ?>
+    <div class="toolbar clearfix toolbar-products" data-mage-init='<?php /* @noEscape */ echo $block->getWidgetOptionsJson(); ?>'>
+        <?php echo $block->getPagerHtml() ?>
+        <?php if ($block->isExpanded()) : ?>
+            <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/viewmode.phtml')) ?>
+        <?php endif; ?>
+
+        <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/amount.phtml')) ?>
+
+        <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/limiter.phtml')) ?>
+
+        <?php if ($block->isExpanded()) : ?>
+            <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/sorter.phtml')) ?>
+        <?php endif; ?>
+        <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/filter.phtml')) ?>
+    </div>
+<?php endif ?>
+<script type="text/javascript">
+require(['jquery'], function ($){
+    
+    function moveCurrentFilters() {
+        if (jQuery('#layered-filter-block .block-content .filter-current').length) {
+            if (jQuery(document.body).width() >= 768) {
+                var offsetTop = jQuery('.toolbar').offset().top - jQuery('.content-wrapper .main-container').offset().top
+                                + jQuery('.toolbar').outerHeight() + parseInt(jQuery('.content-wrapper > .container').css('padding-top'));
+                var offsetLeft = jQuery('.toolbar').offset().left - jQuery('.sidebar').offset().left;
+                if (jQuery('.sidebar.right-sidebar').length) { 
+                    offsetLeft = offsetLeft - parseInt(jQuery('.sidebar.right-sidebar').css('padding-left'));
+                }
+                jQuery('#layered-filter-block .block-content .filter-current').css({
+                    position : 'absolute',
+                    top : offsetTop,
+                    left: offsetLeft,
+                    width: jQuery('.toolbar').width(),
+                    'display': 'block'
+                });
+                var currentHeight = jQuery('#layered-filter-block .block-content .filter-current').outerHeight();
+                jQuery('.toolbar').css('margin-bottom', currentHeight);
+
+                var lastFilter = jQuery('#layered-filter-block .block-content .filter-current ol').last();
+                var lastFilterRight = lastFilter.offset().left + lastFilter.width()  - jQuery('.sidebar').offset().left;
+                var btnTop = lastFilter.offset().top - jQuery('.content-wrapper .main-container').offset().top + parseInt(jQuery('.content-wrapper > .container').css('padding-top'));
+                if ((jQuery('#layered-filter-block .block-content .filter-current').width() - jQuery('#layered-filter-block .block-content .filter-current ol').width()) > jQuery('#layered-filter-block .block-content .filter-actions').width()) {
+                    jQuery('#layered-filter-block .block-content .filter-actions').css({
+                        position: 'absolute',
+                        top: btnTop,
+                        left: lastFilterRight,
+                    'display': 'block'
+                    });
+                } else {
+                    jQuery('#layered-filter-block .block-content .filter-actions').css({
+                        position: 'absolute',
+                        top: btnTop + lastFilter.height() + parseInt(lastFilter.css('margin-bottom')),
+                        left: parseInt(jQuery('#layered-filter-block .block-content .filter-current').css('left')),
+                        'display': 'block'
+                    });
+                    jQuery('.toolbar').css('margin-bottom', currentHeight + jQuery('#layered-filter-block .block-content .filter-actions').height());
+                }
+                if (jQuery('#layered-filter-block #narrow-by-list').length == 0) {
+                    jQuery('#layered-filter-block').addClass('empty');
+                    jQuery('#layered-filter-block .block-title').css('display', 'none');
+                } else {
+                    jQuery('#layered-filter-block').removeClass('empty');
+                }
+            }
+            else {
+                jQuery('#layered-filter-block .block-content .filter-current').css({
+                        position : 'static',
+                        top : 0,
+                        left: 0,
+                        width: 'auto',
+                        'display': 'block'
+                    });
+                jQuery('#layered-filter-block .block-content .filter-actions').css({
+                        position: 'static',
+                        top: 0,
+                        left: 0,
+                        'display': 'block'
+                    });
+                jQuery('.toolbar').css('margin-bottom', 0);
+                jQuery('#layered-filter-block').removeClass('empty');
+                jQuery('#layered-filter-block .block-title').css('display', 'block');
+            }
+        } else {
+            jQuery('#layered-filter-block').removeClass('empty');
+        }
+    }
+    moveCurrentFilters();
+    jQuery(window).resize(function(){
+        moveCurrentFilters();
+    });
+});
+</script>

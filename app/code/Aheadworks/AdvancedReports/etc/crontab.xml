@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="aw_arep_update_period_tables" instance="Aheadworks\AdvancedReports\Cron\UpdatePeriodTables" method="execute">
+            <schedule>0 1 * * *</schedule>
+        </job>
+        <job name="aw_arep_reindex" instance="Aheadworks\AdvancedReports\Cron\Reindex" method="execute">
+            <schedule>0 2 * * *</schedule>
+        </job>
+        <job name="aw_arep_scheduled_email_sender" instance="Aheadworks\AdvancedReports\Cron\ScheduledEmailSender" method="execute">
+            <schedule>30 0 * * *</schedule>
+        </job>
+    </group>
+</config>

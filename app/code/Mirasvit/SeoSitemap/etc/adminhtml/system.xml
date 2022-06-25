@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="seositemap" showInDefault="1" showInWebsite="1" showInStore="1" type="text" translate="label" sortOrder="410">
+            <label>Extended Site Map</label>
+            <tab>mirasvit</tab>
+            <resource>Mirasvit_SeoSitemap::config_seositemap</resource>
+            <group id="frontend" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                <label>Frontend Sitemap Settings</label>
+
+                <field id="sitemap_base_url" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Base URL Path To Frontend Sitemap</label>
+                </field>
+
+                <field id="column_count" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Columns Count</label>
+                    <validate>required-entry validate-digits-range digits-range-1-10</validate>
+                    <tooltip>Valid values from 1 to 10</tooltip>
+                </field>
+
+                <field id="is_capital_letters_enabled" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Capital Letter Product's listing by alphabet</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="sitemap_meta_title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Title</label>
+                </field>
+
+                <field id="sitemap_meta_keywords" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Keywords</label>
+                </field>
+
+                <field id="sitemap_meta_description" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Description</label>
+                </field>
+
+                <field id="sitemap_h1" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>H1 Header</label>
+                </field>
+
+                <field id="is_show_products" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Products</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="is_show_categories" translate="label" type="select" sortOrder="62" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Categories</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="is_show_non_salable_products" translate="label" type="select" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Non-salable Products</label>
+                    <depends>
+                        <field id="is_show_products">1</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="is_show_cms_pages" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show CMS Pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="ignore_cms_pages" translate="label" type="multiselect" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Ignore CMS Pages</label>
+                    <source_model>\Mirasvit\SeoSitemap\Model\Config\Source\Ignore\Cms\Pages</source_model>
+                </field>
+
+                <field id="is_show_stores" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Stores</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[If you have multiple store views,<br/>
+                            we will show links to them<br/>]]>
+                    </comment>
+                </field>
+
+                <field id="additional_links" translate="label" type="textarea" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Additional links</label>
+                    <comment><![CDATA[Example:<br/>
+                            /promotions/, Our Promotions<br/>
+                            /customer/account/, Customer Account<br/>]]>
+                    </comment>
+                </field>
+
+                <field id="exclude_links" translate="label" type="textarea" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Exclude by pattern</label>
+                    <comment><![CDATA[Each pattern should be added from new line, wildcards allowed]]></comment>
+                </field>
+
+                <field id="links_limit" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Limit the number of product links per one page</label>
+                    <validate>required-entry validate-number validate-integer</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

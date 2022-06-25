@@ -1,0 +1,42 @@
+<?php
+
+namespace Mirasvit\Seo\Ui\CanonicalRewrite\Form\Source;
+
+use Magento\Framework\Data\OptionSourceInterface;
+use Mirasvit\Seo\Api\Data\CanonicalRewriteInterface;
+
+class ConditionType implements OptionSourceInterface
+{
+    /**
+     * @var array
+     */
+    protected $options;
+
+    /**
+     * Get options
+     *
+     * @return array
+     */
+    public function toOptionArray()
+    {
+        if ($this->options !== null) {
+            return $this->options;
+        }
+
+        $data = [
+            CanonicalRewriteInterface::CONDITION_TYPE_RULE => 'Rule',
+            CanonicalRewriteInterface::CONDITION_TYPE_REG_EXPR => 'Regular expression',
+        ];
+
+        $options = [];
+        foreach ($data as $key => $value) {
+            $options[] = [
+                'label' => $value,
+                'value' => $key,
+            ];
+        }
+        $this->options = $options;
+
+        return $this->options;
+    }
+}

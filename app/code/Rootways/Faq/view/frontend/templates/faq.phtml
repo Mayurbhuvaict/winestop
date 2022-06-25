@@ -1,0 +1,78 @@
+<?php $helper = $this->helper('Rootways\Faq\Helper\Data'); ?>
+<?php $faqCollection = $this->getCollection(); ?>
+<div class="faq_topic_page container clearfix">
+    <?php echo base64_decode($helper->act());?>
+    <div class="searchpart">
+        <div class="">
+            <div class="search_left"><?php echo __('Search in FAQ');?></div>
+            <div class="search_right">
+            	<div class="textbx">
+                	<input type="text" name="faqsearch" id="faqsearch" class="searchfild" placeholder="<?php echo __('Enter Search keyword(s)');?>" kl_virtual_keyboard_secure_input="on">
+               	</div>
+                <input type="button" id="searchfaq" name="searchfaq" class="searchbtgo" value="<?php echo __('Search');?>">
+                <div id="faq-validation"></div>
+             </div>
+        </div>
+    </div>
+    <div class="faq-left">
+        <ul class="faq-left-link">
+        	<?php if (count($this->getCategoryCollection())) { ?>
+                <?php if (count($faqCollection)) { ?>
+				    <li><a class="cat-title active" id="faqcat_most"><?php echo __('Most Frequently Asked Questions');?></a></li>
+                <?php } ?>
+				<?php $cnt = 0; foreach($this->getCategoryCollection() as $data) { ?>
+                    <?php $catActive = ''; if (count($faqCollection) <= 0 && $cnt == 0) { $catActive = ' active'; }?>
+                    <?php $cnt++ ?>
+                    <li><a class="cat-title <?=$catActive?>" id="faqcat_<?php echo $data->getCatId();?>"><?php echo $data->getName()?></a></li>
+				<?php } ?>
+			<?php } else { ?>
+				<span class="no-cat-found"><?php echo __('No Category Found');?></span>
+            <?php } ?>
+        </ul>
+    </div>
+   
+    <div class="faq-right">
+        <?php
+        $defaultTitle = __('');
+        if (count($faqCollection)) {
+            $defaultTitle = __('Most Frequently Asked Questions');
+        } ?>
+    	<div class="faq-right_title"><strong><?=$defaultTitle?></strong></div>
+    	<div id="faqlisting" class="faq-right-contant">
+        	<?php if (count($faqCollection)) { ?>
+				<?php $i = 1; foreach($faqCollection as $data): ?>
+                	<div class="faq_list">
+                     	<a id="qus_id_<?php echo $i;?>" class="faq-question"><?php echo $data->getTitle();?></a>
+                    	<div id="ans_id_<?php echo $i;?>" class="faq-text-content"><?php echo $block->filterOutputHtml($data->getDescription());?></div>
+                    </div>
+				<?php $i++; endforeach; ?>
+			<?php } else { ?>
+				<span class="no-faq-found"><?php echo __('No FAQ Found');?></span>
+            <?php } ?>
+        <?php echo $this->AjaxPagination();?>
+    	</div>
+        <div class="faq-loader"></div>
+    </div>
+    <input type="hidden" name="cur_cat" id="cur_cat" />
+ 	<input type="hidden" name="base_url" id="base_url" value="<?php echo $helper->getBaseUrl(); ?>" />
+</div>
+
+<script>
+require([
+    'jquery'
+], function($) {
+    $(window).load(function() {
+        var total_faq = "<?php echo count($faqCollection) ?>";
+        if (parseInt(total_faq) <= 0) {
+            window.setCat = function() {
+                if (!jQuery('.faq-left-link')[0]) {
+                    setTimeout(function(){window.setCat();}, 300);
+                    return;
+                }
+                $('.faq-left-link li').first().find('a').click();
+            }
+            window.setCat();
+        }
+    });
+});
+</script>

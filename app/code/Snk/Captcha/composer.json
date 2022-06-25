@@ -1,0 +1,20 @@
+{
+  "name": "snk/magento2-module-captcha",
+  "description": "Extension for standard magento 2 capctah that adds Math Captcha",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+    "magento/module-captcha": "100.3.*"
+  },
+  "license": [
+    "MIT"
+  ],
+  "autoload": {
+    "files": [
+      "src/registration.php"
+    ],
+    "psr-4": {
+      "Snk\\Captcha\\": "src"
+    }
+  }
+}

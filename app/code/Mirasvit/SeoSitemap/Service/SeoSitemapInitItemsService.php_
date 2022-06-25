@@ -1,0 +1,53 @@
+<?php
+namespace Mirasvit\SeoSitemap\Service;
+
+use Mirasvit\SeoSitemap\Api\Service\SeoSitemapInitItemsServiceInterface;
+use Magento\Framework\Module\Manager as ModuleManager;
+
+class SeoSitemapInitItemsService
+{
+    /**
+     * @var array 
+     */
+    private $itemHandlers;
+
+    /**
+     * @var array
+     */
+    private $whitelist = ['Product', 'Category', 'Cms'];
+    /**
+     * @var ModuleManager
+     */
+    private $moduleManager;
+
+    /**
+     * SeoSitemapInitItemsService constructor.
+     * @param array $itemHandlers
+     * @param ModuleManager $moduleManager
+     */
+    public function __construct(
+        array $itemHandlers = [],
+        ModuleManager $moduleManager
+    ) {
+        $this->itemHandlers = $itemHandlers;
+        $this->moduleManager        = $moduleManager;
+    }
+
+    /**
+     * @param int $storeId
+     * @return \Generator
+     */
+    public function initSitemapItems($storeId)
+    {
+        foreach ($this->itemHandlers as $itemKey => $itemHandler) {
+            if ($this->canUseInSiteMap($itemKey)) {
+                    $result = $itemHandler->initSitemapItem($storeId);
+                if (!empty($result)) {
+                    yield $result;
+                }
+            }
+        }
+    }
+
+
+}

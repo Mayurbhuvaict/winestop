@@ -1,0 +1,71 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ -->
+
+<div class="gift-card-view" data-role="gift-card-view">
+    <div class="gift-card-view-detail">
+        <table class="data table table-gift-card-detail" id="gift-card-view-detail">
+            <tbody>
+            <tr>
+                <td class="col"><%- balance_title %></td>
+                <td class="col"><%= balance_formatted %></td>
+            </tr>
+            <tr>
+                <td class="col"><%- status_title %></td>
+                <td class="col"><%- status_label %></td>
+            </tr>
+            <tr>
+                <td class="col"><%- expired_at_title %></td>
+                <td class="col"><%- expired_at_formatted %></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="block block-history">
+        <div class="block-title">
+            <strong id="block-gift-card-history-heading" role="heading"><%- history_title %></strong>
+        </div>
+        <div class="block-content">
+            <table class="data table table-giftcard-history history" id="giftcard-history-table">
+                <thead>
+                <tr>
+                    <th scope="col" class="col date"><%= column_date %></th>
+                    <th scope="col" class="col action"><%= column_action %></th>
+                    <th scope="col" class="col amount"><%= column_amount %></th>
+                    <th scope="col" class="col status"><%= column_status %></th>
+                    <!--<th scope="col" class="col detail"><%= column_detail %></th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <% _.each(histories, function(history){ %>
+                <tr>
+                    <td class="col date"><%= history.created_at_formatted %></td>
+                    <td class="col action"><%= history.action_label %></td>
+                    <td class="col amount"><%= history.amount_formatted %></td>
+                    <td class="col status"><%= history.status_label %></td>
+                    <!--<td class="col detail"><%= history.action_detail %></td>-->
+                </tr>
+                <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

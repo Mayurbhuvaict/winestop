@@ -1,0 +1,104 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+$designFields           = $block->getDesignFields();
+$designFieldsEncode     = $block->escapeHtml(\Mageplaza\GiftCard\Helper\Data::jsonEncode($designFields));
+$initDesignFields       = $block->getInitDesignFields();
+$initDesignFieldsEncode = $block->escapeHtml(\Mageplaza\GiftCard\Helper\Data::jsonEncode($initDesignFields));
+$templates              = $block->getExistTemplates();
+$templatesEncode        = $block->escapeHtml(\Mageplaza\GiftCard\Helper\Data::jsonEncode($templates));
+?>
+
+<?php if ($block->getFonts()) : ?>
+    <link href="https://fonts.googleapis.com/css?family=<?= $block->getFonts() ?>" rel="stylesheet">
+<?php endif; ?>
+
+<div class="entry-edit form-inline">
+    <?php if (count($templates)) : ?>
+        <fieldset class="fieldset admin__fieldset" id="base_fieldset">
+            <legend class="admin__legend legend">
+                <span><?= /** @noEscape */ __('Load From Exist Template') ?></span>
+            </legend>
+            <br>
+            <div class="admin__field">
+                <label class="admin__field-label" for="template_select"><?= /** @noEscape */ __('Template') ?></label>
+                <div class="admin__field-control">
+                    <select id="template_select" name="code" class="admin__control-select required-entry">
+                        <?php foreach ($templates as $key => $template) : ?>
+                            <option value="<?= /** @noEscape */ $key ?>"><?= /** @noEscape */ $template['name'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <div class="admin__field required">
+                <span class="admin__field-label"></span>
+                <div class="admin__field-control">
+                    <button id="template-load" title="Load Template" type="button" class="action-default scalable save"
+                            data-role="template-load" data-ui-id="template-edit-load-button">
+                        <span><?= /** @noEscape */ __('Load Template') ?></span>
+                    </button>
+                </div>
+            </div>
+        </fieldset>
+    <?php endif; ?>
+    <fieldset class="fieldset admin__fieldset" id="design_fieldset">
+        <legend class="admin__legend legend">
+            <span><?= /** @noEscape */ __('Design Template') ?></span>
+        </legend>
+        <br>
+        <div class="admin__field giftcard-template-design"
+             data-mage-init='{"giftCard/design":{"fields": <?= /** @noEscape */ $designFieldsEncode ?>, "initFields": <?= /** @noEscape */ $initDesignFieldsEncode ?>, "existDesign": <?= /** @noEscape */ $templatesEncode ?>}}'>
+            <input type="hidden" id="giftcard-design-input" name="design" value="<?= /** @noEscape */ $designFieldsEncode ?>"/>
+            <div class="giftcard-drag-drop-left">
+                <?php $topPosition = 0; ?>
+                <?php foreach ($initDesignFields as $key => $field) : ?>
+                    <?php if ($key !== 'giftcard') : ?>
+                        <div id="design-field-<?= /** @noEscape */ $key ?>"
+                             data-id="<?= /** @noEscape */ $key ?>"
+                             data-label="<?= /** @noEscape */ $field['label'] ?>"
+                            <?php if (isset($field['sampleContent'])) : ?>
+                                data-sample-content="<?= /** @noEscape */ $field['sampleContent'] ?>"
+                            <?php endif; ?>
+                            <?php if (isset($field['img'])) : ?>
+                                data-sample-content="<img src='<?= /** @noEscape */ $field['img'] ?>'>"
+                            <?php endif; ?>
+                             class="draggable drag-drop drag-out drag-<?= /** @noEscape */ $key ?>"
+                             style="top: <?= /** @noEscape */ $topPosition += 35 ?>px; overflow: hidden">
+                            <div class="label-content">
+                                <span class="sample-content"><?= /** @noEscape */ $field['label'] ?></span>
+                                <img class="design-field-edit" data-id="<?= /** @noEscape */ $key ?>"
+                                     src="<?= /** @noEscape */ $block->getViewFileUrl('Mageplaza_GiftCard::css/image/icon_edit.png') ?>"/>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+            <div class="giftcard-drag-drop-right">
+                <div id="design-field-giftcard" class="dropzone" data-id="giftcard"
+                     data-label="<?= /** @noEscape */ __('Gift Card') ?>">
+                    <img class="design-field-edit" data-id="giftcard"
+                         src="<?= /** @noEscape */ $block->getViewFileUrl('Mageplaza_GiftCard::css/image/icon_edit.png') ?>"/>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+

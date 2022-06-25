@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Managing mine Cart Coupons -->
+    <route url="/V1/carts/mine/mpgiftcard" method="PUT">
+        <service class="Mageplaza\GiftCard\Api\GiftCardManagementInterface" method="set"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/carts/mine/mpgiftcard/:code" method="DELETE">
+        <service class="Mageplaza\GiftCard\Api\GiftCardManagementInterface" method="remove"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/carts/mine/mpgiftcredit/:amount" method="PUT">
+        <service class="Mageplaza\GiftCard\Api\GiftCardManagementInterface" method="credit"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/mpgiftcard/redeem/" method="POST">
+        <service class="Mageplaza\GiftCard\Api\GiftCardManagementInterface" method="redeem"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::giftcard"/>
+        </resources>
+    </route>
+
+    <!-- Managing Guest Cart Coupons -->
+    <route url="/V1/guest-carts/:cartId/mpgiftcard" method="PUT">
+        <service class="Mageplaza\GiftCard\Api\GuestGiftCardManagementInterface" method="set"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/guest-carts/:cartId/mpgiftcard/:code" method="DELETE">
+        <service class="Mageplaza\GiftCard\Api\GuestGiftCardManagementInterface" method="remove"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route url="/V1/mpgiftcard/code/" method="GET">
+        <service class="Mageplaza\GiftCard\Api\GiftCodeManagementInterface" method="getList"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::code"/>
+        </resources>
+    </route>
+    <route url="/V1/mpgiftcard/code/:id" method="GET">
+        <service class="Mageplaza\GiftCard\Api\GiftCodeManagementInterface" method="get"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::code"/>
+        </resources>
+    </route>
+    <route url="/V1/mpgiftcard/code/:id" method="DELETE">
+        <service class="Mageplaza\GiftCard\Api\GiftCodeManagementInterface" method="delete"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::code"/>
+        </resources>
+    </route>
+    <route url="/V1/mpgiftcard/code/" method="PUT">
+        <service class="Mageplaza\GiftCard\Api\GiftCodeManagementInterface" method="save"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::code"/>
+        </resources>
+    </route>
+
+    <route url="/V1/mpgiftcard/pool/" method="GET">
+        <service class="Mageplaza\GiftCard\Api\GiftPoolManagementInterface" method="getList"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::pool"/>
+        </resources>
+    </route>
+    <route url="/V1/mpgiftcard/pool/:id" method="GET">
+        <service class="Mageplaza\GiftCard\Api\GiftPoolManagementInterface" method="get"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::pool"/>
+        </resources>
+    </route>
+    <route url="/V1/mpgiftcard/pool/:id" method="DELETE">
+        <service class="Mageplaza\GiftCard\Api\GiftPoolManagementInterface" method="delete"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::pool"/>
+        </resources>
+    </route>
+    <route url="/V1/mpgiftcard/pool/" method="PUT">
+        <service class="Mageplaza\GiftCard\Api\GiftPoolManagementInterface" method="save"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::pool"/>
+        </resources>
+    </route>
+    <route url="/V1/mpgiftcard/pool/generate" method="POST">
+        <service class="Mageplaza\GiftCard\Api\GiftPoolManagementInterface" method="generate"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::pool"/>
+        </resources>
+    </route>
+
+    <route url="/V1/mpgiftcard/template/" method="GET">
+        <service class="Mageplaza\GiftCard\Api\GiftTemplateManagementInterface" method="getList"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::template"/>
+        </resources>
+    </route>
+    <route url="/V1/mpgiftcard/template/:id" method="GET">
+        <service class="Mageplaza\GiftCard\Api\GiftTemplateManagementInterface" method="get"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::template"/>
+        </resources>
+    </route>
+    <route url="/V1/mpgiftcard/template/:id" method="DELETE">
+        <service class="Mageplaza\GiftCard\Api\GiftTemplateManagementInterface" method="delete"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::template"/>
+        </resources>
+    </route>
+    <route url="/V1/mpgiftcard/template/" method="PUT">
+        <service class="Mageplaza\GiftCard\Api\GiftTemplateManagementInterface" method="save"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::template"/>
+        </resources>
+    </route>
+
+    <route url="/V1/mpgiftcard/history/:id" method="GET">
+        <service class="Mageplaza\GiftCard\Api\GiftHistoryManagementInterface" method="get"/>
+        <resources>
+            <resource ref="Mageplaza_GiftCard::code"/>
+        </resources>
+    </route>
+</routes>

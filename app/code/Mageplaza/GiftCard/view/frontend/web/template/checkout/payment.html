@@ -1,0 +1,118 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+
+<!-- ko if: enableGiftCredit() || enableGiftCard() -->
+<div class="payment-option _collapsible opc-payment-additional discount-code" id="block-gift-card-discount"
+     data-bind="mageInit: {'collapsible':{'openedState': '_active'}}">
+    <div class="payment-option-title field choice" data-role="title">
+        <span class="action action-toggle" id="block-discount-heading" role="heading" aria-level="2"
+              data-bind="text: blockTitle"></span>
+    </div>
+    <div class="payment-option-content" data-role="content" aria-labelledby="block-gift-card-discount-heading"
+         data-bind="blockLoader: isLoading">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <!-- ko if: enableGiftCard -->
+        <div class="gift-card-apply">
+            <form class="form form-discount" id="discount-giftcard-form" data-bind="submit: applyGiftCardCode" method="post">
+                <div class="payment-option-inner">
+                    <div class="field">
+                        <div class="control">
+                            <input type="text" class="input-text" id="giftcard_code" name="giftcard_code"
+                                   data-bind="value: giftCardCodeValue, attr: {placeholder: $t('Enter gift card code')}"
+                                   data-validate="{required:true}">
+                        </div>
+                    </div>
+                </div>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button class="action action-apply" type="button"
+                                data-bind="visible: enableMultiple() || !isApplied(), click: applyGiftCardCode">
+                            <span data-bind="i18n: 'Apply'"></span>
+                        </button>
+                        <button class="action action-cancel" type="button"
+                                data-bind="visible: !enableMultiple() && isApplied(), click: function(object, event){cancelGiftCardCode()}">
+                            <span data-bind="i18n: 'Cancel'"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="payment-option-inner gift-card-used" data-bind="visible: enableMultiple() && isApplied()">
+                    <!-- ko foreach: {data: giftCardsUsed, as: 'giftCard'} -->
+                    <div class="gift-card-used-item">
+                        <a href="javascript:void(0)"
+                           data-bind="click: function(data, event){$parent.cancelGiftCardCode(data.id)}, text: 'x'"
+                           class="gift-card-remove-icon"></a>
+                        <span class="gift-card-used-item-code"
+                              data-bind="text: $parent.getUsedGiftCardLabel(giftCard)"></span>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="payment-option-child gift-card-saved-list _collapsible"
+                     data-bind="mageInit: {'collapsible':{'openedState': 'active'}}, visible: enableGiftCardList">
+                    <div class="title saved-list-title payment-option-title" data-role="title">
+                        <span class="action action-toggle" data-bind="i18n: 'Choose from saved list'"></span>
+                    </div>
+                    <div class="content saved-list-content payment-option-content" data-role="content">
+                        <div class="fieldset coupon">
+                            <div class="field">
+                                <div class="control">
+                                    <select id="giftcard-saved-list" data-bind="value: giftCardListValue">
+                                        <!-- ko foreach: {data: listGiftCards, as: 'giftCard'} -->
+                                        <option data-bind="attr: {value: giftCard.code}, text: giftCard.label"></option>
+                                        <!-- /ko -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="actions-toolbar">
+                                <div class="primary">
+                                    <button class="action action-apply" type="button" data-bind="click: applySavedList">
+                                        <span data-bind="i18n: 'Apply'"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- /ko -->
+        <div class="payment-option-child gift-credit-apply _collapsible" data-bind="visible: enableGiftCredit">
+            <div class="saved-list-title payment-option-title" data-role="title"
+                 data-bind="css: {title: enableGiftCard}, visible: enableGiftCard">
+                <span class="action action-toggle" data-bind="i18n: 'Use Gift Credit'"></span>
+            </div>
+            <div class="gift-credit-apply-content payment-option-content" data-role="content"
+                 data-bind="css: {content: enableGiftCard}">
+                <div class="gift-credit-slider">
+                    <input type="text" id="gift-card-credit-slider" name="credit_slider_value" value=""/>
+                </div>
+                <div class="gift-credit-label">
+                    <span data-bind="i18n: 'You are using '"></span>
+                    <input type="text" id="gift-card-credit-input" name="credit_input_value"
+                           data-bind="value: giftCreditValue"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /ko -->

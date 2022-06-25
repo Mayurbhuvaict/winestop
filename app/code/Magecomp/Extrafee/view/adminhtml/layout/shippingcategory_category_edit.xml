@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceContainer name="left">
+			<block class="Magecomp\Extrafee\Block\Adminhtml\Category\Edit\Tabs" name="shippingcategory_category_tabs"/>
+		</referenceContainer>
+		<referenceContainer name="content">
+			<block class="Magecomp\Extrafee\Block\Adminhtml\Category\Edit" name="shippingcategory_category_edit"/>
+		</referenceContainer>
+	</body>
+</page>

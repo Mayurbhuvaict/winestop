@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="winestop" translate="label" sortOrder="10">
+            <label>WineStop</label>
+        </tab>
+        <section id="shippingRestrictions" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Shipping Restrictions</label>
+            <tab>winestop</tab>
+            <resource>Winestop_ShippingRestrictions::shippingRestrictions_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General</label>
+                <attribute type="expanded">1</attribute>
+                <field id="fedex_allow_state" translate="label" type="textarea" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Fedex Allow State's</label>
+                </field>                
+            </group>
+        </section>        
+    </system>
+</config>

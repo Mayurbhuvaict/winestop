@@ -1,0 +1,374 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+ <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <head>
+    <!-- <link src="Meigee_Barbour/js/jquery.parallax-1.1.3.js"/> -->
+  </head>
+  <body>
+    <!-- #### Started Meigee header #### -->
+		<referenceContainer name="page.wrapper">
+			<block class="Meigee\Barbour\Block\Template" name="meigee_header" template="html/header.phtml" before="-">
+				<container name="under.logo" label="Under Header Logo" />
+
+				<!-- Header 1 Logo -->
+				<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="logo" as="logo" template="Magento_Theme::html/header/logo.phtml">
+					<arguments>
+						<argument name="logo_file" xsi:type="string">images/logo.png</argument>
+						<argument name="logo_img_width" xsi:type="number">275</argument>
+						<argument name="logo_img_height" xsi:type="number">64</argument>
+					</arguments>
+				</block>
+				<!-- Header 2 Logo -->
+				<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header2.logo" as="header2.logo" template="Magento_Theme::html/header/logo.phtml">
+					<arguments>
+						<argument name="logo_file" xsi:type="string">images/barbour_cloth_logo.png</argument>
+						<argument name="logo_img_width" xsi:type="number">275</argument>
+						<argument name="logo_img_height" xsi:type="number">64</argument>
+					</arguments>
+				</block>
+				<!-- Header 3 Logo -->
+				<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header3.logo" as="header3.logo" template="Magento_Theme::html/header/logo.phtml">
+					<arguments>
+						<argument name="logo_file" xsi:type="string">images/barbour_electronics_1_logo.png</argument>
+						<argument name="logo_img_width" xsi:type="number">275</argument>
+						<argument name="logo_img_height" xsi:type="number">64</argument>
+					</arguments>
+				</block>
+				<!-- Header 4 Logo -->
+				<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header4.logo" as="header4.logo" template="Magento_Theme::html/header/logo.phtml">
+					<arguments>
+						<argument name="logo_file" xsi:type="string">images/barbour_perfumes_logo.png</argument>
+						<argument name="logo_img_width" xsi:type="number">275</argument>
+						<argument name="logo_img_height" xsi:type="number">64</argument>
+					</arguments>
+				</block>
+				<!-- Header 5 Logo -->
+				<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header5.logo" as="header5.logo" template="Magento_Theme::html/header/logo.phtml">
+					<arguments>
+						<argument name="logo_file" xsi:type="string">images/barbour_electronics_2_logo.png</argument>
+						<argument name="logo_img_width" xsi:type="number">275</argument>
+						<argument name="logo_img_height" xsi:type="number">64</argument>
+					</arguments>
+				</block>
+				<!-- Header 6 Logo -->
+				<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header6.logo" as="header6.logo" template="Magento_Theme::html/header/logo.phtml">
+					<arguments>
+						<argument name="logo_file" xsi:type="string">images/barbour_jewelry_logo.png</argument>
+						<argument name="logo_img_width" xsi:type="number">275</argument>
+						<argument name="logo_img_height" xsi:type="number">64</argument>
+					</arguments>
+				</block>
+				<!-- Header 7 Logo -->
+				<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header7.logo" as="header7.logo" template="Magento_Theme::html/header/logo.phtml">
+					<arguments>
+						<argument name="logo_file" xsi:type="string">images/barbour_handmade_logo.png</argument>
+						<argument name="logo_img_width" xsi:type="number">275</argument>
+						<argument name="logo_img_height" xsi:type="number">64</argument>
+					</arguments>
+				</block>
+				<!-- Header 8 Logo -->
+				<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header8.logo" as="header8.logo" template="Magento_Theme::html/header/logo.phtml">
+					<arguments>
+						<argument name="logo_file" xsi:type="string">images/barbour_cloth_2_logo.png</argument>
+						<argument name="logo_img_width" xsi:type="number">275</argument>
+						<argument name="logo_img_height" xsi:type="number">64</argument>
+					</arguments>
+				</block>
+				<!-- Header 9 Logo -->
+				<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header9.logo" as="header9.logo" template="Magento_Theme::html/header/logo.phtml">
+					<arguments>
+						<argument name="logo_file" xsi:type="string">images/barbour_cloth_3_logo.png</argument>
+						<argument name="logo_img_width" xsi:type="number">275</argument>
+						<argument name="logo_img_height" xsi:type="number">64</argument>
+					</arguments>
+				</block>
+
+				<!-- Header bg image -->
+				<block class="Meigee\Barbour\Block\Template" name="meigee.header.wrapper.bg.image" as="meigee.header.wrapper.bg.image" template="Magento_Theme::html/header/header_wrapper_bg_image.phtml" ifconfig="barbour_general/barbour_header/header_wrapper_type" before="-">
+					<arguments>
+						<argument name="img_file" xsi:type="string">images/barnbour_header_bg.jpg</argument>
+					</arguments>
+				</block>
+
+
+				<block class="Magento\Theme\Block\Html\Header" name="header.welcome" template="Magento_Theme::html/welcome.phtml" />
+				<block class="Meigee\Barbour\Block\Frontend\BgSlider" name="bgslider" template="Meigee_Barbour::bgslider.phtml" />
+				<block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml" />
+				<block class="Magento\Framework\View\Element\Template" name="mobile.menu.btn" template="Magento_Theme::html/topmenu_btn.phtml" />
+				<block class="Magento\Framework\View\Element\Template" name="options.wrapper" before="-" template="Magento_Theme::html/options_block.phtml">
+					<block class="Magento\Store\Block\Switcher" name="store_language" as="store_language" template="Magento_Store::switch/languages.phtml">
+                        <arguments>
+                            <argument name="view_model" xsi:type="object">Magento\Store\ViewModel\SwitcherUrlProvider</argument>
+                        </arguments>
+                    </block>
+					<block class="Meigee\Barbour\Block\Frontend\Currency" name="currency" after="store_language" template="Magento_Directory::currency.phtml" />
+				</block>
+				<block class="Meigee\Barbour\Block\Template" name="meigee_sticky_header" template="Magento_Theme::html/sticky_header.phtml" ifconfig="barbour_general/barbour_header/sticky_header">
+
+					<!-- Hesder 1 Sticky Logo -->
+					<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="sticky.logo" as="sticky.logo" template="Magento_Theme::html/header/small_logo.phtml">
+						<arguments>
+							<argument name="logo_img_width" xsi:type="number">137</argument>
+							<argument name="logo_img_height" xsi:type="number">32</argument>
+							<argument name="logo_file" xsi:type="string">images/small_logo.png</argument>
+						</arguments>
+					</block>
+					<!-- Hesder 2 Sticky Logo -->
+					<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header2.sticky.logo" as="header2.sticky.logo" template="Magento_Theme::html/header/small_logo.phtml">
+						<arguments>
+							<argument name="logo_img_width" xsi:type="number">137</argument>
+							<argument name="logo_img_height" xsi:type="number">32</argument>
+							<argument name="logo_file" xsi:type="string">images/barbour_cloth_logo.png</argument>
+						</arguments>
+					</block>
+					<!-- Hesder 3 Sticky Logo -->
+					<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header3.sticky.logo" as="header3.sticky.logo" template="Magento_Theme::html/header/small_logo.phtml">
+						<arguments>
+							<argument name="logo_img_width" xsi:type="number">137</argument>
+							<argument name="logo_img_height" xsi:type="number">32</argument>
+							<argument name="logo_file" xsi:type="string">images/barbour_electronics_1_small_logo.png</argument>
+						</arguments>
+					</block>
+					<!-- Hesder 4 Sticky Logo -->
+					<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header4.sticky.logo" as="header4.sticky.logo" template="Magento_Theme::html/header/small_logo.phtml">
+						<arguments>
+							<argument name="logo_img_width" xsi:type="number">137</argument>
+							<argument name="logo_img_height" xsi:type="number">32</argument>
+							<argument name="logo_file" xsi:type="string">images/barbour_perfumes_small_logo.png</argument>
+						</arguments>
+					</block>
+					<!-- Hesder 5 Sticky Logo -->
+					<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header5.sticky.logo" as="header5.sticky.logo" template="Magento_Theme::html/header/small_logo.phtml">
+						<arguments>
+							<argument name="logo_img_width" xsi:type="number">137</argument>
+							<argument name="logo_img_height" xsi:type="number">32</argument>
+							<argument name="logo_file" xsi:type="string">images/barbour_electronics_2_logo.png</argument>
+						</arguments>
+					</block>
+					<!-- Hesder 6 Sticky Logo -->
+					<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header6.sticky.logo" as="header6.sticky.logo" template="Magento_Theme::html/header/small_logo.phtml">
+						<arguments>
+							<argument name="logo_img_width" xsi:type="number">137</argument>
+							<argument name="logo_img_height" xsi:type="number">32</argument>
+							<argument name="logo_file" xsi:type="string">images/barbour_jewelry_logo.png</argument>
+						</arguments>
+					</block>
+					<!-- Hesder 7 Sticky Logo -->
+					<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header7.sticky.logo" as="header7.sticky.logo" template="Magento_Theme::html/header/small_logo.phtml">
+						<arguments>
+							<argument name="logo_img_width" xsi:type="number">137</argument>
+							<argument name="logo_img_height" xsi:type="number">32</argument>
+							<argument name="logo_file" xsi:type="string">images/barbour_handmade_logo.png</argument>
+						</arguments>
+					</block>
+					<!-- Hesder 8 Sticky Logo -->
+					<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header8.sticky.logo" as="header8.sticky.logo" template="Magento_Theme::html/header/small_logo.phtml">
+						<arguments>
+							<argument name="logo_img_width" xsi:type="number">137</argument>
+							<argument name="logo_img_height" xsi:type="number">32</argument>
+							<argument name="logo_file" xsi:type="string">images/barbour_cloth_2_logo.png</argument>
+						</arguments>
+					</block>
+					<!-- Hesder 9 Sticky Logo -->
+					<block class="Meigee\Barbour\Block\Frontend\CustomLogo" name="header9.sticky.logo" as="header9.sticky.logo" template="Magento_Theme::html/header/small_logo.phtml">
+						<arguments>
+							<argument name="logo_img_width" xsi:type="number">137</argument>
+							<argument name="logo_img_height" xsi:type="number">32</argument>
+							<argument name="logo_file" xsi:type="string">images/barbour_cloth_3_logo.png</argument>
+						</arguments>
+					</block>
+
+					<block class="Magento\Theme\Block\Html\Topmenu" name="sticky.catalog.topnav" template="Magento_Theme::html/topmenu_sticky.phtml" />
+					<block class="Magento\Framework\View\Element\Template" name="sticky.top.search" as="stickySearch" template="Magento_Search::form.mini.phtml"/>
+				</block>
+
+				<!-- Header 2 Blocks -->
+				<block class="Magento\Cms\Block\Block" name="barbour.header.social.links">
+				  <arguments>
+					<argument name="block_id" xsi:type="string">barbour_header_social_links</argument>
+				  </arguments>
+				</block>
+				<block class="Magento\Cms\Block\Block" name="barbour.header.info">
+					<arguments>
+					  <argument name="block_id" xsi:type="string">barbour_header_custom_info</argument>
+					</arguments>
+				</block>
+				<block class="Magento\Cms\Block\Block" name="barbour.header2.banners">
+					<arguments>
+					  <argument name="block_id" xsi:type="string">barbour_electronics_1_header_banners</argument>
+					</arguments>
+				</block>
+				<block class="Magento\Cms\Block\Block" name="arbour.header.custom.block">
+					<arguments>
+					  <argument name="block_id" xsi:type="string">barbour_header_custom_block</argument>
+					</arguments>
+				</block>
+				<!-- ... -->
+
+				<!-- Header 6 Blocks -->
+				<block class="Magento\Cms\Block\Block" name="barbour.header.social.links">
+				  <arguments>
+					<argument name="block_id" xsi:type="string">barbour_header_social_links</argument>
+				  </arguments>
+				</block>
+				<block class="Magento\Cms\Block\Block" name="barbour.header.header.info">
+					<arguments>
+					  <argument name="block_id" xsi:type="string">barbour_header_custom_info</argument>
+					</arguments>
+				</block>
+				<!-- ... -->
+
+				<block class="Meigee\Barbour\Block\Template" name="meigee_mobile_header" template="Meigee_Barbour::html/mobile_header.phtml">
+					 <block class="Magento\Framework\View\Element\Template" name="mobile.navigation.sections" before="-" template="Magento_Theme::html/sections.phtml">
+						<arguments>
+							<argument name="group_name" xsi:type="string">navigation-sections</argument>
+							<argument name="group_css" xsi:type="string">nav-sections</argument>
+						</arguments>
+						<block class="Magento\Framework\View\Element\Template" name="mobile_store_menu" group="navigation-sections" template="Magento_Theme::html/container_mobile.phtml">
+							<arguments>
+							  <argument name="title" translate="true" xsi:type="string">Menu</argument>
+							</arguments>
+							<block class="Magento\Theme\Block\Html\Topmenu" name="mobile.catalog.topnav" template="Magento_Theme::html/topmenu_mobile.phtml" />
+						</block>
+						<block class="Magento\Framework\View\Element\Template" name="header_links_wrapper" group="navigation-sections" template="Magento_Theme::html/container_mobile.phtml">
+							<arguments>
+							  <argument name="title" translate="true" xsi:type="string">Account</argument>
+							  <argument name="use_force" xsi:type="boolean">true</argument>
+							</arguments>
+							<block class="Magento\Framework\View\Element\Html\Links" name="header.links.mobile" after="-">
+							  <arguments>
+								<argument name="css_class" xsi:type="string">header links</argument>
+							  </arguments>
+							  <block class="Magento\Framework\View\Element\Template" name="catalog.compare.link.mobile" before="-" template="Magento_Catalog::product/compare/link.phtml">
+								<arguments>
+								  <argument name="jsLayout" xsi:type="array">
+									<item name="components" xsi:type="array">
+									  <item name="compareProducts" xsi:type="array">
+										<item name="component" xsi:type="string">Magento_Catalog/js/view/compare-products</item>
+									  </item>
+									</item>
+								  </argument>
+								</arguments>
+							  </block>
+							  <block class="Magento\Customer\Block\Account\Link" name="my-account-link-mobile">
+								<arguments>
+								  <argument name="label" xsi:type="string" translate="true">My Account</argument>
+								  <argument name="class" xsi:type="string">top-link-myaccount</argument>
+								</arguments>
+							  </block>
+							  <block class="Magento\Wishlist\Block\Link" name="wish-list-link-mobile"/>
+							  <block class="Magento\Customer\Block\Account\RegisterLink" name="register-link-mobile">
+								<arguments>
+								  <argument name="label" xsi:type="string" translate="true">Create an Account</argument>
+								  <argument name="class" xsi:type="string">top-link-create</argument>
+								</arguments>
+							  </block>
+							  <block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link-dropdown-mobile" template="account/link/authorization.phtml"/>
+							</block>
+						</block>
+						<block class="Magento\Framework\View\Element\Template" name="mobile_store_settings" group="navigation-sections" template="Magento_Theme::html/container_mobile.phtml">
+							<arguments>
+							  <argument name="title" translate="true" xsi:type="string">Settings</argument>
+							</arguments>
+							<block class="Magento\Store\Block\Switcher" name="store.settings.language" template="Magento_Store::switch/languages_mobile.phtml">
+							  <arguments>
+								<argument name="id_modifier" xsi:type="string">nav</argument>
+                                <argument name="view_model" xsi:type="object">Magento\Store\ViewModel\SwitcherUrlProvider</argument>
+							  </arguments>
+							</block>
+							<block class="Magento\Directory\Block\Currency" name="store.settings.currency" template="currency_mobile.phtml">
+							  <arguments>
+								<argument name="id_modifier" xsi:type="string">nav</argument>
+							  </arguments>
+							</block>
+						</block>
+					</block>
+				</block>
+
+			</block>
+      <!-- #### End Meigee header #### -->
+
+      <!-- #### Remove default header #### -->
+		<referenceContainer name="header.panel.wrapper" remove="true" />
+		<referenceContainer name="header-wrapper" remove="true" />
+      <!-- #### End Remove default header #### -->
+
+      <referenceContainer name="page.top">
+        <referenceBlock name="navigation.sections" remove="true" />
+      </referenceContainer>
+      <referenceBlock name="head.additional">
+        <block class="Magento\Framework\View\Element\Template" as="subheader" template="Magento_Theme::html/subheader.phtml" />
+		<block class="Magento\Framework\View\Element\Template" as="addcss" template="Meigee_Barbour::addcss.phtml" />
+      </referenceBlock>
+
+      <referenceContainer name="footer-container">
+        <block class="Meigee\Barbour\Block\Template" name="meigee_footer" template="Magento_Theme::html/footer.phtml">
+          <container name="footer" as="footer" label="Page Footer" htmlTag="div" htmlClass="footer content default">
+            <container name="footer.inner" label="Footer Inner" htmlTag="div" htmlClass="container">
+              <block class="Magento\Theme\Block\Html\Footer" name="copyright" template="Magento_Theme::html/copyright.phtml"/>
+              <referenceBlock name="footer_links" remove="true" />
+              <referenceBlock name="report.bugs" remove="true" />
+              <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" template="Magento_Store::switch/stores.phtml"/>
+            </container>
+			<referenceBlock name="form.subscribe" remove="true" />
+          </container>
+        </block>
+
+      </referenceContainer>
+    </referenceContainer>
+
+	<block name="top.links" class="Meigee\Barbour\Block\Template" template="Magento_Theme::html/header/toplinks.phtml">
+		<block class="Magento\Framework\View\Element\Template" name="catalog.compare.link" before="-"
+			   template="Magento_Catalog::product/compare/link.phtml">
+			<arguments>
+				<argument name="jsLayout" xsi:type="array">
+					<item name="components" xsi:type="array">
+						<item name="compareProducts" xsi:type="array">
+							<item name="component" xsi:type="string">Magento_Catalog/js/view/compare-products</item>
+						</item>
+					</item>
+				</argument>
+			</arguments>
+		</block>
+		<block class="Magento\Customer\Block\Account\Link" name="my-account-link">
+			<arguments>
+				<argument name="label" xsi:type="string" translate="true">My Account</argument>
+				<argument name="sortOrder" xsi:type="number">110</argument>
+			</arguments>
+		</block>
+		<block class="Magento\Wishlist\Block\Link" name="wish-list-link" after="my-account-link">
+			<arguments>
+				<argument name="sortOrder" xsi:type="number">60</argument>
+			</arguments>
+		</block>
+	</block>
+
+	<block name="authorization-link" class="Meigee\Barbour\Block\Template" template="Magento_Theme::html/header/authorization_links.phtml">
+		<block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link-login" template="account/link/authorization.phtml"/>
+	</block>
+
+	<block name="authorization-link-mobile" class="Meigee\Barbour\Block\Template" template="Magento_Theme::html/header/authorization_links.phtml">
+		<block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link-login-mobile" template="account/link/authorization.phtml"/>
+	</block>
+
+	<move element="top.links" destination="options.wrapper"/>
+    <move element="catalog.topnav" destination="meigee_header" />
+    <move element="minicart" destination="meigee_header" />
+    <move element="register-link" destination="top.links"/>
+	<move element="authorization-link" destination="top.links"/>
+	<move element="authorization-link-mobile" destination="meigee_header"/>
+
+	<referenceContainer name="div.sidebar.additional">
+		<block class="Magento\Framework\View\Element\Template" as="facebook_sidebar" template="Meigee_Barbour::facebook_sidebar.phtml" ifconfig="barbour_general/barbour_facebook_block/status" />
+	</referenceContainer>
+
+	<referenceContainer name="before.body.end">
+		<block class="Magento\Framework\View\Element\Template" as="popup_block" template="Meigee_Barbour::popup_block.phtml" ifconfig="barbour_general/barbour_popup_content/status" />
+	</referenceContainer>
+  </body>
+</page>

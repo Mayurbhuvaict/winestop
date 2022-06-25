@@ -1,0 +1,38 @@
+<div class="aw-onestep-sidebar-block aw-sidebar-product-list"
+     data-bind="mageInit: {'collapsible':{'openedState': 'active', 'active': isExpanded}}">
+    <div class="aw-onestep-sidebar-block_title" data-role="title">
+        <span>
+            <!-- ko if: maxCartItemsToDisplay < getCartLineItemsCount() -->
+                <!-- ko text: maxCartItemsToDisplay --><!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: maxCartItemsToDisplay < getCartLineItemsCount() -->
+                <!-- ko i18n: 'of' --><!-- /ko -->
+            <!-- /ko -->
+        </span>
+        <span data-bind="text: itemsQty"></span>
+        <span>
+            <!-- ko if: itemsQty() == 1 -->
+            <!-- ko i18n: 'Item in Cart' --><!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: itemsQty() > 1 -->
+            <!-- ko i18n: 'Items in Cart' --><!-- /ko -->
+            <!-- /ko -->
+        </span>
+    </div>
+    <div class="aw-onestep-sidebar-block_content" data-role="content">
+        <div class="minicart-items-wrapper">
+            <!-- ko foreach: items() -->
+                <!-- ko foreach: $parent.elems() -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                <!-- /ko -->
+            <!-- /ko -->
+        </div>
+    </div>
+    <div class="actions-toolbar" if="maxCartItemsToDisplay < getCartLineItemsCount()">
+        <div class="secondary">
+            <a class="action viewcart" data-bind="attr: {href: cartUrl}">
+                <span data-bind="i18n: 'View and Edit Cart'"></span>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Mageplaza\GiftCard\Block\Adminhtml\Template\Edit\Tab\Renderer\Images */
+$element     = $block->getElement();
+$formName    = $block->getFormName();
+$elementName = $element->getName();
+?>
+<div class="entry-edit form-inline">
+    <fieldset class="fieldset admin__fieldset " id="base_fieldset">
+        <legend class="admin__legend legend">
+            <span><?= /** @noEscape */ __('Upload Images') ?></span>
+        </legend>
+        <br/>
+        <div id="template-images-gallery" class="gallery"
+             data-mage-init='{"giftCard/gallery":{}}'
+             data-images="<?= /** @noEscape */ $block->escapeHtml($block->getImagesJson()) ?>">
+            <div class="image image-placeholder">
+                <?= /** @noEscape */ $block->getUploaderHtml() ?>
+                <div class="product-image-wrapper">
+                    <p class="image-placeholder-text">
+                        <?= /** @noEscape */ __('Browse to find or drag image here') ?>
+                    </p>
+                </div>
+            </div>
+            <?php foreach ($block->getImageTypes() as $typeData): ?>
+                <input name="<?= /** @noEscape */ $block->escapeHtml($typeData['name']) ?>"
+                       data-form-part="<?= /** @noEscape */ $formName ?>"
+                       class="image-<?= /** @noEscape */ $block->escapeHtml($typeData['code']) ?>"
+                       type="hidden"
+                       value="<?= /** @noEscape */ $block->escapeHtml($typeData['value']) ?>"/>
+            <?php endforeach; ?>
+
+            <script id="template-images-gallery-template" data-template="image" type="text/x-magento-template">
+                <div class="image item" data-role="image">
+                    <input type="hidden"
+                           name="<?= /** @noEscape */ $elementName ?>[<%- data.file_id %>][position]"
+                           value="<%- data.position %>"
+                           data-form-part="<?= /** @noEscape */ $formName ?>"
+                           class="position"/>
+                    <input type="hidden"
+                           name="<?= /** @noEscape */ $elementName ?>[<%- data.file_id %>][file]"
+                           value="<%- data.file %>"
+                           data-form-part="<?= /** @noEscape */ $formName ?>"/>
+                    <input type="hidden"
+                           name="<?= /** @noEscape */ $elementName ?>[<%- data.file_id %>][label]"
+                           value="<%- data.label %>"
+                           data-form-part="<?= /** @noEscape */ $formName ?>"/>
+                    <input type="hidden"
+                           name="<?= /** @noEscape */ $elementName ?>[<%- data.file_id %>][removed]"
+                           value="" class="is-removed"
+                           data-form-part="<?= /** @noEscape */ $formName ?>"/>
+                    <div class="product-image-wrapper">
+                        <img class="product-image" data-role="image-element" src="<%- data.url %>"
+                             alt="<%- data.label %>"/>
+                        <div class="actions">
+                            <button type="button"
+                                    class="action-remove"
+                                    data-role="delete-button"
+                                    title="<?= /** @noEscape */ $block->escapeHtml(__('Delete image')) ?>">
+                                <span><?= /** @noEscape */ $block->escapeHtml(__('Delete image')) ?></span>
+                            </button>
+                            <div class="draggable-handle"></div>
+                        </div>
+                        <div class="image-fade"><span><?= /** @noEscape */ $block->escapeHtml(__('Hidden')) ?></span></div>
+                    </div>
+                    <div class="item-description">
+                        <div class="item-title" data-role="img-title"><%- data.label %></div>
+                        <div class="item-size">
+                            <span data-role="image-dimens"></span>, <span
+                                    data-role="image-size"><%- data.sizeLabel %></span>
+                        </div>
+                    </div>
+                </div>
+            </script>
+            <script data-role="img-dialog-container-tmpl" type="text/x-magento-template">
+                <div class="image-panel" data-role="dialog">
+                </div>
+            </script>
+            <script data-role="img-dialog-tmpl" type="text/x-magento-template">
+                <div class="image-panel-preview">
+                    <img src="<%- data.url %>" alt="<%- data.label %>"/>
+                </div>
+                <div class="image-panel-controls">
+                    <strong class="image-name"><%- data.label %></strong>
+                    <fieldset class="admin__fieldset fieldset-image-panel">
+                        <div class="admin__field field-image-description">
+                            <label class="admin__field-label" for="image-description">
+                                <span><?= /** @noEscape */ __('Alt Text') ?></span>
+                            </label>
+                            <div class="admin__field-control">
+                                <textarea data-role="image-description"
+                                          rows="3"
+                                          class="admin__control-textarea"
+                                          name="<?= /** @noEscape */ $elementName ?>[<%- data.file_id %>][label]"><%- data.label %></textarea>
+                            </div>
+                        </div>
+                        <div class="admin__field admin__field-inline field-image-size" data-role="size">
+                            <label class="admin__field-label">
+                                <span><?= /** @noEscape */ __('Image Size') ?></span>
+                            </label>
+                            <div class="admin__field-value" data-message="{size}"></div>
+                        </div>
+                        <div class="admin__field admin__field-inline field-image-resolution" data-role="resolution">
+                            <label class="admin__field-label">
+                                <span><?= /** @noEscape */ __('Image Resolution') ?></span>
+                            </label>
+                            <div class="admin__field-value" data-message="{width}^{height} px"></div>
+                        </div>
+                    </fieldset>
+                </div>
+            </script>
+        </div>
+    </fieldset>
+</div>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <seo>
+            <seo_content>
+                <meta>
+                    <is_category_meta_tags_used>1</is_category_meta_tags_used>
+                    <is_product_meta_tags_used>1</is_product_meta_tags_used>
+                    <is_cms_meta_tags_used>1</is_cms_meta_tags_used>
+                </meta>
+                <pagination>
+                    <meta_title_page_number>1</meta_title_page_number>
+                </pagination>
+            </seo_content>
+        </seo>
+    </default>
+</config>

@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="empty"/>
+    <referenceContainer name="page.wrapper">
+    	<container name="footer-container" as="footer" after="-" label="Page Footer Container" htmlTag="footer" htmlClass="page-footer" />
+    	<container name="slider.custom" as="slider-custom" label="Your Label Name" htmlTag="div" htmlClass="your-class" htmlId="your-id" before="main.content">
+		       	<block class="Magento\Cms\Block\Block" name="home_slider">
+		            <arguments>
+		                <argument name="block_id" xsi:type="string">home_slider</argument>
+			        </arguments>
+		        </block>
+		</container>        
+    </referenceContainer>
+</layout>

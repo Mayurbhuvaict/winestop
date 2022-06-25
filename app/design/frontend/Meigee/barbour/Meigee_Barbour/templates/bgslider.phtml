@@ -1,0 +1,17 @@
+<?php
+
+$slides = $block->getSlides();
+if ($slides)
+{
+    ?>
+    <script>
+        require(["jquery"], function(jQuery)
+        {
+            require(["jqueryBackstretch"], function(backstretch)
+            {
+                jQuery.backstretch([<?php echo $slides;?>], {duration: <?php echo $block->getDuration(); ?>, fade: <?php echo $block->getFade(); ?>});
+            });
+        });
+    </script>
+    <?php
+}

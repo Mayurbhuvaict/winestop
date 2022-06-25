@@ -1,0 +1,36 @@
+<?php
+/** @var \Mirasvit\Seo\Block\Adminhtml\Checklist $block */
+?>
+<div class="mst-checklist">
+    <div class="mst-checklist__totals">
+        <strong><?= $block->getPassedQTY() ?> / <?= $block->getTotalQty() ?></strong> Tests passed. <strong><?= $block->getFailedQty() ?></strong> test(s) remaining
+    </div>
+
+    <div class="mst-checklist__list">
+        <?php foreach ($block->runTests() as $key => $data): ?>
+            <div class="mst-checklist__test">
+                <div class="mst-checklist__test-title">
+                    <div class="mst-checklist__test-status <?= ($data['status']) ? '' : '_invalid' ?>"></div>
+                    <strong><?= $data['name'] ?></strong>
+                </div>
+
+                <div class="mst-checklist__test-content">
+                    <?php if ($data['hint']): ?>
+                        <div class="mst-checklist__test-hint">
+                            <strong><?= __('Hint') ?></strong>
+                            <p class="hint"><?= $data['hint'] ?></p>
+                        </div>
+                    <?php endif ?>
+
+                    <?php if ($data['solution']): ?>
+                        <div class="mst-checklist__test-solution">
+                            <strong><?= __('Solution') ?></strong>
+                            <p class="solution"><?= $data['solution'] ?></p>
+                        </div>
+                    <?php endif ?>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+</div>
+

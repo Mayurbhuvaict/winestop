@@ -1,0 +1,115 @@
+<?php
+declare(strict_types=1);
+
+use Mirasvit\SeoAudit\Block\Adminhtml\Job\Details;
+
+/** @var Details $block */
+$result = $block->getJobResult();
+
+if (!$result) {
+    return;
+}
+
+$errorCount   = $result['error_total'];
+$warningCount = $result['warning_total'];
+$noticeCount  = $result['notice_total'];
+
+$totalIssueCount = $errorCount + $warningCount + $noticeCount;
+
+$errorsLegendData = $block->getErrorChartData();
+?>
+
+<div class="mst-seo-audit_info">
+    <div class="mst-seo-audit_info__score info-field">
+        <p>Health score</p>
+
+        <div class="column__content">
+            <div class="chart">
+                <canvas style="width: 250px; height: 250px" id="<?= Details::CHART_HEALTH_ID ?>"></canvas>
+                <div class="chart__legend">
+                    <p><?= $result['score'] ?></p>
+                </div>
+                <p>Health Score reflects on the result of all checks performed for internal URLs of the website</p>
+            </div>
+            <div class="chart responsive">
+                <canvas style="height: 250px" id="<?= Details::CHART_JOBS_ID ?>"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="mst-seo-audit_info__details">
+        <div class="info-field">
+            <p>Issue distribution <span><?= $totalIssueCount ?></span></p>
+            <table>
+                <tr class="error clickable" data-link="<?= $block->getIssueLink('error') ?>">
+                    <td class="issue__label">Error</td>
+                    <td class="issue__count"><?= $errorCount ?></td>
+                    <td class="issue__bar">
+                        <div style="width: <?= $errorCount > 0 ? round(100 * $errorCount / $totalIssueCount) . '%' : '2px' ?>"></div>
+                    </td>
+                </tr>
+                <tr class="warning clickable" data-link="<?= $block->getIssueLink('warning') ?>">
+                    <td class="issue__label">Warning</td>
+                    <td class="issue__count"><?= $warningCount ?></td>
+                    <td class="issue__bar">
+                        <div style="width: <?= $warningCount > 0 ? round(100 * $warningCount / $totalIssueCount) . '%' : '2px' ?>"></div>
+                    </td>
+                </tr>
+                <tr class="notice clickable" data-link="<?= $block->getIssueLink('notice') ?>">
+                    <td class="issue__label">Notice</td>
+                    <td class="issue__count"><?= $noticeCount ?></td>
+                    <td class="issue__bar">
+                        <div style="width: <?= $noticeCount > 0 ? round(100 * $noticeCount / $totalIssueCount) . '%' : '2px' ?>"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="info-field chart <?= Details::CHART_ISSUE_ID ?>">
+            <p>Error distribution <span><?= $errorCount ?></span></p>
+            <div class="column__content" style="padding: 10px 30px">
+                <canvas style="width: 200px; height: 200px" id="<?= Details::CHART_ISSUE_ID ?>"></canvas>
+                <div class="chart__legend">
+                    <table>
+                        <tr class="success">
+                            <td class="issue__marker"><div/></td>
+                            <td class="issue__label">Pages without errors</td>
+                            <td class="issue__count"><?= $errorsLegendData['withoutErrors'] ?></td>
+                        </tr>
+                        <tr class="error">
+                            <td class="issue__marker"><div/></td>
+                            <td class="issue__label">Pages with errors</td>
+                            <td class="issue__count"><?= $errorsLegendData['withErrors'] ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    require(['jquery'], function ($) {
+        $('.clickable').on('click', function (e) {
+            var link = $(e.target.closest('.clickable')).data('link');
+
+            window.location = link;
+        })
+    })
+</script>
+
+<script type="text/x-magento-init"><?= \Zend_Json::encode([
+        '#' . Details::CHART_ISSUE_ID => [
+            'Mirasvit_SeoAudit/js/component/chart' => $block->getChartConfigData(Details::CHART_TYPE_DOUGHNUT, Details::CHART_ISSUE_ID),
+        ],
+    ]); ?></script>
+
+<script type="text/x-magento-init"><?= \Zend_Json::encode([
+        '#' . Details::CHART_HEALTH_ID => [
+            'Mirasvit_SeoAudit/js/component/chart' => $block->getChartConfigData(Details::CHART_TYPE_DOUGHNUT, Details::CHART_HEALTH_ID),
+        ],
+    ]); ?></script>
+
+<script type="text/x-magento-init"><?= \Zend_Json::encode([
+        '#' . Details::CHART_JOBS_ID => [
+            'Mirasvit_SeoAudit/js/component/chart' => $block->getChartConfigData(Details::CHART_TYPE_BAR, Details::CHART_JOBS_ID),
+        ],
+    ]); ?></script>

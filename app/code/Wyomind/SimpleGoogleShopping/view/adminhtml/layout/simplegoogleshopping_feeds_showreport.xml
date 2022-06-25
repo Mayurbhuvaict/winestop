@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+  Copyright © 2019 Wyomind. All rights reserved.
+  See LICENSE.txt for license details.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<!-- Layout of the error report (from the grid)  -->
+    <head>
+        <!-- add css file -->
+        <css src="Wyomind_SimpleGoogleShopping::css/report.css"/>
+    </head>
+    <body>
+        <!-- remove default output -->
+        <referenceContainer name="backend.page" remove="true"/>
+        <referenceContainer name="page.menu" remove="true"/>
+        <referenceContainer name="global.notices" remove="true"/>
+        <referenceContainer name="logo" remove="true"/>
+        <referenceContainer name="page.breadcrumbs" remove="true"/>
+        <referenceContainer name="page.formkey" remove="true"/>
+        <referenceContainer name="main.top" remove="true"/>
+        <referenceContainer name="page.messages" remove="true"/>
+        <referenceContainer name="page.main.actions" remove="true"/>
+        <referenceContainer name="require.js" remove="true"/>
+        <referenceContainer name="root">
+            <block template="Wyomind_SimpleGoogleShopping::empty.phtml"
+                   class="Wyomind\SimpleGoogleShopping\Block\Adminhtml\Feeds\Report"
+                   name="simplegoogleshopping_feeds_report"/>
+        </referenceContainer>
+    </body>
+</page>

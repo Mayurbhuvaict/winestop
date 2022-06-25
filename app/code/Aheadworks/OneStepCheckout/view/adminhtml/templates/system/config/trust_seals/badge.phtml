@@ -1,0 +1,10 @@
+<?php
+/** @var $block \Aheadworks\OneStepCheckout\Block\Adminhtml\System\Config\TrustSeals\Renderer\Badge */
+
+// @codingStandardsIgnoreFile
+?>
+<?php
+    $htmlId = $block->getId();
+    $name = $block->getName();
+?>
+<textarea id="<?php /* @noEscape */ echo $htmlId ?>" name="<?php /* @noEscape */ echo $name ?>" class="textarea admin__control-textarea required-entry" rows="2" cols="15"><%- script %></textarea>

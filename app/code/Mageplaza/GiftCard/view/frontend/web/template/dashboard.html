@@ -1,0 +1,180 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ -->
+
+<!-- ko foreach: getRegion('messages') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+
+<div class="block block-gift-card" data-bind="blockLoader: isLoading">
+    <div class="block-content" aria-labelledby="block-gift-card-heading">
+        <!-- ko if: isEnableCredit() -->
+        <div class="box box-information col-mp mp-6 mp-xs-12" data-bind="visible: isEnableCredit()">
+            <strong class="box-title">
+                <span data-bind="i18n: 'My current balance'"></span>
+            </strong>
+            <div class="box-content">
+                <p data-bind="html: balance()"></p>
+            </div>
+        </div>
+        <!-- /ko -->
+        <div class="box box-information col-mp mp-6 mp-xs-12">
+            <strong class="box-title">
+                <span data-bind="i18n: 'Check/Redeem Gift Card'"></span>
+            </strong>
+            <div class="box-content">
+                <form class="form check-code" action="" method="post" id="check-code-form">
+                    <div class="field check-code-field">
+                        <div class="control">
+                            <input name="code" type="text" id="giftcode" placeholder="Enter your gift code"
+                                   data-validate="{required:true, 'no-whitespace':true}"
+                                   data-bind="value: giftcode, valueUpdate: 'keyup'">
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="action action-check primary" title="Check" type="button"
+                                data-bind="click: checkCode, visible: !isCodeChecked()">
+                            <span>Check</span>
+                        </button>
+                        <button class="action action-redeem primary" title="Redeem" type="button"
+                                data-bind="click: redeem, visible: isEnableRedeemButton()">
+                            <span>Redeem</span>
+                        </button>
+                        <button class="action action-add primary" title="Add to list" type="button"
+                                data-bind="click: addList, visible: isCodeChecked()">
+                            <span>Add to list</span>
+                        </button>
+                    </div>
+                </form>
+                <!-- ko foreach: getRegion('check-messages') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </div>
+        </div>
+        <div class="mp-clear"></div>
+    </div>
+</div>
+
+<div class="block block-gift-card" data-bind="blockLoader: isListLoading">
+    <div class="block-title">
+        <strong id="block-giftcard-list-heading" role="heading" aria-level="2"
+                data-bind="i18n: 'My Saved Gift Card'"></strong>
+    </div>
+    <div class="block-content" aria-labelledby="block-gift-card-heading">
+        <!-- ko if: (giftCardList().length > 0) -->
+        <table class="data table table-giftcard-list history" id="giftcard-list-table">
+            <thead>
+            <tr>
+                <th scope="col" class="col code" data-bind="i18n: 'Code'"></th>
+                <th scope="col" class="col balance" data-bind="i18n: 'Balance'"></th>
+                <th scope="col" class="col status" data-bind="i18n: 'Status'"></th>
+                <th scope="col" class="col expired_at" data-bind="i18n: 'Expired Date'"></th>
+                <th scope="col" class="col actions">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--ko foreach: giftCardList() -->
+            <tr>
+                <td class="col code" data-display="hidden"
+                    data-bind="text: hidden_code, click: $parent.showHideCode"></td>
+                <td class="col balance" data-bind="html: balance_formatted"></td>
+                <td class="col status" data-bind="text: status_label"></td>
+                <td class="col date" data-bind="text: expired_at_formatted"></td>
+                <td data-th="Actions" class="col actions">
+                    <a href="javascript:void(0)" class="action view"
+                       data-bind="click: function(data){ $parent.viewGiftCard(data)}"><span
+                            data-bind="i18n: 'View'"></span></a>
+                    <a href="javascript:void(0)" class="action print"
+                       data-bind="click: function(data){ $parent.printGiftCard(data)}, visible: $parent.canPrint($data)"><span
+                            data-bind="i18n: 'Print'"></span></a>
+                    <a href="javascript:void(0)" class="action redeem"
+                       data-bind="click: function(data){ $parent.redeemGiftCard(data.code)}, visible: (can_redeem == 1)"><span
+                            data-bind="i18n: 'Redeem'"></span></a>
+                    <a href="javascript:void(0)" class="action remove"
+                       data-bind="click: function(data){ $parent.removeGiftCard(data.code)}"><span
+                            data-bind="i18n: 'Remove'"></span></a>
+                </td>
+            </tr>
+            <!-- /ko -->
+            </tbody>
+        </table>
+        <!-- /ko -->
+        <!-- ko ifnot:  (giftCardList().length > 0) -->
+        <span data-bind="i18n: 'You have no saved gift card.'"></span>
+        <!-- /ko -->
+    </div>
+</div>
+
+<div class="block block-gift-card" data-bind="blockLoader: isTransactionLoading, visible: isEnableCredit()">
+    <div class="block-title">
+        <strong id="block-giftcard-transaction-heading" role="heading" aria-level="2"
+                data-bind="i18n: 'Transactions'"></strong>
+    </div>
+    <div class="block-content" aria-labelledby="block-gift-card-heading">
+        <!-- ko if: (transactions().length > 0) -->
+        <table class="data table table-giftcard-transaction history" id="giftcard-transaction-table">
+            <thead>
+            <tr>
+                <th scope="col" class="col id">#</th>
+                <th scope="col" class="col date" data-bind="i18n: 'Date'"></th>
+                <th scope="col" class="col action" data-bind="i18n: 'Action'"></th>
+                <th scope="col" class="col amount" data-bind="i18n: 'Amount'"></th>
+                <th scope="col" class="col detail" data-bind="i18n: 'Detail'"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--ko foreach: transactions() -->
+            <tr>
+                <td class="col id" data-bind="text: transaction_id"></td>
+                <td class="col date" data-bind="text: created_at_formatted"></td>
+                <td class="col action" data-bind="text: action_label"></td>
+                <td class="col amount" data-bind="html: amount_formatted"></td>
+                <td class="col detail" data-bind="text: action_detail"></td>
+            </tr>
+            <!-- /ko -->
+            </tbody>
+        </table>
+        <!-- /ko -->
+        <!-- ko ifnot:  (transactions().length > 0) -->
+        <span data-bind="i18n: 'You have no transaction.'"></span>
+        <!-- /ko -->
+    </div>
+</div>
+
+<div class="block block-gift-card-setting" data-bind="blockLoader: isSettingLoading, visible: isEnableSetting()">
+    <div class="block-title">
+        <strong id="block-giftcard-setting-heading" role="heading" aria-level="2"
+                data-bind="i18n: 'Notification Settings'"></strong>
+    </div>
+    <div class="block-content field choice">
+        <div class="field choice">
+            <input type="checkbox" name="giftcard_notification" id="giftcard-notification" class="checkbox"
+                   data-bind="checked: giftcardNotification"/>
+            <label class="label" for="giftcard-notification"><span
+                    data-bind="i18n: 'Gift Card Update Notification'"></span></label>
+        </div>
+        <div class="field choice" data-bind="visible: creditNotificationEnable">
+            <input type="checkbox" name="credit_notification" id="credit-notification" class="checkbox"
+                   data-bind="checked: creditNotification"/>
+            <label class="label" for="credit-notification"><span data-bind="i18n: 'Update Balance Notification'"></span></label>
+        </div>
+    </div>
+</div>

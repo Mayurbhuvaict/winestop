@@ -1,0 +1,131 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var \Mageplaza\GiftCard\Block\Adminhtml\Customer\Edit\Tab\Balance $block */
+?>
+<div class="mp-customer-edit">
+    <div class="fieldset-wrapper-title" tabindex="-1">
+        <strong class="title">
+            <span><?= /** @noEscape */ __('Gift Card') ?></span>
+        </strong>
+    </div>
+    <div class="admin__fieldset-wrapper-content _hide">
+        <div class="col-mp mp-5 mp-detail">
+            <label><?= /** @noEscape */ __('Credit Balance') ?></label><br/>
+            <span id="mp-giftcard-balance"><?= /** @noEscape */ $block->getBalanceAmountFormatted() ?></span>
+        </div>
+        <div class="col-mp mp-7 mp-change">
+            <label><?= /** @noEscape */ __('Add/Subtract Balance') ?></label>
+            <div>
+                <form action="#" id="form-change-amount">
+                    <table>
+                        <tr>
+                            <td><label><?= /** @noEscape */ __('Amount') ?></label></td>
+                            <td>
+                                <input type="text" name="amount" id="amount-input"
+                                       class="input-text number-range--<?= /** @noEscape */ $block->getBalanceAmount() ?>-"
+                                       data-validate="{required:true, 'validate-number': true, 'validate-number-range':true}"/>
+                                <p><?= /** @noEscape */ __('Use negative number to subtract credit.') ?></p>
+                            </td>
+                            <td>
+                                <button type="button" id="action-change-amount"
+                                        class="action-secondary"><?= /** @noEscape */ __('Change') ?></button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="mp-clear"></div>
+    </div>
+</div>
+<script>
+    require([
+        'jquery',
+        'mage/validation'
+    ], function ($) {
+
+        var giftCardForm = $('#form-change-amount'),
+            amountEl = $('#amount-input'),
+            balanceEl = $('#mp-giftcard-balance'),
+            balanceAmount = '<?= /** @noEscape */ $block->getBalanceAmount() ?: 0 ?>',
+            rangeClass = 'number-range--' + balanceAmount + '-';
+
+        giftCardForm.validation();
+
+        /** Event for Change button */
+        $('#action-change-amount').click(function () {
+            if (amountEl.valid()) {
+                changeAmount();
+            }
+        });
+
+        /** Event for submit form (prevent enter key) **/
+        giftCardForm.on('submit', function () {
+            if (amountEl.valid()) {
+                changeAmount();
+            }
+
+            return false;
+        });
+
+        /**
+         * Change balance amount for Customer
+         */
+        function changeAmount() {
+            var amount = parseFloat(amountEl.val());
+            if (amount === 0) {
+                return false;
+            }
+
+            $.ajax({
+                method: 'POST',
+                url: '<?= /** @noEscape */ $block->getChangeAmountUrl() ?>',
+                showLoader: true,
+                data: {
+                    form_key: window.FORM_KEY,
+                    customer_id: <?= /** @noEscape */ $block->getCustomerId() ?>,
+                    amount: amountEl.val()
+                }
+            }).done(function (response) {
+                if (response.error) {
+                    alert(response.message);
+                } else {
+                    amountEl.val('');
+                    amountEl.removeClass(rangeClass);
+                    rangeClass = 'number-range--' + response.balance + '-';
+                    amountEl.addClass(rangeClass);
+
+                    balanceAmount = response.balance;
+                    balanceEl.html(response.balanceFormatted);
+                    window.transaction_gridJsObject.doFilter();
+                }
+            });
+
+            return false;
+        }
+    });
+</script>
+<div class="fieldset-wrapper-title" tabindex="-1">
+    <strong class="title">
+        <span><?= /** @noEscape */ __('Transactions') ?></span>
+    </strong>
+</div>

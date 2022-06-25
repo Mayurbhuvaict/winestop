@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Rootways_Faq::faqs" title="Rootways FAQs" 
+        	module="Rootways_Faq" 
+        	sortOrder="120" 
+        	resource="Rootways_Faq::faqs"/>
+        
+        <add id="Rootways_Faq::faq" title="Manage FAQs" 
+        	module="Rootways_Faq" 
+        	sortOrder="121" 
+        	parent="Rootways_Faq::faqs" 
+        	action="rootways/faq" 
+        	resource="Rootways_Faq::faq"/>
+        
+        <add id="Rootways_Faq::category" title="Manage Category" 
+        	module="Rootways_Faq" 
+        	sortOrder="122" 
+        	parent="Rootways_Faq::faqs" 
+        	action="rootways/faqcat" 
+        	resource="Rootways_Faq::faq"/>
+        	
+		<add id="Rootways_Faq::configuration" title="Configuration" 
+        	module="Rootways_Faq" 
+        	sortOrder="123" 
+        	parent="Rootways_Faq::faqs" 
+        	action="adminhtml/system_config/edit/section/rootwaysfaq_option/faqcat" 
+        	resource="Rootways_Faq::faq"/>
+    </menu>
+</config>

@@ -1,0 +1,131 @@
+& when (@media-common = true) {
+    .mst-seo-sitemap__map {
+        .search-bar {
+            display: flex;
+
+            input[type=search] {
+                position:  relative;
+                margin:    0 auto;
+                max-width: 45rem;
+            }
+        }
+
+        .provider {
+            margin-bottom: 4rem;
+
+            ul {
+                list-style: none;
+                margin:     2rem 0 0 2rem;
+                padding:    0;
+
+                &.cols-1 {
+                    column-count: 1;
+                }
+
+                &.cols-2 {
+                    column-count: 2;
+                }
+
+                &.cols-3 {
+                    column-count: 3;
+                }
+
+                &.cols-4 {
+                    column-count: 4;
+                }
+
+                &.cols-5 {
+                    column-count: 5;
+                }
+
+                &.cols-6 {
+                    column-count: 6;
+                }
+
+                &.cols-7 {
+                    column-count: 7;
+                }
+
+                &.cols-8 {
+                    column-count: 8;
+                }
+
+                &.cols-9 {
+                    column-count: 9;
+                }
+
+                &.cols-10 {
+                    column-count: 10;
+                }
+
+                li {
+                    display: inline;
+
+                    a {
+                        display:   flex;
+                        flex-wrap: wrap;
+                        margin-bottom: .5rem;
+
+                        span {
+                            &:after {
+                                font-size:      10px;
+                                line-height:    20px;
+                                content:        "\e608";
+                                font-family:    "luma-icons";
+                                margin:         0 10px;
+                                vertical-align: top;
+                                display:        inline-block;
+                                font-weight:    normal;
+                                overflow:       hidden;
+                                speak:          none;
+                                text-align:     center;
+                                color:          #707070;
+                            }
+
+                            &:last-child {
+                                &:after {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .letter {
+                margin: 0 0 2rem -2rem;
+
+                strong {
+                    font-size:   2rem;
+                    font-weight: 800;
+                    display:     block;
+                }
+
+                .strong_visible {
+                    display: block;
+                }
+
+                .strong_hidden {
+                    display: none;
+                }
+
+                ul {
+                    margin-top: 0;
+                }
+            }
+
+            ._highlight {
+                background: #fad764;
+                font-style: normal;
+            }
+        }
+    }
+
+    @media (max-width: 801px) {
+        .mst-seo-sitemap__map {
+            ul {
+                column-count: 1 !important;
+            }
+        }
+    }
+}

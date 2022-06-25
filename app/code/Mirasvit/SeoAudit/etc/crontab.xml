@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="mst_seo_audit">
+
+        <!-- Crawler -->
+        <job name="mst_seo_audit_job" instance="Mirasvit\SeoAudit\Cron\JobCron" method="execute">
+            <schedule>*/10 * * * *</schedule>
+        </job>
+
+        <!-- Checks -->
+        <job name="mst_seo_audit_check" instance="Mirasvit\SeoAudit\Cron\CheckCron" method="execute">
+            <schedule>*/10 * * * *</schedule>
+        </job>
+
+        <!-- Cleanup old checks -->
+        <job name="mst_seo_audit_cleanup" instance="Mirasvit\SeoAudit\Cron\CleanupCron" method="execute">
+            <schedule>10 0 * * *</schedule>
+        </job>
+    </group>
+</config>

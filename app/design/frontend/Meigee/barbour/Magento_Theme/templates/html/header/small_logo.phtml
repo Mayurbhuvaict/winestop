@@ -1,0 +1,19 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+?>
+<?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
+<a class="small-logo" href="<?php echo $block->escapeUrl($block->getUrl('')); ?>" title="<?php echo $block->escapeHtmlAttr($storeName) ?>" aria-label="store logo">
+    <img src="<?php echo $block->escapeUrl($block->getLogoSrc('small_logo_image', 'small_logo_status')) ?>"
+         alt="<?php echo $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+         <?php echo $block->getLogoWidth() ? 'width="' . $block->escapeHtmlAttr($block->getLogoWidth()) . '"' : '' ?>
+         <?php echo $block->getLogoHeight() ? 'height="' . $block->escapeHtmlAttr($block->getLogoHeight()) . '"' : '' ?>
+    />
+</a>
+

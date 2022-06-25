@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+ Copyright © 2020 Wyomind. All rights reserved.
+ See LICENSE.txt for license details.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+
+    <type name="Magento\Catalog\Helper\Product\View">
+        <plugin name="wyomind_sgs_catalog_helper_product_view"
+                type="Wyomind\SimpleGoogleShopping\Plugin\Catalog\Helper\Product\View"/>
+    </type>
+
+
+<!--    <type name="Magento\Framework\Pricing\Render\Amount">-->
+<!--        <plugin name="wyomind_sgs_framework_pricing_render_amount"-->
+<!--                type="Wyomind\SimpleGoogleShopping\Plugin\Framework\Pricing\Render\Amount"/>-->
+<!--    </type>-->
+    <type name="Magento\Framework\App\PageCache\Identifier">
+        <plugin name="wyomind_sgs_framework_app_page_cache_identifier"
+                type="Wyomind\SimpleGoogleShopping\Plugin\Framework\App\PageCache\Identifier" />
+    </type>
+</config>

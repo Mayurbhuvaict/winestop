@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Theme\Block\Html\Breadcrumbs">
+        <plugin name="mstSeoMarkupMemorizeCrumbs" type="Mirasvit\SeoMarkup\Plugin\Frontend\Theme\Block\Html\Breadcrumbs\MemorizeCrumbsPlugin" sortOrder="1000"/>
+    </type>
+
+    <type name="Magento\Framework\Controller\ResultInterface">
+        <plugin name="mstSeoMarkupRemoveNativeRs" type="Mirasvit\SeoMarkup\Plugin\Frontend\Framework\Controller\Result\RemoveNativeRsPlugin" sortOrder="-1"/>
+    </type>
+</config>

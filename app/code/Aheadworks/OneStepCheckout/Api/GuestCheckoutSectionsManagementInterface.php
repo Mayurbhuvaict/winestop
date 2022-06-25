@@ -1,0 +1,27 @@
+<?php
+namespace Aheadworks\OneStepCheckout\Api;
+
+/**
+ * Interface GuestCheckoutSectionsManagementInterface
+ * @package Aheadworks\OneStepCheckout\Api
+ * @api
+ */
+interface GuestCheckoutSectionsManagementInterface
+{
+    /**
+     * Get sections details
+     *
+     * @param string $cartId
+     * @param \Aheadworks\OneStepCheckout\Api\Data\CheckoutSectionInformationInterface[] $sections
+     * @param \Magento\Quote\Api\Data\AddressInterface|null $shippingAddress
+     * @param \Magento\Quote\Api\Data\AddressInterface|null $billingAddress
+     * @return \Aheadworks\OneStepCheckout\Api\Data\CheckoutSectionsDetailsInterface
+     * @throws \Magento\Framework\Exception\InputException
+     */
+    public function getSectionsDetails(
+        $cartId,
+        $sections,
+        \Magento\Quote\Api\Data\AddressInterface $shippingAddress = null,
+        \Magento\Quote\Api\Data\AddressInterface $billingAddress = null
+    );
+}

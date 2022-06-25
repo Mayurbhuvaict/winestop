@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Webkul Software
+ *
+ * @category    Webkul
+ * @package     Webkul_OutOfStocknotification
+ * @author      Webkul
+ * @copyright   Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license     https://store.webkul.com/license.html
+ */ -->
+     <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+        <default>
+            <notificationsettings>
+                <enable>
+                    <oosn>1</oosn>
+                </enable>
+                <emailsettings>
+                    <admin_notification_status>1</admin_notification_status>
+                    <admin_notification>notificationsettings_emailsettings_admin_notification</admin_notification>
+                    <product_instock_registration_status>1</product_instock_registration_status>
+                    <product_instock_registration>notificationsettings_emailsettings_product_instock_registration</product_instock_registration>
+                    <product_instock_notification_status>1</product_instock_notification_status>
+                    <product_instock_notification>notificationsettings_emailsettings_product_instock_notification</product_instock_notification>
+                </emailsettings>
+                <lowstock>
+                    <allow>0</allow>
+                    <receivers>0</receivers>
+                    <qty>5</qty>
+                    <low_stock_email>notificationsettings_lowstock_low_stock_email</low_stock_email>
+                </lowstock>
+            </notificationsettings>
+        </default>
+    </config>

@@ -1,0 +1,245 @@
+@import '_slick.less';
+.cms-index-index {
+	.nav-sections {
+		margin-bottom: 0;
+	}
+
+}
+.Aktiv_banner_slider {
+	.slick-slide img{
+		width: 100%
+	}
+	.slick-slide video{
+		width: 100%;
+		height: 650px;
+	}
+	.slick-slide iframe{
+		width: 100%;
+		height: 650px;
+	}
+	.caption {
+		h2 {
+			font-size: 46px;
+			color: #000;
+			font-weight: 900;
+			text-transform: uppercase;
+			margin-top: 0;
+		}
+		.btn-banner {
+			border: 2px solid #000;
+			font-size: 17px;
+			font-weight: bold;
+			text-transform: uppercase;
+			width: 40%;
+			height: 43px;
+			line-height: 44px;
+			text-align: center;
+			color: #000;
+			display: block;
+			text-decoration: none;
+			&:hover {
+				background: #000;
+				color: #fff;
+			}
+		}
+	}
+}
+.Aktiv_banner {
+	overflow: hidden;
+	margin-bottom: 41px;
+}
+.Aktiv_banner_slider.slick-initialized {
+	.slick-slide {
+		position: relative;
+	}
+	.slick-slide>div>div {
+		max-height: 650px;
+	}
+}
+.Aktiv_banner_slider .slick-arrow {
+	background: none;
+	transform: translate(0, -50%);
+	position: absolute;
+	left: 0;
+	top: 50%;
+	border: 0;
+	z-index: 3;
+	color: #000;
+	box-shadow: none !important;
+	border-radius: 0;
+	margin-top: -3px;
+	font-size: 0;
+	height: 60px;
+	line-height: 32px;
+	padding: 0;
+	width: 36px;
+	text-align: center;
+	&:after {
+		content: '\e617';
+		font-family: 'luma-icons';
+		color: transparent;
+	}
+	&:focus {
+		background: none;
+		color: #000;
+		border: 0;
+		opacity: 0.8;
+	}
+	&:active {
+		background: none;
+		color: #000;
+		border: 0;
+		opacity: 0.8;
+	}
+}
+.Aktiv_banner_slider .slick-list{
+	max-height: 650px;
+}
+.Aktiv_banner_slider .slick-arrow.slick-next {
+	left: inherit;
+	right: 0px;
+	transition: all .3s ease;
+	    display: none !important;
+	&:after {
+		display: inherit;
+       	background-repeat: no-repeat !important;
+       	background: url('@{baseDir}images/right-arrow.png');
+		margin-top: -31px;
+	}
+	&:hover {
+		background: none;
+		color: #000;
+		border: 0;
+		opacity: 0.8;
+	}
+}
+.Aktiv_banner_slider .slick-arrow.slick-prev {
+	&:after {
+		display: inherit;
+        background-repeat: no-repeat !important;
+        background: url('@{baseDir}images/left-arrow.png');
+		margin-top: -31px;
+	}
+	left: 15px;
+	transition: all .3s ease;
+	    display: none !important;
+	&:hover {
+		background: none;
+		color: #000;
+		border: 0;
+		opacity: 0.8;
+	}
+}
+.Aktiv_banner_slider .slick-slider {
+	&:hover {
+		.Aktiv_banner_slider .slick-arrow.slick-next {
+			right: 0;
+		}
+		.Aktiv_banner_slider .slick-arrow.slick-prev {
+			left: 15px;
+		}
+	}
+}
+@media screen and (max-width:991px) {
+	.Aktiv_banner_slider {
+		.caption {
+			h2 {
+				font-size: 35px;
+				margin-bottom: 1rem;
+			}
+			.btn-banner {
+				font-size: 15px;
+				width: 100%;
+				height: 38px;
+				line-height: 39px;
+			}
+			p {
+				font-size: 15px;
+				line-height: 22px;
+				margin-bottom: 2rem;
+			}
+		}
+	}
+	.Aktiv_banner_slider .slick-arrow {
+		height: 40px;
+		line-height: 32px;
+		padding: 0;
+		width: 30px;
+	}
+	.Aktiv_banner_slider .slick-arrow.slick-next {
+		&:after {
+			font-size: 18px;
+			left: 0px;
+			position: relative;
+		}
+		right: 15px;
+	}
+	.Aktiv_banner_slider .slick-arrow.slick-prev {
+		&:after {
+			font-size: 18px;
+			left: -2px;
+			position: relative;
+		}
+		left: 5px;
+	}
+	.Aktiv_banner_slider .slick-list{
+		max-height: 280px;
+	}
+	.Aktiv_banner_slider.slick-initialized {
+		.slick-slide>div>div {
+			max-height: 280px;
+		}
+	}
+}
+@media screen and (max-width:767px) {
+	.cms-index-index {
+		.page-header {
+			margin-bottom: 0;
+		}
+
+	}
+	.Aktiv_banner_slider {
+		.caption {
+			h2 {
+				font-size: 25px;
+				margin-bottom: 2rem;
+			}
+			padding: 0 15px;
+			.btn-banner {
+				font-size: 13px;
+				width: 100%;
+				height: 34px;
+				line-height: 34px;
+				border-width: 1px;
+			}
+			p {
+				font-size: 14px;
+			}
+		}
+	}
+	.Aktiv_banner_slider .slick-arrow {
+		display: none !important;
+	}
+	.Aktiv_banner_slider .slick-slide {
+		img {
+			display: block;
+			width: 100%;
+			max-width: 100%;
+			height: auto;
+		}
+
+		video {
+			display: block;
+			width: 100%;
+			max-width: 100%;
+			height: 200px;
+		}
+
+		iframe {
+			display: block;
+			width: 100%;
+			max-width: 100%;
+			height: 200px;
+		}
+	}
+}

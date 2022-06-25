@@ -1,0 +1,201 @@
+.advancedreports-dashboard-index {
+
+    .aw-arep__data-grid-action-report-settings {
+        .admin__action-dropdown {
+            &:before {
+                content: '\e610';
+            }
+        }
+    }
+
+    .aw-arep__dashboard-widget-wrap {
+        padding: 0 1rem;
+
+        &:last-child {
+            padding-bottom: 20px;
+        }
+    }
+
+    .admin__data-grid-actions-wrap {
+
+        .admin__action-dropdown-wrap {
+            &:after {
+                border-left: none;
+            }
+
+            .admin__action-dropdown {
+                background-color: transparent;
+            }
+
+            &.admin__data-grid-action-bookmarks {
+                &._active {
+                    .admin__action-dropdown {
+                        background-color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    .aw-arep__toolbar-wrap {
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+        -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+        -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+    }
+
+    .aw-arep__toolbar-wrap {
+        .page-main-actions {
+            margin: 0 0 1rem;
+        }
+    }
+
+    .admin__data-grid-outer-wrap {
+        background: #f4f4f4;
+    }
+
+    .widget-metric {
+        .aw-menu {
+            float: none;
+        }
+    }
+
+    .container-widgets {
+
+        .container-widget-item-wrap {
+            padding: 0.5rem;
+
+            .container-widget-item {
+
+                &.forecast {
+                    border-bottom: 3px solid @color-dashboard-hover-link;
+
+                    .widget-current-info {
+                        display: inline-block;
+                    }
+
+                    .admin__field-tooltip {
+
+                        &:hover {
+                            .admin__field-tooltip-action {
+                                &:before {
+                                    color: @color-dashboard-hover-link;
+                                }
+                            }
+                        }
+                        .admin__field-tooltip-action {
+                            margin-left: 0;
+
+                            &:before {
+                                -webkit-transition: color 0.2s ease-out;
+                                -moz-transition: color 0.2s ease-out;
+                                -o-transition: color 0.2s ease-out;
+                                transition: color 0.2s ease-out;
+                                font-size: 1.8rem;
+                                color: @color-gray-light;
+                            }
+                        }
+                        .admin__field-tooltip-content {
+                            right: -5rem;
+                        }
+                    }
+                }
+                background-color: #fff;
+                border: 1px solid rgba(195, 195, 195, 0.3);
+                box-shadow: 2px 2px 3px #eee;
+                border-radius: 5px;
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+                min-height: 121px;
+            }
+
+            .widget-content {
+                padding: 1rem 1.5rem;
+
+                .widget-total {
+                    font-size: 2.3rem;
+                    font-weight: 600;
+                    margin-right: 8px;
+                }
+                .widget-current-info {
+                    position: relative;
+
+                    > div {
+                        display: inline-block;
+                    }
+
+                    .aw-arep__widget-difference-value {
+                        top: 0.5rem;
+                        position: absolute;
+                    }
+                }
+                .widget-compare-info {
+                    font-size: 1.7rem;
+                    color: @color-compare;
+                }
+                .widget-link-to-report {
+                    position: relative;
+
+                    a {
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        color: @color-dashboard-hover-link;
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+
+            .widget-metric {
+                .dropdown,
+                .admin__action-dropdown,
+                .dropdown-menu {
+                    width: 100%;
+                }
+
+                .dropdown-menu {
+                    border-top: none;
+                    box-shadow: 1px 3px 3px 0px rgba(0, 0, 0, 0.5);
+
+                    .not-active {
+                        font-weight: 800;
+                        padding-top: 20px;
+                        pointer-events: none;
+
+                        &:first-child {
+                            padding-top: 0;
+                        }
+                    }
+                }
+                .admin__action-dropdown {
+                    letter-spacing: 0;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    text-align: left;
+                    padding: 1.7rem 3.3rem 0.8rem 1.5rem;
+                    z-index: auto;
+
+                    &:after {
+                        margin-top: 0.3rem;
+                    }
+
+                    &:hover {
+                        &:after {
+                            border-color: @color-dashboard-hover-link transparent transparent transparent;
+                        }
+                        color: @color-dashboard-hover-link;
+                    }
+                }
+
+                .dropdown {
+                    &._active {
+                        .admin__action-dropdown-text {
+                            &:after {
+                                right: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

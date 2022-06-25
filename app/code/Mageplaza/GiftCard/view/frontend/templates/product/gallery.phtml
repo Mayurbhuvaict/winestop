@@ -1,0 +1,39 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<?php if ($block->isUseTemplate()) : ?>
+    <?php if ($block->getFonts()): ?>
+        <link href="https://fonts.googleapis.com/css?family=<?= $block->getFonts() ?>" rel="stylesheet">
+    <?php endif; ?>
+    <div class="giftcard-template-container" id="giftcard-template-container" data-bind="scope:'template'">
+        <div id="giftcard-template-container-loader" data-role="checkout-loader" class="loading-mask" style="position: relative;">
+            <div class="loader">
+                <img src="<?= /** @noEscape */ $block->getViewFileUrl('images/loader-1.gif') ?>"
+                     alt="<?= /** @noEscape */ __('Loading...') ?>" style="position: absolute;">
+            </div>
+        </div>
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    </div>
+<?php else : ?>
+    <?= /** @noEscape */ $block->getChildHtml('product.info.media.image') ?>
+<?php endif; ?>

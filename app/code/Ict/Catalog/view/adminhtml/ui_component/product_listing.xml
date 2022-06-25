@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<column name="name" class="Ict\Catalog\Ui\Component\Listing\Column\Product">
+    <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+           <!-- other configurations -->
+           <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+        </item>
+    </argument>
+   </column>
+</listing>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+  Copyright © 2018 Wyomind. All rights reserved.
+  See LICENSE.txt for license details.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <wyomind_elasticsearchbrowser>
+            <license>
+                <!--required for License Manager -->
+                <extension_label>Elasticsearch Browser</extension_label>
+                <extension_version>2.0.1</extension_version>
+                <extension_code>elsb</extension_code>
+            </license>
+            <debug>
+                <backend_notification_on_elasticsearch_sever_fail>1</backend_notification_on_elasticsearch_sever_fail>
+            </debug>
+        </wyomind_elasticsearchbrowser>
+    </default>
+</config>

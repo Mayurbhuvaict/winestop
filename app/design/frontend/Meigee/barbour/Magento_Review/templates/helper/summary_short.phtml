@@ -1,0 +1,59 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Review\Block\Product\ReviewRenderer $block */
+
+$url = $block->getReviewsUrl() . '#product_tabs_reviews';
+$urlForm = $block->getReviewsUrl() . '#product_tabs_reviews';
+?>
+<?php if ($block->isReviewEnabled() && $block->getReviewsCount()) : ?>
+<?php $rating = $block->getRatingSummary();
+$rating_stars = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_product_listing', 'rating_stars');
+$rating_cust_link = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_product_listing', 'rating_cust_link');
+$review_link = $this->helper('\Meigee\Barbour\Helper\BarbourGeneral')->getCustomThemeOptionCnf('barbour_product_listing', 'review_link');
+
+ ?>
+<div class="product-reviews-summary<?= !$rating ? ' no-rating' : '' ?>">
+    <?php if ($rating && $rating_stars) :?>
+    <div class="rating-summary">
+        <span class="label"><span><?= $block->escapeHtml(__('Rating')) ?>:</span></span>
+        <div class="rating-result" title="<?= $block->escapeHtmlAttr($rating) ?>%">
+			<i class="star">&#9733;</i>
+			<i class="star">&#9733;</i>
+			<i class="star">&#9733;</i>
+			<i class="star">&#9733;</i>
+			<i class="star">&#9733;</i>
+			<span style="width:<?= $block->escapeHtmlAttr($rating) ?>%">
+				<i class="star">&#9733;</i>
+				<i class="star">&#9733;</i>
+				<i class="star">&#9733;</i>
+				<i class="star">&#9733;</i>
+				<i class="star">&#9733;</i>
+			</span>
+        </div>
+    </div>
+    <?php endif;
+	if($rating_cust_link || $review_link) {
+	?>
+    <div class="reviews-actions">
+		<?php if($rating_cust_link) { ?>
+		<a class="action view" href="<?= $block->escapeUrl($url) ?>"><?= $block->escapeHtml($block->getReviewsCount()) ?>&nbsp;<span><?= ($block->getReviewsCount() == 1) ? $block->escapeHtml(__('Review')) : $block->escapeHtml(__('Reviews')) ?></span></a>
+		<?php } 
+		if($review_link) { ?>
+			<a class="action add" href="<?= /* @escapeNotVerified */ $block->escapeUrl($urlForm) ?>"><?= /* @escapeNotVerified */ $block->escapeHtml(__('Add Your Review')) ?></a>
+		<?php } ?>
+    </div>
+	<?php } ?>
+</div>
+<?php elseif ($block->isReviewEnabled() && $block->getDisplayIfEmpty()): ?>
+<div class="product-reviews-summary empty">
+    <div class="reviews-actions">
+        <a class="action add" href="<?= $block->escapeUrl($urlForm) ?>">
+            <?= $block->escapeHtml(__('Be the first to review this product')) ?>
+        </a>
+    </div>
+</div>
+<?php endif; ?>

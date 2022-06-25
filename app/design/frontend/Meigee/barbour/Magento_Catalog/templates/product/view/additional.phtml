@@ -1,0 +1,12 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Catalog\Block\Product\View\Additional */
+
+?>
+<?php foreach ($block->getChildHtmlList() as $_html) : ?>
+    <?php /* @noEscape */ echo $_html ?>
+<?php endforeach; ?>

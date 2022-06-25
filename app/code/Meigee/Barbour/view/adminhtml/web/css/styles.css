@@ -1,0 +1,57 @@
+.meigee-group.input-group {
+	margin: 0 -10px;
+}
+.meigee-group.input-group:before,
+.meigee-group.input-group:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+.meigee-group .input-box {
+	display: inline-block;
+	width: 25%;
+	vertical-align: bottom;
+	padding: 0 10px;
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+}
+.meigee-group.input-group label {
+	font-size: 11px;
+	color: #666;
+}
+
+.tabs-content-wrapper tr:not(.show) {
+	display: none;
+}
+
+.tabs-items {
+	border-bottom: 1px solid #ddd;
+}
+.tabs-items tr {
+	float: left;
+	display: block;
+}
+.tabs-items tr td {
+	display: block;
+	width: 100% !important;
+	padding: 20px !important;
+	box-sizing: border-box;
+}
+.tabs-items .active-tab .value {
+	background: #eee !important;
+}
+.tabs-items td:not(.value) {
+	display: none !important;
+}
+
+.divider-row td:not(.value) {
+	opacity: 0 !important;
+}
+.divider-row td.value {
+	border-bottom: 1px solid #ddd;
+	padding: 30px 0 10px !important;
+	cursor: default;
+}
+.divider-row td.value * {
+	cursor: inherit;
+}

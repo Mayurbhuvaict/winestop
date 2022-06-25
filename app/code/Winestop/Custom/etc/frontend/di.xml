@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Theme\Block\Html\Topmenu">
+        <plugin name="navLinksTopmenu" type="Winestop\Custom\Plugin\Block\Topmenu" sortOrder="-1" />
+    </type>
+    <type name="Magento\Catalog\Model\Layer">
+        <plugin name="include_out_of_stock" type="Winestop\Custom\Plugin\Layer" />
+    </type>
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+       <arguments>
+           <argument name="configProviders" xsi:type="array">
+               <item name="cms_block_config_provider" xsi:type="object">Winestop\Custom\Model\ConfigProvider</item>
+           </argument>
+       </arguments>
+   </type>
+   <type name="Winestop\Custom\Model\ConfigProvider">
+       <arguments>
+           <argument name="blockId" xsi:type="string">checkout_we_accept</argument>
+       </arguments>
+       <arguments>
+           <argument name="blockIdsec" xsi:type="string">checkout_secure</argument>
+       </arguments>
+   </type>
+   <virtualType name="categoryFilterList" type="Magento\Catalog\Model\Layer\FilterList">
+        <arguments>
+            <argument name="filters" xsi:type="array">
+                <item name="attribute" xsi:type="string">Magento\Catalog\Model\Layer\Filter\Attribute</item>
+                <item name="price" xsi:type="string">Magento\Catalog\Model\Layer\Filter\Price</item>
+                <item name="decimal" xsi:type="string">Magento\Catalog\Model\Layer\Filter\Decimal</item>
+                <item name="category" xsi:type="string">Magento\Catalog\Model\Layer\Filter\Category</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="searchFilterList" type="Magento\Catalog\Model\Layer\FilterList">
+        <arguments>
+            <argument name="filters" xsi:type="array">
+                <item name="attribute" xsi:type="string">Magento\Catalog\Model\Layer\Filter\Attribute</item>
+                <item name="price" xsi:type="string">Magento\Catalog\Model\Layer\Filter\Price</item>
+                <item name="decimal" xsi:type="string">Magento\Catalog\Model\Layer\Filter\Decimal</item>
+                <item name="category" xsi:type="string">Magento\Catalog\Model\Layer\Filter\Category</item>
+            </argument>
+        </arguments>
+    </virtualType>
+   <!-- <preference for="Webkul\OutOfStockNotification\Helper\Data" type="Winestop\Custom\Helper\Data"/>  -->   
+<!-- 	<type name="Magento\Catalog\Model\Product">
+	  <plugin name="change_product" type="Winestop\Custom\Plugin\Product"/>
+	</type>	 -->
+    <type name="Magento\Theme\Block\Html\Topmenu">
+        <plugin name="add_cms_menu" type="Winestop\Custom\Plugin\Topmenu" />
+    </type>
+
+    <type name="Magento\Catalog\Block\Product\ProductList\Toolbar">
+        <plugin name="change_sort_order_for_latest" type="Winestop\Custom\Plugin\ChangeDescOrder" />
+    </type>
+    <preference for="Magento\Directory\Model\ResourceModel\Region\Collection" type="Winestop\Custom\Model\Collection" />
+    <preference for="Aheadworks\OneStepCheckout\Model\Address\Form\AttributeMeta\Modifier\Attribute\RegionId" type="Winestop\Custom\Model\Address\RegionId" />
+</config>

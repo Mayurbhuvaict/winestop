@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Oleh Kravets <oleh.kravets@snk.de>
+ * @copyright   Copyright (c) 2021 schoene neue kinder GmbH  (https://www.snk.de)
+ * @license     MIT
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <captcha translate="label">
+            <fonts>
+                <gnuFreeFont>
+                    <label>GnuFreeFont</label>
+                    <path>GnuFreeFont/FreeSerif.ttf</path>
+                </gnuFreeFont>
+            </fonts>
+       </captcha>
+        <customer>
+            <captcha>
+                <!-- Note that the minus sign is not the one on the keyboard-->
+                <allowed_math_signs>+,−,×,÷</allowed_math_signs>
+                <expression_type>numbers</expression_type>
+                <label_text>Please type the correct answer for the expression below</label_text>
+            </captcha>
+        </customer>
+    </default>
+</config>

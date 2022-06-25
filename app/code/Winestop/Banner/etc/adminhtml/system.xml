@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="Winestop" translate="label" sortOrder="500">
+            <label>Winestop Extensions</label>
+        </tab>
+        <section id="Winestop_banner" translate="label" sortOrder="1" showInStore="1" showInWebsite="1" showInDefault="1">
+            <class>separator-top</class>
+            <label>Banner</label>
+            <tab>Winestop</tab>
+            <resource>Winestop_Banner::config_banner</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Banner</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="advance" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Advance Configuration</label>
+                <field id="auto_rotation" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Auto Rotation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="auto_rotation_speed" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <depends>
+                        <field id="auto_rotation">1</field>
+                    </depends>
+                    <label>Auto Rotation Speed (ms)</label>
+                    <validate>required-entry validate-number</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

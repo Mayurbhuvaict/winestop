@@ -1,0 +1,45 @@
+.aw-arep__top-totals-list {
+    width: 100%;
+    display: inline-table;
+    list-style: none none;
+    text-align:center;
+    margin-bottom: @margin-after-ui-components;
+    padding: 0 0 4rem;
+    border-bottom: 1px solid @color-gray;
+
+    .aw-arep__widget-difference-value {
+        vertical-align: top;
+        margin-top: 5px;
+    }
+
+    .total-item {
+        display: inline-block;
+        font-weight: normal;
+        margin: 0.5rem 3.5rem;
+        text-align: left;
+
+        .total-title {
+            font-size: 1.5rem;
+            letter-spacing: -0.2px;
+            color: #41362f;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .total-content {
+            .current-total {
+                font-size: 2.7rem;
+                font-weight: normal;
+                color: #6b96ce;
+                display: inline-block;
+                margin-right: 5px;
+            }
+
+            .compare-total {
+                font-size: 1.6rem;
+                color: @color-compare;
+            }
+        }
+    }
+}

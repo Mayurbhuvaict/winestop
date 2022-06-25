@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--SITEMAP-->
+    <preference for="Magento\Sitemap\Model\Sitemap" type="Mirasvit\SeoSitemap\Model\Sitemap"/>
+    <preference for="Magento\Sitemap\Model\ResourceModel\Catalog\Product" type="Mirasvit\SeoSitemap\Preference\ResourceModel\Product"/>
+
+    <type name="Mirasvit\SeoSitemap\Repository\ProviderRepository">
+        <arguments>
+            <argument name="pool" xsi:type="array">
+                <item name="magento_product" xsi:type="object">Mirasvit\SeoSitemap\Repository\Provider\Magento\ProductProvider</item>
+                <item name="magento_category" xsi:type="object">Mirasvit\SeoSitemap\Repository\Provider\Magento\CategoryProvider</item>
+                <item name="magento_page" xsi:type="object">Mirasvit\SeoSitemap\Repository\Provider\Magento\PageProvider</item>
+                <item name="aheadworks_blog" xsi:type="object">Mirasvit\SeoSitemap\Repository\Provider\Aheadworks\BlogProvider</item>
+                <item name="mirasvit_kb" xsi:type="object">Mirasvit\SeoSitemap\Repository\Provider\Mirasvit\KbProvider</item>
+                <item name="fishpig_blog" xsi:type="object">Mirasvit\SeoSitemap\Repository\Provider\FishPig\BlogProvider</item>
+                <item name="mirasvit_blog" xsi:type="object">Mirasvit\SeoSitemap\Repository\Provider\Mirasvit\BlogProvider</item>
+                <item name="mirasvit_brand" xsi:type="object">Mirasvit\SeoSitemap\Repository\Provider\Mirasvit\BrandProvider</item>
+                <item name="mageplaza_blog" xsi:type="object">Mirasvit\SeoSitemap\Repository\Provider\Mageplaza\BlogProvider</item>
+                <item name="magefan_blog" xsi:type="object">Mirasvit\SeoSitemap\Repository\Provider\Magefan\BlogProvider</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="mstSeoSitemapGenerate" xsi:type="object">Mirasvit\SeoSitemap\Console\Command\SitemapGenerateCommand</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- correct sitemap url if use pub folder -->
+    <type name="Magento\Sitemap\Block\Adminhtml\Grid\Renderer\Link">
+        <plugin name="mstSeoSitemapLink" type="Mirasvit\SeoSitemap\Plugin\SitemapLinkPlugin" sortOrder="1000"/>
+    </type>
+
+    <!-- add home page in xml sitemap (from Magento 2.2.4) -->
+    <type name="Magento\Cms\Model\GetUtilityPageIdentifiers">
+        <plugin name="mstSeoSitemapHomePage" type="Mirasvit\SeoSitemap\Plugin\SitemapHomePagePlugin" sortOrder="1000"/>
+    </type>
+</config>

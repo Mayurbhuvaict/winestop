@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Newsletter\Block\Subscribe $block */
+
+?>
+<div class="block newsletter">
+    <div class="title"><strong><?php echo $block->escapeHtml(__('Newsletter')); ?></strong></div>
+    <div class="content">
+        <form class="form subscribe"
+            novalidate
+            action="<?php echo $block->escapeUrl($block->getFormActionUrl()); ?>"
+            method="post"
+            data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+            id="newsletter-content-validate-detail">
+            <div class="field newsletter">
+                <label class="label" for="newsletter-content"><span><?php /* @escapeNotVerified */ echo $block->escapeHtml(__('Subscribe to our newsletter and know first about all the promotions and discounts. Be always trendy.')) ?></span></label>
+                <div class="input-wrapper">
+                    <input class="form-control" name="email" type="email" id="newsletter-content"
+                                placeholder="<?php echo $block->escapeHtml(__('Enter your email')) ?>"
+                                onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Enter your email'"
+								data-mage-init='{"mage/trim-input":{}}'
+                                data-validate="{required:true, 'validate-email':true}"/>
+
+                </div>
+                <button class="action subscribe btn btn-primary primary type-2" title="<?php echo $block->escapeHtmlAttr(__('Subscribe')) ?>" type="submit" aria-label="Subscribe">
+                    <span><?php echo $block->escapeHtml(__('Subscribe')) ?></span><i class="meigee-right-arrow-key"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

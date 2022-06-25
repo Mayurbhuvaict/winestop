@@ -1,0 +1,26 @@
+Home,Home
+"Go to Home Page","Go to Home Page"
+Categories,Categories
+Pages,Pages
+Products,Products
+Stores,Stores
+"Priority must be between 0 and 1","Priority must be between 0 and 1"
+Blog,Blog
+Brand,Brand
+"Knowledge Base","Knowledge Base"
+"Extended Site Map","Extended Site Map"
+"Base URL Path To Frontend Sitemap","Base URL Path To Frontend Sitemap"
+"Columns Count","Columns Count"
+"Capital Letter Product's listing by alphabet","Capital Letter Product's listing by alphabet"
+"Meta Title","Meta Title"
+"Meta Keywords","Meta Keywords"
+"Meta Description","Meta Description"
+"H1 Header","H1 Header"
+"Show Products","Show Products"
+"Show Non-salable Products","Show Non-salable Products"
+"Show CMS Pages","Show CMS Pages"
+"Ignore CMS Pages","Ignore CMS Pages"
+"Show Stores","Show Stores"
+"Additional links","Additional links"
+"Exclude by pattern","Exclude by pattern"
+"Limit the number of product links per one page","Limit the number of product links per one page"

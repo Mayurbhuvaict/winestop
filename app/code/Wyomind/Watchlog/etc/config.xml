@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © 2019 Wyomind. All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <watchlog>
+            <license>
+                <!-- required for License Manager -->
+                <extension_label>Watchlog</extension_label>
+                <extension_version>2.3.4</extension_version>
+                <extension_code>lw</extension_code>
+                <get_online_license>1</get_online_license>
+            </license>
+            <settings>
+                <history>30</history>                
+                <last_report>2000-01-01 00:00:00</last_report>
+                <last_notification>2000-01-01 00:00:00</last_notification>
+                <failed_limit>0.9</failed_limit>
+                <notification_title>Watchlog security warning</notification_title>
+                <notification_description><![CDATA[Watchlog has detected an abnormally high level of failed connection attempts to your back-office (%s&#37;).
+<br/> Please check <a href='%s'>Watchlog panel</a> for further details.]]></notification_description>
+                <notification_details><![CDATA[Watchlog has detected an abnormally high level of failed connection attempts to your back-office (%s&#37;).
+<br/> <b>Upgrade Watchlog to <a href="https://www.wyomind.com/magento2/watchlog-security-enhancement-magento.html" target="_blank">Watchlog Pro</a> to protect your store!</b>]]></notification_details>
+            </settings>
+            <periodical_report>
+                <enable_reporting>0</enable_reporting>
+                <report_period>1</report_period>
+                <report_title>Watchlog report</report_title> <cron>{"days":[],"hours":[]}</cron>
+            </periodical_report>
+        </watchlog>
+    </default>
+</config>

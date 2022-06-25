@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="checkout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">    
+    <body>
+       <referenceContainer name="page.wrapper">         
+            <block class="Squareup\Omni\Block\Payment\Form\Javascript" name="squareup_omni_payment_form_javascript" template="Squareup_Omni::payment/form/javascript.phtml" ifconfig="payment/squareup_payment/active" />
+            <block class="Squareup\Omni\Block\CustomerCards" name="squareup.customer.cards"/>
+            <container name="page.bottom.container" as="page_bottom_container" label="Before Page Footer Container" after="main.content" htmlTag="div" htmlClass="page-bottom"/>
+            <container name="footer-container" as="footer" before="before.body.end" label="Page Footer Container" htmlTag="footer" htmlClass="page-footer">
+            	<block class="Magento\Cms\Block\Block" name="barbour_electronics_2_footer">
+		            <arguments>
+		                <argument name="block_id" xsi:type="string">barbour_electronics_2_footer</argument>
+			        </arguments>
+		        </block>
+            </container>
+            <container name="before.body.end" as="before_body_end" after="-" label="Page Bottom"/>     
+        </referenceContainer>
+        <referenceBlock name="minicart" remove="false" />
+    </body>
+</page>

@@ -1,0 +1,96 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_GiftCard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+use Mageplaza\GiftCard\Helper\Data;
+
+/** @var \Mageplaza\GiftCard\Block\Adminhtml\Product\Composite\Fieldset\GiftCard $block */
+
+$_product = $block->getProduct();
+
+if ($_product->isSaleable() || $block->getSkipSaleableCheck()) : ?>
+    <fieldset id="catalog_product_composite_configure_fields_mpgiftcard" class="fieldset admin__fieldset">
+        <legend class="legend admin__legend">
+            <span><?= /** @noEscape */ __('Associated Options') ?></span>
+        </legend>
+        <div class="price-box price-final_price" data-role="priceBox">
+        <span class="price-container price-final_price tax weee">
+            <span id="product-price-<?= /** @noEscape */ $_product->getId() ?>" class="price-wrapper">
+                <span class="price">0</span>
+            </span>
+        </span>
+        </div>
+        <div class="giftcard-gallery-container" id="giftcard-gallery-container">
+            <div class="giftcard-template-setting">
+                <div class="block-title">
+                    <span><?= /** @noEscape */
+                        __('Gift card design') ?></span>
+                </div>
+                <div class="giftcard-template-setting-select">
+                    <div class="template-length-less-5">
+                    </div>
+                </div>
+            </div>
+            <div class="giftcard-template-setting-content">
+                <div class="giftcard-template-choose-images">
+                </div>
+
+            </div>
+        </div>
+        <div class="giftcard-information-container" id="giftcard-information-container">
+            <input type="hidden" name="template" id="template"/>
+            <input type="hidden" name="image" id="image"/>
+            <input type="hidden" name="amount" id="amount"/>
+            <input type="hidden" name="range_amount" id="range_amount" value="0"/>
+            <input type="hidden" name="delivery" id="delivery"/>
+            <div class="block-title">
+                <span><?= /** @noEscape */ __('Gift card Information') ?></span>
+            </div>
+            <div class="giftcard-information giftcard-information-amount">
+                <div class="giftcard-field-label">Amount</div>
+                <div class="giftcard-field-wrapper">
+                    <ul class="giftcard-amount"></ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="giftcard-information giftcard-information-delivery" style="display: none;">
+                <div class="giftcard-field-label">Delivery</div>
+                <div class="giftcard-field-wrapper">
+                    <ul class="giftcard-delivery"></ul>
+                </div>
+            </div>
+            <div class="giftcard-information-delivery-content"></div>
+        </div>
+    </fieldset>
+    <script>
+        require([
+            "Mageplaza_GiftCard/js/gift_card",
+            "Magento_Catalog/catalog/product/composite/configure"
+        ], function () {
+            var config = <?= /** @noEscape */ Data::jsonEncode($block->getProductConfig()) ?>;
+
+            config.configureData = <?= /** @noEscape */ Data::jsonEncode($block->getConfigureData()) ?>;
+            if (window.productConfigure && window.productConfigure.restorePhase === false) {
+                config.viewInitialize = true;
+            }
+            ProductConfigure.spConfig = new GiftCardProduct.Config(config);
+        });
+    </script>
+<?php endif; ?>

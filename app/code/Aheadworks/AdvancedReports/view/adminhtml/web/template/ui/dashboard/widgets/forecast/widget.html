@@ -1,0 +1,15 @@
+<div class="container-widget-item-wrap col-xs-4 col-l-3">
+    <div class="container-widget-item forecast">
+        <div class="widget-metric">
+            <scope args="metric" render=""/>
+        </div>
+        <div class="widget-content">
+            <div class="widget-current-info">
+                <div class="widget-total">
+                    <span text="getForecastTotal()"/>
+                </div>
+            </div>
+            <render args="tooltipTpl" if="$data.tooltip"/>
+        </div>
+    </div>
+</div>

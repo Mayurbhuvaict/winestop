@@ -1,0 +1,7 @@
+<?php
+$front_helper = $this->helper('\Meigee\Barbour\Helper\FrontHelper');
+$current_product = $front_helper->getCurrentProduct();
+ ?>
+<?php if ($current_product->isSaleable()): ?>
+<?php echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Magento_Catalog::product/product_timer.phtml")->setProduct($current_product)->toHtml(); ?>
+<?php endif; ?>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">seoaudit_job_url_listing.seoaudit_job_url_listing_data_source</item>
+            <item name="deps" xsi:type="string">seoaudit_job_url_listing.seoaudit_job_url_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">url_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back_job_details" xsi:type="string">Mirasvit\SeoAudit\Ui\Url\Listing\Buttons\BackToDetailsButton</item>
+            <item name="back_jobs" xsi:type="array">
+                <item name="name" xsi:type="string">back_jobs</item>
+                <item name="label" xsi:type="string" translate="true">Back to all jobs</item>
+                <item name="url" xsi:type="string">*/*/</item>
+            </item>
+        </item>
+    </argument>
+
+    <dataSource name="seoaudit_job_url_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Mirasvit\SeoAudit\Ui\Url\Listing\DataProvider</argument>
+            <argument name="name" xsi:type="string">seoaudit_job_url_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">url_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">url_id</item>
+                    </item>
+                    <item name="filter_url_params" xsi:type="array">
+                        <item name="job_id" xsi:type="string">*</item>
+                        <item name="identifier" xsi:type="string">*</item>
+                        <item name="result" xsi:type="string">*</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+
+    <listingToolbar name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="sticky" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+
+        <bookmark name="bookmarks">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="namespace" xsi:type="string">seoaudit_job_url_listing</item>
+                    </item>
+                </item>
+            </argument>
+        </bookmark>
+
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="templates" xsi:type="array">
+                        <item name="filters" xsi:type="array">
+                            <item name="select" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+                <item name="observers" xsi:type="array">
+                    <item name="column" xsi:type="string">column</item>
+                </item>
+            </argument>
+        </filters>
+
+        <paging name="listing_paging"/>
+
+    </listingToolbar>
+
+    <columns name="url_columns" class="Mirasvit\SeoAudit\Ui\Url\Listing\Columns">
+
+        <actionsColumn name="actions" class="Mirasvit\SeoAudit\Ui\Url\Listing\Column\ActionColumn">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">url_id</item>
+                    <item name="sortOrder" xsi:type="number">9999</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+
+    <container name="details_container">
+        <modal name="details_modal">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="isTemplate" xsi:type="boolean">false</item>
+                    <item name="options" xsi:type="array">
+                        <item name="title" xsi:type="string">Url details</item>
+                    </item>
+                </item>
+            </argument>
+
+            <field name="url">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Url</item>
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="template" xsi:type="string">Mirasvit_SeoAudit/grid/element/html</item>
+                    </item>
+                </argument>
+            </field>
+
+            <field name="url_score">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Url Score</item>
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="template" xsi:type="string">Mirasvit_SeoAudit/grid/element/html</item>
+                    </item>
+                </argument>
+            </field>
+
+            <field name="all_checks">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Checks</item>
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="template" xsi:type="string">Mirasvit_SeoAudit/grid/element/html</item>
+                    </item>
+                </argument>
+            </field>
+
+            <field name="linked_pages">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Linked Pages</item>
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="template" xsi:type="string">Mirasvit_SeoAudit/grid/element/linked</item>
+                    </item>
+                </argument>
+            </field>
+
+            <field name="linked_resources">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Linked Resources</item>
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="template" xsi:type="string">Mirasvit_SeoAudit/grid/element/linked</item>
+                    </item>
+                </argument>
+            </field>
+        </modal>
+    </container>
+</listing>
