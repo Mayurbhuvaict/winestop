@@ -3,6 +3,7 @@
     <body>
         <referenceBlock name="content">
             <block class="Winestop\Custom\Block\Checkout" name="winestop.order.analytics" template="Magento_Checkout::analytics.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="winestop.reset.deliveryMethod" template="Magento_Checkout::reset_delivery_method.phtml"/>
         </referenceBlock>
     </body>
 </page>

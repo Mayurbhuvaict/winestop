@@ -86,7 +86,7 @@ class Shipping extends \Magento\Shipping\Model\Carrier\AbstractCarrier implement
         $zipcode_list = explode(",",$zipcode_config);
         $title = $this->getConfigData('title');
 
-        if (in_array($current_zipcode, $zipcode_list)) {
+        //if (in_array($current_zipcode, $zipcode_list)) {
             if ($current_subtotal <= 100) {
                 $cost = 12;
             }
@@ -117,7 +117,7 @@ class Shipping extends \Magento\Shipping\Model\Carrier\AbstractCarrier implement
             $method->setCost($amount);
 
             $result->append($method);        
-        }
+        //}
 
         return $result;
     }

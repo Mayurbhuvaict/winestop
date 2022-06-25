@@ -1,5 +1,374 @@
-﻿.authentication-dropdown .modal-inner-wrap button.action-close {
+﻿/*.cart-loader span.counter.qty {
+    position: relative;
+}
+.cart-loader span.counter.qty:after {
+    content: '';
+    background: url('../images/cart-loader.png');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -6px;
+    left: 29px;
+    animation: rotate;
+    animation-iteration-count: infinite;
+    animation-duration: 1.6s;
+    width: 33px;
+    height: 33px;
+}
+@keyframes rotate { 
+      0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); } 
+} */
+
+/*.new-shipping-address-form .field._required.fl-label.fl-label-state,
+.onestepcheckout-index-index .page-main .onestep-shipping-address .field._required.fl-label.fl-label-state,
+.onestepcheckout-index-index .page-main li.aw-onestep-groups_item.payment-methods .field-row.osc-fluid:last-child .field._required.fl-label.fl-label-state {
+    display: none;
+}*/
+/*checkout radio button*/
+/*body.onestepcheckout-index-index .page-main .aw-onestep-main .billing-address-details,
+body.onestepcheckout-index-index .page-main .aw-onestep-main .onestep-billing-address .action-toolbar {
+    display: none;
+}*/
+/*checkout before after name css*/
+.payment-method.sq-payment-method {
+    margin-top: 75px !important;
+}
+li.aw-onestep-groups_item.payment-methods .group-title span {
+    font-size: 0;
+    position: relative;
+}
+li.aw-onestep-groups_item.payment-methods .group-title span::after {
+    content: 'Billing Address';
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.payment-method.sq-payment-method {
+    position: relative;
+    /* margin-top: 18px; */
+    /* display: block; */
+}
+.payment-method.sq-payment-method::before {
+    content: 'Payment Method';
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    top: -45px;
+    position: absolute;
+    left: 58px;
+}
+li.aw-onestep-groups_item.payment-methods.stepone .payment-method.sq-payment-method:after {
+    content: '4';
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    border: 2px solid #A5001F;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    color: #A5001F;
+    font-size: 2rem;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    background-color: #fff;
+    box-sizing: border-box;
+    font-weight: 600;
+    height: 40px;
+    justify-content: center;
+    margin-right: 14px;
+    margin-left: 5px;
+    width: 40px;
+}
+li.aw-onestep-groups_item.payment-methods .payment-method.sq-payment-method:after {
+    content: '6';
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    border: 2px solid #A5001F;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    color: #A5001F;
+    font-size: 2rem;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    background-color: #fff;
+    box-sizing: border-box;
+    font-weight: 600;
+    height: 40px;
+    justify-content: center;
+    margin-right: 14px;
+    margin-left: 5px;
+    width: 40px;
+}
+.onestepcheckout-index-index .page-main .aw-onestep-main .payment-method:first-of-type {
+        margin-top: 75px;
+}
+/*li.aw-onestep-groups_item.payment-methods .group-content form#co-payment-form .onestep-billing-address + div .payment-method.sq-payment-method::after {
+    content: '4';
+}
+*/
+/*checkout before after name css end*/
+
+.onestepcheckout-index-index .d-none {
+    display: none !important;
+}
+.onestepcheckout-index-index div#popup-modal {
+    display: none;
+}
+span.placeorder-disallow:empty:before {
+    display: none;
+}
+span.placeorder-disallow {
+    position: relative;
+    color: #d1ab5a;
+    font-weight: 700;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 17px;
+}
+span.placeorder-disallow:before {
+    content: '\f023';
+    font-family: fontawesome;
+    left: -8px;
+    position: relative;
+}
+.onestepcheckout-index-index .onestep-billing-address{
+    text-transform: capitalize;
+}
+.onestepcheckout-index-index .squareup_payment .primary {
+    display: none;
+}
+.onestepcheckout-index-index .checkout-agreements-block div.actions-toolbar {
+    display: block !important;
+}
+.onestepcheckout-index-index .onestep-delivery-method .admin__field-option:first-child {
+    border-bottom:none;
+}
+.onestepcheckout-index-index .onestep-delivery-method .admin__field-option {
+    border:1px solid #d8d8d8;
+    width:100%;
+    max-width: 400px;
+}
+.onestepcheckout-index-index .onestep-delivery-method .admin__field-label {
+    font-family: 'montserrat-regular';
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    padding-right: 5px;
+}
+.onestepcheckout-index-index .onestep-delivery-method input[type='radio']+label:before {
+    font-weight:400;
+    margin-right: 10px !important;
+    height:auto;
+    line-height:17px;
+}
+
+/*newsletter popup*/
+.newsletter-final-popup header.modal-header {
+    position: absolute;
+    right: 0;
     z-index: 9;
+}
+.newsletter-final-popup.modal-popup._inner-scroll .modal-inner-wrap {
+        max-width: 800px;
+}
+.newsletter-final-popup .modal-inner-wrap .modal-content {
+    padding: 0;
+}
+.newsletter-final-popup footer.modal-footer {
+    display: none;
+}
+@media(max-width: 992px) {
+    .newsletter-final-popup #popup-block .newsletter-label {
+        padding-left: 35px;
+    }
+    body .newsletter-final-popup #popup-block .popup-content-wrapper {
+        height: 378px;
+    }
+}
+@media(max-width:  767px) {
+    .newsletter-final-popup.modal-popup.modal-slide {
+        transform: translate(-50%,-50%);
+        left: 50%;
+        top: 50%;
+        width: 92%;
+    }
+    .newsletter-final-popup #popup-block .newsletter-label {
+        padding-left: 20px;
+    }
+    body .newsletter-final-popup #popup-block .popup-content-wrapper {
+        height: 100%;
+    }
+}
+/*newsletter popup end*/
+/*login*/
+.product-sku-class {
+    font-size: 16px;
+    font-family: 'montserrat-medium';
+}
+/* Product Grid Design*/
+body .recently_slider .product-item-details a.product-item-link, 
+body .fullwidth .text-banner.first .product-item-details .product-item-name.text-center {
+    text-overflow: revert;
+    -webkit-line-clamp: revert;
+    -webkit-box-orient: vertical;
+    min-height: 74px;
+}
+.block-products-list .owl-stage-outer .product-item-info .labels {
+    min-height: 33px;
+}
+.upsell .products-grid .product-item-info .product-item-details .name {
+    min-height: 97px;
+}
+body .block-products-list .products-grid .product-item-details form {
+    position: static;
+}
+.catalog-product-view .upsell .wine_rating_block .rating_label {
+    display: block;
+    width: 100%;
+}
+.catalog-product-view .upsell .wine_rating_block {
+    justify-content: center;
+    margin-bottom: 9px;
+}
+body .page-main .recently_slider .product-item-info .product-item-details {
+    min-height: 365px;
+}
+.upsell .products-grid .product-item-info .product-item-details .labels {
+    min-height: 35px;
+}
+.upsell .products-grid .product-item-info .product-item-details .availableqty {
+    min-height: 20px;
+}
+body .products-grid .product-item-info .product-item-details .product_member_price {
+    min-height: 17px;
+}
+.products-grid .product-item-info .product-item-details h4.product-item-name {
+    min-height: 74px;
+}
+.products-grid li.product-item .product-item-details .labels {
+    min-height: 30px;
+}
+.products-grid .product-item-info .product-item-details > .product_member_price {
+    min-height: 24px;
+}
+.products-grid .product-item-details .wine_rating_block {
+    min-height: 95px;
+}
+.page-products .products-grid .availableqty, 
+.checkout-cart-index .products-grid .availableqty, 
+.cms-index-index .products-grid .availableqty, 
+.products-grid.products-related .availableqty,
+.products-grid .product-item-details button {
+    position: static !important;
+    transform: revert !important;   
+}
+.page-products .products-grid .availableqty, 
+.checkout-cart-index .products-grid .availableqty, 
+.cms-index-index .products-grid .availableqty, 
+.products-grid.products-related .availableqty {
+    margin-bottom: 5px;
+}
+body .block-products-list .products-grid .product-item-details {
+    min-height: 360px;
+}
+body.cms-index-index .container .fullwidth {
+    min-height: 625px;
+}
+body .text-banner .widget-wrapper {
+    min-height: 675px;
+    top: 50%;
+}
+body.catalog-category-view .products-grid .product-item-details, body.catalogsearch-result-index .products-grid .product-item-details {
+    min-height: 368px !important;
+}
+body .block-products-list .owl-nav {
+    top: 50%;
+}
+body .products-grid .price-box {
+    min-height: 42px;
+}
+.block.related strong.product.name.product-item-name.text-center {
+    min-height: 62px;
+}
+.related .products-grid .product-item-details .labels {
+    min-height: 35px;
+}
+.related .products-grid .product-item-details .wine_rating_block {
+    min-height: 65px;
+}
+.cart-container .crosssell-wrapper .product.details.product-item-details .name {
+    min-height: 76px;
+}
+body .crosssell .products-grid .list.items .price-box {
+    min-height: 42px;
+}
+.checkout-cart-index .products-grid .availableqty {
+    min-height: 18px;
+}
+.cart-container .crosssell-wrapper .product.details.product-item-details .labels {
+    min-height: 35px;
+}
+body .cart-container .crosssell-wrapper .item.product .product-item-info {
+    height: auto;
+}
+body .products-grid.products-related .field.choice.related {
+    position: static;
+    transform: revert;
+}
+.checkout-cart-index .wine_rating_block {
+justify-content: center;
+}
+.checkout-cart-index .products-grid .product-item-details .wine_rating_block {
+    min-height: 65px;
+    margin-bottom: 9px;
+}
+@media(max-width: 1024px) {
+    .onestepcheckout-index-index .onestep-delivery-method .admin__field-option {
+        max-width:calc(100% - 8px);
+    }
+    body.catalog-category-view .products-grid .product-item-details, body.catalogsearch-result-index .products-grid .product-item-details {
+        min-height: 380px !important;
+    }
+}
+@media(max-width: 992px) {
+    .products-grid li.product-item .product-item-details .labels {
+        min-height: 52px;
+    }
+    body .block-products-list .products-grid .product-item-details {
+        min-height: 345px;
+    }
+}
+@media(max-width: 480px) {
+    .page-products .products-grid .product-item-details .wine_rating_block {
+        min-height: 91px;
+    }
+    body.catalog-category-view .products-grid .product-item-details, body.catalogsearch-result-index .products-grid .product-item-details {
+        min-height: 373px !important;
+    }
+}
+/* Product Grid Design*/
+.product-sku-class {
+    font-size: 16px;
+    font-family: 'montserrat-medium';
 }
 /*checkout payment method*/
 .payment-option.credit-card + div p {
@@ -129,215 +498,14 @@
     background-color: #f8f8f8;
 }
 /*checkount payment method*/
-.catalog-product-view .shipment-notallowed .ship_to_message {
-    max-width: 1272px;
-    width: 100%;
-    margin: 0 auto;
-    padding:0 10px;
-}
-/* Product Grid Design*/
-body .recently_slider .product-item-details a.product-item-link, 
-body .fullwidth .text-banner.first .product-item-details .product-item-name.text-center {
-    text-overflow: revert;
-    -webkit-line-clamp: revert;
-    -webkit-box-orient: vertical;
-    min-height: 74px;
-}
-.block-products-list .owl-stage-outer .product-item-info .labels {
-    min-height: 33px;
-}
-.upsell .products-grid .product-item-info .product-item-details .name {
-    min-height: 97px;
-}
-body .block-products-list .products-grid .product-item-details form {
-    position: static;
-}
-.catalog-product-view .upsell .wine_rating_block .rating_label {
+.actions-toolbar.squareup_payment {
+    margin-top: 15px !important;
     display: block;
-    width: 100%;
-}
-.catalog-product-view .upsell .wine_rating_block {
-    justify-content: center;
-    margin-bottom: 9px;
-}
-body .page-main .recently_slider .product-item-info .product-item-details {
-    min-height: 365px;
-}
-.upsell .products-grid .product-item-info .product-item-details .labels {
-    min-height: 35px;
-}
-.upsell .products-grid .product-item-info .product-item-details .availableqty {
-    min-height: 20px;
-}
-body .products-grid .product-item-info .product-item-details .product_member_price {
-    min-height: 17px;
-    line-height: 0;
-}
-.products-grid .product-item-info .product-item-details h4.product-item-name {
-    min-height: 74px;
-}
-.products-grid li.product-item .product-item-details .labels {
-    min-height: 30px;
-}
-.products-grid .product-item-info .product-item-details > .product_member_price {
-    min-height: 24px;
-}
-.products-grid .product-item-details .wine_rating_block {
-    min-height: 95px;
-    display: block;
-}
-.page-products .products-grid .availableqty, 
-.checkout-cart-index .products-grid .availableqty, 
-.cms-index-index .products-grid .availableqty, 
-.products-grid.products-related .availableqty,
-.products-grid .product-item-details button {
-    position: static !important;
-    transform: revert !important;   
-}
-.page-products .products-grid .availableqty, 
-.checkout-cart-index .products-grid .availableqty, 
-.cms-index-index .products-grid .availableqty, 
-.products-grid.products-related .availableqty {
-    margin-bottom: 5px;
-}
-body .block-products-list .products-grid .product-item-details {
-    min-height: 360px;
-}
-body.cms-index-index .container .fullwidth {
-    min-height: 625px;
-}
-body .text-banner .widget-wrapper {
-    min-height: 675px;
-    top:  50%;
-}
-body .block-products-list .owl-nav {
-    top: 50%;
-}
-body.catalog-category-view .products-grid .product-item-details, body.catalogsearch-result-index .products-grid .product-item-details {
-    min-height: 368px !important;
-}
-body .products-grid .price-box {
-    min-height: 42px;
-}
-.block.related strong.product.name.product-item-name.text-center {
-    min-height: 62px;
-}
-.related .products-grid .product-item-details .labels {
-    min-height: 35px;
-}
-.related .products-grid .product-item-details .wine_rating_block {
-    min-height: 65px;
-}
-.cart-container .crosssell-wrapper .product.details.product-item-details .name {
-    min-height: 76px;
-}
-body .crosssell .products-grid .list.items .price-box {
-    min-height: 42px;
-}
-.checkout-cart-index .products-grid .availableqty {
-    min-height: 18px;
-}
-.cart-container .crosssell-wrapper .product.details.product-item-details .labels {
-    min-height: 35px;
-}
-body .cart-container .crosssell-wrapper .item.product .product-item-info {
-    height: auto;
-}
-body .products-grid.products-related .field.choice.related {
-    position: static;
-    transform: revert;
-}
-.checkout-cart-index .wine_rating_block {
-justify-content: center;
-}
-.checkout-cart-index .products-grid .product-item-details .wine_rating_block {
-    min-height: 65px;
-    margin-bottom: 9px;
-}
-@media(max-width: 1024px) {
-    .onestepcheckout-index-index .onestep-delivery-method .admin__field-option {
-        max-width:calc(100% - 8px);
-    }
-    body.catalog-category-view .products-grid .product-item-details, body.catalogsearch-result-index .products-grid .product-item-details {
-        min-height: 380px !important;
-    }
-}
-@media(max-width: 992px) {
-    .products-grid li.product-item .product-item-details .labels {
-        min-height: 52px;
-    }
-    body .block-products-list .products-grid .product-item-details {
-        min-height: 345px;
-    }
-}
-@media(max-width: 480px) {
-    .page-products .products-grid .product-item-details .wine_rating_block {
-        min-height: 91px;
-    }
-    body.catalog-category-view .products-grid .product-item-details, body.catalogsearch-result-index .products-grid .product-item-details {
-        min-height: 373px !important;
-    }
-}
-/* Product Grid Design*/
-/*.cart-loader span.counter.qty {
-    position: relative;
-}
-.cart-loader span.counter.qty:after {
-    content: '';
-    background: url('../images/cart-loader.png');
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: -6px;
-    left: 29px;
-    animation: rotate;
-    animation-iteration-count: infinite;
-    animation-duration: 1.6s;
-    width: 33px;
-    height: 33px;
-}
-@keyframes rotate { 
-      0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); } 
-} */
-/*remove add to cart icon and quickview in grid*/
-
-/* checkout lock css*/
-span.placeorder-disallow {
-    position: relative;
-    color: #d1ab5a;
-    font-weight: 700;
-    text-align: left;
-    width: 100%;
-    margin-bottom: 10px;
-    display: block;
-    font-size: 17px;
-    font-family: montserrat-medium;
-}
-span.placeorder-disallow:before {
-    content: '\f023';
-    font-family: fontawesome;
-    left: -8px;
-    position: relative;
-}
-span.placeorder-disallow:empty:before {
-    display: none;
-}
-/* checkout lock css*/
-
-
-.product-sku-class {
-    font-size: 16px;
-    font-family: 'montserrat-medium';
+    margin-bottom: 15px !important;
 }
 .gift_card_prod .product-info-main .product-options-bottom .availableqty{
 	display:none;
 }
-.catalogsearch-result-index .custom_ship_to dl.block {
-    display: none;
-}
-/*login*/
 .account-social-login .fa-google:before {
     border-right: none !important;
     top: 1px !important;
@@ -350,9 +518,6 @@ span.placeorder-disallow:empty:before {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.account-social-login .btn-social > :first-child {
-    border-right: 0;
 }
 .sociallogin-box a.sociallogin-button.btn.btn-block.btn-social.sl-fb {
     color: #fff;
@@ -427,6 +592,184 @@ body .account-social-login .btn {
     background: url(../images/g-logo.png) no-repeat;
 }
 /*login*/
+/*Inventoary and message css*/
+.request-qty {
+    font-weight: bold;
+}
+.cms-index-index .page.messages {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+body .message.success {
+    background: #d1ab5a;
+    color: #fff;
+    font-size: 15px;
+}
+body .message.success a {
+    color: #fff;
+    font-size: 15px;
+}
+body .message.success > *:first-child:before {
+    color: #fff;
+    font-size: 15px;
+}
+body .message.error {
+    background: #A5001F;
+    color: #fff;
+    font-size: 15px;
+}
+body .message.error > *:first-child:before {
+    color: #fff;
+}
+.catalog-product-view .outofstock {
+    color: #FF0000;
+    font-weight: bold;
+    font-size: 16px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top:17px;
+    line-height: 16px;
+}
+.catalog-product-view .availableqty {
+    font-weight: bold;
+    font-size: 16px;
+    position: relative;
+    color: #4CAF50;
+    display: flex;
+    justify-content: center;
+    margin-top:17px;
+    line-height: 16px;
+}
+.page-products .availableqty .outofstock {
+    color: #FF0000;
+}
+.catalog-product-view .availableqty label ,.page-products .availableqty label ,.catalog-product-view .outofstock label, .cms-index-index .availableqty label ,.checkout-cart-index .availableqty label{
+    /*border-bottom: 1px solid;*/
+    margin-bottom: 0px;
+    padding-right: 5px;
+}
+/*.catalog-product-view .availableqty span ,.catalog-category-view .availableqty span, .catalog-product-view .outofstock span ,.cms-index-index .availableqty span,.checkout-cart-index .availableqty span {
+    border-bottom: 1px solid;
+}*/
+.products-grid.products-related .field.choice.related {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.products-grid.products-related .product-item-info {
+  min-height:580px;
+}
+.page-products .products-grid .availableqty{
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+.page-products .products-list .availableqty{
+    margin-top: 18px;
+    margin-bottom: 9px;
+}
+.page-products .products-grid .availableqty,.checkout-cart-index .products-grid .availableqty,.cms-index-index .products-grid .availableqty,.products-grid.products-related .availableqty {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.cms-index-index .products-grid .availableqty {
+    bottom: 57px;
+    width: 100%;
+}
+.products-grid.products-related .availableqty {
+    bottom: 42px;
+    width: 100%;
+}
+.page-products .products-grid .availableqty,.checkout-cart-index .products-grid .availableqty {
+    bottom: 52px;
+    width: 100%;
+}
+.products-related .availableqty,.page-products .availableqty ,.cms-index-index .availableqty,.checkout-cart-index .availableqty {
+    font-weight: bold;
+    font-size: 14px;
+    position: relative;
+    color: #4CAF50;
+    display: flex;
+    justify-content: center;
+    line-height: 14px;
+}
+.cms-index-index .availableqty { 
+    margin-top: 5px;
+}
+.customer-address-form .form-address-edit .field.type input[type="radio"] {
+    display:none;
+}
+.customer-address-form .form-address-edit .field.type input[type='radio']:checked+label:before {
+    content: '\e909';
+    font-family: 'aw-osc_icons-font';
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #A5001F;
+}
+.customer-address-form .form-address-edit .field.type .radio-label:before {
+    content: '\e90a';
+    font-family: 'aw-osc_icons-font';
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #A5001F;
+    padding-right:7px;
+    font-weight: normal;
+    vertical-align: middle;
+}
+.customer-address-form .form-address-edit .field.type .radio-label {
+    margin-right:31px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+.password.reset .field.password .control #password-strength-meter-container {
+    display: none;
+}
+.reset .field.confirmation input {
+    width: 63%;
+}
+/*Inventoary and message css end*/
+/*remove add to cart icon and quickview in grid*/
+
+.onestepcheckout-index-index .page-main .checkout-container .field._required[name="shippingAddress.custom_attributes.type"] {
+    margin-top: 10px;
+}
+.field._required[name="shippingAddress.custom_attributes.type"] legend.admin__field-label span {
+    position: relative;
+}
+.field._required[name="shippingAddress.custom_attributes.type"] legend.admin__field-label span:after {
+    content: '*';
+    color: red;
+    font-size: 14px;
+    position: absolute;
+    right: -8px;
+}
+.field._required[name="shippingAddress.custom_attributes.type"] .admin__field-control {
+    display: flex;
+    align-items: center;
+}
+.field._required[name="shippingAddress.custom_attributes.type"] label.label {
+    display: none;
+}
+.field._required[name="shippingAddress.custom_attributes.type"] .admin__field-control label {
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+.field._required[name="shippingAddress.custom_attributes.type"] legend.admin__field-label {
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 0;
+    margin-bottom: 10px;
+}
+.catalogsearch-result-index .custom_ship_to dl.block {
+    display: none;
+}
 /*remove add to cart icon and quickview in grid*/
 .onestepcheckout-index-index .page-main .aw-onestep-main .aw-onestep-groups .payment-methods .onestep-billing-address .field.choice label > span {
     font-size: 14px;
@@ -464,43 +807,6 @@ body.customer-account-create input.mage-error ~ div.mage-error{
 
 
 /*banner slider dots*/
-/*success and error message*/
-.request-qty {
-    font-weight: bold;
-}
-.cms-index-index .page.messages {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-.password.reset .field.password .control #password-strength-meter-container {
-    display: none;
-}
-.reset .field.confirmation input {
-    width: 63%;
-}
-body .message.success {
-    background: #d1ab5a;
-    color: #fff;
-    font-size: 15px;
-}
-body .message.success a {
-    color: #fff;
-    font-size: 15px;
-}
-body .message.success > *:first-child:before {
-    color: #fff;
-    font-size: 15px;
-}
-body .message.error {
-    background: #A5001F;
-    color: #fff;
-    font-size: 15px;
-}
-body .message.error > *:first-child:before {
-    color: #fff;
-}
-/*success and error message*/
 /*newsletter and checkout page css*/
 .onestepcheckout-index-index .page-main .checkout-container .field.fl-label-state .input-text , .onestepcheckout-index-index .page-main .checkout-container .field.fl-label[data-value-specified='1'] .input-text , .onestepcheckout-index-index .page-main .checkout-container .field.fl-label-state .select, .onestepcheckout-index-index .page-main .checkout-container .field.fl-label[data-value-specified='1'] .select {
     color:#A5001F;
@@ -799,7 +1105,7 @@ body.catalogsearch-result-index .wine_rating_block .wine_rate_box {
     display: none;
 }
 body .recently_slider .product-item-info .product-item-details {
-    min-height: 290px;
+    min-height: 270px;
 }
 .catalog-product-view .products-related .wine_rating_block {
     justify-content: center;
@@ -852,7 +1158,7 @@ body .mega-col-level-2 {
     padding: 0 10px;
 }
 .cms-index-index .gift-card-block {
-	margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 /*homep page*/
 
@@ -1971,7 +2277,7 @@ div#sticky-header li.level0 a.level-top:hover {
 }
 .text-banner.first .owl-nav {
     left: auto;
-	z-index:-1;
+    z-index:-1;
 }
 .text-banner .owl-carousel .owl-nav .owl-prev {
     left: -43px;
@@ -2071,8 +2377,8 @@ body.cms-index-index .subscribe-block {
     height: 50px;
     position: absolute;
 }
-.testimonials-slider-section .owl-nav .owl-prev:before {left:0 ;    background: url(../images/left-arrow.png);}
-.testimonials-slider-section .owl-nav .owl-next:before  {right: 0;    background: url(../images/right-arrow.png);}
+.testimonials-slider-section .owl-nav .owl-prev:before {left:0 ;    background: url(../../../../../frontend/Magento/blank/en_US/Winestop_Banner/images/left-arrow.png);}
+.testimonials-slider-section .owl-nav .owl-next:before  {right: 0;    background: url(../../../../../frontend/Magento/blank/en_US/Winestop_Banner/images/right-arrow.png);}
 /*Home Content*/
 /*Login/Creat Account page*/
 .customer-account-login h1.page-title,
@@ -2667,7 +2973,7 @@ ul.pagination li.item.active a.page span {
 }
 .product.details.product-item-details .product_price_info {
     text-align: right;
-    min-width: 164px;
+    min-width: 160px;
 }
 .product.details.product-item-details .product_price_info .product-item-inner .price-box.price-final_price {
     display: flex;
@@ -2868,7 +3174,10 @@ ul.pagination li.item.active a.page span {
 }
 .catalog-product-view .product-add-form-wrapper .product-add-form.simple .box-tocart .fieldset,
 .catalog-product-view .product-add-form-wrapper .wk-container .wk-oosn-notificationcontainer {
-    padding: 30px 30px;
+    padding-top:6px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -3926,10 +4235,10 @@ body:not(.cms-index-index).checkout-cart-index #maincontent .container {
 
 /*Careers Page */
 .cms-careers ul.breadcrumb,
-.cms-wine-tasting-room-events ul.breadcrumb {
+.cms-local-events ul.breadcrumb {
     border: 0;
 }
-.cms-wine-tasting-room-events.cms-page-view .page-wrapper {
+.cms-local-events.cms-page-view .page-wrapper {
     overflow-x: initial;
      overflow-y: hidden;
 }
@@ -3950,21 +4259,21 @@ body:not(.cms-index-index).checkout-cart-index #maincontent .container {
     line-height: 22px;
 }
 .cms-careers .container h1.page-title,
-.cms-wine-tasting-room-events h4 {
+.cms-local-events h4 {
     margin-bottom: 0;
     font-size: 25px;
     color: #A5001F;
     font-family: playfair-regular;
 }
 .cms-careers .container,
-.cms-wine-tasting-room-events .container {
+.cms-local-events .container {
     padding-top: 0 !important;
 }
 .cms-careers .page-main .container,
-.cms-wine-tasting-room-events .page-main .container  {
+.cms-local-events .page-main .container  {
     padding-top: 8px;
 }
-.cms-careers p, .cms-wine-tasting-room-events li {
+.cms-careers p, .cms-local-events li {
     font-size: 14px;
     line-height: 21px;
 }
@@ -3984,7 +4293,7 @@ body:not(.cms-index-index).checkout-cart-index #maincontent .container {
     color: #A5001F;
 }
 .cms-careers .container .col-md-12,
-.cms-wine-tasting-room-events .container .col-md-12 {
+.cms-local-events .container .col-md-12 {
     padding-left: 0;
     padding-right: 0;
 }
@@ -3994,7 +4303,7 @@ body:not(.cms-index-index).checkout-cart-index #maincontent .container {
 /*Careers Page End*/
 
 /*Local Events Page*/
-.cms-wine-tasting-room-events h4 {
+.cms-local-events h4 {
     margin-bottom: 11px !important;
 }
 
@@ -4937,6 +5246,13 @@ li.aw-onestep-groups_item.payment-methods .onestep-billing-address label.label:b
         padding: 10px 10px 0 !important;
     }
 }
+@media(min-width: 769px) {
+    .modal-popup.ship_to_popup_model .modal-inner-wrap {
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0px auto;
+    }
+} 
 @media(min-width: 768px) {
     .customer-account-create .field.password .control #password-strength-meter-container div#password-strength-meter {
         font-size: 10px;
@@ -4976,19 +5292,9 @@ li.aw-onestep-groups_item.payment-methods .onestep-billing-address label.label:b
         width: 58.33333333%;
     }
 }
-@media(max-width:1480px) {
-    body #sticky-header .ves-megamenu li.level0 > a {
-        font-size:14px;
-    }
-}
  @media screen and (max-width: 1400px) {
      .Winestop_banner_slider .caption {
          padding: 0 60px;
-    }
-}
-@media(max-width:1340px) {
-    body #sticky-header .ves-megamenu li.level0 > a {
-        font-size:12px;
     }
 }
 @media(max-width: 1299px) {
@@ -5046,15 +5352,6 @@ li.aw-onestep-groups_item.payment-methods .onestep-billing-address label.label:b
         right: -40px;
     }
 }
-@media(max-width:1040px) {
-    #sticky-header .left-wrapper {
-        width: 15%;
-    }
-    body #sticky-header .ves-megamenu li.level0 > a {
-        font-size:12px;
-        padding: 0 6px;
-    }
-}
 @media (max-width: 1024px) {
     .fullwidth .text-banner.first .widget-wrapper {
         right: 39px;
@@ -5062,23 +5359,23 @@ li.aw-onestep-groups_item.payment-methods .onestep-billing-address label.label:b
     .text-banner .banner img {
         height:  auto !important;
     }
-	.text-banner .content-text .title {
-        font-size: 56px !important;
-        text-align: center !important;
-    }
-	body .text-banner.first .content-text {
+    .text-banner .content-text .title {
+    font-size: 56px !important;
+    text-align: center !important;
+}
+        body .text-banner.first .content-text {
         right: auto !important;
         left: 50%;
         transform: translate(-50%, -50%);
         top: 50%;
         text-align: center;
     }
-	.text-banner.first .content-text p.title {
-        max-width: 100%;
-	   text-align: center;
-        font-size: 16px !important;
-    }
-	.fullwidth .text-banner.first .widget-wrapper {
+    .text-banner.first .content-text p.title {
+    max-width: 100%;
+    text-align: center;
+    font-size: 16px !important;
+}
+        .fullwidth .text-banner.first .widget-wrapper {
         position: static;
         display: block;
         transform: initial;
@@ -5091,7 +5388,7 @@ li.aw-onestep-groups_item.payment-methods .onestep-billing-address label.label:b
     .header-banner .shipping .select-shipping-container .custom-select {
         padding-left: 0;
     }
-    .catalog-category-view .products-grid .product-item-details, 
+        .catalog-category-view .products-grid .product-item-details, 
     .catalogsearch-result-index .products-grid .product-item-details {
         min-height: 288px;
     }
@@ -5120,9 +5417,9 @@ li.aw-onestep-groups_item.payment-methods .onestep-billing-address label.label:b
     }
 }
 @media(max-width: 1007px) {
-	header.page-header.header-3.sticky + div#sticky-header {
-    	display: block !important;
-	}
+    header.page-header.header-3.sticky + div#sticky-header {
+        display: block !important;
+    }
     .footer .footer-top .accordion-item:last-child .accordion-content {
         display: block;
     }
@@ -5135,32 +5432,32 @@ li.aw-onestep-groups_item.payment-methods .onestep-billing-address label.label:b
     .footer .footer-logo img {
         width: 140px;
     }
-	header.page-header.header-3.sticky + div#sticky-header .ves-menu,
+    header.page-header.header-3.sticky + div#sticky-header .ves-menu,
     div#sticky-header nav.navbar.navbar-default.navigation {
-    	display: none;
-	}
+        display: none;
+    }
     body .page-header .welcome {
         display: block;
     } 
-	.page-header.sticky .minicart-wrapper {
-	    position: fixed;
-	    top: 13px;
-	    right: 15px;
-	    z-index: 9999;
-	}
-	#sticky-header .left-wrapper {
-		width: 50%;
-		position: relative;
-    	left: 39px;
-	}
-	#sticky-header .left-wrapper .small-logo img {
-		width: 76%;
-	}
-	header.page-header.header-3.sticky span.action.nav-toggle {
-	    position: fixed;
-	    z-index: 9999;
-	    top: 14px;
-	}
+    .page-header.sticky .minicart-wrapper {
+        position: fixed;
+        top: 13px;
+        right: 15px;
+        z-index: 9999;
+    }
+    #sticky-header .left-wrapper {
+        width: 50%;
+        position: relative;
+        left: 39px;
+    }
+    #sticky-header .left-wrapper .small-logo img {
+        width: 76%;
+    }
+    header.page-header.header-3.sticky span.action.nav-toggle {
+        position: fixed;
+        z-index: 9999;
+        top: 14px;
+    }
     .page-wrapper .accordion-list .accordion-item .accordion-title {
         color: #A5001F !important;
     }
@@ -5268,6 +5565,15 @@ li.aw-onestep-groups_item.payment-methods .onestep-billing-address label.label:b
         padding-left: 0;
         opacity: 1;
     }
+    .products-grid.products-related .product-item-info {
+        min-height: 590px;
+    }
+    .products-grid.products-related .availableqty {
+        bottom: 30px;
+    }
+    .products-grid.products-related .field.choice.related {
+        bottom: -4px;
+    }
 }
 @media only screen and (max-width: 1007px) and (min-width: 768px) {
     .gift-inner-card-content p {
@@ -5327,6 +5633,9 @@ li.aw-onestep-groups_item.payment-methods .onestep-billing-address label.label:b
     }
 }
 @media(max-width: 768px) {
+    .modal-popup.ship_to_popup_model .modal-inner-wrap {
+        max-width: 100%;
+    }
     .modal-popup.modal-slide.agreements-modal {
         left: 0;
     }
@@ -5371,7 +5680,7 @@ li.aw-onestep-groups_item.payment-methods .onestep-billing-address label.label:b
     }
     .testimonials-slider::before,
     .testimonials-slider::after {
-    	min-height: 275px;
+        min-height: 275px;
     }
     /*.onestepcheckout-index-index .page-main .shipping-method .onestep-shipping-method .onestep-shipping-method-list .shipping-method-card.field.choice.storepickup {
         margin-top: 60px !important;
@@ -5518,12 +5827,15 @@ li.aw-onestep-groups_item.payment-methods .onestep-billing-address label.label:b
     .catalog-product-view .page-wrapper .page-main .product-add-form-wrapper .price-availability-inner {
         display: flex;
     }
-        .sociallogin-padding {
+    .sociallogin-padding {
         flex-direction: column;
     }
     body #popup-block .newsletter-label {
         padding-left:20px;
         padding-right: 10PX;
+    }
+    .field._required[name="shippingAddress.custom_attributes.type"] .admin__field-control label {
+            font-size: 14px;
     }
 /*    body #popup-block .popup-bottom {
         bottom: 0;
@@ -5597,8 +5909,8 @@ li.aw-onestep-groups_item.payment-methods .onestep-billing-address label.label:b
     .cms-index-index .container .fullwidth,
     .cms-index-index .gift-card-block,
     .cms-index-index .testimonials-slider-section {
-    	padding: 0 20px;
-	}
+        padding: 0 20px;
+    }
         .shop_by_container .owl-nav {
         top: 30%;
     }
@@ -5990,6 +6302,9 @@ li.aw-onestep-groups_item.payment-methods .onestep-billing-address label.label:b
     .cms-index-index .shop_by_container {
         min-height: auto;
     } 
+    .page-products .products-list .availableqty {
+        justify-content: flex-start;
+    }
 }
 @media(max-width: 639px) {
 /*     .testimonials-slider-section .owl-nav {
@@ -6224,7 +6539,7 @@ li.aw-onestep-groups_item.payment-methods .onestep-billing-address label.label:b
         top: 9px;
     }
     #sticky-header .left-wrapper .small-logo img {
-    	width: 66%;
+        width: 66%;
     }
     .header-banner .shipping .select-shipping-container .custom-select select {
         background-size: 5%;

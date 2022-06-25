@@ -104,22 +104,49 @@ class ShippingMethodManagement extends \Magento\Quote\Model\ShippingMethodManage
         $shippingRates = $shippingAddress->getGroupedAllShippingRates();
         $rates=[];
         foreach ($shippingRates as $k => $carrierRates) {
-            if($k=='shippingrates'){
-                foreach($carrierRates as $rate){
+            if ($quote->getDeliveryMethod() == 'ship') {
+                if($k == 'storepickup' || $k == 'localshipping'){
+                    continue;
+                }
+            } else if ($quote->getDeliveryMethod() == 'local') {
+                if($k != 'localshipping'){
+                    continue;
+                }
+            } else {
+                if($k != 'storepickup'){
+                    continue;
+                }
+            }
+            if ($k == 'shippingrates') {
+                foreach ($carrierRates as $rate) {
                     $rates[$rate->getCarrierTitle()][]=$rate;
                 }
-                foreach($rates as $_carrier){
+                $i=1;
+                foreach ($rates as $_carrier) {
                     foreach($_carrier as $_r){
+                        if ($i==1) {
+                            $this->updateShippingMethod($shippingAddress, $_r);
+                        }
                         $output[] = $this->converter->modelToDataObject($_r, $quote->getQuoteCurrencyCode());    
+                        $i++;
                     }
                 }
-            }else{
+            } else {
+                $i=1;
                 foreach ($carrierRates as $rate) {
+                    if ($i==1) {
+                        $this->updateShippingMethod($shippingAddress, $rate);
+                    }
                     $output[] = $this->converter->modelToDataObject($rate, $quote->getQuoteCurrencyCode());
+                    $i++;
                 }
             }
         }
         return $output;
+    }
+
+    private function updateShippingMethod($shippingAddress, $rate) {
+        $shippingAddress->setShippingMethod($rate->getCode())->save();
     }
 
     /**

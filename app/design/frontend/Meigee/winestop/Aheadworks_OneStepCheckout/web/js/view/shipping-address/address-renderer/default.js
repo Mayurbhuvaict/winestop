@@ -10,8 +10,8 @@ define([
     'Aheadworks_OneStepCheckout/js/model/checkout-data-completeness-logger',
     'Aheadworks_OneStepCheckout/js/model/checkout-section/service-busy-flag',
     'Aheadworks_OneStepCheckout/js/model/address-list-service',
-    'Magento_Customer/js/model/customer',
-    'mage/url'
+    'mage/url',
+    'Magento_Ui/js/modal/modal'
 ], function (
     $,
     ko,
@@ -24,8 +24,8 @@ define([
     completenessLogger,
     serviceBusyFlag,
     addressListSevice,
-    customer,
-    url
+    url,
+    modal
 ) {
     'use strict';
 
@@ -45,16 +45,6 @@ define([
             serviceBusyFlag.subscribe(function (newValue) {
                 addressListSevice.isLoading(newValue);
             }, this);
-            // $(document).ajaxComplete(function() {
-            //     $('.onestepcheckout-index-index .modal-inner-wrap .action-close').click(function(){
-            //         if(customer.isLoggedIn()) {
-            //             $('.shipping-address-item.not-selected-item').last().find('button').trigger('click');
-            //         }
-            //     });
-            //     if(customer.isLoggedIn()) {
-            //         $('.shipping-address-items li.shipping-address-item').last().find('button').trigger('click');
-            //     }
-            // });
         },
 
         /**
@@ -69,11 +59,20 @@ define([
 
                 if (shippingAddress) {
                     isSelected = shippingAddress.getKey() == this.address().getKey();
-                    if(this.address().regionCode && isSelected){
-                        $('#custom-delivery-checker').val(this.address().regionCode).trigger('change');
-                        this.restrictRegionCode(quote.shippingAddress().regionCode);
+                    if (isSelected) {
+                        var deliveryMethod = window.localStorage.getItem('deliveryMethod');
+                        var localDeliveryCityNames = ['burlingame', 'hillsborough', 'san mateo', 'millbrae', 'belmont', 'san carlos', 'san bruno'];
+                        var enteredCity = quote.shippingAddress().city.toLowerCase();
+                        if (jQuery.inArray(enteredCity, localDeliveryCityNames) == -1 && deliveryMethod == 'local') {
+                            window.allowRegionId = false;
+                            $(".actions-toolbar span.placeorder-disallow").text("Please enter valid city");
+                        } else {
+                            if (window.localStorage.getItem('deliveryMethod') !== 'storepickup') {
+                                this.restrictRegionCodePopup(quote.shippingAddress().regionCode);
+                                this.restrictRegionCode(quote.shippingAddress().regionCode);
+                            }
+                        }
                     }
-
                 }
 
                 return isSelected;
@@ -97,11 +96,14 @@ define([
          */
         onSelectAddressClick: function() {
             if (!serviceBusyFlag()) {
+                if(this.address() ){
+                    if(this.address().regionCode){
+                        //$('#custom-delivery-checker').val(this.address().regionCode).trigger('change');
+                        //this.restrictRegionCode(this.address().regionCode);
+                    }
+                }
                 selectShippingAddressAction(this.address());
                 checkoutData.setSelectedShippingAddress(this.address().getKey());
-                // if(this.address().regionCode){
-                //     $('#custom-delivery-checker').val(this.address().regionCode).trigger('change');
-                // }
             }
         },
 
@@ -111,10 +113,100 @@ define([
         onEditAddressClick: function() {
             newAddressFormState.isShown(true);
         },
+
+        /**
+         * Check regioncode and show popup
+         */
+        restrictRegionCodePopup: function(code) {
+            var catname = "";
+            var customurl = url.build('custom/index/Deliverycheckercontroller');
+            var temp, temp_old_shipto_state, i;
+            $.ajax({
+                url: customurl,
+                type: "post",
+                data: {'code': code, 'catname': catname},
+                success: function(checker) {
+                    var checker = jQuery.parseJSON(checker);
+                    if (checker) {
+                        $("#custom-delivery-message" ).text(checker.message);
+                        if (!checker.abel_to_change) {
+                            var items = checker.item;
+                            var html;
+                            var headline = checker.item_count + ' Item in your cart cannot be shipped to ' + checker.region_name + ' hence it will removed from your cart';
+                            $("span.headline" ).text(headline);
+                            var old_shipto = sessionStorage.getItem("old_shipto");
+                            temp = old_shipto;
+                            var old_shipto_state = sessionStorage.getItem("old_shipto_state");
+                            temp_old_shipto_state = old_shipto_state
+                            var product_ids;
+                            for (i = 0; i < items.length; i++) {
+                                var item = items[i];
+                                if (html) {
+                                    html = html + '<div class="cart_item"><div class="item_image_content"><img src="' + item.image_url +'"></div><div class="ship_item_content"><span class="item-name">' + item.name +'</span><span class="item_price">' + item.price +'</span></div></div>';
+                                    product_ids = product_ids + "," + item.item_id;
+                                } else {
+                                    html = '<div class="cart_item"><div class="item_image_content"><img src="' + item.image_url +'"></div><div class="ship_item_content"><span class="item-name">' + item.name +'</span><span class="item_price">' + item.price +'</span></div></div>';
+                                    product_ids = item.item_id;
+                                }
+                            }
+                            $("div.items_container").replaceWith(html);
+                            var options = {
+                                type: 'popup',
+                                responsive: true,
+                                innerScroll: true,
+                                modalClass: 'ship_to_popup_model',
+                                buttons: [{
+                                    text: $.mage.__('Continue (ship to ' + code + ' )'),
+                                    class: '',
+                                    click: function () {
+                                        var product_ids = sessionStorage.getItem("product_ids");
+                                               var customurl = url.build('custom/index/Remove');
+                                                $.ajax({
+                                                    url: customurl,
+                                                    type: "post",
+                                                    data: {'product_ids': product_ids},
+                                                    success: function(checker) {
+                                                        var checker = jQuery.parseJSON(checker);
+                                                        if (checker) {
+                                                            $('.sprite_custom').parent().css('display','none');
+                                                            if (checker.success) {
+                                                                 window.location.href = checker.redirectUrl;
+                                                                 var checkout_ship_to_code = sessionStorage.getItem("checkout_ship_to_code");
+                                                                $('.delivery-checker').val(checkout_ship_to_code);
+                                                                sessionStorage.setItem("shipto", checkout_ship_to_code);
+                                                            }
+                                                        }
+                                                    }
+                                                });
+                                                this.closeModal();
+                                    }
+                                }]
+                            };
+                            var popup = modal(options, $('#popup-modal-checkout'));
+                            $('#popup-modal-checkout').modal('openModal');
+                            sessionStorage.setItem("product_ids", product_ids);
+                            checker.status = false;
+                        }
+                        sessionStorage.setItem("shipto", code);
+                        sessionStorage.setItem("shipto_state", checker.regionId);
+                        if (checker.status) {
+                            $('.custom_ship_to').css('display','none');
+                            $('.sidebar.col-sm-3.left-sidebar').css('display','none');
+                            $('.ship_to_message').css('display','block');
+                        } else {
+                            $('.ship_to_message').css('display','none');
+                            $('.sidebar.col-sm-3.left-sidebar').css('display','block');
+                            $('.custom_ship_to').css('display','block');
+                        }
+                    }
+                }
+            });
+        },
+
         /**
          * regioncode validator
          */
-         restrictRegionCode: function(code) {
+        restrictRegionCode: function(code) {
             var catname = "";
             var customurl = url.build('custom/index/Deliverycheckercontroller');
             var temp, temp_old_shipto_state, i;

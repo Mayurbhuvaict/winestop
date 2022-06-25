@@ -20,7 +20,8 @@ class StateFilter
         'Palau',
         'Puerto Rico',
         'Utah',
-        'Virgin Islands'
+        'Virgin Islands',
+        'Hawaii'
     ];
 
     public function afterToOptionArray($subject, $options)

@@ -58,6 +58,21 @@
 		</div>
 	</div>
 </div>
+<div id="popup-modal-checkout">
+	<div class="modalWindow">
+		<div class="modal_content">
+			<div class="cartTransfer_headline">
+				<span class="headline"></span>
+			</div>
+			<div class="poup_cancel"><a class="poup_cancel_state" href="javascript:void(0)"></a></div>
+			<div class="cart_item_header">
+			</div>
+			<div class="items_container">
+
+			</div>
+		</div>
+	</div>
+</div>
 <script type="text/javascript">
 	require(['jquery', 'jquery/ui'], function($){
      document.getElementById('custom-delivery-checker').addEventListener('change', function () {
@@ -110,7 +125,7 @@
  		if (shipto_state) {
 			if(!$('body').hasClass('onestepcheckout-index-index')){
  			var checkinterval = setInterval(function () {
- 				$(".onestep-shipping-address .select[name='region_id'] > option").each(function () {
+ 				$(".onestep-shipping-address .select[name=region_id] > option").each(function () {
  					if ($(this).val() == shipto_state) {
  						$(this).attr('selected','selected');
  						if (checkinterval) {
@@ -143,8 +158,8 @@
 	 			}
 			}
 		});
-		$('#popup-modal').on('modalclosed', function() {
-			$(".onestep-shipping-address form [name='region_id']").prop("selectedIndex", 0).change();
+		$('#popup-modal-checkout').on('modalclosed', function() {
+			$(".onestep-shipping-address form [name=region_id]").prop("selectedIndex", 0).change();
 		 	var old_shipto = sessionStorage.getItem("old_shipto");
 			  if (temp != 'undefined' && temp) {
 	 			$('.delivery-checker').val(temp);
@@ -167,7 +182,7 @@
 	 		  	if (temp_old_shipto_state) {
 				if(!$('body').hasClass('onestepcheckout-index-index')){
 					var checkinterval = setInterval(function () {
-						$(".onestep-shipping-address .select[name='region_id'] > option").each(function () {
+						$(".onestep-shipping-address .select[name=region_id] > option").each(function () {
 							if ($(this).text() == temp_old_shipto_state) {
 								$(this).attr('selected','selected');
 								sessionStorage.setItem("old_shipto_state", temp_old_shipto_state);
@@ -180,13 +195,12 @@
 					}, 1000);
 				}
 			}
-
 		});
 		$("body .modal_content .poup_cancel_state").click(function() {
-            $('#popup-modal').modal('closeModal');
-			$(".onestep-shipping-address form [name='region_id']").prop("selectedIndex", 0).change();
+			$('#popup-modal-checkout').modal('closeModal');
+			$(".onestep-shipping-address form [name=region_id]").prop("selectedIndex", 0).change();
 		});
-		$(document).on('focus',".onestep-shipping-address form [name='region_id']",function(){
+		$(document).on('focus',".onestep-shipping-address form [name=region_id]",function(){
 			var code;
 			var state = $(this).find(":selected").text();
 			$.each(state_code_name, function (key, value) {
@@ -198,7 +212,7 @@
 	        sessionStorage.setItem("old_shipto_state", state);
 
 	    });
-		$(document).on('change',".onestep-shipping-address form [name='region_id']",function(){
+		$(document).on('change',".onestep-shipping-address form [name=region_id]",function(){
        		var customurl = "<?php echo $this->getUrl().'custom/index/Deliverycheckercontroller'?>";
        		var code = this.value;
 				$.ajax({
@@ -209,14 +223,18 @@
 		                var checker = jQuery.parseJSON(checker);
 		                if (checker) {
 		                	if (!checker.abel_to_change) {
+								// window.allowRegionId = false;
+                            	// $(".actions-toolbar span.placeorder-disallow").text("Please change your shipping address");
 		                		if (checker.region_name) {
 			                		var items = checker.item;
 			                    	var html;
-			                    	var headline = checker.item_count + ' Item in your cart cannot be shipped to ' + checker.region_name + ' hence it will removed from your cart';
+			                    	var headline = checker.item_count + ' Item in your cart cannot be shipped to ' + checker.region_name;
 			                    	$("span.headline" ).text(headline);
 			                    	var old_shipto = sessionStorage.getItem("shipto");
 			                    	var old_shipto_state = sessionStorage.getItem("old_shipto_state");
 			                    	temp_old_shipto_state = old_shipto_state
+			                    	var cancel_link = "Cancel";
+		                    		$("a.poup_cancel_state" ).text(cancel_link);
 			                    	var header_line = '<span>The following item will be removed</span>';
 			                    	$("div.cart_item_header" ).replaceWith(header_line);
 			                    	var product_ids;
@@ -253,7 +271,7 @@
 										                if (checker) {
 										        		    $('.sprite_custom').parent().css('display','none');
 											                if (checker.success) {
-											                	 window.location.href = checker.redirectUrl;
+											                	 window.location.href='/';
 											                	 var checkout_ship_to_code = sessionStorage.getItem("checkout_ship_to_code");
 											                	$('.delivery-checker').val(checkout_ship_to_code);
 											                	sessionStorage.setItem("shipto", checkout_ship_to_code);
@@ -265,9 +283,8 @@
 						                    }
 						                }]
 						            };
-						        	var popup = modal(options, $('#popup-modal'));
-									$('#popup-modal').modal('openModal');
-									$(".onestep-shipping-address form [name='region_id']").prop("selectedIndex", 0).change();
+						        	var popup = modal(options, $('#popup-modal-checkout'));
+									$('#popup-modal-checkout').modal('openModal');
 									//sessionStorage.setItem("old_shipto", shipto);
 									sessionStorage.setItem("product_ids", product_ids);
 									sessionStorage.setItem("checkout_ship_to_code", checker.region_code);
@@ -277,6 +294,8 @@
 		                	else
 		                	{
 		                		sessionStorage.setItem("shipto_state",checker.regionId);
+								window.allowRegionId = true;
+                            	$(".actions-toolbar span.placeorder-disallow").text("");
 		                	}
 		                }
 	                }
@@ -301,12 +320,14 @@
 		                    if (!checker.abel_to_change) {
 		                    	var items = checker.item;
 		                    	var html;
-		                    	var headline = checker.item_count + ' Item in your cart cannot be shipped to ' + checker.region_name + ' hence it will removed from your cart';
+		                    	var headline = checker.item_count + ' Item in your cart cannot be shipped to ' + checker.region_name;
 		                    	$("span.headline" ).text(headline);
 		                    	var old_shipto = sessionStorage.getItem("old_shipto");
 		                    	temp = old_shipto;
 		                    	var old_shipto_state = sessionStorage.getItem("old_shipto_state");
 		                    	temp_old_shipto_state = old_shipto_state
+		                    	var cancel_link = "Cancel (Stay in " + old_shipto + " )";
+		                    	$("a.poup_cancel_state" ).text(cancel_link);
 		                    	var header_line = '<span>The following item will be removed</span>';
 		                    	$("div.cart_item_header" ).replaceWith(header_line);
 		                    	var product_ids;
@@ -346,7 +367,7 @@
 													$('.sprite_custom').parent().css('display','none');
 									                if (checker) {
 										                if (checker.success) {
-										                	 window.location.href = checker.redirectUrl;
+										                	 window.location.href='/';
 										                	 sessionStorage.setItem("shipto", code);
 										                }
 										            }
@@ -356,22 +377,14 @@
 					                    }
 					                }]
 					            };
-					        	var popup = modal(options, $('#popup-modal'));
-								$('#popup-modal').modal('openModal');
+					        	var popup = modal(options, $('#popup-modal-checkout'));
+								$('#popup-modal-checkout').modal('openModal');
 								sessionStorage.setItem("product_ids", product_ids);
 		                    	checker.status = false;
+		                    	
 		                    }
 		                    sessionStorage.setItem("shipto", code);
 		                    sessionStorage.setItem("shipto_state", checker.regionId);
-		                    //sessionStorage.setItem("old_shipto_state", checker.regionId);
-		           //          if (checker.abel_to_change) {
-		           //          	temp = code	;
-					        //     $("select[name='region_id'] > option").each(function() {
-					        //     	if ($(this).val() == checker.regionId) {
-					        //         	$(this).attr('selected','selected');
-					        //        	}
-					        //     });
-					        // }
 		                    if (checker.status) {
 		                        $('.custom_ship_to').css('display','none');
 		                        $('.sidebar.col-sm-3.left-sidebar').css('display','none');

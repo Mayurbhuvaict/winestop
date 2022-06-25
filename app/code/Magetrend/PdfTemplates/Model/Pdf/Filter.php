@@ -245,6 +245,7 @@ abstract class Filter
         }
 
         $data['address'] = $this->getFormatedAddress($billingAddress);
+
         return $data;
     }
 
@@ -266,6 +267,18 @@ abstract class Filter
         $data['s_country'] = '';
         $data['s_telephone'] = '';
         $source = $this->getSource();
+
+        if (isset($data['street'])) {
+            $streetLines = explode(' ', $data['street']);
+            $updatedStreet = '';
+            if (count($streetLines) > 1) {
+                foreach ($streetLines as $key => $streetLine) {
+                    $updatedStreet .= trim($streetLine) . " ";
+                }
+            }
+            $data['street'] = $updatedStreet;
+        }
+        
         $shippingAddress = $source->getShippingAddress();
         if (!$shippingAddress) {
             return $data;
@@ -282,6 +295,14 @@ abstract class Filter
             }
             $data['s_'.$key] = $value;
         }
+        $streetLines = explode(' ', $data['s_street']);
+        $updatedStreet = '';
+        if (count($streetLines) > 1) {
+            foreach ($streetLines as $key => $streetLine) {
+                $updatedStreet .= trim($streetLine) . " ";
+            }
+        }
+        $data['s_street'] = $updatedStreet;
         $middleName = $shippingAddress->getMiddlename();
         if (!empty($middleName)) {
             $middleName = ' '. $middleName;
@@ -294,6 +315,21 @@ abstract class Filter
         }
 
         $data['s_address'] = $this->getFormatedAddress($shippingAddress);
+        //echo "<pre>";print_r($data);die();
+        $shippingTelephone = $data['s_telephone'];
+        $data['s_telephone'] = 'T: ' . $shippingTelephone . ',';
+        if ($source->getShippingMethod() == 'storepickup_storepickup') {
+            $data['s_fullname'] = '';
+            $data['s_address'] = '';
+            $data['s_region'] = '';
+            $data['s_company'] = '';
+            $data['s_street'] = 'Store Picking';
+            $data['s_city'] = '';
+            $data['s_postcode'] = '';
+            $data['s_country'] = '';
+            $data['s_telephone'] = '';
+            $data['s_type'] = '';
+        }
 
         return $data;
     }

@@ -53,5 +53,11 @@
         <plugin name="change_sort_order_for_latest" type="Winestop\Custom\Plugin\ChangeDescOrder" />
     </type>
     <preference for="Magento\Directory\Model\ResourceModel\Region\Collection" type="Winestop\Custom\Model\Collection" />
-    <preference for="Aheadworks\OneStepCheckout\Model\Address\Form\AttributeMeta\Modifier\Attribute\RegionId" type="Winestop\Custom\Model\Address\RegionId" />
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="winestop_spirit_configprovider" xsi:type="object">Winestop\Custom\Model\SpiritConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
 </config>

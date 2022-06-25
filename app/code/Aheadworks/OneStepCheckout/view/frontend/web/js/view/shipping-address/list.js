@@ -15,7 +15,7 @@ define(
         var defaultRendererTemplate = {
             parent: '${ $.$data.parentName }',
             name: '${ $.$data.name }',
-            component: 'Aheadworks_OneStepCheckout/js/view/shipping-address/address-renderer/default'
+            component: 'Aheadworks_OneStepCheckout/js/view/shipping-address/address-renderer/default',
         };
 
         return Component.extend({
@@ -24,6 +24,7 @@ define(
                 isShown: addressList().length > 0,
                 rendererTemplates: []
             },
+            list: addressList,
             renders: [],
             isLoading: addressListSevice.isLoading,
 
@@ -34,7 +35,7 @@ define(
                 this._super()
                     .initAddressRenders();
 
-                addressList.subscribe(
+                this.list.subscribe(
                     function (changes) {
                         _.each(changes, function (change) {
                             if (change.status === 'added') {
@@ -54,7 +55,7 @@ define(
              */
             initObservable: function () {
                 this._super();
-                this.observe(['isShown']);
+                this.observe(['isShown', 'list']);
 
                 return this;
             },
@@ -65,7 +66,7 @@ define(
              * @returns {Component}
              */
             initAddressRenders: function () {
-                _.each(addressList(), function (address, index) {
+                _.each(this.list(), function (address, index) {
                     this._createRenderer(address, index);
                 }, this);
 
