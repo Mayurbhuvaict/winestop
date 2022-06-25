@@ -1,0 +1,22 @@
+<div class="field field-select-billing">
+    <div class="control" id="testing" data-bind="if: (addressOptions.length > 1)">
+        <select class="select" name="billing_address_id" data-bind="
+        options: addressOptions,
+        optionsText: addressOptionsText,
+        value: selectedAddress
+    "></select>
+    </div>
+</div>
+
+
+<!-- <div class="field field-select-billing">
+    <div class="control" data-bind="if: (addressOptions.length > 1)">
+        <div class="billing-address-items">
+            <ol data-bind = "foreach: addressOptions">
+                <li>
+                    <span data-bind="text: $data.getAddressInline()"></span>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div> -->

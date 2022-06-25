@@ -1,0 +1,10 @@
+{
+    "quote": {
+        "column": {
+            "delivery_method": true
+        },
+        "index": {
+            "QUOTE_DELIVERY_METHOD": true
+        }
+    }
+}
