@@ -37,6 +37,9 @@
         <!-- ko foreach: getRegion('amazon-button-region') -->
             <!-- ko template: getTemplate() --><!-- /ko -->
         <!--/ko-->
+         <!-- ko foreach: getRegion('deliveryMethod') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
         <!-- ko foreach: getRegion('shippingAddress') -->
             <!-- ko template: getTemplate() --><!-- /ko -->
         <!--/ko-->
@@ -46,6 +49,7 @@
         <!-- ko foreach: getRegion('paymentMethod') -->
             <!-- ko template: getTemplate() --><!-- /ko -->
         <!--/ko-->
+        
     </ul>
 </div>
 
@@ -78,16 +82,16 @@
                 <div class="aw-onestep-sidebar-block_title"></div>
                 <div class="aw-onestep-sidebar-block_content">
                     <!-- ko foreach: getRegion('before-place-order') -->
-                    <!-- ko template: getTemplate() --><!-- /ko -->
+                        <!-- ko template: getTemplate() --><!-- /ko -->
                     <!--/ko-->
                 </div>
             </div>
-            
             <!-- ko foreach: getRegion('actions-toolbar') -->
             <!-- ko template: getTemplate() --><!-- /ko -->
             <!--/ko-->
         </div>
     </div>
+    
     <!-- ko foreach: getRegion('trustSeals') -->
         <!-- ko template: getTemplate() --><!-- /ko -->
     <!--/ko-->

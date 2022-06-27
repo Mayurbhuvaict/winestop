@@ -131,7 +131,7 @@
                                         <item name="component" xsi:type="string">Aheadworks_OneStepCheckout/js/view/shipping-address</item>
                                         <item name="displayArea" xsi:type="string">shippingAddress</item>
                                         <item name="provider" xsi:type="string">checkoutProvider</item>
-                                        <item name="sortOrder" xsi:type="string">5</item>
+                                        <item name="sortOrder" xsi:type="string">7</item>
                                         <item name="children" xsi:type="array">
                                             <item name="shipping-address-list" xsi:type="array">
                                                 <item name="component" xsi:type="string">Aheadworks_OneStepCheckout/js/view/shipping-address/list</item>
@@ -612,7 +612,7 @@
                                     </item>
                                     <item name="payment-options" xsi:type="array">
                                         <item name="component" xsi:type="string">Aheadworks_OneStepCheckout/js/view/sidebar/payment-options</item>
-                                        <item name="sortOrder" xsi:type="string">10</item>
+                                        <item name="sortOrder" xsi:type="string">11</item>
                                         <item name="displayArea" xsi:type="string">payment-options</item>
                                         <item name="children" xsi:type="array">
                                             <item name="discount" xsi:type="array">
@@ -635,7 +635,7 @@
                                     </item>
                                     <item name="before-place-order" xsi:type="array">
                                         <item name="component" xsi:type="string">uiComponent</item>
-                                        <item name="sortOrder" xsi:type="string">11</item>
+                                        <item name="sortOrder" xsi:type="string">0</item>
                                         <item name="displayArea" xsi:type="string">before-place-order</item>
                                         <item name="dataScope" xsi:type="string">before-place-order</item>
                                         <item name="provider" xsi:type="string">checkoutProvider</item>

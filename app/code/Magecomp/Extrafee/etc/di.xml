@@ -15,4 +15,7 @@
         <plugin name="save_address_type_field" type="Magecomp\Extrafee\Plugin\Checkout\ShippingInfoManagementPlugin" />
     </type>
     <preference for="Magento\Quote\Model\ShippingMethodManagement" type="Magecomp\Extrafee\Model\ShippingMethodManagement" />
+    <type name="Magento\Checkout\Model\DefaultConfigProvider">
+        <plugin name="alter_default_config_checkout_for_local_address_restriction_for_customer" type="Magecomp\Extrafee\Plugin\DefaultConfigModifier" />
+    </type>
 </config>

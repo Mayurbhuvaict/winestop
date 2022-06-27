@@ -6,4 +6,7 @@
     <type name="Aheadworks\OneStepCheckout\Block\Checkout">
         <plugin name="Magecomp_Extrafee::addAddressTypeprocessor" type="Magecomp\Extrafee\Plugin\AddressTypeProcessor" sortOrder="10"/>
     </type>
+    <type name="Aheadworks\OneStepCheckout\Model\ConfigProvider">
+        <plugin name="Magecomp_Extrafee::checkout_provider" type="Magecomp\Extrafee\Plugin\DeliveryConfigProvider" sortOrder="10"/>
+    </type>
 </config>

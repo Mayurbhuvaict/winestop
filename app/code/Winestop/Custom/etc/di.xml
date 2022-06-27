@@ -17,6 +17,7 @@
             </argument>
         </arguments>
     </type>
+
     <type name="Magento\CatalogInventory\Model\Indexer\Stock\Action\Full">
         <arguments>
             <argument name="batchRowsCount" xsi:type="array">
@@ -24,11 +25,13 @@
             </argument>
         </arguments>
     </type>
+
     <type name="Magento\Catalog\Model\Indexer\Category\Product\Action\Full">
         <arguments>
             <argument name="batchRowsCount" xsi:type="number">10000</argument>
         </arguments>
     </type>
+
     <type name="Magento\Catalog\Model\ResourceModel\Product\Indexer\Eav\BatchSizeCalculator">
         <arguments>
             <argument name="batchSizes" xsi:type="array">
@@ -49,10 +52,19 @@
     <type name="Magento\CatalogInventory\Model\StockStateProvider">
         <plugin name="qty_in_errormessage" type="Winestop\Custom\Plugin\ShowQtyInError"/>
     </type>
+    <preference for="Webkul\OutOfStockNotification\Block\OutOfStockProduct" type="Winestop\Custom\Block\OutOfStockProduct" />
     <preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking" type="Winestop\Custom\Block\Adminhtml\Order\Tracking" />
     <preference for="Magento\Shipping\Block\Adminhtml\Order\Tracking\View" type="Winestop\Custom\Block\Adminhtml\Order\Tracking\View" />
     <preference for="Snk\Captcha\Model\MathCaptcha" type="Winestop\Custom\Model\MathCaptcha" />
     <type name="Magetrend\PdfTemplates\Model\Pdf\Filter">
         <plugin name="capitalize_address_type_pdf" type="Winestop\Custom\Plugin\Filter"/>
     </type>
+
+    <type name="Aheadworks\OneStepCheckout\Model\Layout\Processor\DefaultProcessor">
+        <plugin name="add_custom_field_checkout_form"
+                type="Winestop\Custom\Model\Plugin\Checkout\LayoutProcessor"/>
+    </type>
+    <!-- <type name="Magento\Payment\Block\Info">
+        <plugin name="module_paympent_view_override_template" type="Winestop\Custom\Plugin\Payment\Block\Info" />
+    </type> -->
 </config>
