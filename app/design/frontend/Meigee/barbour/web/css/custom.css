@@ -1,4 +1,153 @@
-﻿.authentication-dropdown .modal-inner-wrap button.action-close {
+﻿/*checkout before after name css*/
+.payment-method.sq-payment-method {
+    margin-top: 75px !important;
+}
+li.aw-onestep-groups_item.payment-methods .group-title span {
+    font-size: 0;
+    position: relative;
+}
+li.aw-onestep-groups_item.payment-methods .group-title span::after {
+    content: 'Billing Address';
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.payment-method.sq-payment-method {
+    position: relative;
+    /* margin-top: 18px; */
+    /* display: block; */
+}
+.payment-method.sq-payment-method::before {
+    content: 'Payment Method';
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    top: -45px;
+    position: absolute;
+    left: 58px;
+}
+li.aw-onestep-groups_item.payment-methods.stepone .payment-method.sq-payment-method:after {
+    content: '4';
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    border: 2px solid #A5001F;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    color: #A5001F;
+    font-size: 2rem;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    background-color: #fff;
+    box-sizing: border-box;
+    font-weight: 600;
+    height: 40px;
+    justify-content: center;
+    margin-right: 14px;
+    margin-left: 5px;
+    width: 40px;
+}
+li.aw-onestep-groups_item.payment-methods .payment-method.sq-payment-method:after {
+    content: '6';
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    border: 2px solid #A5001F;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    color: #A5001F;
+    font-size: 2rem;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    background-color: #fff;
+    box-sizing: border-box;
+    font-weight: 600;
+    height: 40px;
+    justify-content: center;
+    margin-right: 14px;
+    margin-left: 5px;
+    width: 40px;
+}
+.onestepcheckout-index-index .page-main .aw-onestep-main .payment-method:first-of-type {
+        margin-top: 75px;
+}
+/*li.aw-onestep-groups_item.payment-methods .group-content form#co-payment-form .onestep-billing-address + div .payment-method.sq-payment-method::after {
+    content: '4';
+}
+*/
+/*checkout before after name css end*/
+.onestepcheckout-index-index .d-none {
+    display: none !important;
+}
+.onestepcheckout-index-index div#popup-modal {
+    display: none;
+}
+span.placeorder-disallow:empty:before {
+    display: none;
+}
+span.placeorder-disallow {
+    position: relative;
+    color: #d1ab5a;
+    font-weight: 700;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 17px;
+}
+span.placeorder-disallow:before {
+    content: '\f023';
+    font-family: fontawesome;
+    left: -8px;
+    position: relative;
+}
+.onestepcheckout-index-index .onestep-billing-address{
+    text-transform: capitalize;
+}
+.onestepcheckout-index-index .squareup_payment .primary {
+    display: none;
+}
+.onestepcheckout-index-index .checkout-agreements-block div.actions-toolbar {
+    display: block !important;
+}
+.onestepcheckout-index-index .onestep-delivery-method .admin__field-option:first-child {
+    border-bottom:none;
+}
+.onestepcheckout-index-index .onestep-delivery-method .admin__field-option {
+    border:1px solid #d8d8d8;
+    width:100%;
+    max-width: 400px;
+}
+.onestepcheckout-index-index .onestep-delivery-method .admin__field-label {
+    font-family: 'montserrat-medium';
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    padding-right: 5px;
+}
+.onestepcheckout-index-index .onestep-delivery-method input[type='radio']+label:before {
+    font-weight:400;
+    margin-right: 10px !important;
+    height:auto;
+    line-height:17px;
+}
+
+.authentication-dropdown .modal-inner-wrap button.action-close {
     z-index: 9;
 }
 /*checkout payment method*/
