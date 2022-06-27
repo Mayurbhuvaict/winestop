@@ -117,7 +117,7 @@ define([
                     // jQuery('.action-edit-address').trigger('click');
                 }
             }else{
-                jQuery('#guest-updater').trigger('click');
+                jQuery('#updater').trigger('click');
                 if(!this.isValidateCity()){
                     return false;
                 }
